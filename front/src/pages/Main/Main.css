@@ -40,71 +40,11 @@
   border-radius: 50%;
 }
 
-.MainButtonForm {
-  height: 50%;
-  width: 100%;
-  border: solid 1px;
-  border-color: rgba(0, 0, 0, 0.1);
-  border-radius: 10%;
-  align-items: center;
-  justify-content: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 5%;
-  margin-bottom: 5%;
-}
-
 .MainTitleText {
   font-family: "Lobster";
   font-size: 590%;
   color: ghostwhite;
   text-align: center;
-}
-
-.MainGameButtons {
-  margin-top: 10%;
-  height: 40%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.GameStartBtn {
-  height: 40%;
-  width: 50%;
-  cursor: pointer;
-  background-image: url("../../asset/images/GameStartBtn.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  border: 0ch;
-  color: white;
-  border-radius: 5%;
-}
-
-.GameRuleBtn {
-  height: 40%;
-  width: 50%;
-  cursor: pointer;
-  background-image: url("../../asset/images/GameRuleBtn.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  overflow: hidden;
-  border: 0ch;
-  color: white;
-  border-radius: 5%;
-}
-
-.MainLoginButtons {
-  margin-top: 10%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
 }
 
 .KakaoLoginButton {

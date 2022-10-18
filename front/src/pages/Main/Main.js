@@ -1,5 +1,6 @@
 import React from "react";
 import "./Main.css";
+import MainForm from "../../components/MainForm/MainForm";
 
 const Main = () => {
   return (
@@ -9,16 +10,7 @@ const Main = () => {
           <div className="MainLogo">
             <text className="MainTitleText">Developer Maker</text>
           </div>
-          <div className="MainButtonForm">
-            <div className="MainGameButtons">
-              <button className="GameRuleBtn" />
-              <button className="GameStartBtn" />
-            </div>
-            <div className="MainLoginButtons">
-              <div className="KakaoLoginButton" />
-              <div className="NaverLoginButton" />
-            </div>
-          </div>
+          <MainForm />
         </div>
       </div>
     </div>
