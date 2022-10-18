@@ -1,6 +1,7 @@
 package com.ssafy.developermaker.domain.user.dto;
 
 import com.ssafy.developermaker.domain.user.entity.Gender;
+import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import lombok.*;
@@ -17,7 +18,7 @@ public class UserDto {
     private String nickname;
     private String loginType;
     private Gender gender;
-    private String language;
+    private Language language;
 
     public User toEntity(LoginType loginType){
         return User.builder()

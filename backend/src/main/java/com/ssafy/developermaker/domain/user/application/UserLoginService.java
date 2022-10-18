@@ -3,6 +3,7 @@ package com.ssafy.developermaker.domain.user.application;
 import com.ssafy.developermaker.domain.user.dto.LoginDto;
 import com.ssafy.developermaker.domain.user.dto.TokenDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
+import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
@@ -48,13 +49,15 @@ public class UserLoginService {
         HttpHeaders httpHeaders = new HttpHeaders();
         // 생성한 토큰을 Response 헤더에 넣어주고,
         httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-//         TokenDto에도 넣어서 RequestBody로 리턴해준다
+        // TokenDto에도 넣어서 RequestBody로 리턴해준다
+//        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", jwt));
         return new ResponseEntity<>(new TokenDto(jwt), httpHeaders, HttpStatus.OK);
     }
 
     @Transactional
     public ResponseEntity<BaseResponseBody> signup(UserDto userDto, LoginType loginType) {
         userDto.setSocialId(passwordEncoder.encode(userDto.getSocialId()));
+        userDto.setLanguage(Language.NONE);
         User user = userDto.toEntity(loginType);
         userRepository.save(user);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", null));
