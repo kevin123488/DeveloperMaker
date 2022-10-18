@@ -65,7 +65,7 @@ public class User {
                 .nickname(this.nickname)
                 .loginType(this.loginType.toString())
                 .gender(this.gender)
-                .language(this.language.toString())
+                .language(this.language)
                 .build();
     }
 
