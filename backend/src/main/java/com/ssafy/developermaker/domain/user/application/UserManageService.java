@@ -2,6 +2,7 @@ package com.ssafy.developermaker.domain.user.application;
 
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.User;
+import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,29 +21,29 @@ public class UserManageService {
 
     public UserDto getInfo(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
-        return findUser.map(User::toDto).orElse(null);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+        return user.toDto();
     }
 
     @Transactional
     public UserDto modify(UserDto userDto, String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if(!user.isPresent()) return null;
-        User findUser = user.get();
-
-        findUser.updateNickname(userDto.getNickname());
-        userRepository.save(findUser);
-        return findUser.toDto();
+        Optional<User> findUser = userRepository.findByEmail(email);
+//        User user = findUser.orElseThrow(UserNotFoundException::new);
+        if(!findUser.isPresent()) return null;
+        User user = findUser.get();
+        user.updateNickname(userDto.getNickname());
+        userRepository.save(user);
+        return user.toDto();
     }
 
 
     @Transactional
     public boolean delete(String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        if(!user.isPresent()) return false;
-        User findUser = user.get();
-
-        userRepository.delete(findUser);
-
+        Optional<User> findUser = userRepository.findByEmail(email);
+        if(!findUser.isPresent()) return false;
+        userRepository.delete(findUser.get());
+//        User user = findUser.orElseThrow(UserNotFoundException::new);
+//        userRepository.delete(user);
         return true;
     }
 
