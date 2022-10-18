@@ -39,28 +39,3 @@
   display: flex;
   border-radius: 50%;
 }
-
-.MainTitleText {
-  font-family: "Lobster";
-  font-size: 590%;
-  color: ghostwhite;
-  text-align: center;
-}
-
-.KakaoLoginButton {
-  width: 3em;
-  height: 3em;
-  background-image: url("../../asset/images/KakaoLogoImg.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
-
-.NaverLoginButton {
-  width: 3em;
-  height: 3em;
-  background-image: url("../../asset/images/NaverLogoImg.png");
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
-}
