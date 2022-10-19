@@ -31,8 +31,7 @@ public class Study {
     @Column(nullable = false, length = 5000)
     private String content;
 
-    private StudyResponseDto toDto() {
-
+    public StudyResponseDto toDto() {
         return StudyResponseDto.builder().studyId(studyId).subject(subject).title(title).content(content).orders(orders).build();
     }
 }

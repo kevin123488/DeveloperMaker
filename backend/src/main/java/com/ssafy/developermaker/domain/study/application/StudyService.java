@@ -21,7 +21,7 @@ public class StudyService {
         List<StudyResponseDto> studyResponseDtoList = new ArrayList<>();
         Collections.sort(studyList, (o1, o2) -> (int)(o1.getOrders() - o2.getOrders()));
         for(Study study : studyList){
-            studyResponseDtoList.add()
+            studyResponseDtoList.add(study.toDto());
         }
 
         return studyResponseDtoList;
