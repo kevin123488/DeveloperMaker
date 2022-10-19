@@ -16,7 +16,7 @@ public class UserDto {
     private String email;
     private String socialId;
     private String nickname;
-    private String loginType;
+    private LoginType loginType;
     private Gender gender;
     private Language language;
 

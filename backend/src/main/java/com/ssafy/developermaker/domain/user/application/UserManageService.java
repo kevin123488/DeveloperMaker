@@ -1,5 +1,6 @@
 package com.ssafy.developermaker.domain.user.application;
 
+import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
@@ -45,6 +46,16 @@ public class UserManageService {
 //        User user = findUser.orElseThrow(UserNotFoundException::new);
 //        userRepository.delete(user);
         return true;
+    }
+
+    @Transactional
+    public UserDto signup(String email, SignupDto signupDto) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        User updateUser = user.signupFirst(signupDto);
+        userRepository.save(updateUser);
+        return updateUser.toDto();
     }
 
 }
