@@ -1,5 +1,8 @@
 package com.ssafy.developermaker.domain.user.entity;
 
+import com.ssafy.developermaker.domain.memory.entity.Memory;
+import com.ssafy.developermaker.domain.processivity.entity.Processivity;
+import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -8,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -46,16 +51,22 @@ public class User {
     @Column(nullable = false, length = 20)
     private LoginType loginType;
 
-    @OneToOne
-    @JoinColumn(name = "storyLevelId")
-    private StoryLevel storyLevel;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Memory> memories = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "userStatsId")
-    private UserStats userStats;
+    @JoinColumn(name = "processivityId")
+    private Processivity processivity;
 
-    public User updateNickname(String nickname) {
+
+    public User updateNickname (String nickname) {
         this.nickname = nickname;
+        return this;
+    }
+
+    public User signupFirst (SignupDto signupDto) {
+        this.nickname = signupDto.getNickname();
+        this.language = signupDto.getLanguage();
         return this;
     }
 
@@ -63,7 +74,7 @@ public class User {
         return UserDto.builder()
                 .email(this.email)
                 .nickname(this.nickname)
-                .loginType(this.loginType.toString())
+                .loginType(this.loginType)
                 .gender(this.gender)
                 .language(this.language)
                 .build();

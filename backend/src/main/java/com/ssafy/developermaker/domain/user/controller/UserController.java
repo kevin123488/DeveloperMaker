@@ -3,6 +3,7 @@ package com.ssafy.developermaker.domain.user.controller;
 import com.ssafy.developermaker.domain.user.application.KakaoUserService;
 import com.ssafy.developermaker.domain.user.application.NaverUserService;
 import com.ssafy.developermaker.domain.user.application.UserManageService;
+import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.global.model.BaseResponseBody;
 import io.swagger.annotations.ApiOperation;
@@ -55,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping
-    @ApiOperation(value = "유저정보 수정", notes = "유저 닉네임을 수정합니다")
+    @ApiOperation(value = "유저정보 수정", notes = "유저의 정보를 수정합니다")
     public ResponseEntity<BaseResponseBody> modify(
             @RequestPart(value = "userDto", required = false) UserDto userDto,
             @AuthenticationPrincipal String email) {
@@ -70,6 +71,14 @@ public class UserController {
         boolean delete = userManageService.delete(email);
         if(!delete) return ResponseEntity.status(400).body(BaseResponseBody.of(400, "fail", null));
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", null));
+    }
+
+    @PostMapping("/signup")
+    @ApiOperation(value = "최초 유저 닉네임,언어 설정", notes = "최초 유저가입시 닉네임과 언어를 저장합니다")
+    public ResponseEntity<BaseResponseBody> signup(@AuthenticationPrincipal String email,
+                                                   @RequestBody SignupDto signupDto) {
+        UserDto user = userManageService.signup(email, signupDto);
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", user));
     }
 
 }
