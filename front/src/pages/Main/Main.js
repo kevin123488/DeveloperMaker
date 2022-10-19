@@ -2,6 +2,8 @@ import React from "react";
 import "./Main.css";
 import MainForm from "../../components/MainForm/MainForm";
 import Styled from "styled-components";
+import { useSelector } from "react-redux";
+import { SignupForm } from "../../components/SignupForm/SignupForm";
 
 const Title = Styled.p`
   font-family: "Lobster";
@@ -10,6 +12,8 @@ const Title = Styled.p`
   text-align: center;
 `;
 const Main = () => {
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   return (
     <div className="MainContainerWrapper">
       <div className="MainContainer">
@@ -17,7 +21,11 @@ const Main = () => {
           <div className="MainLogo">
             <Title> Developer Maker </Title>
           </div>
-          <MainForm />
+          {userInfo !== null && userInfo.language === "NONE" ? (
+            <SignupForm />
+          ) : (
+            <MainForm userInfo={userInfo} />
+          )}
         </div>
       </div>
     </div>
