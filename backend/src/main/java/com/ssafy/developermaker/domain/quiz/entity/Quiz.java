@@ -1,6 +1,7 @@
 package com.ssafy.developermaker.domain.quiz.entity;
 
 
+import com.ssafy.developermaker.domain.quiz.dto.QuizResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,8 +16,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Quiz {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long quizeId;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long quizId;
 
     @Column(nullable = false)
     private Integer no;
@@ -36,4 +38,7 @@ public class Quiz {
     @Column(nullable = false, length = 30)
     private String answer;
 
+    public QuizResponseDto toDto() {
+        return QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).example(example).answer(answer).build();
+    }
 }

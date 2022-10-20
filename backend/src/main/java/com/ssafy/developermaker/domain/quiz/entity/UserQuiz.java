@@ -31,4 +31,8 @@ public class UserQuiz {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "quizId")
     private Quiz quiz;
+
+    public void setCorrect(Integer correct){
+        this.correct = correct;
+    }
 }

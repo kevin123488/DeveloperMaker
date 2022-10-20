@@ -15,8 +15,8 @@ import java.util.List;
 public class StudyService {
     private final StudyRepository studyRepository;
 
-    public List<StudyResponseDto> getStudyList(String email, String subject){
-        List<Study> studyList = studyRepository.findAll();
+    public List<StudyResponseDto> getStudyList(String subject){
+        List<Study> studyList = studyRepository.findBySubject(subject);
         studyRepository.countBySubject(subject);
         List<StudyResponseDto> studyResponseDtoList = new ArrayList<>();
         Collections.sort(studyList, (o1, o2) -> (int)(o1.getOrders() - o2.getOrders()));
