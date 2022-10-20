@@ -1,6 +1,7 @@
 package com.ssafy.developermaker.domain.memory.entity;
 
 import com.ssafy.developermaker.domain.memory.dto.MemoryDto;
+import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -19,51 +20,62 @@ import static javax.persistence.FetchType.LAZY;
 @NoArgsConstructor
 public class Memory {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memoryId;
 
-    @Enumerated(EnumType.STRING)
-    @ApiModelProperty(value="선택 스토리", example = "SPRING", required = true)
-    @Column(nullable = false, length = 20)
-    private Story story;
+    @Column(nullable = false)
+    @ApiModelProperty(value = "저장 슬롯", required = true)
+    private Integer slot;
+
+    @ApiModelProperty(value = "스크립트명", required = true)
+    @Column(nullable = false, length = 50)
+    private String script;
 
     @Column(nullable = false)
-    @ApiModelProperty(value="진행 챕터", required = true)
+    @ApiModelProperty(value = "진행 단계", required = true)
     private Integer chapter;
 
     @Column(nullable = false)
-    @ApiModelProperty(value="저장 슬롯", required = true)
-    private Integer slot;
+    @ApiModelProperty(value = "Spring 호감도", required = true)
+    private Integer likeSpring = 0;
 
     @Column(nullable = false)
-    @ApiModelProperty(value="Spring 호감도", required = true)
-    private Integer likeA;
+    @ApiModelProperty(value = "Summer 호감도", required = true)
+    private Integer likeSummer = 0;
 
     @Column(nullable = false)
-    @ApiModelProperty(value="Summer 호감도", required = true)
-    private Integer likeB;
+    @ApiModelProperty(value = "Autumn 호감도", required = true)
+    private Integer likeAutumn = 0;
 
     @Column(nullable = false)
-    @ApiModelProperty(value="Authumn 호감도", required = true)
-    private Integer likeC;
-
-    @Column(nullable = false)
-    @ApiModelProperty(value="Winter 호감도", required = true)
-    private Integer likeD;
+    @ApiModelProperty(value = "Winter 호감도", required = true)
+    private Integer likeWinter = 0;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userId")
     private User user;
 
+    public void updateMemory(MemoryDto memoryDto) {
+        this.slot = memoryDto.getSlot();
+        this.script = memoryDto.getScript();
+        this.chapter = memoryDto.getChapter();
+        this.likeSpring = memoryDto.getLikeSpring();
+        this.likeSummer = memoryDto.getLikeSummer();
+        this.likeAutumn = memoryDto.getLikeAutumn();
+        this.likeWinter = memoryDto.getLikeWinter();
+    }
+
     public MemoryDto toDto() {
         return MemoryDto.builder()
-                .story(this.story)
-                .chapter(this.chapter)
                 .slot(this.slot)
-                .likeA(this.likeA)
-                .likeB(this.likeB)
-                .likeC(this.likeC)
-                .likeD(this.likeD)
+                .script(this.script)
+                .chapter(this.chapter)
+                .likeSpring(this.likeSpring)
+                .likeSummer(this.likeSummer)
+                .likeAutumn(this.likeAutumn)
+                .likeWinter(this.likeWinter)
+                .userDto(this.user.toDto())
                 .build();
     }
 

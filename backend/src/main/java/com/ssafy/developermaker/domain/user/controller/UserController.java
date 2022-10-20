@@ -55,7 +55,7 @@ public class UserController {
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", userInfo));
     }
 
-    @PostMapping
+    @PutMapping
     @ApiOperation(value = "유저정보 수정", notes = "유저의 정보를 수정합니다")
     public ResponseEntity<BaseResponseBody> modify(
             @RequestPart(value = "userDto", required = false) UserDto userDto,
@@ -66,14 +66,14 @@ public class UserController {
     }
 
     @DeleteMapping
-    @ApiOperation(value = "유저정보 삭제")
+    @ApiOperation(value = "유저 삭제")
     public ResponseEntity<BaseResponseBody> delete(@AuthenticationPrincipal String email) {
         boolean delete = userManageService.delete(email);
         if(!delete) return ResponseEntity.status(400).body(BaseResponseBody.of(400, "fail", null));
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", null));
     }
 
-    @PostMapping("/signup")
+    @PutMapping("/signup")
     @ApiOperation(value = "최초 유저 닉네임,언어 설정", notes = "최초 유저가입시 닉네임과 언어를 저장합니다")
     public ResponseEntity<BaseResponseBody> signup(@AuthenticationPrincipal String email,
                                                    @RequestBody SignupDto signupDto) {

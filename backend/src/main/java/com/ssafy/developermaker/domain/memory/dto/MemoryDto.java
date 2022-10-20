@@ -1,7 +1,8 @@
 package com.ssafy.developermaker.domain.memory.dto;
 
 import com.ssafy.developermaker.domain.memory.entity.Memory;
-import com.ssafy.developermaker.domain.memory.entity.Story;
+import com.ssafy.developermaker.domain.user.dto.UserDto;
+import com.ssafy.developermaker.domain.user.entity.User;
 import lombok.*;
 
 @Getter
@@ -11,23 +12,25 @@ import lombok.*;
 @NoArgsConstructor
 public class MemoryDto {
 
-    private Story story;
+    private String script;
     private Integer chapter;
     private Integer slot;
-    private Integer likeA;
-    private Integer likeB;
-    private Integer likeC;
-    private Integer likeD;
+    private Integer likeSpring;
+    private Integer likeSummer;
+    private Integer likeAutumn;
+    private Integer likeWinter;
+    private UserDto userDto;
 
-    public Memory toEntity() {
+    public Memory toEntity(User user) {
         return Memory.builder()
-                .story(this.story)
+                .script(this.script)
                 .chapter(this.chapter)
                 .slot(this.slot)
-                .likeA(this.likeA)
-                .likeB(this.likeB)
-                .likeC(this.likeC)
-                .likeD(this.likeD)
+                .likeSpring(this.likeSpring)
+                .likeSummer(this.likeSummer)
+                .likeAutumn(this.likeAutumn)
+                .likeWinter(this.likeWinter)
+                .user(user)
                 .build();
     }
 

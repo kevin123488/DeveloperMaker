@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.codingtest.entity;
 
-import com.ssafy.developermaker.domain.album.entity.Album;
 import com.ssafy.developermaker.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +15,7 @@ import static javax.persistence.FetchType.LAZY;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserCodingTest {
+public class UserCote {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userCoteId;
@@ -30,6 +29,6 @@ public class UserCodingTest {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "coteId")
-    private CodingTest codingTest;
+    private Cote codingTest;
 
 }

@@ -1,7 +1,7 @@
 package com.ssafy.developermaker.domain.user.entity;
 
 import com.ssafy.developermaker.domain.memory.entity.Memory;
-import com.ssafy.developermaker.domain.processivity.entity.Processivity;
+import com.ssafy.developermaker.domain.progress.entity.Progress;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiModelProperty;
@@ -54,9 +54,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn(name = "processivityId")
-    private Processivity processivity;
+    @OneToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "progressId")
+    private Progress progress;
 
 
     public User updateNickname (String nickname) {
@@ -74,9 +74,11 @@ public class User {
         return UserDto.builder()
                 .email(this.email)
                 .nickname(this.nickname)
+                .socialId(this.socialId)
                 .loginType(this.loginType)
                 .gender(this.gender)
                 .language(this.language)
+                .progressDto(this.progress.toDto())
                 .build();
     }
 
