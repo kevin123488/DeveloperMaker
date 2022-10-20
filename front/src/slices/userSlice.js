@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, getUserInfo } from "../common/user";
+import { loginKakao, getUserInfo, signUp } from "../common/user";
 import { PURGE } from "redux-persist";
 
 export const userLoginKakao = createAsyncThunk(
@@ -43,7 +43,13 @@ const initialState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    signUpUser: (state, action) => {
+      state.userInfo.language = action.payload.language;
+      state.userInfo.nickname = action.payload.nickname;
+      console.log("inredux", signUp(action.payload));
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(userLoginKakao.pending, (state, action) => {
@@ -70,5 +76,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { signUpUser } = userSlice.actions;
 export default userSlice.reducer;
