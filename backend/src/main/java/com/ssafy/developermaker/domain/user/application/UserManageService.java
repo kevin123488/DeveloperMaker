@@ -29,9 +29,7 @@ public class UserManageService {
     @Transactional
     public UserDto modify(UserDto userDto, String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
-//        User user = findUser.orElseThrow(UserNotFoundException::new);
-        if(!findUser.isPresent()) return null;
-        User user = findUser.get();
+        User user = findUser.orElseThrow(UserNotFoundException::new);
         user.updateNickname(userDto.getNickname());
         userRepository.save(user);
         return user.toDto();
@@ -41,10 +39,8 @@ public class UserManageService {
     @Transactional
     public boolean delete(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
-        if(!findUser.isPresent()) return false;
-        userRepository.delete(findUser.get());
-//        User user = findUser.orElseThrow(UserNotFoundException::new);
-//        userRepository.delete(user);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+        userRepository.delete(user);
         return true;
     }
 

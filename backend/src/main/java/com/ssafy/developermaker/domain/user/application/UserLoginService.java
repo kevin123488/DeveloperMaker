@@ -1,5 +1,8 @@
 package com.ssafy.developermaker.domain.user.application;
 
+import com.ssafy.developermaker.domain.memory.entity.Memory;
+import com.ssafy.developermaker.domain.progress.entity.Progress;
+import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.user.dto.LoginDto;
 import com.ssafy.developermaker.domain.user.dto.TokenDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
@@ -33,6 +36,7 @@ public class UserLoginService {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ProgressRepository progressRepository;
 
     public ResponseEntity<TokenDto> login(LoginDto loginDto) {
         //  LoginDto의 userName,Password를 받아서 UsernamePasswordAuthenticationToken 객체를 생성한다
@@ -55,11 +59,14 @@ public class UserLoginService {
     }
 
     @Transactional
-    public ResponseEntity<BaseResponseBody> signup(UserDto userDto, LoginType loginType) {
+    public void signup(UserDto userDto, LoginType loginType) {
         userDto.setSocialId(passwordEncoder.encode(userDto.getSocialId()));
         userDto.setLanguage(Language.NONE);
-        User user = userDto.toEntity(loginType);
+
+        Progress progress = new Progress();
+        progressRepository.save(progress);
+
+        User user = userDto.toEntity(loginType,progress);
         userRepository.save(user);
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", null));
     }
 }

@@ -28,15 +28,12 @@ public class MemoryController {
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", memory));
     }
 
-    @PostMapping
-    @ApiOperation(value = "스토리 저장", notes = "유저가 선택한 슬롯에 스토리가 저장됩니다")
+    @PutMapping
+    @ApiOperation(value = "스토리 업데이트", notes = "유저가 선택한 슬롯에 스토리가 저장됩니다")
     public ResponseEntity<BaseResponseBody> saveMemory(@AuthenticationPrincipal String email,
                                                        @RequestBody MemoryDto memoryDto) {
         List<MemoryDto> memory = memoryService.saveMemory(email, memoryDto);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", memory));
     }
-
-
-
 
 }
