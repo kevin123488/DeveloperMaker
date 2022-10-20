@@ -1,0 +1,37 @@
+[
+  {
+    "scriptType": "text",
+    "text": "안녕하세요ㅋㅋ",
+    "imageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "scriptType": "text",
+    "text": "네ㅎㅎ",
+    "imageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "scriptType": "choice",
+    "text": "누구와 함께하시겠습니까?",
+    "option": [
+      {
+        "name": "서봄",
+        "nextScript": "script1_1"
+      },
+      {
+        "name": "차가을",
+        "nextScript": "script1_1"
+      },
+      {
+        "name": "한여름",
+        "nextScript": "script1_1"
+      },
+      {
+        "name": "한겨울",
+        "nextScript": "script1_1"
+      }
+    ],
+    "imageUrl": "a"
+  }
+]

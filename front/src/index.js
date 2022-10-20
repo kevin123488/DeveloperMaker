@@ -7,6 +7,7 @@ import SelfStudy from "./pages/SelfStudy/SelfStudy.js";
 import CsSelfStudy from "./pages/SelfStudy/CsSelfStudy.js";
 import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
+import Story from "./pages/Story/Story.js";
 import 'bootstrap/dist/css/bootstrap.css';
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -27,6 +28,7 @@ root.render(
         <Route path='/SelfStudy/cs' element={<CsSelfStudy />} />
         <Route path='/SelfStudy/algo' element={<AlgorithmSelfStudy />} />
         <Route path='/SelfStudy/lang-frame' element={<LangFrameSelfStudy />} />
+        <Route path='/Story' element={<Story />} />
       </Routes>
     </BrowserRouter>
   </PersistGate>

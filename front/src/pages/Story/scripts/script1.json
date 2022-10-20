@@ -1,0 +1,133 @@
+[
+  {
+    "idx": 0,
+    "scriptType": "text",
+    "text": "안녕하세요?",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 1,
+    "scriptType": "text",
+    "text": "문제낼게요",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 2,
+    "scriptType": "question",
+    "text": "문제입니다",
+    "questionNum": 1,
+    "optionNum": 4,
+    "questionOptions": [
+      "선택지1",
+      "선택지2",
+      "선택지3",
+      "선택지4"
+    ],
+    "questionUrl": "",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 3,
+    "scriptType": "questionResult",
+    "resultList": [
+      {
+        "scriptType": "text",
+        "text": "조금멍청하네요",
+        "character": "subom",
+        "score": 1,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 3
+      },
+      {
+        "scriptType": "text",
+        "text": "똑똑하네요",
+        "character": "subom",
+        "score": 3,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 1
+      },
+      {
+        "scriptType": "text",
+        "text": "멍청하네요",
+        "character": "subom",
+        "score": 0,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 3
+      },
+      {
+        "scriptType": "text",
+        "text": "조금 똑똑하네요",
+        "character": "subom",
+        "score": 2,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 1
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "scriptType": "text",
+    "text": "니가좋아",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 5,
+    "scriptType": "changeScript",
+    "nextScript": "script1_1",
+    "text": "니가좋아",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 6,
+    "scriptType": "text",
+    "text": "니가싫어",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 7,
+    "scriptType": "changeScript",
+    "nextScript": "script1_2",
+    "text": "니가싫어",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  }
+]
