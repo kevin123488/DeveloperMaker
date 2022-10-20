@@ -5,7 +5,6 @@ import "./SelfStudy.css";
 import styled from "styled-components";
 import background from './SelfStudyBackground.gif';
 import btn from './버튼.png';
-import { Link } from 'react-router-dom';
 
 
 const SelfStudyBlock = styled.div`
@@ -18,7 +17,7 @@ const SelfStudyBlock = styled.div`
   background-size: 100vw 100vh;
 `;
 
-const TypeLink = styled(Link)`
+const TypeLink = styled.div`
 font-family: "Lobster";
 color: black;
 margin: 0 auto;
@@ -34,7 +33,10 @@ background: url(${btn}) center no-repeat;
 background-size: 100% 100%; 
 `;
 
+
 const SelfStudy = () => {
+
+
   return (
     <SelfStudyBlock>
       <TypeLink to="/selfstudy/cs" style={{ textDecoration: 'none' }}>
@@ -43,8 +45,8 @@ const SelfStudy = () => {
       <TypeLink to="/selfstudy/algo" style={{ textDecoration: 'none' }}>
         알고리즘
       </TypeLink>
-      <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: 'none' }}>
-        언어/프레임워크
+      <TypeLink style={{ textDecoration: 'none' }}>
+
       </TypeLink>
     </SelfStudyBlock>
   );
