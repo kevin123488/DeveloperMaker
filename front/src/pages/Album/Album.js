@@ -1,33 +1,26 @@
-import React from 'react';
+import React from "react";
+import "./Album.css";
 
-export default Album = () => {
-  return (
-    <div style={albumBack}>
-      <button style={albumTagName}>My Album</button>
-      <div>
-      <h1 class="normalText">재단 선택</h1>
-      <div class="donaCardList">
-        <div v-for="(organization, index) in this.organizationList">
-          <div class="donaCard">
-            <img v-if="organization.foundationLogoUrl" v-bind:src="organization.foundationLogoUrl"
-              class="donaImg"
-            />
-            <h4 class="donaTitle"></h4>
-          </div>
+const AlbumData =[
+  {id: 1, url: '../asset/images/Album/변환1.png', title: "Chapter1", content: 'wow' },
+  {id: 2, url: '../asset/images/Album/변환2.png', title: "Chapter2", content: 'good' },
+  {id: 3, url: '../asset/images/Album/변환3.png', title: "Chapter3", content: 'oh' },
+  {id: 4, url: '../asset/images/Album/변환4.png', title: "Chapter4", content: 'yes' },
+  {id: 5, url: '../asset/images/Album/변환5.png', title: "Chapter5", content: 'vamos' },
+  {id: 6, url: '../asset/images/Album/변환6.png', title: "Chapter6", content: 'olleh' },
+]
+  const AlbumList = AlbumData.map((album)=>{
+      return(
+        <div className="albumCard" key={album.id}>
+          <img className="albumImg" src={album.url} alt="앨범이미지" />
+          <p className="albumTitle">{album.title}</p>
+          <p>{album.content}</p>
         </div>
-      </div>
-    </div>
-    </div>
-  )
-}
+      )
+  })
+  return (
+    {AlbumList}
+  );
 
-// CSS 모음
-const albumBack = {
-  backgroundColor: 'black',
-  opacity: '80%',
-}
 
-const albumTagName = {
-  alignContent: 'center',
-  
-}
+export default Album;
