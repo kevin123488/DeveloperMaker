@@ -7,6 +7,7 @@ import SelfStudy from "./pages/SelfStudy/SelfStudy.js";
 import CsSelfStudy from "./pages/SelfStudy/CsSelfStudy.js";
 import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
+import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
@@ -24,6 +25,7 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/Game" element={<GameLoad />} />
           <Route path="/SelfStudy" element={<SelfStudy />} />
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />

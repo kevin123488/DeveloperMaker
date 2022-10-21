@@ -58,7 +58,9 @@ const GameButtonsArea = () => {
     await persistor.purge();
   };
 
-  const startHandler = () => {};
+  const startHandler = () => {
+    navigate("/Game");
+  };
 
   return (
     <>

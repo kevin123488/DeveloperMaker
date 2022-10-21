@@ -24,7 +24,6 @@ const CharacterImg = Styled.img`
 
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
-  const isStart = useSelector((state) => state.user.isStart);
 
   return (
     <div className="MainContainerWrapper">

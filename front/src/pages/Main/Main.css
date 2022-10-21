@@ -2,6 +2,10 @@
   font-family: "Lobster";
   src: url("../../asset/fonts/Lobster-Regular.ttf");
 }
+@font-face {
+  font-family: "Pacifico";
+  src: url("../../asset/fonts/Pacifico-Regular.ttf");
+}
 
 .MainContainerWrapper {
   width: 100vw;
