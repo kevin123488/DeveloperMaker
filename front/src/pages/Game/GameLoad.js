@@ -110,7 +110,7 @@ const GameLoad = () => {
   const navigate = useNavigate();
 
   const backBtnhandler = () => {
-    navigate(-1);
+    navigate("/");
   };
   return (
     <div className="MainContainerWrapper">
