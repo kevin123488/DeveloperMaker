@@ -10,3 +10,8 @@ export const getUserInfo = async () => {
   const res = await axiosInstance.get("/user");
   return res;
 };
+
+export const signUp = (data) => {
+  const res = axiosInstance.put("/user/signup", data);
+  return res;
+};
