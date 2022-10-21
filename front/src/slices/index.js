@@ -1,15 +1,32 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
+import UserSlice from "./userSlice";
+import storageSession from "redux-persist/lib/storage/session";
+import { persistReducer, PERSIST, PURGE } from "redux-persist";
 
-const reducerSlice = createSlice({
-  name: "store",
-  initialState: {},
-  reducers: {
-    someAction: function () {},
-  },
-});
+// persistReducer에 저장할 정보가 여러개가 되면 활성화
+// reduxtoolkit에 combineReducers 라이브러리 참조할것
+// const reducers = combineReducers({
+//   user: UserSlice,
+// });
 
-export const store = configureStore({
+const persistConfig = {
+  key: "root",
+  version: 1,
+  storage: storageSession,
+};
+
+const persistedReducer = persistReducer(persistConfig, UserSlice);
+
+const store = configureStore({
   reducer: {
-    someReducer: reducerSlice.reducer,
+    user: persistedReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoreActions: [PERSIST, PURGE],
+      },
+    }),
 });
+
+export default store;
