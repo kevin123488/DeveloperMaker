@@ -8,6 +8,7 @@ import CsSelfStudy from "./pages/SelfStudy/CsSelfStudy.js";
 import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
 import Album from "./pages/Album/Album.js";
+import Pick from "./pages/Pick/Pick.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -32,6 +33,7 @@ root.render(
             element={<LangFrameSelfStudy />}
           />
           <Route path="/Album" element={<Album />} />
+          <Route path="/pick" element={<Pick />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>
