@@ -38,6 +38,7 @@ const initialState = {
   userInfo: null,
   isLoading: false,
   error: null,
+  isStart: false,
 };
 
 const userSlice = createSlice({
@@ -47,7 +48,9 @@ const userSlice = createSlice({
     signUpUser: (state, action) => {
       state.userInfo.language = action.payload.language;
       state.userInfo.nickname = action.payload.nickname;
-      console.log("inredux", signUp(action.payload));
+    },
+    startGame: (state) => {
+      state.isStart = true;
     },
   },
   extraReducers: (builder) => {
@@ -76,5 +79,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { signUpUser } = userSlice.actions;
+export const { signUpUser, startGame } = userSlice.actions;
 export default userSlice.reducer;

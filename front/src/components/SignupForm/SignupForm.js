@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../../slices/userSlice";
 import { useDispatch } from "react-redux/es/exports";
+
 const Form = styled.div`
   height: 50%;
   width: 100%;
@@ -18,12 +18,37 @@ const Form = styled.div`
 `;
 
 const ContentArea = styled.div`
+  width: 80%;
+  height: 20%;
   margin-top: 5%;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Input = styled.input``;
+const BtnArea = styled.div`
+  width: 80%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
-const SubmitBtn = styled.button``;
+const TitleObject = styled.p`
+  font-family: "Lobster";
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+`;
+const Input = styled.input`
+  width: 100%;
+`;
+const Select = styled.select`
+  width: 100%;
+`;
+const Button = styled.button`
+  margin-top: 15%;
+  width: 50%;
+`;
 
 export const SignupForm = () => {
   const [period, setPeriod] = useState("JAVA");
@@ -34,7 +59,6 @@ export const SignupForm = () => {
 
   useEffect(() => {}, [userInfo]);
 
-  const navigate = useNavigate();
   const onPeriodChange = (e) => {
     const { value } = e.target;
     setPeriod(value);
@@ -59,29 +83,28 @@ export const SignupForm = () => {
       language: period,
     };
 
-    const res = dispatch(signUpUser(data));
-    console.log(res);
+    dispatch(signUpUser(data));
   };
 
   return (
     <Form>
       <ContentArea>
-        <p>닉네임</p>
-        <input onChange={onNicknameChange} maxLength="10"></input>
+        <TitleObject>닉네임</TitleObject>
+        <Input onChange={onNicknameChange} maxLength="10"></Input>
       </ContentArea>
       <ContentArea>
-        <p>언어 선택</p>
-        <select value={period} onChange={onPeriodChange}>
+        <TitleObject>언어 선택</TitleObject>
+        <Select value={period} onChange={onPeriodChange}>
           {periodOptions.map((period, index) => (
             <option key={index} value={period.value}>
               {period.print}
             </option>
           ))}
-        </select>
-        <ContentArea>
-          <button onClick={submitHandler}>확인</button>
-        </ContentArea>
+        </Select>
       </ContentArea>
+      <BtnArea>
+        <Button onClick={submitHandler}>확인</Button>
+      </BtnArea>
     </Form>
   );
 };
