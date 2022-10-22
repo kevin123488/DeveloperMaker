@@ -31,7 +31,6 @@ public class UserManageService {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
         user.updateNickname(userDto.getNickname());
-        userRepository.save(user);
         return user.toDto();
     }
 
@@ -49,9 +48,8 @@ public class UserManageService {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        User updateUser = user.signupFirst(signupDto);
-        userRepository.save(updateUser);
-        return updateUser.toDto();
+        user.signupFirst(signupDto);
+        return user.toDto();
     }
 
 }

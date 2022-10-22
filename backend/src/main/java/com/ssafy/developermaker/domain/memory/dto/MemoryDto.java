@@ -15,6 +15,7 @@ public class MemoryDto {
     private String script;
     private Integer chapter;
     private Integer slot;
+    private Integer num;
     private Integer likeSpring;
     private Integer likeSummer;
     private Integer likeAutumn;
@@ -26,6 +27,7 @@ public class MemoryDto {
                 .script(this.script)
                 .chapter(this.chapter)
                 .slot(this.slot)
+                .num(this.num)
                 .likeSpring(this.likeSpring)
                 .likeSummer(this.likeSummer)
                 .likeAutumn(this.likeAutumn)
