@@ -43,20 +43,16 @@ public class JwtFilter extends GenericFilterBean {
         String jwt = resolveToken(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
 
-        // jwt 가 없으면
-//        if (jwt==null) return;
-
         // 토큰의 유효성을 검사하고 (validateToken(jwt))
-        if (jwt!=null&&StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
+        if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
             // 정상이면 Authentication 객체를 받아와서
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             // SecurityContext에 set 해준다.
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            String email = (String) authentication.getPrincipal();
 
-            Optional<User> user = userRepository.findByEmail(email);
-
-            if (!user.isPresent()) throw new UserNotFoundException();
+//            String email = (String) authentication.getPrincipal();
+//            Optional<User> user = userRepository.findByEmail(email);
+//            if (!user.isPresent()) throw new UserNotFoundException();
 
             logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
         } else {
