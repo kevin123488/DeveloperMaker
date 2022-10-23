@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.data.jpa.repository.support.JpaEntityInformationSupport;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -28,7 +26,9 @@ class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    @PersistenceContext private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
+
     private JpaEntityInformation<User, ?> entityInformation;
 
     @BeforeEach
@@ -36,7 +36,7 @@ class UserRepositoryTest {
         entityInformation = JpaEntityInformationSupport.getEntityInformation(User.class, entityManager);
     }
 
-    private static final User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null,null);
+    private static final User userA = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO, null, null);
 
     @Test
     public void UserRepository가Null이아니다() {
@@ -45,7 +45,7 @@ class UserRepositoryTest {
 
     @Test
     public void 유저저장테스트() {
-        User userTest = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null,null);
+        User userTest = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO, null, null);
         System.out.println("비영속 상태인가?? : " + entityInformation.isNew(userTest));
         System.out.println("아이디는 ? :" + userTest.getUserId());
         User user = userRepository.save(userTest);

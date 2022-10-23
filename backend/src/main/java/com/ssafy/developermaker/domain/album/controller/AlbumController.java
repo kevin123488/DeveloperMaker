@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/album")
 @RequiredArgsConstructor
-public class albumController {
+public class AlbumController {
     private final AlbumService albumService;
 
     @GetMapping

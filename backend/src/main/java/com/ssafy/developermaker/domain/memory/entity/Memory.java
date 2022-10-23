@@ -1,7 +1,6 @@
 package com.ssafy.developermaker.domain.memory.entity;
 
 import com.ssafy.developermaker.domain.memory.dto.MemoryDto;
-import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -36,6 +35,9 @@ public class Memory {
     @ApiModelProperty(value = "진행 단계", required = true)
     private Integer chapter;
 
+    @ApiModelProperty(value = "선택 번호")
+    private Integer num;
+
     @Column(nullable = false)
     @ApiModelProperty(value = "Spring 호감도", required = true)
     private Integer likeSpring = 0;
@@ -60,6 +62,7 @@ public class Memory {
         this.slot = memoryDto.getSlot();
         this.script = memoryDto.getScript();
         this.chapter = memoryDto.getChapter();
+        this.num = memoryDto.getNum();
         this.likeSpring = memoryDto.getLikeSpring();
         this.likeSummer = memoryDto.getLikeSummer();
         this.likeAutumn = memoryDto.getLikeAutumn();
@@ -71,6 +74,7 @@ public class Memory {
                 .slot(this.slot)
                 .script(this.script)
                 .chapter(this.chapter)
+                .num(this.num)
                 .likeSpring(this.likeSpring)
                 .likeSummer(this.likeSummer)
                 .likeAutumn(this.likeAutumn)

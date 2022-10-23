@@ -1,11 +1,14 @@
 package com.ssafy.developermaker.domain.user.application;
 
+import com.ssafy.developermaker.domain.progress.entity.Progress;
+import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +28,15 @@ class UserManageServiceTest {
     @Autowired
     private UserRepository userRepository;
 
-    private static final User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.NONE, LoginType.KAKAO,null,null);
+    @Autowired
+    private ProgressRepository progressRepository;
 
     @Test
     public void 유저정보조회() {
-        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null,null);
+        Progress progress = new Progress();
+        progressRepository.save(progress);
+
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null, progress);
         User savedUserA = userRepository.save(userA);
         User findUser = userRepository.findById(savedUserA.getUserId()).get();
 
@@ -40,6 +47,10 @@ class UserManageServiceTest {
     @Test
     public void 유저닉네임변경() {
         // given
+        Progress progress = new Progress();
+        progressRepository.save(progress);
+
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null, progress);
         User savedUser = userRepository.save(userA);
 
         // when
@@ -53,6 +64,10 @@ class UserManageServiceTest {
     @Test
     public void 유저삭제() {
         // given
+        Progress progress = new Progress();
+        progressRepository.save(progress);
+
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null, progress);
         User savedUser = userRepository.save(userA);
 
         // when
@@ -65,6 +80,10 @@ class UserManageServiceTest {
     @Test
     public void 최초유저_언어_닉네임설정() {
         // given
+        Progress progress = new Progress();
+        progressRepository.save(progress);
+
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null, progress);
         User savedUser = userRepository.save(userA);
 
         // when

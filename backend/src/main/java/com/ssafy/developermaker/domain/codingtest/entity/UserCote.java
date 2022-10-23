@@ -20,7 +20,6 @@ public class UserCote {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userCoteId;
 
-    @Column(nullable = false)
     private Boolean correct;
 
     @ManyToOne(fetch = LAZY)
