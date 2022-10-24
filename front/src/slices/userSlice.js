@@ -24,6 +24,7 @@ export const getUser = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getUserInfo();
+      console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -37,7 +38,7 @@ export const getUser = createAsyncThunk(
 
 const initialState = {
   userInfo: null,
-  isLoading: false,
+  isLogIn: false,
   error: null,
 };
 
@@ -49,6 +50,7 @@ const userSlice = createSlice({
       signUp(action.payload);
       state.userInfo.language = action.payload.language;
       state.userInfo.nickname = action.payload.nickname;
+      state.isLogIn = true;
     },
   },
   extraReducers: (builder) => {
@@ -68,10 +70,12 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.userInfo = payload.data;
+        state.isLogIn = true;
       })
       .addCase(getUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload.data;
+        state.isLogIn = false;
       })
       .addCase(PURGE, () => initialState);
   },
