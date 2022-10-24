@@ -1,5 +1,6 @@
 package com.ssafy.developermaker.domain.quiz.application;
 
+import com.ssafy.developermaker.domain.quiz.dto.QuizRequestDto;
 import com.ssafy.developermaker.domain.quiz.dto.QuizResponseDto;
 import com.ssafy.developermaker.domain.quiz.entity.Quiz;
 import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
@@ -27,25 +28,26 @@ public class QuizService {
         Collections.sort(quizList, (o1, o2) -> (int) (o1.getNo() - o2.getNo()));
         User user = userRepository.findByEmail(email).get();
         for (Quiz quiz : quizList) {
+            QuizResponseDto qrd = quiz.toDto();
             if (userQuizRepository.findByUserAndQuiz(user, quiz).isPresent()) {
-                QuizResponseDto qrd = quiz.toDto();
                 qrd.setCorrect(userQuizRepository.findByUserAndQuiz(user, quiz).get().getCorrect());
-                quizResponseDtoList.add(quiz.toDto());
+                quizResponseDtoList.add(qrd);
             } else {
-                quizResponseDtoList.add(quiz.toDto());
+                qrd.setCorrect(0);
+                quizResponseDtoList.add(qrd);
             }
         }
         return quizResponseDtoList;
     }
 
-    public String submitQuiz(String email, Long quizId, String answer) {
+    public String submitQuiz(String email, Long quizId, QuizRequestDto quizRequestDto) {
         String response = "";
         Quiz quiz = quizRepository.findByQuizId(quizId).get();
         User user = userRepository.findByEmail(email).get();
         UserQuiz userQuiz;
         if (userQuizRepository.findByUserAndQuiz(user, quiz).isPresent()) { // 푼 적이 있을 때.
             userQuiz = userQuizRepository.findByUserAndQuiz(user, quiz).get();
-            if (quiz.getAnswer().equals(answer)) { // 맞췄을 때.
+            if (quiz.getAnswer().equals(quizRequestDto.getAnswer())) { // 맞췄을 때.
                 if (userQuiz.getCorrect() == -1) {
                     userQuiz.setCorrect(2);
                     response = "정답입니다!";
@@ -55,7 +57,7 @@ public class QuizService {
             }
         } else { // 푼 적 없을 때.
             userQuiz = UserQuiz.builder().user(user).quiz(quiz).build();
-            if (quiz.getAnswer().equals(answer)) {
+            if (quiz.getAnswer().equals(quizRequestDto.getAnswer())) {
                 userQuiz.setCorrect(1);
                 response = "정답입니다!";
             }else{

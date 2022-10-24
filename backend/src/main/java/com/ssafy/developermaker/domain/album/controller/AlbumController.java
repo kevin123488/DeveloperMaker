@@ -22,7 +22,7 @@ public class AlbumController {
 
     @PostMapping("/{albumId}")
     public ResponseEntity<BaseResponseBody> updateAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", null));
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.resistUserAlbum(email, albumId)));
     }
 
 }
