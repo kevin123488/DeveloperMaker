@@ -20,8 +20,8 @@ public class AlbumController {
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.getAlbumList(email)));
     }
 
-    @PostMapping
-    public ResponseEntity<BaseResponseBody> updateAlbum(@AuthenticationPrincipal String email, Long albumId){
+    @PostMapping("/{albumId}")
+    public ResponseEntity<BaseResponseBody> updateAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", null));
     }
 
