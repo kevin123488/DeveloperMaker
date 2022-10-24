@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 const axiosInstance = Axios.create({
-  baseURL: "http://k7e103.p.ssafy.io:8081/api",
+  baseURL: "https://k7e103.p.ssafy.io:8081/api",
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Headers": "Content-Type",
