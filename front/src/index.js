@@ -34,7 +34,14 @@ root.render(
               </PrivateRoute>
             }
           />
-          <Route path="/SelfStudy" element={<SelfStudy />} />
+          <Route
+            path="/SelfStudy"
+            element={
+              <PrivateRoute>
+                <SelfStudy />
+              </PrivateRoute>
+            }
+          />
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
           <Route
