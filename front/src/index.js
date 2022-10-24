@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import PrivateRoute from "./components/Routes/PrivateRoute.js";
 
 export const persistor = persistStore(store);
 
@@ -26,8 +27,22 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/Game" element={<GameLoad />} />
-          <Route path="/SelfStudy" element={<SelfStudy />} />
+          <Route
+            path="/Game"
+            element={
+              <PrivateRoute>
+                <GameLoad />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/SelfStudy"
+            element={
+              <PrivateRoute>
+                <SelfStudy />
+              </PrivateRoute>
+            }
+          />
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
           <Route

@@ -53,11 +53,11 @@ const Button = styled.button`
 export const SignupForm = () => {
   const [period, setPeriod] = useState("JAVA");
   const [nickname, setNickName] = useState("");
-  const [userInfo, setUserInfo] = useState("");
+  // const [userInfo, setUserInfo] = useState("");
 
   const dispatch = useDispatch();
 
-  useEffect(() => {}, [userInfo]);
+  // useEffect(() => {}, [userInfo]);
 
   const onPeriodChange = (e) => {
     const { value } = e.target;
