@@ -24,6 +24,7 @@ export const getUser = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getUserInfo();
+      console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
