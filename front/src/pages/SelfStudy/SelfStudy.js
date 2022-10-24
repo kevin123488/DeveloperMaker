@@ -3,9 +3,9 @@
 import React from "react";
 import "./SelfStudy.css";
 import styled from "styled-components";
-import background from "./SelfStudyBackground.gif";
-import btn from "./버튼.png";
-import { Link } from "react-router-dom";
+import background from './SelfStudyBackground.gif';
+import btn from './버튼.png';
+
 
 const SelfStudyBlock = styled.div`
   position: fixed;
@@ -17,36 +17,39 @@ const SelfStudyBlock = styled.div`
   background-size: 100vw 100vh;
 `;
 
-const TypeLink = styled(Link)`
-  font-family: "Lobster";
-  color: black;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3vw;
-  vertical-align: center;
-  margin: 3vw;
-  height: 10vw;
-  width: 25vw;
-  background: url(${btn}) center no-repeat;
-  background-size: 100% 100%;
+const TypeLink = styled.div`
+font-family: "Lobster";
+color: black;
+margin: 0 auto;
+display : flex;
+justify-content : center;
+align-items : center;
+font-size: 3vw;
+vertical-align: center;
+margin: 3vw;
+height: 10vw;
+width: 25vw;
+background: url(${btn}) center no-repeat;
+background-size: 100% 100%; 
 `;
 
+
 const SelfStudy = () => {
+
+
   return (
     <SelfStudyBlock>
-      <TypeLink to="/selfstudy/cs" style={{ textDecoration: "none" }}>
+      <TypeLink to="/selfstudy/cs" style={{ textDecoration: 'none' }}>
         CS
       </TypeLink>
-      <TypeLink to="/selfstudy/algo" style={{ textDecoration: "none" }}>
+      <TypeLink to="/selfstudy/algo" style={{ textDecoration: 'none' }}>
         알고리즘
       </TypeLink>
-      <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
-        언어/프레임워크
+      <TypeLink style={{ textDecoration: 'none' }}>
+
       </TypeLink>
     </SelfStudyBlock>
   );
 };
-
+  
 export default SelfStudy;
