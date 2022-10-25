@@ -10,11 +10,11 @@ import {
 
 
 export const getStudyList = createAsyncThunk(
-  "user/loginKakao",
+  "study/list",
   async (access_token, { rejectWithValue }) => {
     try {
-      const { data } = await loginKakao({ access_token });
-      sessionStorage.setItem("accessToken", data["token"]);
+      const { studyList } = await getStudyListApi({ access_token });
+      return studyList
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -24,22 +24,7 @@ export const getStudyList = createAsyncThunk(
     }
   }
 );
-  
-export const getUser = createAsyncThunk(
-  "user/userInfo",
-  async (temp, { rejectWithValue }) => {
-    try {
-    const { data } = await getUserInfo();
-    return data;
-  } catch (error) {
-    if (error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-    } else {
-        return rejectWithValue(error.message);
-    }
-  }
-}
-);
+
   
 const initialState = {
   userInfo: null,
