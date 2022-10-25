@@ -1,9 +1,9 @@
-package com.ssafy.developermaker.domain.emotion.application;
+package com.ssafy.developermaker.domain.aiinterview.application;
 
-import com.ssafy.developermaker.global.config.EmotionConfig;
 import kong.unirest.HttpResponse;
 import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -11,8 +11,7 @@ import java.util.Map;
 
 @Service
 public class EmotionService {
-    private String TOKEN = EmotionConfig.getEmotionToken();
-
+    @Value("${properties.file.luxand-token}") private String TOKEN;
     private HttpResponse<JsonNode> post_request(String url, Map<String, Object> fields) {
         return Unirest.post(url)
                 .header("token", TOKEN)
