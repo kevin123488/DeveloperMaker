@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Styled from "styled-components";
 
 import KaKaoImg from "../../asset/images/KakaoLogoImg.png";
@@ -26,6 +26,7 @@ const LoginButton = Styled.img`
 `;
 
 const LoginButtonsArea = () => {
+  // 카카오 로그인
   const { Kakao } = window;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,11 +40,30 @@ const LoginButtonsArea = () => {
       },
     });
   };
-  
+
+  // 네이버 로그인
+  const { naver } = window;
+  // 네이버 로그인 기본 설정
+  const initializeNaverLogin = () => {
+    const naverLogin = new naver.LoginWithNaverId({
+      clientId: "%REACT_APP_NAVER_LOGIN_API_ID%",
+      callbackUrl: "%REACT_APP_NAVER_LOGIN_API_CALLBACK_URL%", 
+      isPopup: false, // popup 형식으로 띄울것인지 설정
+      loginButton: { color: 'white', type: 1, height: '47' },
+      //버튼의 스타일, 타입, 크기를 지정
+    });
+    naverLogin.init();
+  };
+  // 네이버 로그인 시작하기 설정
+  useEffect(() => {
+    initializeNaverLogin();
+  }, []);
+
   return (
     <SocialLoginButtons>
       <LoginButton src={KaKaoImg} alt="kakaoLoginImg" onClick={getKakaoToken} />
       <LoginButton src={NaverImg} alt="naverLoginImg" />
+      <div id='naverIdLogin' />
     </SocialLoginButtons>
   );
 };
