@@ -9,6 +9,7 @@ import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
 import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
+import Pick from "./pages/Pick/Pick.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -26,29 +27,13 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route
-            path="/Game"
-            element={
-              <PrivateRoute>
-                <GameLoad />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/SelfStudy"
-            element={
-              <PrivateRoute>
-                <SelfStudy />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
+          <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
-          <Route
-            path="/SelfStudy/lang-frame"
-            element={<LangFrameSelfStudy />}
-          />
-          <Route path="/Album" element={<Album />} />
+          <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
+          <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
+          <Route path="/pick" element={<Pick />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>
