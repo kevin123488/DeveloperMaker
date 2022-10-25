@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, getUserInfo, signUp } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp } from "../common/user";
 import { PURGE } from "redux-persist";
 
 export const userLoginKakao = createAsyncThunk(
@@ -18,6 +18,23 @@ export const userLoginKakao = createAsyncThunk(
     }
   }
 );
+
+export const userLoginNaver = createAsyncThunk(
+  'user/loginNaver',
+  async (access_token, {rejectWithValue}) => {
+    try {
+      const response = await loginNaver({access_token});
+      sessionStorage.setItem("accessToken", response.data["token"])
+      console.log("naver Data", response)
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
 
 export const getUser = createAsyncThunk(
   "user/userInfo",

@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const PrivateRoute = ({ children }) => {
   const isLogin = useSelector((state) => state.user.isLogIn);
-  console.log(isLogin);
   if (!isLogin) {
     alert("로그인 후 이용가능합니다.");
   }

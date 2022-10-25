@@ -10,17 +10,15 @@ const StoryAlbum = (props) => {
   if (front) {
     return (
       <div onClick={change} className="albumCard">
-        <img src={require(`../../asset/images/Album/변환${album.id}.png`)} className="albumImg" alt="앨범" />
-        <h4 className="albumTitle">{album.title}</h4>
+        <img src={album.albumImg} className="albumImg" alt="앨범" />
+        <h4 className="albumTitle">{album.albumTitle}</h4>
         <hr />
-        <p className="albumSubtitle">{album.subtitle}</p>
       </div>
     )
   } else {
     return (
       <div className="albumCard" onClick={change} onMouseOut={change}>
         <h1>뒷면</h1>
-        <p>{album.content}</p>
       </div>
     )
   }

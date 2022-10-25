@@ -27,29 +27,12 @@ root.render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route
-            path="/Game"
-            element={
-              <PrivateRoute>
-                <GameLoad />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/SelfStudy"
-            element={
-              <PrivateRoute>
-                <SelfStudy />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
+          <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
-          <Route
-            path="/SelfStudy/lang-frame"
-            element={<LangFrameSelfStudy />}
-          />
-          <Route path="/Album" element={<Album />} />
+          <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
+          <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
           <Route path="/pick" element={<Pick />} />
         </Routes>
       </BrowserRouter>
