@@ -17,7 +17,7 @@ const Typo = ({scriptText}) => {
             // console.log(index.current)
             // console.log(currentText)
             index.current += 1;
-        }, 50)
+        }, 15)
         return () => {
             clearTimeout(timeoutId)
         }
