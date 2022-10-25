@@ -9,6 +9,10 @@ import org.springframework.context.annotation.PropertySources;
 @PropertySources({
         @PropertySource("classpath:properties/env.properties") // env.properties 파일 소스 등록
 })
-public class PropertyConfig {
-
+public class EmotionConfig {
+    @Value("${emo.token}")
+    private static String emotionToken;
+    public static String getEmotionToken(){
+        return emotionToken;
+    }
 }
