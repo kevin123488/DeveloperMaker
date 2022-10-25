@@ -39,7 +39,7 @@ const LoginButtonsArea = () => {
       },
     });
   };
-
+  
   return (
     <SocialLoginButtons>
       <LoginButton src={KaKaoImg} alt="kakaoLoginImg" onClick={getKakaoToken} />
