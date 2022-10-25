@@ -1,13 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, getUserInfo } from "../common/user";
+import { loginKakao, getUserInfo, signUp } from "../common/user";
 import { PURGE } from "redux-persist";
 
 export const userLoginKakao = createAsyncThunk(
   "user/loginKakao",
   async (access_token, { rejectWithValue }) => {
     try {
-      const { data } = await loginKakao({ access_token });
-      sessionStorage.setItem("accessToken", data["token"]);
+      const response = await loginKakao({ access_token });
+      sessionStorage.setItem("accessToken", response.data["token"]);
+      console.log("data", response);
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -23,6 +24,7 @@ export const getUser = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getUserInfo();
+      console.log(data);
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -36,14 +38,21 @@ export const getUser = createAsyncThunk(
 
 const initialState = {
   userInfo: null,
-  isLoading: false,
+  isLogIn: false,
   error: null,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    signUpUser: (state, action) => {
+      signUp(action.payload);
+      state.userInfo.language = action.payload.language;
+      state.userInfo.nickname = action.payload.nickname;
+      state.isLogIn = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(userLoginKakao.pending, (state, action) => {
@@ -61,14 +70,16 @@ const userSlice = createSlice({
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.userInfo = payload.data;
+        state.isLogIn = true;
       })
       .addCase(getUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload.data;
+        state.isLogIn = false;
       })
       .addCase(PURGE, () => initialState);
   },
 });
 
-export const { logout } = userSlice.actions;
+export const { signUpUser } = userSlice.actions;
 export default userSlice.reducer;
