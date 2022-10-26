@@ -62,6 +62,10 @@ const GameButtonsArea = () => {
     navigate("/Game");
   };
 
+  const selfstudyHandler = () => {
+    navigate("/selfstudy");
+  };
+
   return (
     <>
       {userInfo ? (
@@ -77,7 +81,7 @@ const GameButtonsArea = () => {
             <GameBtn src={ProfileBtnImg} alt="Profile" />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={StudyBtnImg} alt="Study" />
+            <GameBtn src={StudyBtnImg} alt="Study" onClick={selfstudyHandler} />
           </BtnArea>
           <BtnArea>
             <GameBtn src={AlbumBtnImg} alt="Album" />

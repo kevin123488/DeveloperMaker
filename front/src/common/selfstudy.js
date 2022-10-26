@@ -4,7 +4,7 @@ import axiosInstance from "./axios";
 
 // 스터디 리스트 요청
 export const getStudyListApi = async () => {
-  const res = await axiosInstance.get("/study/list");
+  const res = await axiosInstance.get("/study/network");
   return res;
 };
   
