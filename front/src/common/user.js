@@ -6,6 +6,11 @@ export const loginKakao = async (data) => {
   return response;
 };
 
+export const loginNaver = async (data) => {
+  const response = await axiosInstance.post("/user/naver", data);
+  return response
+}
+
 export const getUserInfo = async () => {
   const res = await axiosInstance.get("/user");
   return res;

@@ -1,8 +1,8 @@
 import React from "react";
 import Styled from "styled-components";
 
-import GameButtonsArea from "../GameButtonsArea/GameButtonsArea";
-import LoginButtonsArea from "../LoginButtonsArea/LoginButtonsArea";
+import GameButtonsArea from "./GameButtonsArea";
+import LoginButtonsArea from "./LoginButtonsArea";
 
 const Form = Styled.div`
   height: 50%;

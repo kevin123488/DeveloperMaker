@@ -1,4 +1,4 @@
-import React, { useInsertionEffect } from "react";
+import React from "react";
 import Styled from "styled-components";
 
 import GameRuleImg from "../../asset/images/GameRuleBtn.png";
@@ -71,27 +71,19 @@ const GameButtonsArea = () => {
       {userInfo ? (
         <LoginGameButtons>
           <BtnArea>
-            <GameBtn
-              src={GameStartImg}
-              alt="GameStart"
-              onClick={startHandler}
-            />
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={startHandler}/>
           </BtnArea>
           <BtnArea>
             <GameBtn src={ProfileBtnImg} alt="Profile" />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={StudyBtnImg} alt="Study" onClick={selfstudyHandler} />
+            <GameBtn src={StudyBtnImg} alt="Study" onClick={() => navigate("/SelfStudy")} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={AlbumBtnImg} alt="Album" />
+            <GameBtn src={AlbumBtnImg} alt="Album" onClick={() => navigate("/Album")} />
           </BtnArea>
           <BtnArea>
-            <GameBtn
-              src={LogoutBtnImg}
-              alt="Logout"
-              onClick={async () => purge()}
-            />
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={async () => purge()}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (
@@ -100,11 +92,7 @@ const GameButtonsArea = () => {
             <GameBtn src={GameRuleImg} alt="GameRule" />
           </BtnArea>
           <BtnArea>
-            <GameBtn
-              src={GameStartImg}
-              alt="GameStart"
-              onClick={startHandler}
-            />
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={startHandler} />
           </BtnArea>
         </GameButtons>
       )}
