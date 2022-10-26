@@ -39,6 +39,6 @@ public class Quiz {
     private String answer;
 
     public QuizResponseDto toDto() {
-        return QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).example(example).answer(answer).build();
+        return QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).example(example).build();
     }
 }

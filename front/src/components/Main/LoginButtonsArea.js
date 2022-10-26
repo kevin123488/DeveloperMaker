@@ -2,11 +2,11 @@ import React from "react";
 import Styled from "styled-components";
 
 import KaKaoImg from "../../asset/images/KakaoLogoImg.png";
-import NaverImg from "../../asset/images/NaverLogoImg.png";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { userLoginKakao, getUser } from "../../slices/userSlice";
+import NaverLogin from "./NaverLogin";
 
 const SocialLoginButtons = Styled.div`
   margin-top: 10%;
@@ -26,6 +26,7 @@ const LoginButton = Styled.img`
 `;
 
 const LoginButtonsArea = () => {
+  // 카카오 로그인
   const { Kakao } = window;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,11 +40,11 @@ const LoginButtonsArea = () => {
       },
     });
   };
-  
+
   return (
     <SocialLoginButtons>
       <LoginButton src={KaKaoImg} alt="kakaoLoginImg" onClick={getKakaoToken} />
-      <LoginButton src={NaverImg} alt="naverLoginImg" />
+      <NaverLogin />
     </SocialLoginButtons>
   );
 };
