@@ -7,6 +7,7 @@ import SelfStudy from "./pages/SelfStudy/SelfStudy.js";
 import CsSelfStudy from "./pages/SelfStudy/CsSelfStudy.js";
 import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
+import Story from "./pages/Story/Story.js";
 import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
 import Pick from "./pages/Pick/Pick.js";
@@ -31,6 +32,7 @@ root.render(
           <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
+          <Route path='/Story' element={<Story />} />
           <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
           <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
           <Route path="/pick" element={<Pick />} />

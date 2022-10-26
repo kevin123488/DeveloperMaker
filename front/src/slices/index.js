@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import selfstudySlice from "./selfstudySlice";
 import UserSlice from "./userSlice";
 import Album from "./albumSlice";
 import storageSession from "redux-persist/lib/storage/session";
@@ -21,6 +22,7 @@ const persistedReducer = persistReducer(persistConfig, UserSlice);
 const store = configureStore({
   reducer: {
     user: persistedReducer,
+    study: selfstudySlice,
     Album: Album.reducer,
   },
   middleware: (getDefaultMiddleware) =>

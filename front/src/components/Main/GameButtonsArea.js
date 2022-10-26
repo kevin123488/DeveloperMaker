@@ -62,6 +62,10 @@ const GameButtonsArea = () => {
     navigate("/Game");
   };
 
+  const selfstudyHandler = () => {
+    navigate("/selfstudy");
+  };
+
   return (
     <>
       {userInfo ? (
