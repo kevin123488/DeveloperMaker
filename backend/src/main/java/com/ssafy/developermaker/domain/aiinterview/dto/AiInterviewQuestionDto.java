@@ -7,7 +7,8 @@ import lombok.Getter;
 @Getter
 public class AiInterviewQuestionDto {
     private Long aiqId;
-    private String type;
+    private Integer no;
+    private String subject;
     private String question;
     private String keyword;
 }
