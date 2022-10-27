@@ -8,17 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Album = () => {
   const dispatch = useDispatch()
+  // 페이지 렌더링 시 1회 싨행
+  useEffect(()=>{
+      dispatch(readAlbum());
+  }, [dispatch]);
   const albumList = useSelector((state)=> {
-    return state.Album.albumList;
+    return state.album.albumList;
   })
   const user = useSelector((state)=>{
     return state.user.userInfo;
   })
   const navigate = useNavigate()
-  // 페이지 렌더링 시 1회 싨행
-  useEffect(()=>{
-    dispatch(readAlbum());
-  }, []);
+
   // 현재 보고 싶은 앨범 유형 선택 스토리 or 컬렉션
   const [selType, setSelType] = useState(true);
   function changeType() {
@@ -28,12 +29,16 @@ const Album = () => {
   function goPick() {
     navigate('/pick')
   }
+  // 메인화면
+  function goMain() {
+    navigate('/')
+  }
   return (
     <div className="albumBack">
       <div className="albumMenu" >
         <h1> {user.nickname} 's Album</h1>
         <button onClick={goPick}>뽑기</button>
-        <button>메인 화면</button>
+        <button onClick={goMain}>메인 화면</button>
       </div>
       {}
       <div>

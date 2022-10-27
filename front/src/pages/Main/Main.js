@@ -4,7 +4,7 @@ import MainForm from "../../components/Main/MainForm";
 import Styled from "styled-components";
 import { useSelector } from "react-redux";
 import { SignupForm } from "../../components/Main/SignupForm";
-import Characters from "../../asset/images/Characters.png";
+import Characters from "../../asset/images/Main/Characters.png";
 
 const Title = Styled.p`
   font-family: "Lobster";
