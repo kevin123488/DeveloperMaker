@@ -1,6 +1,7 @@
 package com.ssafy.developermaker.domain.memory.entity;
 
 import com.ssafy.developermaker.domain.memory.dto.MemoryDto;
+import com.ssafy.developermaker.domain.memory.dto.ResponseMemoryDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -69,8 +70,8 @@ public class Memory {
         this.likeWinter = memoryDto.getLikeWinter();
     }
 
-    public MemoryDto toDto() {
-        return MemoryDto.builder()
+    public ResponseMemoryDto toResponseDto() {
+        return ResponseMemoryDto.builder()
                 .slot(this.slot)
                 .script(this.script)
                 .chapter(this.chapter)
@@ -79,7 +80,6 @@ public class Memory {
                 .likeSummer(this.likeSummer)
                 .likeAutumn(this.likeAutumn)
                 .likeWinter(this.likeWinter)
-                .userDto(this.user.toDto())
                 .build();
     }
 
