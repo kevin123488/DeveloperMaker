@@ -1,6 +1,7 @@
 package com.ssafy.developermaker.domain.memory.application;
 
 import com.ssafy.developermaker.domain.memory.dto.MemoryDto;
+import com.ssafy.developermaker.domain.memory.dto.ResponseMemoryDto;
 import com.ssafy.developermaker.domain.memory.entity.Memory;
 import com.ssafy.developermaker.domain.memory.repository.MemoryRepository;
 import com.ssafy.developermaker.domain.user.entity.User;
@@ -11,9 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -24,7 +25,7 @@ public class MemoryService {
     private final UserRepository userRepository;
     private final MemoryRepository memoryRepository;
 
-    public List<MemoryDto> getMemory(String email) {
+    public List<ResponseMemoryDto> getMemory(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
@@ -32,7 +33,7 @@ public class MemoryService {
     }
 
     @Transactional
-    public List<MemoryDto> saveMemory(String email, MemoryDto memoryDto) {
+    public List<ResponseMemoryDto> saveMemory(String email, MemoryDto memoryDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
@@ -44,9 +45,17 @@ public class MemoryService {
         return getMemoryDtos(user);
     }
 
-    private List<MemoryDto> getMemoryDtos(User user) {
-        List<Memory> findMemories = memoryRepository.findByUser(user);
-        return findMemories.stream().map(Memory::toDto).collect(Collectors.toList());
+    private List<ResponseMemoryDto> getMemoryDtos(User user) {
+        List<ResponseMemoryDto> list = new ArrayList<>();
+        for(int i = 1; i <= 3; i++) {
+            Optional<Memory> findMemory = memoryRepository.findByUserAndSlot(user, i);
+            ResponseMemoryDto response;
+            if(findMemory.isPresent()) response = findMemory.get().toResponseDto();
+            else response = new ResponseMemoryDto("script1",1,i,0,0,0,0,0);
+            list.add(response);
+        }
+
+        return list;
     }
 
 }
