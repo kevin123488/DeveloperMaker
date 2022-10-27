@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { loginKakao, loginNaver, getUserInfo, signUp } from "../common/user";
 import { PURGE } from "redux-persist";
+import sessionStorage from "redux-persist/es/storage/session";
 
 export const userLoginKakao = createAsyncThunk(
   "user/loginKakao",

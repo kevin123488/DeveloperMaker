@@ -1,7 +1,7 @@
 import React from "react";
 import Styled from "styled-components";
 
-import KaKaoImg from "../../asset/images/KakaoLogoImg.png";
+import KaKaoImg from "../../asset/images/Main/KakaoLogoImg.png";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -38,6 +38,10 @@ const LoginButtonsArea = () => {
         await dispatch(getUser());
         await navigate("/");
       },
+      // 실패시 새로고침
+      fail: () => {
+        window.location.reload(false)
+      }
     });
   };
 

@@ -35,8 +35,8 @@ export const putAlbumList = createAsyncThunk(
   }
 );
 
-const album = createSlice({
-  name: "album",
+const profile = createSlice({
+  name: "profile",
   // 앨범 리스트를 받을 시작 리스트
   initialState: {albumList: []},
   reducers: {
@@ -58,4 +58,4 @@ const album = createSlice({
   },
 });
 
-export default album.reducer;
+export default profile.reducer;

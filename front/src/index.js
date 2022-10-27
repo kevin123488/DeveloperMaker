@@ -11,6 +11,7 @@ import Story from "./pages/Story/Story.js";
 import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
 import Pick from "./pages/Pick/Pick.js";
+import Profile from "./pages/Profile/Profile.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -21,6 +22,7 @@ export const persistor = persistStore(store);
 
 const container = document.getElementById("root");
 const root = createRoot(container);
+
 
 root.render(
   <Provider store={store}>
@@ -35,7 +37,8 @@ root.render(
           <Route path='/Story' element={<Story />} />
           <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
           <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
-          <Route path="/pick" element={<Pick />} />
+          <Route path="/Pick" element={<Pick />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>
