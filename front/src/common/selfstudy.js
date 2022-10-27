@@ -41,3 +41,9 @@ export const getCodingTestListApi = async () => {
   const res = await axiosInstance.get("/cote");
   return res;
 };
+
+// 진행도 조회
+export const getSelfStudyProgressApi = async () => {
+  const res = await axiosInstance.get("/progress");
+  return res;
+}

@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import { useLocation } from 'react-router-dom';
 import "./SelfStudy.css";
-import { getStudyList } from "../../slices/selfstudySlice";
+import { getStudyList,  } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import background from "./CsStudyBackground.png";
@@ -32,9 +31,9 @@ const CSselfStudy = () => {
   
   useEffect(() => {
     const userGetStudy = async () => {
-      const res = await dispatch(getStudyList())
+      const res = await dispatch(getStudyList('network'))
       const newStudyList = res.payload
-      console.log(newStudyList)
+      console.log("스터디 리스트:", newStudyList)
     };
     userGetStudy()
   }, [dispatch])
