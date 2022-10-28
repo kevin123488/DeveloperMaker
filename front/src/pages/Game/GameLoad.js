@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Main/Main.css";
 import Styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { userGetMemory, choiceSlot } from "../../slices/storySlice";
 
 const GameLoadHeader = styled.div`
   width: 100%;
@@ -104,13 +106,49 @@ const LoadFileChapterNameP = styled.p`
 
 const GameLoad = () => {
   const navigate = useNavigate();
+  const story = useSelector((state) => state.story);
+  const storySlots = story.userStoryData;
+  console.log(storySlots)
+  // story라는 이름의 reducer에 있는 state의 userStoryData를 story라는 변수에 넣어두자는 뜻
 
+  const dispatch = useDispatch();
+  // dispatch를 쓰기 위해 dispatch를 선언해주어야 함
   const backBtnhandler = () => {
     navigate("/");
   };
+
+  // 스토리 시작하는 함수
+  const startStory1 = () => {
+    navigate("/Story");
+    dispatch({type: "story/choiceSlot", slotNum: 1});
+    console.log("왜 스토리로 넘어가짐?")
+  };
+  const startStory2 = () => {
+    navigate("/Story");
+    dispatch({type: "story/choiceSlot", slotNum: 2});
+    console.log("왜 스토리로 넘어가짐?")
+  };
+  const startStory3 = () => {
+    navigate("/Story");
+    dispatch({type: "story/choiceSlot", slotNum: 3});
+    console.log("왜 스토리로 넘어가짐?")
+  };
+
+  useEffect(() => {
+    // dispatch(userGetMemory());
+    // console.log(storySlots);
+    const dispatchUserMemory = async () => {
+      await dispatch(userGetMemory());
+    };
+    dispatchUserMemory();
+  }, [dispatch]);
+
   return (
     <div className="MainContainerWrapper">
       <div className="MainContainer">
+        {/* {storySlots.map((story, idx) => (
+          <div key={idx}>{story.script}</div>
+        ))} */}
         <GameLoadHeader>
           <HeaderBtnContents>
             <BackBtn onClick={backBtnhandler}>뒤로가기</BackBtn>
@@ -123,7 +161,7 @@ const GameLoad = () => {
 
         <GameLoadBody>
           <GameLoadContainer>
-            <GameFileLoadList>
+            <GameFileLoadList onClick={startStory1}>
               <SaveTitleContainer>
                 <SaveTitle>저장 데이터1</SaveTitle>
               </SaveTitleContainer>
@@ -132,12 +170,12 @@ const GameLoad = () => {
                   <LoadFileChapterP>chaper</LoadFileChapterP>
                 </LoadFileChapter>
                 <LoadFileChapterName>
-                  <LoadFileChapterNameP>chaperName</LoadFileChapterNameP>
+                  <LoadFileChapterNameP>chapter {storySlots[0].chapter}</LoadFileChapterNameP>
                 </LoadFileChapterName>
               </LoadFileInfo>
             </GameFileLoadList>
 
-            <GameFileLoadList>
+            <GameFileLoadList onClick={startStory2}>
               <SaveTitleContainer>
                 <SaveTitle>저장 데이터2</SaveTitle>
               </SaveTitleContainer>
@@ -146,12 +184,12 @@ const GameLoad = () => {
                   <LoadFileChapterP>chaper</LoadFileChapterP>
                 </LoadFileChapter>
                 <LoadFileChapterName>
-                  <LoadFileChapterNameP>chaperName</LoadFileChapterNameP>
+                  <LoadFileChapterNameP>chapter {storySlots[1].chapter}</LoadFileChapterNameP>
                 </LoadFileChapterName>
               </LoadFileInfo>
             </GameFileLoadList>
 
-            <GameFileLoadList>
+            <GameFileLoadList onClick={startStory3}>
               <SaveTitleContainer>
                 <SaveTitle>저장 데이터3</SaveTitle>
               </SaveTitleContainer>
@@ -160,7 +198,7 @@ const GameLoad = () => {
                   <LoadFileChapterP>chaper</LoadFileChapterP>
                 </LoadFileChapter>
                 <LoadFileChapterName>
-                  <LoadFileChapterNameP>chaperName</LoadFileChapterNameP>
+                  <LoadFileChapterNameP>chapter {storySlots[2].chapter}</LoadFileChapterNameP>
                 </LoadFileChapterName>
               </LoadFileInfo>
             </GameFileLoadList>
