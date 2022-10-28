@@ -12,26 +12,38 @@
 /* UserInfo */
 .ProfileUserInfo {
   position: absolute;
+  display: flex;
   top: 5vh;
   left: 5vw;
   width: 30vw;
   border-radius: 5px;
   background-color: antiquewhite;
 }
-
+.ProfileUserInfoImg {
+  width: 10vw;
+  height: 12vh;
+  background-image: url("../../asset/images/Profile/Profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .ProfileUserInfoLine {
   display: grid;
   font-size: 2vw;
 }
 .ProfileUserInfoTag {
-  grid-column-start: 1;
+  margin-top: 1vh;
+  grid-column-start: 2;
   grid-column-end: 3;
 }
 .ProfileUserInfoData {
-  grid-column-start: 4;
+  margin-top: 1vh;
+  grid-column-start: 3;
   grid-column-end: 12;
 }
-
+.ProfileUserInfoBtn {
+  margin-left: 25vw;
+}
 
 /* RadicalChat */
 .ProfileRadarChart {

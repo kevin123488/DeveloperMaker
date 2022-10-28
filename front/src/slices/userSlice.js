@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, loginNaver, getUserInfo, signUp } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
 
@@ -64,12 +64,22 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
+    // 회원가입
     signUpUser: (state, action) => {
       signUp(action.payload);
       state.userInfo.language = action.payload.language;
       state.userInfo.nickname = action.payload.nickname;
       state.isLogIn = true;
     },
+    // 설정 변경
+    changeInfo: (state, action) => {
+      console.log("리듀서 내 변경 요청",action.payload)
+      // DB 변경 요청
+      putUserInfo(action.payload)
+      // Redux 변경
+      state.userInfo.nickname = action.payload.nickname
+      state.userInfo.language = action.payload.language
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -100,4 +110,5 @@ const userSlice = createSlice({
 });
 
 export const { signUpUser } = userSlice.actions;
+export const { changeInfo } = userSlice.actions;
 export default userSlice.reducer;
