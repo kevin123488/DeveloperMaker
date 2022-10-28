@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import "../Main/Main.css";
-import MainForm from "../../components/MainForm/MainForm";
 import Styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { SignupForm } from "../../components/SignupForm/SignupForm";
-import Characters from "../../asset/images/Characters.png";
 import styled from "styled-components";
 import { userGetMemory, choiceSlot } from "../../slices/storySlice";
 

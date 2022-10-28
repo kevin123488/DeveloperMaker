@@ -1,12 +1,12 @@
-import React, { useInsertionEffect } from "react";
+import React from "react";
 import Styled from "styled-components";
 
-import GameRuleImg from "../../asset/images/GameRuleBtn.png";
-import GameStartImg from "../../asset/images/GameStartBtn.png";
-import LogoutBtnImg from "../../asset/images/LogoutBtn.png";
-import ProfileBtnImg from "../../asset/images/ProfileBtn.png";
-import StudyBtnImg from "../../asset/images/StudyBtn.png";
-import AlbumBtnImg from "../../asset/images/AlbumBtn.png";
+import GameRuleImg from "../../asset/images/Main/GameRuleBtn.png";
+import GameStartImg from "../../asset/images/Main/GameStartBtn.png";
+import LogoutBtnImg from "../../asset/images/Main/LogoutBtn.png";
+import ProfileBtnImg from "../../asset/images/Main/ProfileBtn.png";
+import StudyBtnImg from "../../asset/images/Main/StudyBtn.png";
+import AlbumBtnImg from "../../asset/images/Main/AlbumBtn.png";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -58,49 +58,50 @@ const GameButtonsArea = () => {
     await persistor.purge();
   };
 
-  const startHandler = () => {
-    navigate("/Game");
-  };
+  // 이동 함수
+  const goGame = () => {
+    navigate("/Game")
+  }
+  const goProfile = () =>{
+    navigate("/Profile")
+  }
+  const goSelfStudy = () => {
+    navigate("/SelfStudy")
+  }
+  const goAlbum = () => {
+    navigate("/Album")
+  }
+  const goGameRule = () => {
+    navigate("/GameRule")
+  }
 
   return (
     <>
       {userInfo ? (
         <LoginGameButtons>
           <BtnArea>
-            <GameBtn
-              src={GameStartImg}
-              alt="GameStart"
-              onClick={startHandler}
-            />
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}/>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={ProfileBtnImg} alt="Profile" />
+            <GameBtn src={ProfileBtnImg} alt="Profile" onClick={goProfile} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={StudyBtnImg} alt="Study" />
+            <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={AlbumBtnImg} alt="Album" />
+            <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>
-            <GameBtn
-              src={LogoutBtnImg}
-              alt="Logout"
-              onClick={async () => purge()}
-            />
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={async () => purge()}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (
         <GameButtons>
           <BtnArea>
-            <GameBtn src={GameRuleImg} alt="GameRule" />
+            <GameBtn src={GameRuleImg} alt="GameRule" onClick={goGameRule} />
           </BtnArea>
           <BtnArea>
-            <GameBtn
-              src={GameStartImg}
-              alt="GameStart"
-              onClick={startHandler}
-            />
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame} />
           </BtnArea>
         </GameButtons>
       )}

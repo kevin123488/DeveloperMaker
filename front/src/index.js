@@ -10,6 +10,10 @@ import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
 import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
 import Story from "./pages/Story/Story.js";
+import GameLoad from "./pages/Game/GameLoad.js";
+import Album from "./pages/Album/Album.js";
+import Pick from "./pages/Pick/Pick.js";
+import Profile from "./pages/Profile/Profile.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -21,28 +25,15 @@ export const persistor = persistStore(store);
 const container = document.getElementById("root");
 const root = createRoot(container);
 
+
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route
-            path="/Game"
-            element={
-              <PrivateRoute>
-                <GameLoad />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/SelfStudy"
-            element={
-              <PrivateRoute>
-                <SelfStudy />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
+          <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
           <Route path="/SelfStudy/cs" element={<CsSelfStudy />} />
           <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
           <Route
@@ -51,6 +42,11 @@ root.render(
           />
           <Route path="/Album" element={<Album />} />
           <Route path="/Story" element={<Story />} />
+          <Route path='/Story' element={<Story />} />
+          <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
+          <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
+          <Route path="/Pick" element={<Pick />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>
