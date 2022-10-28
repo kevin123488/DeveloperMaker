@@ -1,0 +1,42 @@
+/* ---------------------- Profile----------------------- */
+.ProfileBack {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-image: url("../../asset/images/Profile/ProfileBack.png"); */
+}
+
+/* UserInfo */
+.ProfileUserInfo {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  width: 30vw;
+  border-radius: 5px;
+  background-color: antiquewhite;
+}
+
+.ProfileUserInfoLine {
+  display: grid;
+  font-size: 2vw;
+}
+.ProfileUserInfoTag {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+.ProfileUserInfoData {
+  grid-column-start: 4;
+  grid-column-end: 12;
+}
+
+
+/* RadicalChat */
+.ProfileRadarChart {
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
+  width: 25vw;
+}
