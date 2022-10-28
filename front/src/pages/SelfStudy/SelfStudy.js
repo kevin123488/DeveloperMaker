@@ -71,8 +71,8 @@ const SelfStudy = () => {
 
   return (
     <SelfStudyBlock>
-      <Type onClick={userGetStudy} style={{ textDecoration: "none" }}>
-        CS
+      <Type onClick={userGetStudy} style={{ textDecoration: "none", cursor: "pointer", }}>
+        md문서 공부ㄱ?
       </Type>
       <TypeLink to="/selfstudy/algo" style={{ textDecoration: "none" }}>
         알고리즘
