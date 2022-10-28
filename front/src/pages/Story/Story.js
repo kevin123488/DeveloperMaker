@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 
 
+
 const Story = () => {
   // const [story, changeStory] = useState(useSelector((state) => state.story.userStoryData)); // 저장 대상 관리 값
   // const [slotIndex, changseSlotIndex] = useState(useSelector((state) => state.story.selectedSlot); // 저장 대상 관리 값
@@ -38,6 +39,7 @@ const Story = () => {
   // const [questionResultIdx, changeQuestionResultIdx] = useState(0);
   const [saveStoryIdx, setSaveStoryIdx] = useState(0); // 저장해야 하는 부분의 인덱스
   const [storyInfo, changeStoryInfo] = useState(story[slotIndex-1]); // 저장 대상 관리 값
+  console.log("몇번 슬롯 선택함?",slotIndex);
   const scriptFileName = useRef(storyInfo.script); // 저장시 사용할 스크립트 파일 이름
   const [storyObj, setStoryObj] = useState(storyInfo); // 저장 대상
 
