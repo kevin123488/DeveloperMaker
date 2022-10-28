@@ -30,7 +30,7 @@ public class UserManageService {
     public UserDto modify(UserDto userDto, String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
-        user.updateNickname(userDto.getNickname());
+        user.updateProfile(userDto);
         return user.toDto();
     }
 
