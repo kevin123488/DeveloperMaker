@@ -17,12 +17,16 @@ const Typo = ({scriptText}) => {
             // console.log(index.current)
             // console.log(currentText)
             index.current += 1;
-        }, 50)
+        }, 15)
         return () => {
             clearTimeout(timeoutId)
         }
     }, [currentText, scriptText])
-    return <p>{currentText}</p>
+    return (
+        <>
+        <div>{currentText}</div>
+        </>
+    )
 }
 
 export default Typo

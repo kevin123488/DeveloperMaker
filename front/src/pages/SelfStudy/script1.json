@@ -2,7 +2,8 @@
   {
     "idx": 0,
     "scriptType": "text",
-    "text": "안녕하세요?",
+    "storyTeller": "",
+    "text": "싸피에서의 모든 2학기 프로젝트가 끝나고, 강의장으로 이동하는 셔틀버스 안",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -12,7 +13,7 @@
   {
     "idx": 1,
     "scriptType": "text",
-    "text": "문제낼게요",
+    "text": "\"이제 끝, 아니 시작인가.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
