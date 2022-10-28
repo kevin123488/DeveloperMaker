@@ -1,11 +1,12 @@
 // 캐릭터별로 있고 마우스 올리면 표정, 자세 바뀌면서 어떤분야 자울학습하는건지 가르쳐주는 거 괜찮을듯
-import React, { useState, useRef } from "react";
+// import React, { useState, useRef } from "react";
+import React, {} from "react";
 import "./SelfStudy.css";
 import styled from "styled-components";
 import background from "./SelfStudyBackground.png";
 import btn from "./버튼.png";
-import { getStudyList } from "../../slices/selfstudySlice";
-import { useDispatch } from "react-redux";
+// import { getStudyList } from "../../slices/selfstudySlice";
+// import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -77,7 +78,7 @@ const SelfStudy = () => {
         알고리즘
       </TypeLink>
       <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
-        언어/프레임워크
+        면접 test
       </TypeLink>
       
     </SelfStudyBlock>
