@@ -1,10 +1,10 @@
 import React from "react";
 import "./Main.css";
-import MainForm from "../../components/MainForm/MainForm";
+import MainForm from "../../components/Main/MainForm";
 import Styled from "styled-components";
 import { useSelector } from "react-redux";
-import { SignupForm } from "../../components/SignupForm/SignupForm";
-import Characters from "../../asset/images/Characters.png";
+import { SignupForm } from "../../components/Main/SignupForm";
+import Characters from "../../asset/images/Main/Characters.png";
 
 
 const Title = Styled.p`

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { signUpUser } from "../../slices/userSlice";
 import { useDispatch } from "react-redux/es/exports";
@@ -51,25 +51,25 @@ const Button = styled.button`
 `;
 
 export const SignupForm = () => {
+  const dispatch = useDispatch();
+  // 변수 설정
   const [period, setPeriod] = useState("JAVA");
   const [nickname, setNickName] = useState("");
-  // const [userInfo, setUserInfo] = useState("");
+  const [errorMSG, setErrorMSG] = useState("")
 
-  const dispatch = useDispatch();
-
-  // useEffect(() => {}, [userInfo]);
-
+  // 언어 변경
   const onPeriodChange = (e) => {
     const { value } = e.target;
     setPeriod(value);
-    console.log(period);
   };
 
+  // 닉네임 변경
   const onNicknameChange = (e) => {
     const input = e.target.value;
     setNickName(input);
   };
 
+  // 언어 변수
   const periodOptions = [
     { value: "JAVA", print: "Java" },
     { value: "PYTHON", print: "Python" },
@@ -77,13 +77,22 @@ export const SignupForm = () => {
     { value: "JS", print: "JavaScript" },
   ];
 
+  // 제출
   const submitHandler = () => {
-    const data = {
-      nickname: nickname,
-      language: period,
-    };
-
-    dispatch(signUpUser(data));
+    // 무입력 방지
+    if (nickname.length > 0)
+    {
+      const data = {
+        nickname: nickname,
+        language: period,
+      };
+      setErrorMSG("")
+      dispatch(signUpUser(data));
+    }
+    // 에러 MSG 입력
+    else {
+      setErrorMSG("닉네임은 1자 이상 10자 이하로 입력해 주세요")
+    }
   };
 
   return (
@@ -105,6 +114,7 @@ export const SignupForm = () => {
       <BtnArea>
         <Button onClick={submitHandler}>확인</Button>
       </BtnArea>
+      <p>{errorMSG}</p>
     </Form>
   );
 };

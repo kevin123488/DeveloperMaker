@@ -1,27 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import StoryAlbum from "../../components/Album/StoryAlbum";
+import SelectionAlbum from "../../components/Album/SelectionAlbum";
+import { useNavigate } from "react-router";
 import "./Album.css";
-
-// const AlbumData =[
-//   {id: 1, url: '../asset/images/Album/변환1.png', title: "Chapter1", content: 'wow' },
-//   {id: 2, url: '../asset/images/Album/변환2.png', title: "Chapter2", content: 'good' },
-//   {id: 3, url: '../asset/images/Album/변환3.png', title: "Chapter3", content: 'oh' },
-//   {id: 4, url: '../asset/images/Album/변환4.png', title: "Chapter4", content: 'yes' },
-//   {id: 5, url: '../asset/images/Album/변환5.png', title: "Chapter5", content: 'vamos' },
-//   {id: 6, url: '../asset/images/Album/변환6.png', title: "Chapter6", content: 'olleh' },
-// ]
+import { readAlbum } from "../../slices/albumSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Album = () => {
-  // const AlbumList = AlbumData.map((album)=>{
-  //     return(
-  //       <div className="albumCard" key={album.id}>
-  //         <img className="albumImg" src={album.url} alt="앨범이미지" />
-  //         <p className="albumTitle">{album.title}</p>
-  //         <p>{album.content}</p>
-  //       </div>
-  //     )
-  // })
+  const dispatch = useDispatch()
+  // 페이지 렌더링 시 1회 싨행
+  useEffect(()=>{
+      dispatch(readAlbum());
+  }, [dispatch]);
+  const albumList = useSelector((state)=> {
+    return state.album.albumList;
+  })
+  const user = useSelector((state)=>{
+    return state.user.userInfo;
+  })
+  const navigate = useNavigate()
+
+  // 현재 보고 싶은 앨범 유형 선택 스토리 or 컬렉션
+  const [selType, setSelType] = useState(true);
+  function changeType() {
+    setSelType(!selType)
+  }
+  // 뽑기 화면
+  function goPick() {
+    navigate('/pick')
+  }
+  // 메인화면
+  function goMain() {
+    navigate('/')
+  }
   return (
-    <h1>Album</h1>
+    <div className="albumBack">
+      <div className="albumMenu" >
+        <h1> {user.nickname} 's Album</h1>
+        <button onClick={goPick}>뽑기</button>
+        <button onClick={goMain}>메인 화면</button>
+      </div>
+      {}
+      <div>
+        <button onClick={changeType}>스토리</button>
+        <button onClick={changeType}>컬렉션</button>
+      </div>
+      <div className="albumCardList">
+        {selType ? albumList.map(album => {return (<StoryAlbum key={album.albumId} album={album} />)}):
+        <SelectionAlbum/>}
+      </div>
+    </div>
   );
 }
 export default Album;
