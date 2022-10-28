@@ -1,5 +1,6 @@
 package com.ssafy.developermaker.domain.aiinterview.entity;
 
+import com.ssafy.developermaker.domain.aiinterview.dto.AiInterviewQuestionDto;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class AiInterviewQuestion {
     private Integer no;
 
     @Column(nullable = false)
-    private String type;
+    private String subject;
 
     @Column(nullable = false)
     private String question;
@@ -22,5 +23,7 @@ public class AiInterviewQuestion {
     @Column(nullable = false)
     private String keyword;
 
-
+    public AiInterviewQuestionDto toDto(){
+        return AiInterviewQuestionDto.builder().no(no).question(question).aiqId(aiqId).keyword(keyword).subject(subject).build();
+    }
 }

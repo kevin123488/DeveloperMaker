@@ -19,11 +19,17 @@ public class AiInterviewController {
     private final AiInterviewService aiInterviewService;
     private final AwsS3Service awsS3Service;
 
-    @PostMapping
-    @ApiOperation(value = "AI면접", notes = "jpg와 txt를 보내면 결과를 반환.")
-    public ResponseEntity<BaseResponseBody> analyzeImg(@RequestPart(value = "file") @ApiParam(value = "이미지 파일") MultipartFile file, @RequestBody AiInterviewRequestDto aiInterviewRequestDto) {
+    @GetMapping("/{subject}")
+    @ApiOperation(value = "AI면접 문제 요청", notes = "문제를 요청하면 하나를 랜덤으로 반환함.")
+    public ResponseEntity<BaseResponseBody> getQuestion(@PathVariable String subject){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getQuestion(subject)));
+    }
+
+    @PostMapping("/{no}")
+    @ApiOperation(value = "AI면접 결과 요청", notes   = "jpg와 txt를 보내면 결과를 반환.")
+    public ResponseEntity<BaseResponseBody> analyzeImg(@PathVariable Integer no,@RequestPart(value = "file") @ApiParam(value = "이미지 파일") MultipartFile file, @RequestPart(value = "aiInterviewRequestDto") AiInterviewRequestDto aiInterviewRequestDto) {
         String imgUrl = awsS3Service.uploadImage(file);
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getResult(imgUrl, aiInterviewRequestDto.getInterviewText())));
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getResult(no, imgUrl, aiInterviewRequestDto.getInterviewText())));
     }
 
 
