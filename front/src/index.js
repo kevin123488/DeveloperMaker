@@ -9,6 +9,7 @@ import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
 import GameLoad from "./pages/Game/GameLoad.js";
 import Album from "./pages/Album/Album.js";
+import Story from "./pages/Story/Story.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
@@ -49,6 +50,7 @@ root.render(
             element={<LangFrameSelfStudy />}
           />
           <Route path="/Album" element={<Album />} />
+          <Route path="/Story" element={<Story />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>

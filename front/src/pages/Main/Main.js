@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { SignupForm } from "../../components/SignupForm/SignupForm";
 import Characters from "../../asset/images/Characters.png";
 
+
 const Title = Styled.p`
   font-family: "Lobster";
   text-shadow: 5px 5px #16345A, 8px 8px #284D8E, 11px 11px #4D8CBF, 14px 14px #5FA9D9;
@@ -24,7 +25,6 @@ const CharacterImg = Styled.img`
 
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
-
   return (
     <div className="MainContainerWrapper">
       <div className="MainContainer">

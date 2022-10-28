@@ -22,7 +22,11 @@ const Typo = ({scriptText}) => {
             clearTimeout(timeoutId)
         }
     }, [currentText, scriptText])
-    return <p>{currentText}</p>
+    return (
+        <>
+        <div>{currentText}</div>
+        </>
+    )
 }
 
 export default Typo
