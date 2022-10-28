@@ -61,8 +61,9 @@ public class User {
     private Progress progress;
 
 
-    public User updateNickname (String nickname) {
-        this.nickname = nickname;
+    public User updateProfile (UserDto userDto) {
+        this.nickname = userDto.getNickname();
+        this.language = userDto.getLanguage();
         return this;
     }
 
