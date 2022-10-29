@@ -15,7 +15,7 @@ const CodeTextarea = (prop) => {
       onChange={(evn) => 
         {
           setCode(evn.target.value)
-          console.log(evn.target.value)
+          // console.log(evn.target.value)
         }
       }
       padding={15}
