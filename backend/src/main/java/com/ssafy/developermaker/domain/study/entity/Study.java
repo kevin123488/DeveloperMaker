@@ -19,19 +19,26 @@ public class Study {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long studyId;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
+    private Category category;
+
     @Column(nullable = false, length = 30)
     private String subject;
 
     @Column(nullable = false, length = 50)
     private String title;
 
-    @Column(nullable = false)
-    private Integer orders;
-
     @Column(nullable = false, length = 10000)
     private String content;
 
     public StudyResponseDto toDto() {
-        return StudyResponseDto.builder().studyId(studyId).subject(subject).title(title).content(content).orders(orders).build();
+        return StudyResponseDto.builder()
+                .studyId(studyId)
+                .category(category)
+                .subject(subject)
+                .title(title)
+                .content(content)
+                .build();
     }
 }
