@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,13 +33,11 @@ public class Study {
     @Column(nullable = false, length = 10000)
     private String content;
 
-    public StudyResponseDto toDto() {
+    public StudyResponseDto toDto(List<String> subjects, int count) {
         return StudyResponseDto.builder()
-                .studyId(studyId)
-                .category(category)
-                .subject(subject)
-                .title(title)
-                .content(content)
+                .category(this.category)
+                .subjects(subjects)
+                .count(count)
                 .build();
     }
 }

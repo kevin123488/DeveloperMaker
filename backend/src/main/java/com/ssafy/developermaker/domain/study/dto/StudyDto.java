@@ -1,19 +1,15 @@
 package com.ssafy.developermaker.domain.study.dto;
 
 import com.ssafy.developermaker.domain.study.entity.Category;
-import lombok.*;
+import lombok.Getter;
 
 import java.util.List;
 
 @Getter
-@Setter
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-public class StudyResponseDto {
+public class StudyDto {
 
     private Category category;
-    private List<String> subjects;
-    private int count;
-
+    private String subject;
+    private List<StudyInfoDto> studyInfo;
+    private int totalCount;
 }
