@@ -4,10 +4,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -15,10 +15,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"프로젝트 끝나자마자 바로 공부라니, 역시 우리 팀 에이스답네\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -29,7 +29,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -40,7 +40,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -51,7 +51,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -62,7 +62,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -73,7 +73,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
