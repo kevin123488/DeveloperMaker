@@ -8,6 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 @Entity
 @Getter
@@ -39,6 +42,13 @@ public class Quiz {
     private String answer;
 
     public QuizResponseDto toDto() {
-        return QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).example(example).build();
+        QuizResponseDto qrDto = QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).build();
+        List<String> exampleList = new ArrayList<>();
+        StringTokenizer st = new StringTokenizer(example, "/");
+        for (int i = 0; i < 4; i++) {
+            exampleList.add(st.nextToken());
+        }
+        qrDto.setExample(exampleList);
+        return qrDto;
     }
 }

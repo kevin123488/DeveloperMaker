@@ -21,7 +21,7 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final UserQuizRepository userQuizRepository;
     private final UserRepository userRepository;
-
+    
     public List<QuizResponseDto> getQuizList(String email, String subject) {
         List<Quiz> quizList = quizRepository.findBySubject(subject);
         List<QuizResponseDto> quizResponseDtoList = new ArrayList<>();
@@ -52,7 +52,7 @@ public class QuizService {
                     userQuiz.setCorrect(2);
                     response = "정답입니다!";
                 }
-            }else {
+            } else {
                 response = "틀렸습니다!";
             }
         } else { // 푼 적 없을 때.
@@ -60,7 +60,7 @@ public class QuizService {
             if (quiz.getAnswer().equals(quizRequestDto.getAnswer())) {
                 userQuiz.setCorrect(1);
                 response = "정답입니다!";
-            }else{
+            } else {
                 userQuiz.setCorrect(-1);
                 response = "틀렸습니다!";
             }

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
+import java.util.List;
 
 @Builder
 @Getter
@@ -15,6 +16,6 @@ public class QuizResponseDto {
     private String subject;
     private String title;
     private String problem;
-    private String example;
+    private List<String> example;
     private Integer correct = 0; // 0(푼적없음), -1(틀림), 1(맞춤), 2(다시풀어서 맞춤)
 }
