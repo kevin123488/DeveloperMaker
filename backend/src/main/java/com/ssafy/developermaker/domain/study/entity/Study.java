@@ -28,7 +28,7 @@ public class Study {
     @Column(nullable = false)
     private Integer orders;
 
-    @Column(nullable = false, length = 5000)
+    @Column(nullable = false, length = 10000)
     private String content;
 
     public StudyResponseDto toDto() {
