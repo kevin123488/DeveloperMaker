@@ -19,14 +19,16 @@ const StoryAlbumChart = () =>{
       },
     ],
   };
-  // 이벤트 초기화
   const options = {
-    events: [],
     cutout: 35, //  구멍 크기
     // responsive: true,
     plugins: {
       legend: {
         display: false,
+      },
+      title: {
+        display: true,
+        text: '스토리 앨범 진행도'
       },
     },
   };

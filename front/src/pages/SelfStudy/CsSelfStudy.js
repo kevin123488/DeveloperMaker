@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./SelfStudy.css";
 import { getStudyList,  } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import background from "./CsStudyBackground.png";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
@@ -24,10 +26,13 @@ const CsStudyBackground = styled.div`
 const CSselfStudy = () => {
   // const location = useLocation()
   const study = useSelector((state) => state.study)
+  const [showingMarkdown, setShowingMarkdown] = useState('')
   const studyList = study.studyList
   const dispatch = useDispatch();
   
-  
+  const showMarkdown = (n) => {
+    setShowingMarkdown(studyList[n].content)
+  }
   
   useEffect(() => {
     const userGetStudy = async () => {
@@ -44,11 +49,15 @@ const CSselfStudy = () => {
         <div className="container">
           <div className="row justify-content-center">
             {studyList.map((study, index) => (
-              <div key={index} className="col-3 StudyCompnent">
-                {study.content}
+              <div key={index} className="col-3 StudyCompnent" onClick={showMarkdown.bind(null, index)}>
+                {study.title}
               </div>
             ))}
           </div>
+        </div>
+        <div className="showingMarkdown">
+          <ReactMarkdown children = {showingMarkdown} remarkPlugins={[remarkGfm]}>
+          </ReactMarkdown>  
         </div>
       </CsStudyBackground>
     </>

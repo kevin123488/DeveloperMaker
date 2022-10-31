@@ -46,13 +46,10 @@ const UserInfo = () => {
     <div className='ProfileUserInfo'>
       <img className='ProfileUserInfoImg' src={require("../../asset/images/Profile/Profile.png")} alt="사진" />
       <div>
-        <div className='ProfileUserInfoLine' >
-          <p className='ProfileUserInfoTag'>이름: </p>
-          
-          {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInfoData' onInput={onNicknameChange} type="text" value={nickname} /> }
+        <div className='ProfileUserInfoLine' >          
+          {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInfoData' onInput={onNicknameChange} type="text" value={nickname.trim} /> }
         </div>
         <div className='ProfileUserInfoLine'>
-          <p className='ProfileUserInfoTag'>언어: </p>
           {mode? <p className='ProfileUserInfoData'>{UserInfo.language}</p> :
             <select value={language} onChange={onLanguageChange} className='ProfileUserInfoData'>
             {LanguageOptions.map((language, index) => (

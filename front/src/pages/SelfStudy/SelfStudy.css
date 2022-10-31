@@ -1,6 +1,32 @@
 .StudyCompnent {
+  text-align: center;
   height: 10vw;
-  border: 0.4em inset #009688;
+  border: 0.4em inset #e2fffc;
   margin: 1vw;
-  /* background-color: black; */
+  background-color: white;
+  cursor: pointer;
+}
+.showingMarkdown {
+  height: 60vh;
+  width: 70vw;
+  border: 0.4em solid #ddfffc;
+  margin: 0 auto;
+  margin-top: 10vh;
+  overflow: scroll;
+  background-color: white;
+}
+
+.showingMarkdown::-webkit-scrollbar {
+  width: 0.5vw;
+  height: 0;
+  background-color: white;
+}
+.showingMarkdown::-webkit-scrollbar-thumb {
+  background-color: #a5fffe;
+  border-radius: 20px;
+}
+.showingMarkdown::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  background-color: #ebffff;
 }

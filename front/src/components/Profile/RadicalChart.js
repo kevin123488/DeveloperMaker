@@ -6,9 +6,10 @@ import "../../pages/Profile/Profile.css"
 
 const RadicalChart = () => {
   const progress = useSelector((state)=>{
+    console.log(state.user.userInfo)
     return state.user.userInfo.progressDto
   })
-
+  console.log(progress)
   // 자율학습 진행도
   const data = {
     labels: [
@@ -21,7 +22,7 @@ const RadicalChart = () => {
     // DB
     datasets: [{
       label: "자율학습 진행도",
-      data: [progress.cs, progress.algo, progress.front, progress.front, progress.back, progress.language],
+      data: [progress.cs, progress.algo, progress.front, progress.back, progress.language],
       fill: true,
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
       borderColor: 'rgb(255, 99, 132)',

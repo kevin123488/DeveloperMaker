@@ -4,6 +4,7 @@ import UserSlice from "./userSlice";
 import album from "./albumSlice";
 import storageSession from "redux-persist/lib/storage/session";
 import { persistReducer, PERSIST, PURGE } from "redux-persist";
+import storySlice from "./storySlice";
 import profile from "./profileSlice";
 
 // persistReducer에 저장할 정보가 여러개가 되면 활성화
@@ -23,6 +24,7 @@ const persistedReducer = persistReducer(persistConfig, UserSlice);
 const store = configureStore({
   reducer: {
     user: persistedReducer,
+    story: storySlice,
     study: selfstudySlice,
     album: album,
     profile: profile,

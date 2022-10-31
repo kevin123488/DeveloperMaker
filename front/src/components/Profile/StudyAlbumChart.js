@@ -24,6 +24,10 @@ const StudyAlbumChart = () =>{
       legend: {
         display: false,
       },
+      title: {
+        display: true,
+        text: '자율학습 앨범 진행도'
+      },
     },
   };
 
