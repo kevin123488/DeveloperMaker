@@ -3,8 +3,8 @@
 import React, {} from "react";
 import "./SelfStudy.css";
 import styled from "styled-components";
-import background from "./SelfStudyBackground.png";
-import btn from "./버튼.png";
+import background from "../../asset/images/SelfstudyImg/SelfStudyBackground.png";
+import btn from "../../asset/images/SelfstudyImg/버튼.png";
 // import { getStudyList } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -21,7 +21,6 @@ const SelfStudyBlock = styled.div`
 `;
 
 const TypeLink = styled(Link)`
-  font-family: "Lobster";
   color: black;
   margin: 0 auto;
   display: flex;
@@ -30,14 +29,13 @@ const TypeLink = styled(Link)`
   font-size: 3vw;
   vertical-align: center;
   margin: 3vw;
-  height: 10vw;
-  width: 25vw;
+  height: 7vw;
+  width: 20vw;
   background: url(${btn}) center no-repeat;
   background-size: 100% 100%;
 `;
 
 const Type = styled.div`
-  font-family: "Lobster";
   color: black;
   margin: 0 auto;
   display: flex;
@@ -46,8 +44,8 @@ const Type = styled.div`
   font-size: 3vw;
   vertical-align: center;
   margin: 3vw;
-  height: 10vw;
-  width: 25vw;
+  height: 7vw;
+  width: 20vw;
   background: url(${btn}) center no-repeat;
   background-size: 100% 100%;
 `;
@@ -64,7 +62,7 @@ const SelfStudy = () => {
     // console.log(newStudyList)
     // console.log(studyList.payload)
     // await navigate("/selfstudy/cs", {state: {studyList: newStudyList}});
-    navigate("/selfstudy/cs");
+    navigate("/selfstudy/study");
     // console.log('???????????')
 
   };
@@ -72,16 +70,16 @@ const SelfStudy = () => {
   return (
     <SelfStudyBlock>
       <Type onClick={userGetStudy} style={{ textDecoration: "none", cursor: "pointer", }}>
-        md문서 공부ㄱ?
+        스터디
       </Type>
       <TypeLink to="/selfstudy/algo" style={{ textDecoration: "none" }}>
         알고리즘
       </TypeLink>
-      <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
-        면접 test
-      </TypeLink>
       <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
         퀴즈
+      </TypeLink>
+      <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
+        면접 test
       </TypeLink>
     </SelfStudyBlock>
   );

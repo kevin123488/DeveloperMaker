@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState} from "react";
 import "./SelfStudy.css";
 import * as htmlToImage from 'html-to-image';
 import Webcam from "react-webcam";
-import { toBlob} from 'html-to-image';
+// import { toBlob} from 'html-to-image';
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
@@ -21,16 +21,41 @@ const LangFrameStudy = () => {
     htmlToImage.toBlob(document.getElementById('captureDiv'))
     .then(function (blob) {
       console.log(blob)
+
+      // const tempCapture = new File([blob], "test.png", { type: 'image/png' })
+      // let capture = new FormData
+      // capture.append('capture', tempCapture)
+      // console.log(capture)
+
+      
       // setUrl(URL.createObjectURL(blob))
     });
   }
 
   const [imageSrc, setImageSrc] = useState('')
   const webcamRef = React.useRef(null);
+
+  function dataURItoBlob(dataURI) {
+
+    var byteString = atob(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+    
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    var blob = new Blob([ab], {type: mimeString});
+    
+    return blob;
+  }
+
   const capture = React.useCallback(
     () => {
       setImageSrc(webcamRef.current.getScreenshot());
-      console.log(typeof(imageSrc))
+      // const blobData = dataURItoBlob(imageSrc)
+      // console.log(blobData)
     },
     [webcamRef]
   );
@@ -43,7 +68,7 @@ const LangFrameStudy = () => {
         videoConstraints={videoConstraints}
       />
       <button onClick={capture}>Capture photo</button>
-      <img id="captureDiv" src={imageSrc}></img>
+      <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
       <button onClick={saveCam}>백으로</button>
     </>
   );

@@ -58,9 +58,10 @@ export const getQuizList = createAsyncThunk(
 
 export const postQuizSolve = createAsyncThunk(
   "quiz/solve",
-  async (answer, { rejectWithValue }) => {
+  async (solveInfo, { rejectWithValue }) => {
     try {
-      const { data } = await postQuizSolveApi(answer);
+      const { data } = await postQuizSolveApi(solveInfo);
+      console.log(data.data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -109,7 +110,36 @@ export const getSelfStudyProgress = createAsyncThunk(
 const initialState = {
   studyList: [],
   studyInfo: [],
-  quizList: [],
+  quizList: [
+    {
+    "quizId": 1,
+    "no": 1,
+    "subject": "네트워크",
+    "title": "가나다라",
+    "problem": "다음 중, '가'를 고르시오.",
+    "example": [
+      "가",
+      "나",
+      "다",
+      "라",
+    ],
+    "correct": 2
+    },
+    {
+    "quizId": 2,
+    "no": 2,
+    "subject": "네트워크",
+    "title": "가나다라2",
+    "problem": "다음 중 '나'를 고르시오",
+    "example": [
+      "가",
+      "나",
+      "다",
+      "라",
+    ],
+    "correct": 0
+    }
+  ],
   coteList: [],
   progress: {},
 };

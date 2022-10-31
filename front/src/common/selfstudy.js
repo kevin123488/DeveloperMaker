@@ -3,8 +3,8 @@ import axiosInstance from "./axios";
 
 
 // 스터디 리스트 요청
-export const getStudyListApi = async () => {
-  const res = await axiosInstance.get("/study/network");
+export const getStudyListApi = async (subject) => {
+  const res = await axiosInstance.get(`/study/${subject}`);
   return res;
 };
   
@@ -17,20 +17,20 @@ export const getStudyInfoApi = async (studyId) => {
 
 
 // 퀴즈리스트 요청
-export const getQuizListApi = async () => {
-  const res = await axiosInstance.get("/quiz/list");
+export const getQuizListApi = async (subject) => {
+  const res = await axiosInstance.get(`/quiz/${subject}`);
   return res;
 };
 
 // 퀴즈 풀기
-export const postQuizSolveApi = async () => {
-  const res = await axiosInstance.post("/quiz");
+export const postQuizSolveApi = async (solveInfo) => {
+  const res = await axiosInstance.post(`/quiz/${solveInfo.quizId}`, solveInfo.answer);
   return res;
 };
 
 // 퀴즈 다시 풀기
-export const putQuizSolveApi = async () => {
-  const res = await axiosInstance.put("/quiz");
+export const putQuizSolveApi = async (quizId) => {
+  const res = await axiosInstance.put(`/quiz/${quizId}`);
   return res;
 };
 
