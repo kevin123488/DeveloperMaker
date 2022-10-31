@@ -4,7 +4,7 @@ import "chart.js/auto"; // import 안하면 차트 오류남
 import { Radar } from "react-chartjs-2"; // 차트종류
 import "../../pages/Profile/Profile.css"
 
-const RadicalChat = () => {
+const RadicalChart = () => {
   const progress = useSelector((state)=>{
     return state.user.userInfo.progressDto
   })
@@ -67,4 +67,4 @@ const RadicalChat = () => {
   );
 };
 
-export default RadicalChat;
+export default RadicalChart;

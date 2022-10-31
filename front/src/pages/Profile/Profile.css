@@ -45,10 +45,19 @@
   margin-left: 25vw;
 }
 
-/* RadicalChat */
+/* Chart */
 .ProfileRadarChart {
   position: absolute;
   top: 5vh;
   right: 5vw;
   width: 25vw;
+}
+.ProfileAlbumChart {
+  position: absolute;
+  display: flex;
+  bottom: 5vh;
+  left: 5vw;
+}
+.ProfileAlbumChartWidth {
+  width: 15;
 }

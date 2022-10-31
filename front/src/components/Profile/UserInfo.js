@@ -38,8 +38,8 @@ const UserInfo = () => {
   // 변경 요청
   const putUserInfo = (nickname, language) => {
     const payload = {nickname: nickname, language: language}
-    console.log("변경 요청 내 payload", payload)
     dispatch(changeInfo(payload))
+    changeMode()
   }
 
   return (
@@ -48,6 +48,7 @@ const UserInfo = () => {
       <div>
         <div className='ProfileUserInfoLine' >
           <p className='ProfileUserInfoTag'>이름: </p>
+          
           {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInfoData' onInput={onNicknameChange} type="text" value={nickname} /> }
         </div>
         <div className='ProfileUserInfoLine'>
