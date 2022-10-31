@@ -17,6 +17,8 @@ import store from "./slices/index.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import PrivateRoute from "./components/Routes/PrivateRoute.js";
+import Quiz from "./pages/SelfStudy/Quiz";
+
 
 export const persistor = persistStore(store);
 
@@ -45,6 +47,7 @@ root.render(
           <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
           <Route path="/Pick" element={<Pick />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/SelfStudy/quiz" element={<Quiz />} />
         </Routes>
       </BrowserRouter>
     </PersistGate>

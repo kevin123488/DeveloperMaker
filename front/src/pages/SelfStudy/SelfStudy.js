@@ -80,7 +80,9 @@ const SelfStudy = () => {
       <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
         면접 test
       </TypeLink>
-      
+      <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
+        퀴즈
+      </TypeLink>
     </SelfStudyBlock>
   );
 };
