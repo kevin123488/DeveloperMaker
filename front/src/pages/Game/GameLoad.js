@@ -4,7 +4,7 @@ import Styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { userGetMemory, choiceSlot } from "../../slices/storySlice";
+import { userGetMemory } from "../../slices/storySlice";
 
 const GameLoadHeader = styled.div`
   width: 100%;
