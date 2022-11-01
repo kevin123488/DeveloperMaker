@@ -10,10 +10,8 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudyResponseDto {
-
+public class StudyCategoryResponseDto {
     private Category category;
-    private List<String> subjects;
-    private int count;
+    private List<StudySubjectDto> subjectList;
 
 }

@@ -1,33 +1,41 @@
 package com.ssafy.developermaker.domain.study.application;
 
-import com.ssafy.developermaker.domain.study.dto.StudyInfoDto;
-import com.ssafy.developermaker.domain.study.dto.StudyRequestDto;
-import com.ssafy.developermaker.domain.study.dto.StudyResponseDto;
+import com.ssafy.developermaker.domain.study.dto.*;
+import com.ssafy.developermaker.domain.study.entity.Category;
 import com.ssafy.developermaker.domain.study.entity.Study;
 import com.ssafy.developermaker.domain.study.repository.StudyRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
+@Slf4j
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class StudyService {
     private final StudyRepository studyRepository;
 
-    public List<StudyResponseDto> getStudyList() {
-        List<Study> studyList = studyRepository.findAll();
-//        Enum<Category> categoryEnum
-//        return studyList.stream().map(Study::toDto).collect(Collectors.toList());
-        return null;
+    public List<StudyCategoryResponseDto> getStudyList() {
+        return studyRepository.getStudyList();
     }
 
-    public StudyInfoDto getStudyPage(StudyRequestDto studyRequestDto) {
+    public StudyDto getStudyPage(StudyRequestDto studyRequestDto) {
         PageRequest pageRequest = PageRequest.of(studyRequestDto.getOffset(), studyRequestDto.getLimit());
-        Page<Study> pages = studyRepository.findByCategoryAndSubject(pageRequest, studyRequestDto.getCategory(), studyRequestDto.getSubject());
+        Page<Study> page = studyRepository.findByCategoryAndSubject(pageRequest, studyRequestDto.getCategory(), studyRequestDto.getSubject());
 
-        StudyInfoDto
+        StudyDto studyDto = new StudyDto(studyRequestDto.getCategory(), studyRequestDto.getSubject(), page.getTotalElements() ,page.getTotalPages());
+        List<StudyInfoDto> studyInfoDtoList = page.stream().map(study -> new StudyInfoDto(study.getTitle(), study.getContent())).collect(Collectors.toList());
+        studyDto.setStudyInfo(studyInfoDtoList);
+        return studyDto;
+
+        // Page<Study>로 repsonse
+        // return studyRepository.findOrderByCategoryAndSubject(pageRequest, studyRequestDto.getCategory(), studyRequestDto.getSubject());
     }
 }

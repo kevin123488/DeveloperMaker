@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.study.entity;
 
-import com.ssafy.developermaker.domain.study.dto.StudyResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,11 +32,4 @@ public class Study {
     @Column(nullable = false, length = 10000)
     private String content;
 
-    public StudyResponseDto toDto(List<String> subjects, int count) {
-        return StudyResponseDto.builder()
-                .category(this.category)
-                .subjects(subjects)
-                .count(count)
-                .build();
-    }
 }
