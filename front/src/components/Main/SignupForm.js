@@ -65,7 +65,7 @@ export const SignupForm = () => {
 
   // 닉네임 변경
   const onNicknameChange = (e) => {
-    const input = e.target.value;
+    const input = e.target.value.trim();
     setNickName(input);
   };
 
