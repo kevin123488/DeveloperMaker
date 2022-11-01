@@ -21,7 +21,6 @@ public class UserQuiz {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userQuizId;
 
-    @Column(nullable = false)
     private Integer correct;
 
     @ManyToOne(fetch = LAZY)
@@ -32,7 +31,7 @@ public class UserQuiz {
     @JoinColumn(name = "quizId")
     private Quiz quiz;
 
-    public void setCorrect(Integer correct){
+    public void updateCorrect(Integer correct) {
         this.correct = correct;
     }
 }
