@@ -1,12 +1,12 @@
 package com.ssafy.developermaker.domain.study.entity;
 
-import com.ssafy.developermaker.domain.study.dto.StudyResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -32,13 +32,4 @@ public class Study {
     @Column(nullable = false, length = 10000)
     private String content;
 
-    public StudyResponseDto toDto() {
-        return StudyResponseDto.builder()
-                .studyId(studyId)
-                .category(category)
-                .subject(subject)
-                .title(title)
-                .content(content)
-                .build();
-    }
 }
