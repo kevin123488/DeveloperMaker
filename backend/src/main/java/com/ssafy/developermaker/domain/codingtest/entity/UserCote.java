@@ -28,6 +28,6 @@ public class UserCote {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "coteId")
-    private Cote codingTest;
+    private Cote cote;
 
 }
