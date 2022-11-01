@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import "./SelfStudy.css";
 import { getCodingTestList } from "../../slices/selfstudySlice";
 import styled from "styled-components";
-import background from "./AlgoStudyBackground.png";
+import background from "../../asset/images/SelfstudyImg/AlgoStudyBackground.png";
 import CodeTextarea from "./CodeTextarea";
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
