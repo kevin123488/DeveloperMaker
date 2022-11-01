@@ -1,6 +1,8 @@
 /* ==========스터디========== */
 .StudyContainer {
   position: absolute;
+  width: 70vw;
+  height: 70vh;
   top: 5vh;
   left: 25vw;
 }
@@ -38,6 +40,48 @@
   box-shadow: inset 0px 0px 5px white;
   background-color: #ebffff;
 }
+
+.paginationBar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10vh;
+  width: 20vw;
+  margin-top: 10vh;
+  background-color: white;
+}
+.paginationItem {
+  font-size: 2vw;
+  margin: 1vw;
+  cursor: pointer;
+}
+.subjectbar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -5vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10vh;
+  width: 20vw;
+  margin-top: 10vh;
+  /* background-color: white; */
+}
+.subjectItem {
+  font-size: 2vw;
+  margin: 1vw;
+  cursor: pointer;
+}
+.studyItems {
+  margin-top: 15vh;
+}
+/* ==========스터디 끝========== */
+
 
 /* ==========퀴즈 css========== */
 .QuizContainer {
@@ -136,3 +180,12 @@
 .input-chek, .input-radio{display: none;}
 .input-chek:checked + .form-chek::before, .input-radio:checked + .form-radio::before{background: #749fbb;}
 .input-chek:checked + .form-chek, .input-radio:checked + .form-radio{color: #749fbb;}
+
+/* ========면접테스트======== */
+.interviewCam {
+  position: absolute;
+  top: 30vh;
+  left: 65vw;
+  width: 10vh;
+  width: 20vw;
+}

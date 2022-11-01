@@ -24,17 +24,32 @@ const CsStudyBackground = styled.div`
 `;
 
 const Type = styled.div`
-  color: black;
+& {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3vw;
+  color: white;
   vertical-align: center;
   margin-bottom: 1.5vw;
   height: 7vw;
   width: 20vw;
+  z-index: 1;
+}  
+  
+&:after {  
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
   background: url(${btn}) center no-repeat;
   background-size: 100% 100%;
+  z-index: -1;
+} 
 `;
 
 const Quiz = () => {
@@ -79,7 +94,7 @@ const Quiz = () => {
 
   useEffect(() => {
     const userGetStudy = async () => {
-      const res = await dispatch(getSelfStudyProgress())
+      dispatch(getSelfStudyProgress())
       // const res = await dispatch(getQuizList('network'))
       // const newQuizList = res.payload
       // console.log("퀴즈 리스트:", newQuizList)
