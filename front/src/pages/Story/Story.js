@@ -11,6 +11,13 @@ import script1_1 from "./scripts/script1_1.json"
 import script1_2 from "./scripts/script1_2.json"
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
+import { getSelfStudyProgress } from "../../slices/selfstudySlice";
+import { useNavigate } from "react-router-dom";
+import textBackground from "./talkingTab.png";
+import hamburger from "./Hamburger.png";
+import saveIcon from "./saveIcon.png";
+import homeIcon from "./homeIcon.png";
+import slotIcon from "./slot.png";
 
 const StoryPage = styled.div`
   width: 100vw;
@@ -20,35 +27,95 @@ const StoryPage = styled.div`
 const StoryBox = styled.div`
   position: absolute;
   width: 80vw;
-  height: 35vh;
+  height: 40vh;
   top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
 `;
 
-const StoryTeller = styled.div`
-  width: 10vw;
-  height: 5vh;
-  background: white;
-  opacity: 80%;
+const StoryTextWrap = styled.div`
+  position: relative;
+  width: 80vw;
+  height: 40vh;
+  background-image: url(${textBackground});
+  background-size: 80vw 40vh;
 `;
 
 const StoryTextBox = styled.div`
-  width: 80vw;
-  height: 30vh;
-  opacity: 80%;
-  background: white;
+  cursor: pointer;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70vw;
+  height: 25vh;
+  font-size: 1.5vw;
 `;
 
-const StorySaveBox = styled.div`
+const StoryHamburger = styled.div`
   position: absolute;
-  top: 0%;
-  right: 0%;
-  background: white;
-  opacity: 80%;
-  width: 5vw;
-  height: 5vh;
   cursor: pointer;
+  top: 10%;
+  right: 5%;
+  transform: translate(0%, -50%);
+  width: 4vw;
+  height: 4vw;
+  background: url(${hamburger}) center no-repeat;
+  background-size: 4vw 4vw;
+  border-radius: 1000px;
+`;
+
+const StoryNavigate = styled.div`
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 4vw;
+  height: 50vh;
+  background: white;
+  border-radius: 20px;
+  border: 5px solid #79491e;
+`;
+
+const StorySaveBtn = styled.div`
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vw;
+  height: 2.5vw;
+  background-image: url(${saveIcon});
+  background-size: 2.5vw 2.5vw;
+  background-repeat: no-repeat;
+`;
+
+const StoryGoHome = styled.div`
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vw;
+  height: 2.5vw;
+  background-image: url(${homeIcon});
+  background-size: 2.5vw 2.5vw;
+  background-repeat: no-repeat;
+`;
+
+const StoryGoSlot = styled.div`
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vw;
+  height: 2.5vw;
+  background-image: url(${slotIcon});
+  background-size: 2.5vw 2.5vw;
+  background-repeat: no-repeat;
 `;
 
 const StoryCharLeft = styled.div`
@@ -100,6 +167,12 @@ const Story = () => {
   const leftCharImg = useRef('a');
   const middleCharImg = useRef('a');
   const rightCharImg = useRef('a');
+  const [hamburgerOpened, sethamburgerOpened] = useState(false);
+  const navigate = useNavigate();
+  // changeScript일 때 자율학습 진행도에 따라 보여줄 것
+  const [selfStudypassed, setselfStudypassed] = useState(false);
+  const selfStudyRequired = useRef(-1);
+  const userProgress = useSelector((state) => {return state.study.progress}); // 유저의 자율학습 진행도 확인
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
@@ -134,6 +207,12 @@ const Story = () => {
     dispatch(userPutMemory(storyObj));
   }, [storyObj]);
 
+  // useEffect(() => {
+  //   if (userProgress > selfStudyRequired.current) {
+
+  //   }
+  // }, [userProgress]);
+
   useEffect(() => {
     console.log("saveStoryIdx 값 변경");
     if (firstRenderControl.current) {
@@ -167,12 +246,26 @@ const Story = () => {
     scriptFileName.current = nextScript;
   }
 
+  // 인게임 저장 및 기타 버튼 수납고 열기
+  const ocHamburger = () => {
+    sethamburgerOpened(!hamburgerOpened);
+  };
+
   const saveStory = () => { 
     // 얘가 애매한게, 어느 시점에 저장하든 문제 전후 부분에서 저장된 부분부터 실행
     // 돼서 자동저장이랑 큰 차이가 없어짐
     console.log("저장되나?");
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     setStoryObj(storyObjCopy);
+  }
+
+  const goHome = () => {
+    navigate("/");
+    console.log("홈으로 가는 중입니다.");
+  }
+
+  const goSlot = () => {
+    navigate("/Game");
   }
 
   const storyObjHandler = (num, script) => {
@@ -256,6 +349,7 @@ const Story = () => {
         scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
         scriptIndex.current = 0
         increaseIndex.current = 1
+        // selfstudy 진행도 값 넣어주는 로직 필요
         changeScript(scriptFile.current[scriptIndex.current].text)
         // 이 시점에서도 저장 필요함
         // 자율학습 진행도 불러와서 비교, 일정 값 이상이면 패스해주는 로직 필요
@@ -264,6 +358,7 @@ const Story = () => {
         // } else {
         //   대충 캐릭터가 "자율학습 더 풀고 오세요" 하는 화면으로 넘겨버리는 로직 추가 
         // }
+        dispatch(getSelfStudyProgress()); // 학습도 받아오고 useEffect 이용해서 값 변경될 때 비교 후 로직 수행
         break;
 
       case 'choice':
@@ -284,6 +379,17 @@ const Story = () => {
   return (
     <>
     <StoryPage>
+      <StoryHamburger onClick={ocHamburger}></StoryHamburger>
+      {
+        hamburgerOpened
+        ?
+        <StoryNavigate>
+          <StorySaveBtn onClick={saveStory}></StorySaveBtn>
+          <StoryGoHome onClick={goHome}></StoryGoHome>
+          <StoryGoSlot onClick={goSlot}></StoryGoSlot>
+        </StoryNavigate>
+        :null
+      }
       <img src={process.env.PUBLIC_URL + `/storyImages/${backgroundImg.current}.png`} style={{
         width: '100%',
         height: '100%',
@@ -313,14 +419,20 @@ const Story = () => {
         height: '90vh',
         objectFit: 'contain',
       }} alt={rightCharImg.current} /></StoryCharRight>
-        <StoryBox onClick={nextScript}>
-          <StoryTeller>
-            {storyTeller.current}
-          </StoryTeller>
-          <StorySaveBox onClick={saveStory}>저장</StorySaveBox>
-          <StoryTextBox>
-            <Typo scriptText={scriptText}/>
-          </StoryTextBox>
+        <StoryBox>
+          {/* <StoryTeller> */}
+          <div className="storyTeller">
+            <div className="storyTellerText">
+              {storyTeller.current}
+            </div>
+          </div>
+          {/* </StoryTeller> */}
+          {/* <StorySaveBox onClick={saveStory}></StorySaveBox> */}
+          <StoryTextWrap>
+            <StoryTextBox onClick={nextScript}>
+              <Typo scriptText={scriptText}/>
+            </StoryTextBox>
+          </StoryTextWrap>
         </StoryBox>
         {
           isQuestion
