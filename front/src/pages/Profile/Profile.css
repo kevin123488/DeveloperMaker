@@ -81,19 +81,50 @@
 .ProfileProgressChart {
   position: absolute;
   display: flex;
+  justify-content: space-between;
   top: 10vh;
   left: 30vw;
+  width: 60vw;
+  height: 40vh;
+  background-color: antiquewhite;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileChart {
+  width: 15vw;
+  align-self: center;
+}
+.ProfileRadicalChart {
+  margin: auto;
+  width: 20vw;
+}
+.ProfileProgressFont {
+
+}
+.ProfileLikeBtn {
+  margin: 0.2vw;
 }
 
-.ProfileRadarChart {
-  width: 25vw;
-}
-
-.ProfileLikeChart {
+.ProfileLikeChartBack {
   position: absolute;
+  top: 55vh;
+  left: 30vw;
+  width: 60vw;
+  height: 40vh;
+}
+.ProfileLikeChart {
+  width: 60vw;
+  height: 35vh;
+  background-color: antiquewhite;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileLikeChartsize {
+  margin: auto;
+  width: 20vw;
+}
+
+.ProfileMain {
+  position: absolute;
+  left: 8vw;
   bottom: 5vh;
-  right: 5vw;
 }
-.ProfileAlbumChartWidth {
-  width: 15;
-}
+

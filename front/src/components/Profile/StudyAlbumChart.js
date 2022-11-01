@@ -32,7 +32,7 @@ const StudyAlbumChart = () =>{
   };
 
   return(
-    <div className="ProfileAlbumChartWidth">
+    <div className="ProfileChart">
       <Doughnut data={data} options={options} />
     </div>
   )

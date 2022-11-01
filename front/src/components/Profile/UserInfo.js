@@ -43,7 +43,8 @@ const UserInfo = () => {
   }
   // 닉네임 변경
   const onNicknameChange = (e) => {
-    const input = e.target.value.trim();
+    // 공백 제거
+    const input = e.target.value.replace(/(\s*)/g, "");
     setNickname(input);
   };
   // 변경 요청
@@ -58,7 +59,7 @@ const UserInfo = () => {
       <img className='ProfileLogoImg' src={require("../../asset/images/Profile/DeveloperMakerLogo.png")} alt="사진" />
       <img className='ProfileUserInfoImg' src={require("../../asset/images/Profile/Profile.png")} alt="사진" />
       {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInput' onInput={onNicknameChange}
-      type="text" value={nickname.trim()} maxLength="10" /> }
+      type="text" value={nickname} maxLength="10" /> }
       {mode? <p className='ProfileUserInfoData'>{UserInfo.language}</p> :
         <select defaultValue={language} key={language} onChange={onLanguageChange} className='ProfileUserInput'>
         {LanguageOptions.map((language, index) => (

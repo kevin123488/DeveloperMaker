@@ -66,7 +66,7 @@ const RadicalChart = () => {
   },[])
 
   return (
-    <div className='ProfileRadarChart'>
+    <div className='ProfileRadicalChart'>
       <Radar data={data} options={config} />    
     </div> 
   );
