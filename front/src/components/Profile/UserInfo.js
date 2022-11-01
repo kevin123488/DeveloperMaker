@@ -13,7 +13,10 @@ const UserInfo = () => {
   // 이름
   const [nickname, setNickname] = useState(UserInfo.nickname)
   // 언어 값
-  const [language, setLanguage] = useState(UserInfo.language)
+  const [language, setLanguage] = useState(()=> {
+    if(UserInfo.language === "C++") {
+      return "C"
+    } else {return (UserInfo.language)} })
   // 언어
   const LanguageOptions = [
     { value: "JAVA", print: "Java" },
@@ -25,6 +28,14 @@ const UserInfo = () => {
   const changeMode = () => {
     setMode(!mode)
   }
+  // 수정 중 취소시 값 초기화
+  const reset = () => {
+    setNickname(UserInfo.nickname)
+    setLanguage(()=> {
+      if(UserInfo.language === "C++") {
+        return "C"
+      } else {return (UserInfo.language)} })
+  }
   // 이름 언어 변경
   const onLanguageChange = (e) => {
     const { value } = e.target;
@@ -32,7 +43,7 @@ const UserInfo = () => {
   }
   // 닉네임 변경
   const onNicknameChange = (e) => {
-    const input = e.target.value;
+    const input = e.target.value.trim();
     setNickname(input);
   };
   // 변경 요청
@@ -44,26 +55,21 @@ const UserInfo = () => {
 
   return (
     <div className='ProfileUserInfo'>
+      <img className='ProfileLogoImg' src={require("../../asset/images/Profile/DeveloperMakerLogo.png")} alt="사진" />
       <img className='ProfileUserInfoImg' src={require("../../asset/images/Profile/Profile.png")} alt="사진" />
-      <div>
-        <div className='ProfileUserInfoLine' >          
-          {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInfoData' onInput={onNicknameChange} type="text" value={nickname.trim} /> }
-        </div>
-        <div className='ProfileUserInfoLine'>
-          {mode? <p className='ProfileUserInfoData'>{UserInfo.language}</p> :
-            <select value={language} onChange={onLanguageChange} className='ProfileUserInfoData'>
-            {LanguageOptions.map((language, index) => (
-              <option key={`language-${index}`} value={language.value}>
-                {language.print}
-              </option>
-            ))}
-          </select> }
-        </div>
-        <div className='ProfileUserInfoLine'>
-          {!mode && <button className='ProfileUserInfoBtn' onClick={()=> {putUserInfo(nickname, language)}} >변경</button>}
-          <button className='ProfileUserInfoBtn' onClick={changeMode}>{mode? "수정": "취소"}</button>
-        </div>
-      </div>
+      {mode? <p className='ProfileUserInfoData'>{UserInfo.nickname}</p> : <input className='ProfileUserInput' onInput={onNicknameChange}
+      type="text" value={nickname.trim()} maxLength="10" /> }
+      {mode? <p className='ProfileUserInfoData'>{UserInfo.language}</p> :
+        <select defaultValue={language} key={language} onChange={onLanguageChange} className='ProfileUserInput'>
+        {LanguageOptions.map((language, index) => (
+          <option key={`language-${index}`} value={language.value}>
+            {language.print}
+          </option>
+        ))}
+      </select> }
+      <button className='btn btn-danger ProfileUserInfoBtn' onClick={()=>{
+        if (mode) {changeMode()}  else {reset(); changeMode(); }}}>{mode? "정보수정": "취소"}</button>
+      {!mode && <button className='btn btn-danger ProfileUserInfoBtn' onClick={()=> {putUserInfo(nickname, language)}} >수정</button>}
     </div>
   );
 };

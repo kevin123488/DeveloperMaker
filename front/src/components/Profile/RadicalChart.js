@@ -1,15 +1,15 @@
-import React from 'react';
-import { useSelector } from 'react-redux/es/exports';
+import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import "chart.js/auto"; // import 안하면 차트 오류남
 import { Radar } from "react-chartjs-2"; // 차트종류
 import "../../pages/Profile/Profile.css"
+import { getProgress } from '../../slices/userSlice';
 
 const RadicalChart = () => {
+  const dispatch = useDispatch()
   const progress = useSelector((state)=>{
-    console.log(state.user.userInfo)
     return state.user.userInfo.progressDto
   })
-  console.log(progress)
   // 자율학습 진행도
   const data = {
     labels: [
@@ -60,6 +60,10 @@ const RadicalChart = () => {
       }
     },
   }
+  // 유저 DTO 업데이트
+  useEffect(()=> {
+    dispatch(getProgress())
+  },[])
 
   return (
     <div className='ProfileRadarChart'>

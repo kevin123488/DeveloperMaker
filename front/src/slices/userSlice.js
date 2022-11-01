@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
 
@@ -42,7 +42,10 @@ export const getUser = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getUserInfo();
-      console.log(data);
+      // C로 저장되어 있으면 C++로 변경
+      if (data.data.language === "C") {
+        data.data.language = "C++"
+      }
       return data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -53,6 +56,23 @@ export const getUser = createAsyncThunk(
     }
   }
 );
+
+export const getProgress = createAsyncThunk(
+  "user/progress",
+  async (temp, {rejectWithValue}) => {
+    try {
+      const {data} = await studyProgress()
+      return data.data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
 
 const initialState = {
   userInfo: null,
@@ -73,12 +93,15 @@ const userSlice = createSlice({
     },
     // 설정 변경
     changeInfo: (state, action) => {
-      console.log("리듀서 내 변경 요청",action.payload)
       // DB 변경 요청
       putUserInfo(action.payload)
       // Redux 변경
+      if (action.payload.language === "C") {
+        state.userInfo.language = "C++"
+      } else { 
+        state.userInfo.language = action.payload.language
+      }
       state.userInfo.nickname = action.payload.nickname
-      state.userInfo.language = action.payload.language
     }
   },
   extraReducers: (builder) => {
@@ -105,7 +128,10 @@ const userSlice = createSlice({
         state.error = payload.data;
         state.isLogIn = false;
       })
-      .addCase(PURGE, () => initialState);
+      .addCase(PURGE, () => initialState)
+      .addCase(getProgress.fulfilled, (state, {payload})=>{
+        state.userInfo.progressDto = payload
+      })
   },
 });
 

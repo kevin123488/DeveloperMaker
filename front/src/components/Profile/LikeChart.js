@@ -38,13 +38,19 @@ const LikeChart = (props) =>{
       }
     }
   };
-
   if (show) {
-    return (
-      <div className="ProfileAlbumChartWidth">  
-        <PolarArea data={likeData} options={config}  />
-      </div>
-    )
+    if (data.chapter === 1 && data.num === 0) {
+      return(
+        <span className="ProfileAlbumChartWidth badge bg-secondary">{data.slot}번 슬롯의 저장 정보가 없습니다.</span>
+      )
+    }
+    else {
+      return (
+        <div className="ProfileAlbumChartWidth">  
+          <PolarArea data={likeData} options={config}  />
+        </div>
+      )
+    }
   }
 }
 

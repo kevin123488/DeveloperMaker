@@ -19,10 +19,10 @@ const Profile = () => {
   return (
     <div className='ProfileBack'>
       <UserInfo />
-      <RadicalChart />
       <div className='ProfileAlbumChart'>
         <StoryAlbumChart />
         <StudyAlbumChart />
+        <RadicalChart />
       </div>
       {/* 데이터별 진행도 */}
       <div className="ProfileLikeChart">
