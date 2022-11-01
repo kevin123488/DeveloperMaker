@@ -2,12 +2,23 @@ import React, {useRef, useEffect, useState} from "react";
 import "./SelfStudy.css";
 import * as htmlToImage from 'html-to-image';
 import Webcam from "react-webcam";
+import styled from "styled-components";
+import background from "../../asset/images/SelfstudyImg/InterviewBackground.png";
 // import { toBlob} from 'html-to-image';
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
 // import { Link } from 'react-router-dom';
 
+const InterviewBlock = styled.div`
+  position: related;
+  display: ;
+  height: 100vh;
+  width: 100vw;
+  /* background-color: #352208; */
+  background: url(${background}) center no-repeat;
+  background-size: 100vw 100vh;
+`;
 
 const videoConstraints = {
   width: 1280,
@@ -61,15 +72,18 @@ const LangFrameStudy = () => {
   );
   return (
     <>
-      <Webcam
-        audio={false}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        videoConstraints={videoConstraints}
-      />
-      <button onClick={capture}>Capture photo</button>
-      <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
-      <button onClick={saveCam}>백으로</button>
+      <InterviewBlock>
+        <Webcam
+          className="interviewCam"
+          audio={false}
+          ref={webcamRef}
+          screenshotFormat="image/jpeg"
+          videoConstraints={videoConstraints}
+        />
+        <button onClick={capture}>Capture photo</button>
+        <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
+        <button onClick={saveCam}>백으로</button>
+      </InterviewBlock>
     </>
   );
 };
