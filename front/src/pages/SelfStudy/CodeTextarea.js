@@ -11,7 +11,7 @@ const CodeTextarea = (prop) => {
     <CodeEditor
       value={code}
       language={prop.lang}
-      placeholder="Please enter code."
+      placeholder="코드를 작성해주세요."
       onChange={(evn) => 
         {
           setCode(evn.target.value)
@@ -22,7 +22,7 @@ const CodeTextarea = (prop) => {
       style={{
         fontSize: 12,
         backgroundColor: "#f5f5f5",
-        fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
+        fontFamily: 'Jua, sans-serif',
         marginLeft: "55vw",
         width: "40vw",
         height: "80vh",
