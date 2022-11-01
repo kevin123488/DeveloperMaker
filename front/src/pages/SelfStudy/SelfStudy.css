@@ -1,6 +1,191 @@
+/* ==========스터디========== */
+.StudyContainer {
+  position: absolute;
+  width: 70vw;
+  height: 70vh;
+  top: 5vh;
+  left: 25vw;
+}
+
 .StudyCompnent {
+  text-align: center;
   height: 10vw;
-  border: 0.4em inset #009688;
+  border: 0.4em inset #e2fffc;
   margin: 1vw;
-  /* background-color: black; */
+  margin-top: 1vh;
+  background-color: white;
+  cursor: pointer;
+}
+.showingMarkdown {
+  height: 60vh;
+  width: 70vw;
+  border: 0.4em solid #ddfffc;
+  margin: 0 auto;
+  margin-top: 10vh;
+  overflow: scroll;
+  background-color: white;
+}
+
+.showingMarkdown::-webkit-scrollbar {
+  width: 0.5vw;
+  height: 0;
+  background-color: white;
+}
+.showingMarkdown::-webkit-scrollbar-thumb {
+  background-color: #a5fffe;
+  border-radius: 20px;
+}
+.showingMarkdown::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  background-color: #ebffff;
+}
+
+.paginationBar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10vh;
+  width: 20vw;
+  margin-top: 10vh;
+  background-color: white;
+}
+.paginationItem {
+  font-size: 2vw;
+  margin: 1vw;
+  cursor: pointer;
+}
+.subjectbar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -5vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10vh;
+  width: 20vw;
+  margin-top: 10vh;
+  /* background-color: white; */
+}
+.subjectItem {
+  font-size: 2vw;
+  margin: 1vw;
+  cursor: pointer;
+}
+.studyItems {
+  margin-top: 15vh;
+}
+/* ==========스터디 끝========== */
+
+
+/* ==========퀴즈 css========== */
+.QuizContainer {
+  position: absolute;
+  top: 5vh;
+  left: 25vw;
+  width: 70vw;
+}
+
+.showingQuiz {
+  position: relative;
+  height: 60vh;
+  width: 70vw;
+  border: 0.4em solid #ddfffc;
+  margin: 0 auto;
+  margin-top: 10vh;
+  overflow: scroll;
+  background-color: white;
+}
+
+.showingQuiz::-webkit-scrollbar {
+  width: 0.5vw;
+  height: 0;
+  background-color: white;
+}
+.showingQuiz::-webkit-scrollbar-thumb {
+  background-color: #a5fffe;
+  border-radius: 20px;
+}
+.showingQuiz::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  background-color: #ebffff;
+}
+
+.quizcomp-1 {
+  text-align: center;
+  height: 10vw;
+  border: 0.4em inset #e2fffc;
+  margin: 1vw;
+  background-color: rgb(255, 0, 0);
+  cursor: pointer;
+}
+
+.quizcomp0 {
+  text-align: center;
+  height: 10vw;
+  border: 0.4em inset #e2fffc;
+  margin: 1vw;
+  background-color: white;
+  cursor: pointer;
+}
+
+.quizcomp1 {
+  text-align: center;
+  height: 10vw;
+  border: 0.4em inset #e2fffc;
+  margin: 1vw;
+  background-color: rgb(0, 0, 255);
+  cursor: pointer;
+}
+
+.quizcomp2 {
+  text-align: center;
+  height: 10vw;
+  border: 0.4em inset #e2fffc;
+  margin: 1vw;
+  background-color: rgb(255, 132, 0);
+  cursor: pointer;
+}
+
+.QuizCompnent {
+  text-align: center;
+  height: 7vw;
+  border: 0.4em inset #e2fffc;
+  margin: 1vw;
+  background-color: white;
+  cursor: pointer;
+}
+
+.CloseQuiz {
+  position: absolute;
+  text-align: center;
+  top: 1vh;
+  font-size: 2vw;
+  right: 2vw;
+  height: 2vw;
+  width: 1vw;
+  background-color: white;
+  cursor: pointer;
+}
+
+.form-chek, .form-radio{display: inline-block; line-height: 20px; vertical-align: middle;}
+.form-chek::before, .form-radio::before{content: ""; display: inline-block; width: 10px; height: 10px; background: #ffffff; border: 1px solid #e0e0e0; margin-right: 8px;}
+.form-radio::before{border-radius: 50%;}
+.input-chek, .input-radio{display: none;}
+.input-chek:checked + .form-chek::before, .input-radio:checked + .form-radio::before{background: #749fbb;}
+.input-chek:checked + .form-chek, .input-radio:checked + .form-radio{color: #749fbb;}
+
+/* ========면접테스트======== */
+.interviewCam {
+  position: absolute;
+  top: 30vh;
+  left: 65vw;
+  width: 10vh;
+  width: 20vw;
 }
