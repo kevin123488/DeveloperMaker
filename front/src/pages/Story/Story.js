@@ -12,6 +12,7 @@ import script1_2 from "./scripts/script1_2.json"
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
+import { putAlbumList } from "../../slices/albumSlice";
 import { useNavigate } from "react-router-dom";
 import textBackground from "./talkingTab.png";
 import hamburger from "./Hamburger.png";
@@ -158,8 +159,8 @@ const StoryNonPassedModal = styled.div`
 
 const StoryNonpassedDiv = styled.div`
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 15%;
   transform: translate(-50%, -50%);
   height: 100vh;
   width: 30vw;
@@ -175,6 +176,18 @@ const StoryNonPassedText = styled.div`
   height: 15vh;
   width: 20vw;
   text-align: center;
+  background: red;
+  font-size: 2vw;
+`;
+
+const StoryGoSelfstudy = styled.div`
+  position: absolute;
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  height: 10vh;
+  width: 15vw;
+  background: red;
 `;
 
 const Story = () => {
@@ -291,6 +304,8 @@ const Story = () => {
       } else {
         console.log('통과했나?');
         // 통과했다면?
+        // 앨범 획득 넣어주고
+        dispatch(putAlbumList(scriptFile.current[scriptIndex.current].getAlbumNum));
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
         scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
         scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
@@ -431,6 +446,7 @@ const Story = () => {
       
       case 'changeScript':
         dispatch(getSelfStudyProgress());
+        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
         // 자율학습 진행도 받아옴 -> userProgress 값 변경 -> 그거 보고있던 useEffect에서 바뀜 감지
         // -> userProgress값과 현재 보고있는 스크립트의 selfStudyRequired값과 비교
         // userProgress값이 더 작으면? selfStudyNonPassed 값 true로 바꿈
@@ -528,9 +544,20 @@ const Story = () => {
           {/* </StoryTeller> */}
           {/* <StorySaveBox onClick={saveStory}></StorySaveBox> */}
           <StoryTextWrap>
-            <StoryTextBox onClick={nextScript}>
+            {
+              isQuestion || isOption
+              ?
+              <StoryTextBox>
+                <Typo scriptText={scriptText}/>
+              </StoryTextBox>
+              :
+              <StoryTextBox onClick={nextScript}>
+                <Typo scriptText={scriptText}/>
+              </StoryTextBox>
+            }
+            {/* <StoryTextBox onClick={nextScript}>
               <Typo scriptText={scriptText}/>
-            </StoryTextBox>
+            </StoryTextBox> */}
           </StoryTextWrap>
         </StoryBox>
         {
@@ -557,9 +584,14 @@ const Story = () => {
           <StoryNonPassedModal>
             <StoryNonpassedDiv>
               <StoryNonPassedText>
-                자율학습 당장 해오도록 하세요
+                자율학습의 {scriptFile.current[scriptIndex.current].whichSelfStudy} 항목으로 가서 진행도를 
+                {scriptFile.current[scriptIndex.current].selfStudyRequired[scriptFile.current[scriptIndex.current].whichSelfStudy]}
+                %까지 채우도록 하세요
               </StoryNonPassedText>
             </StoryNonpassedDiv>
+            <StoryGoSelfstudy>
+              자율학습 가기
+            </StoryGoSelfstudy>
           </StoryNonPassedModal>
           : null
         }
