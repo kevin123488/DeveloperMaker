@@ -7,10 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CoteDto {
-
-    private String title;
-    private String problem;
-    private Boolean correct;
-
+public class CoteListRequestDto {
+    private int offset;
+    private int limit;
 }
