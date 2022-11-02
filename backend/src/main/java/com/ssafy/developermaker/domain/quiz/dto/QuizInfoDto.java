@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -12,6 +14,6 @@ import lombok.Setter;
 public class QuizInfoDto {
     private String title;
     private String problem;
-    private String example;
+    private String[] example;
     private Integer correct;
 }
