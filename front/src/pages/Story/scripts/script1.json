@@ -1,0 +1,443 @@
+[
+  {
+    "idx": 0,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "싸피에서의 모든 2학기 프로젝트가 끝나고, 강의장으로 이동하는 셔틀버스 안",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 1,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"이제 끝, 아니 시작인가.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 2,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "취준은 개인전이라는 말을 들어본 적이 있다. 한학기동안 팀으로 지냈다 보니, 남은 준비기간은 혼자서 보내야한다는 불안감이 더욱 크게 다가온다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 3,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"그래도 나정도면 제법\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 4,
+    "scriptType": "text",
+    "storyTeller": "서한솔",
+    "text": "\"제법 별로지\"",
+    "centerImageUrl": "seohansol",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 5,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"ㅋㅋ\"",
+    "centerImageUrl": "seohansol",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 6,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "그 후 몇 차례 쓸데없는 대화가 오간다. 몇분 뒤, 버스 창 밖에 ssafy 건물이 보이기 시작한다.",
+    "centerImageUrl": "seohansol",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 7,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"이 풍경을 볼 날도 얼마 안남았구나\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 8,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"교육생 여러분들, 하차하실게요.\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 9,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "버스에서 내리자, 교육프로님이 우리를 반긴다.",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "bus",
+    "plusIndex": 1
+  },
+  {
+    "idx": 10,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"교육생 여러분. 좋은 아침입니다.\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 11,
+    "scriptType": "text",
+    "storyTeller": "일동",
+    "text": "\"안녕하세요! 좋은 아침입니다!\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 12,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"지난주에 자율 프로젝트가 종료됐죠? 기분이 어떠신가요?\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 13,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"시원섭섭합니다.\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 14,
+    "scriptType": "text",
+    "storyTeller": "서한솔",
+    "text": "\"후련해요\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "seohansol",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 15,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"지금까지 넘어온 고비가 많았을거라 생각합니다. 이제 몇 개의 고비가 남았죠?\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "seohansol",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 16,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"이제 단 하나의 고비만 남았죠. 취업이라는\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 17,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"그 고비의 수는, 지금부터 여러분이 어떻게 시간을 보내느냐에 따라 바뀔 겁니다.\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 18,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "맞는 말이다. 포트폴리오가 몇 개 채워졌을 뿐, 세상이 원하는 개발자가 되었다는 생각은 들지 않는다. 지금부터 또 다시 달려야 한다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 19,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"그러나 교육생 여러분이라면 잘 해낼거라 생각합니다.\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 20,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"남은 한달이라는 기간 동안, 각자 잘 준비해서 원하는 결과를 얻길 바랍니다!\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 21,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "가슴이 살짝 뜨거워진다. 미소녀 캐릭터들로 자율 프로젝트를 꾸미던 때와 동등하거나 살짝 아래인 수준으로 말이다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 22,
+    "scriptType": "text",
+    "storyTeller": "교육프로",
+    "text": "\"그럼 각자 자리로 이동해주세요\"",
+    "centerImageUrl": "pro",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 23,
+    "scriptType": "text",
+    "storyTeller": "교육생들",
+    "text": "\"네!\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "lobby",
+    "plusIndex": 1
+  },
+  {
+    "idx": 24,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "한학기동안 동고동락했던 강의실에 도착했다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+  {
+    "idx": 25,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"여기로 출석하는것도 얼마 안 남았구나\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+  {
+    "idx": 26,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "주변을 살짝 둘러보다 자리에 찾는다. 자리는 자율 프로젝트 팀원과 함께 앉아야 한다고 한다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+  {
+    "idx": 27,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"어디보자… 내 자리가 어디였더라?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+  {
+    "idx": 28,
+    "scriptType": "choice",
+    "text": "자리가 어디였을까?",
+    "option": [
+      {
+        "name": "서봄",
+        "nextScript": "script1_1"
+      },
+      {
+        "name": "차가을",
+        "nextScript": "script1_2"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  },
+
+  {
+    "idx": 28,
+    "scriptType": "question",
+    "storyTeller": "",
+    "text": "문제입니다",
+    "questionNum": 1,
+    "optionNum": 4,
+    "questionOptions": [
+      "선택지1",
+      "선택지2",
+      "선택지3",
+      "선택지4"
+    ],
+    "questionUrl": "",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 3,
+    "scriptType": "questionResult",
+    "resultList": [
+      {
+        "scriptType": "text",
+        "text": "조금멍청하네요",
+        "character": "subom",
+        "score": 1,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 3
+      },
+      {
+        "scriptType": "text",
+        "text": "똑똑하네요",
+        "character": "subom",
+        "score": 3,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 1
+      },
+      {
+        "scriptType": "text",
+        "text": "멍청하네요",
+        "character": "subom",
+        "score": 0,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 3
+      },
+      {
+        "scriptType": "text",
+        "text": "조금 똑똑하네요",
+        "character": "subom",
+        "score": 2,
+        "centerImageUrl": "a",
+        "LeftImageUrl2": "a",
+        "RightImageUrl3": "a",
+        "backgroundImageUrl": "a",
+        "plusIndex": 1
+      }
+    ]
+  },
+  {
+    "idx": 4,
+    "scriptType": "text",
+    "text": "니가좋아",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 5,
+    "scriptType": "changeScript",
+    "nextScript": "script1_1",
+    "text": "니가좋아",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 6,
+    "scriptType": "text",
+    "text": "니가싫어",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  },
+  {
+    "idx": 7,
+    "scriptType": "changeScript",
+    "nextScript": "script1_2",
+    "text": "니가싫어",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "a",
+    "plusIndex": 1
+  }
+  
+]

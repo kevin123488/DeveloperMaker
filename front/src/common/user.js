@@ -2,12 +2,34 @@ import axiosInstance from "./axios";
 
 export const loginKakao = async (data) => {
   const response = await axiosInstance.post("/user/kakao", data);
-  console.log("response", response);
   return response;
 };
 
+export const loginNaver = async (data) => {
+  const response = await axiosInstance.post("/user/naver", data);
+  return response
+}
+
 export const getUserInfo = async () => {
   const res = await axiosInstance.get("/user");
+  return res;
+};
+
+export const putUserInfo = async (data) => {
+  // 데이터를 넣어보낼 폼데이터 생성
+  const formData = new FormData();
+  // 폼데이터에 유저 정보를 변경할 내용을 JSON으로 담기
+  formData.append(
+    'userDto',
+    new Blob([JSON.stringify(data)], { type: 'application/json' }),
+  );
+  // 헤더 추가
+  const config = {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  };
+  const res = await axiosInstance.put('/user', formData, config);
   return res;
 };
 
@@ -15,3 +37,8 @@ export const signUp = (data) => {
   const res = axiosInstance.put("/user/signup", data);
   return res;
 };
+
+export const studyProgress = () => {
+  const res = axiosInstance.get("/progress")
+  return res
+}
