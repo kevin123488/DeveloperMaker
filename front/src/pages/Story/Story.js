@@ -18,6 +18,7 @@ import hamburger from "./Hamburger.png";
 import saveIcon from "./saveIcon.png";
 import homeIcon from "./homeIcon.png";
 import slotIcon from "./slot.png";
+import seobomNonPass from "./seobom_nonpass.png";
 
 const StoryPage = styled.div`
   width: 100vw;
@@ -145,6 +146,37 @@ const StoryCharRight = styled.div`
   height: 90vh;
 `;
 
+const StoryNonPassedModal = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 100vw;
+  height: 100vh;
+`;
+
+const StoryNonpassedDiv = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 30vw;
+  background-image: url(${seobomNonPass});
+  background-size: 30vw 100vh;
+`;
+
+const StoryNonPassedText = styled.div`
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 15vh;
+  width: 20vw;
+  text-align: center;
+`;
+
 const Story = () => {
   const story =  useSelector((state) => {return state.story.userStoryData}); // 유저가 갖고있는 슬롯 3개의 데이터
   const slotIndex = useSelector((state) => {return state.story.selectedSlot}); // 몇번 슬롯 선택했는지 확인
@@ -158,7 +190,12 @@ const Story = () => {
   const [scriptInfo, changeScriptInfo] = useState(''); // 현재 보고있는 스크립트 한 단위
   const [saveStoryIdx, setSaveStoryIdx] = useState(0); // 저장해야 하는 부분의 인덱스
   const [storyInfo, changeStoryInfo] = useState(story[slotIndex-1]); // 저장 대상 관리 값
+  console.log(story);
+  console.log(slotIndex);
+  console.log(storyInfo);
   const scriptFileName = useRef(storyInfo.script); // 저장시 사용할 스크립트 파일 이름
+  console.log(storyInfo.script);
+  // const scriptFileName = useRef("script1"); // 저장시 사용할 스크립트 파일 이름
   const [storyObj, setStoryObj] = useState(storyInfo); // 저장 대상
   const firstRenderControl = useRef(false);
   const storyTeller = useRef('');
@@ -170,9 +207,12 @@ const Story = () => {
   const [hamburgerOpened, sethamburgerOpened] = useState(false);
   const navigate = useNavigate();
   // changeScript일 때 자율학습 진행도에 따라 보여줄 것
-  const [selfStudypassed, setselfStudypassed] = useState(false);
+  // const selfStudyNonpassed = useRef(false);
+  const [selfStudyNonpassed, setSelfStudyNonpassed] = useState(false);
   const selfStudyRequired = useRef(-1);
   const userProgress = useSelector((state) => {return state.study.progress}); // 유저의 자율학습 진행도 확인
+  const firstPassCheck = useRef(false);
+  const selfStudyNonpassedCheck = useRef(false);
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
@@ -220,6 +260,51 @@ const Story = () => {
     };
     firstRenderControl.current = true;
   }, [saveStoryIdx]);
+
+  useEffect(() => {
+    console.log('프로그래스 진척도 받아오나?')
+    if (firstPassCheck.current) {
+      console.log('이거 찍히는 것 같은데?');
+      let whichProgress = scriptFile.current[scriptIndex.current].whichSelfStudy;
+      console.log(whichProgress);
+      console.log(userProgress[whichProgress]);
+      console.log(scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]);
+      if (userProgress[whichProgress] < scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]) {
+        setSelfStudyNonpassed(true);
+        console.log('모달 띄워라');
+      } else {
+        setSelfStudyNonpassed(false);
+        console.log(userProgress);
+        console.log('스크립트 넘겨라');
+      }
+    } else {
+      console.log('스터디 논패스 여부 확인 안된 상황');
+    }
+    firstPassCheck.current = true;
+  }, [userProgress]);
+
+  useEffect(() => {
+    if (selfStudyNonpassedCheck.current) {
+      console.log('스터디 논패스 여부 변경 확인');
+      if (selfStudyNonpassed) {
+        console.log("통과 못했다는 모달 띄워줘야 함");
+      } else {
+        console.log('통과했나?');
+        // 통과했다면?
+        // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
+        scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
+        scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        // 스크립트 파일 이름을 바꿔주고
+        scriptIndex.current = 0
+        // 보여줄 부분 바꿔주고
+        increaseIndex.current = 1
+        // 인덱스 변화폭 세팅 기본값으로 넣어주고
+        // selfstudy 진행도 값 넣어주는 로직 필요
+        changeScript(scriptFile.current[scriptIndex.current].text)
+      }
+    }
+    selfStudyNonpassedCheck.current = true;
+  }, [selfStudyNonpassed])
 
   const [storyMap] = useState(
   { 
@@ -345,12 +430,26 @@ const Story = () => {
         break;
       
       case 'changeScript':
-        scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
-        scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
-        scriptIndex.current = 0
-        increaseIndex.current = 1
+        dispatch(getSelfStudyProgress());
+        // 자율학습 진행도 받아옴 -> userProgress 값 변경 -> 그거 보고있던 useEffect에서 바뀜 감지
+        // -> userProgress값과 현재 보고있는 스크립트의 selfStudyRequired값과 비교
+        // userProgress값이 더 작으면? selfStudyNonPassed 값 true로 바꿈
+        // selfStudyNonPassed 값을 if문에 사용. true면 통과 못한거니까 모달을 띄워주는거
+        // 실행시키면 될 것 같음
+        // selfStudyNonPassed 값이 false일 경우
+        // 텍스트 바꿔주는 로직 실행
+        // userProgress값이 더 작으면? 모달 하나 띄워주자(자율학습 갔다오세요)
+
+        // scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
+        // scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        // 스크립트 파일 이름을 바꿔주고
+        // scriptIndex.current = 0
+        // 보여줄 부분 바꿔주고
+        // increaseIndex.current = 1
+        // 인덱스 변화폭 세팅 기본값으로 넣어주고
         // selfstudy 진행도 값 넣어주는 로직 필요
-        changeScript(scriptFile.current[scriptIndex.current].text)
+        // changeScript(scriptFile.current[scriptIndex.current].text)
+
         // 이 시점에서도 저장 필요함
         // 자율학습 진행도 불러와서 비교, 일정 값 이상이면 패스해주는 로직 필요
         // if (자율학습 진행도 >= scriptFile.current[scriptIndex.current.hahanseun]) {
@@ -358,7 +457,7 @@ const Story = () => {
         // } else {
         //   대충 캐릭터가 "자율학습 더 풀고 오세요" 하는 화면으로 넘겨버리는 로직 추가 
         // }
-        dispatch(getSelfStudyProgress()); // 학습도 받아오고 useEffect 이용해서 값 변경될 때 비교 후 로직 수행
+        // 학습도 받아오고 useEffect 이용해서 값 변경될 때 비교 후 로직 수행
         break;
 
       case 'choice':
@@ -449,6 +548,19 @@ const Story = () => {
           <Option 
           scriptInfo={scriptInfo} 
           choiceNextScript={choiceNextScript} />
+          : null
+        }
+
+        {
+          selfStudyNonpassed
+          ?
+          <StoryNonPassedModal>
+            <StoryNonpassedDiv>
+              <StoryNonPassedText>
+                자율학습 당장 해오도록 하세요
+              </StoryNonPassedText>
+            </StoryNonpassedDiv>
+          </StoryNonPassedModal>
           : null
         }
     </StoryPage>
