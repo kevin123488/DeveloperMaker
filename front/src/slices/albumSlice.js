@@ -38,13 +38,20 @@ export const putAlbumList = createAsyncThunk(
 const album = createSlice({
   name: "album",
   // 앨범 리스트를 받을 시작 리스트
-  initialState: {albumList: []},
+  initialState: {
+    storyAlbumList: [],
+    studyAlbumList: [],
+    albumPickShow: false
+  },
   reducers: {
+    changeMode: (state, action) => {
+      state.albumPickShow = !state.albumPickShow
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(readAlbum.fulfilled, (state, action) => {
-        state.albumList = action.payload;
+        state.storyAlbumList = action.payload;
       })
       // // 거절됨
       // .addCase(readAlbum.rejected, (state, action) => {
