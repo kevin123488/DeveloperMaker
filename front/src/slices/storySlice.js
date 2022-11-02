@@ -70,7 +70,7 @@ const initialState = {
       "slot": 3,
     },
   ],
-  selectedSlot: 0, // 슬롯의 번호 1, 2, 3
+  selectedSlot: 1, // 슬롯의 번호 1, 2, 3
 };
 
 const storySlice = createSlice({
