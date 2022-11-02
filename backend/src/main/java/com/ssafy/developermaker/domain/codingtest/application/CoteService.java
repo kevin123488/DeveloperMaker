@@ -1,9 +1,9 @@
 package com.ssafy.developermaker.domain.codingtest.application;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteDto;
+import com.ssafy.developermaker.domain.codingtest.dto.CoteListRequestDto;
+import com.ssafy.developermaker.domain.codingtest.dto.CoteListResponseDto;
 import com.ssafy.developermaker.domain.codingtest.dto.CoteRequestDto;
 import com.ssafy.developermaker.domain.codingtest.entity.Cote;
-import com.ssafy.developermaker.domain.codingtest.entity.UserCote;
 import com.ssafy.developermaker.domain.codingtest.repository.CoteRepository;
 import com.ssafy.developermaker.domain.codingtest.repository.UserCoteRepository;
 import com.ssafy.developermaker.domain.user.entity.User;
@@ -11,20 +11,14 @@ import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -40,21 +34,18 @@ public class CoteService {
 //    @Value("${properties.file.JDoodle-secret}")
 //    private String clientSecret;
 
-    public List<CoteDto> getList(String email) {
+    public List<CoteListResponseDto> getList(String email, CoteListRequestDto coteListRequestDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        List<Cote> all = coteRepository.findAll();
-        List<CoteDto> coteDtos = new ArrayList<>();
+        PageRequest pageRequest = PageRequest.of(coteListRequestDto.getOffset(), coteListRequestDto.getLimit());
+        Page<Cote> page = coteRepository.findAll(pageRequest);
 
-        for (Cote cote : all) {
-            Optional<UserCote> userCoteOpt = userCoteRepository.findByUserAndCote(user, cote);
-            if (userCoteOpt.isPresent()) {
-                boolean correct = userCoteOpt.get().getCorrect();
-                coteDtos.add(cote.toDto(correct));
-            }
-        }
-        return coteDtos;
+        return page.stream().map(cote ->
+                new CoteListResponseDto(cote.getCoteId(), cote.getTitle(), cote.getProblem(),
+                        userCoteRepository.findByUserAndCote(user,cote).isPresent()
+                ? userCoteRepository.findByUserAndCote(user,cote).get().getCorrect() : 0))
+                .collect(Collectors.toList());
     }
 
     public String submitCote(String email, Long coteId, CoteRequestDto coteRequestDto) {
