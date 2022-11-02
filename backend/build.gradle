@@ -63,6 +63,9 @@ dependencies {
 
 	// komoran API
 	implementation 'com.github.shin285:KOMORAN:3.3.4'
+
+	// redis
+	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 }
 
 tasks.named('test') {
