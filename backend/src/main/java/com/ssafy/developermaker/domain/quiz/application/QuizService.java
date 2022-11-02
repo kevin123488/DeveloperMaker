@@ -44,7 +44,7 @@ public class QuizService {
 
         QuizDto quizDto = new QuizDto(quizListRequestDto.getCategory(), quizListRequestDto.getSubject(), page.getTotalElements() ,page.getTotalPages());
         List<QuizInfoDto> quizInfoDtoList = page.stream().map(quiz ->
-                new QuizInfoDto(quiz.getTitle(), quiz.getProblem(),
+                new QuizInfoDto(quiz.getQuizId(), quiz.getTitle(), quiz.getProblem(),
                         quiz.getExample().split("/"),
                         userQuizRepository.findByUserAndQuiz(user,quiz).isPresent()
                                 ?  userQuizRepository.findByUserAndQuiz(user,quiz).get().getCorrect() : 0))
