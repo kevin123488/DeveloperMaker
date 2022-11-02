@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QuizInfoDto {
+    private Long quizId;
     private String title;
     private String problem;
     private String[] example;
