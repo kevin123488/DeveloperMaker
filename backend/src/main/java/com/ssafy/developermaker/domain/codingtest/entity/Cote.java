@@ -27,6 +27,12 @@ public class Cote {
     @Column(nullable = false,length = 5000)
     private String problem;
 
+    @Column(nullable = true, length = 10000)
+    private String answerInput;
+    @Column(nullable = false, length = 1000)
+    private String answerOutput;
+
+
     public CoteDto toDto(Boolean correct) {
         return CoteDto.builder()
                 .no(this.no)
