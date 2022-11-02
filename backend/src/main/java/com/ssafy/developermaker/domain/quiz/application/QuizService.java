@@ -40,9 +40,12 @@ public class QuizService {
         PageRequest pageRequest = PageRequest.of(quizListRequestDto.getOffset(), quizListRequestDto.getLimit());
         Page<Quiz> page = quizRepository.findByCategoryAndSubject(pageRequest, quizListRequestDto.getCategory(), quizListRequestDto.getSubject());
 
+
+
         QuizDto quizDto = new QuizDto(quizListRequestDto.getCategory(), quizListRequestDto.getSubject(), page.getTotalElements() ,page.getTotalPages());
         List<QuizInfoDto> quizInfoDtoList = page.stream().map(quiz ->
-                new QuizInfoDto(quiz.getTitle(), quiz.getProblem(), quiz.getExample(),
+                new QuizInfoDto(quiz.getTitle(), quiz.getProblem(),
+                        quiz.getExample().split("/"),
                         userQuizRepository.findByUserAndQuiz(user,quiz).isPresent()
                                 ?  userQuizRepository.findByUserAndQuiz(user,quiz).get().getCorrect() : 0))
                 .collect(Collectors.toList());
