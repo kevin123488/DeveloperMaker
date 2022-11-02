@@ -1159,7 +1159,8 @@
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "a",
-    "selfStudyRequired": 15,
+    "selfStudyRequired": {"cs": 15},
+    "getAlbumNum": 2,
     "plusIndex": 1
   },
   {
