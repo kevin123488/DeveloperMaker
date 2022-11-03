@@ -1,6 +1,6 @@
 package com.ssafy.developermaker.domain.album.entity;
 
-import com.ssafy.developermaker.domain.album.dto.AlbumResponseDto;
+import com.ssafy.developermaker.domain.album.dto.AlbumDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,8 +25,21 @@ public class Album {
     @Column(nullable = false, length = 300)
     private String albumImg;
 
+    @Column(nullable = false, length = 30)
+    private String type;
 
-    public AlbumResponseDto toDto(Boolean isOwned, Double ownerRate) {
-        return AlbumResponseDto.builder().albumId(albumId).albumImg(albumImg).albumTitle(albumTitle).ownerRate(ownerRate).isOwned(isOwned).build();
+    @Column(length = 30)
+    private String theme;
+
+
+    public AlbumDto toDto(Boolean isOwned, Double ownerRate) {
+        return AlbumDto.builder()
+                .albumId(albumId)
+                .albumImg(albumImg)
+                .albumTitle(albumTitle)
+                .ownerRate(ownerRate)
+                .isOwned(isOwned)
+                .theme(theme)
+                .build();
     }
 }
