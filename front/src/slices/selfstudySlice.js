@@ -7,6 +7,7 @@ import {
   postQuizSolveApi,
   getCodingTestListApi,
   getSelfStudyProgressApi,
+  postCodingTestSolveApi,
 } from "../common/selfstudy";
 
 
@@ -16,7 +17,6 @@ export const getStudyInfo = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getStudyInfoApi();
-      console.log(data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -69,6 +69,7 @@ export const getQuizList = createAsyncThunk(
   async (quizRequestDto, { rejectWithValue }) => {
     try {
       const { data } = await getQuizListApi(quizRequestDto);
+      console.log("퀴즈리스트 슬라이스", data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -102,6 +103,24 @@ export const getCodingTestList = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getCodingTestListApi();
+      console.log(data)
+      return data.data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const postCodingTestSolve = createAsyncThunk(
+  "cote/solve",
+  async (solveInfo, { rejectWithValue }) => {
+    try {
+      const { data } = await postCodingTestSolveApi(solveInfo);
+      console.log(data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -132,8 +151,8 @@ export const getSelfStudyProgress = createAsyncThunk(
 
   
 const initialState = {
-  studyList: {studyInfo: [1, 2]},
-  studyInfo:  [
+  studyList: {studyInfo: []},
+  studyInfo: [
     {
       "category": "ㅇㅂㅇ",
       "subjectList": [
@@ -178,37 +197,82 @@ const initialState = {
       ]
     }
   ],
-  quizList: [
+  quizList: {quizInfo: []},
+  // [
+  //   {
+  //     "quizId": 1,
+  //     "no": 1,
+  //     "subject": "네트워크",
+  //     "title": "가나다라",
+  //     "problem": "다음 중, '가'를 고르시오.",
+  //     "example": [
+  //       "가",
+  //       "나",
+  //       "다",
+  //       "라",
+  //     ],
+  //     "correct": 2
+  //   },
+  //   {
+  //     "quizId": 2,
+  //     "no": 2,
+  //     "subject": "네트워크",
+  //     "title": "가나다라2",
+  //     "problem": "다음 중 '나'를 고르시오",
+  //     "example": [
+  //       "가",
+  //       "나",
+  //       "다",
+  //       "라",
+  //     ],
+  //     "correct": 0
+  //   }
+  // ],
+  quizInfo: [
     {
-      "quizId": 1,
-      "no": 1,
-      "subject": "네트워크",
-      "title": "가나다라",
-      "problem": "다음 중, '가'를 고르시오.",
-      "example": [
-        "가",
-        "나",
-        "다",
-        "라",
-      ],
-      "correct": 2
+      "category": "ㅇㅂㅇ",
+      "subjectList": [
+        {
+            "subject": "network",
+            "count": 4
+        },
+        {
+            "subject": "computer",
+            "count": 2
+        },
+        {
+            "subject": "database",
+            "count": 3
+        }
+      ]
     },
     {
-      "quizId": 2,
-      "no": 2,
-      "subject": "네트워크",
-      "title": "가나다라2",
-      "problem": "다음 중 '나'를 고르시오",
-      "example": [
-        "가",
-        "나",
-        "다",
-        "라",
-      ],
-      "correct": 0
+      "category": "BACKEND",
+      "subjectList": [
+        {
+            "subject": "spring",
+            "count": 2
+        },
+        {
+            "subject": "jpa",
+            "count": 1
+        }
+      ]
+    },
+    {
+      "category": "FRONTEND",
+      "subjectList": [
+        {
+            "subject": "react",
+            "count": 1
+        },
+        {
+            "subject": "vue",
+            "count": 1
+        }
+      ]
     }
   ],
-  quizInfo: [],
   coteList: [],
   progress: {},
 };

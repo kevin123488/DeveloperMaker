@@ -31,15 +31,21 @@ export const getQuizListApi = async (quizRequestDto) => {
 
 // 퀴즈 풀기
 export const postQuizSolveApi = async (solveInfo) => {
-  const res = await axiosInstance.post(`/quiz/${solveInfo.quizId}`, solveInfo.answer);
+  const res = await axiosInstance.post(`/quiz/submit`, solveInfo);
   return res;
 };
 
 
 
 // 코테 리스트 조회
-export const getCodingTestListApi = async () => {
-  const res = await axiosInstance.get("/cote");
+export const getCodingTestListApi = async (coteListRequestDto) => {
+  const res = await axiosInstance.get("/cote", coteListRequestDto);
+  return res;
+};
+
+// 코테 답 제출
+export const postCodingTestSolveApi = async (solveInfo) => {
+  const res = await axiosInstance.post(`/cote/${solveInfo}`);
   return res;
 };
 
