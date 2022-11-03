@@ -8,7 +8,7 @@ export const userLoginKakao = createAsyncThunk(
   async (access_token, { rejectWithValue }) => {
     try {
       const response = await loginKakao({ access_token });
-      sessionStorage.setItem("accessToken", response.data["token"]);
+      sessionStorage.setItem("accessToken", response.data["accessToken"]);
       console.log("data", response);
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -25,7 +25,7 @@ export const userLoginNaver = createAsyncThunk(
   async (access_token, {rejectWithValue}) => {
     try {
       const response = await loginNaver({access_token});
-      sessionStorage.setItem("accessToken", response.data["token"])
+      sessionStorage.setItem("accessToken", response.data["accessToken"])
       console.log("naver Data", response)
     } catch (error) {
       if (error.response && error.response.data.message) {
