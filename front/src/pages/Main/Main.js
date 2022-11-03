@@ -5,7 +5,9 @@ import Styled from "styled-components";
 import { useSelector } from "react-redux";
 import { SignupForm } from "../../components/Main/SignupForm";
 import Characters from "../../asset/images/Main/Characters.png";
-import MainLogo from "./developermakerLogo.png";
+// import { getNewAlbum} from "../../slices/albumSlice"
+// import { useEffect } from "react";
+import MainLogo from "../../asset/images/Main/developermakerLogo.png";
 import styled from "styled-components";
 
 
@@ -49,6 +51,12 @@ const CharacterImg = Styled.img`
 
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
+
+  // 새앨범 여부 확인
+  // const dispatch = useDispatch()
+  // useEffect(()=> {
+  //   dispatch(getNewAlbum())
+  // }, [])
 
   return (
     <>
