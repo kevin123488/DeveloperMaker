@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface UserAlbumRepository extends JpaRepository<UserAlbum, Long> {
-    Optional<UserAlbum> findAllByUserAndAlbum(User user, Album album);
+    Optional<UserAlbum> findByUserAndAlbum(User user, Album album);
     Long countByAlbum(Album album);
+
+    Optional<UserAlbum> findByUserAndAlbum_AlbumId(User user,Long albumId);
 }
