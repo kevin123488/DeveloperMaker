@@ -127,16 +127,18 @@ const SelfStudy = () => {
   useEffect(() => {
     dispatch(getSelfStudyProgress())
     dispatch(getStudyInfo())
-    // dispatch(getQuizInfo())
+    dispatch(getQuizInfo())
   }, [dispatch])
 
   return (
     <SelfStudyBlock>
-      <Type onClick={userGetStudy} style={{ textDecoration: "none", cursor: "pointer", }}>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <TypeLink to="/selfstudy/study" style={{ textDecoration: "none" }}>
         스터디
-      </Type>
-      <TypeLink to="/selfstudy/algo" style={{ textDecoration: "none" }}>
-        알고리즘
       </TypeLink>
       <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
         퀴즈

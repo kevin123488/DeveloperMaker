@@ -1,4 +1,13 @@
 /* ==========스터디========== */
+.CsStudyBackground {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: url(../../asset/images/SelfstudyImg/CsStudyBackground.png) center no-repeat;
+  background-size: 100% 100%;
+}
+
 .StudyContainer {
   position: absolute;
   width: 70vw;
@@ -7,6 +16,9 @@
   left: 25vw;
 }
 
+.StudyCompnentDiv{
+  margin-top: 10vh;
+}
 .StudyCompnent {
   text-align: center;
   height: 10vw;
@@ -17,13 +29,16 @@
   cursor: pointer;
 }
 .showingMarkdown {
-  height: 60vh;
+  position: absolute;
+  top: 0vh;
+  height: 70vh;
   width: 70vw;
   border: 0.4em solid #ddfffc;
   margin: 0 auto;
   margin-top: 10vh;
   overflow: scroll;
   background-color: white;
+  z-index: 100;
 }
 
 .showingMarkdown::-webkit-scrollbar {
@@ -52,7 +67,8 @@
   height: 10vh;
   width: 20vw;
   margin-top: 10vh;
-  background-color: white;
+  color: white;
+  /* background-color: white; */
 }
 .paginationItem {
   font-size: 2vw;
@@ -117,7 +133,7 @@
   background-color: #ebffff;
 }
 
-.quizcomp-1 {
+.quizcomp2 {
   text-align: center;
   height: 10vw;
   border: 0.4em inset #e2fffc;
@@ -144,15 +160,6 @@
   cursor: pointer;
 }
 
-.quizcomp2 {
-  text-align: center;
-  height: 10vw;
-  border: 0.4em inset #e2fffc;
-  margin: 1vw;
-  background-color: rgb(255, 132, 0);
-  cursor: pointer;
-}
-
 .QuizCompnent {
   text-align: center;
   height: 7vw;
@@ -163,11 +170,11 @@
 }
 
 .CloseQuiz {
-  position: absolute;
+  position: fixed;
   text-align: center;
-  top: 1vh;
-  font-size: 2vw;
-  right: 2vw;
+  top: 17vh;
+  font-size: 3vw;
+  right: 9vw;
   height: 2vw;
   width: 1vw;
   background-color: white;
@@ -188,4 +195,180 @@
   left: 65vw;
   width: 10vh;
   width: 20vw;
+}
+
+
+
+/* ========캐릭터들======= */
+.springCS{
+  position: fixed;
+  /* display: none; */
+  width: 25vw;
+  height: 70vh;
+  top: 15vh;
+  left: 0vw;
+}
+.spring{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 35vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDspring1.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+.spring:hover{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
+.fallAlgo {
+  position: absolute;
+  /* display: none; */
+  width: 25vw;
+  height: 70vh;
+  top: 15vh;
+  left: 19.5vw;
+}
+.fall{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 35vh;
+  left: 20vw;
+  background: url("../../asset/images/SelfstudyImg/SDfall11.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+.fall:hover{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 20vw;
+  background: url("../../asset/images/SelfstudyImg/SDfall21.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
+.summerBack {
+  position: absolute;
+  /* display: none; */
+  width: 25vw;
+  height: 70vh;
+  top: 15vh;
+  left: 39vw;
+}
+.summer{
+  position: absolute;
+  width: 25vw;
+  height: 80vh;
+  top: 30vh;
+  left: 38vw;
+  background: url("../../asset/images/SelfstudyImg/SDsummer1.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+.summer:hover{
+  position: absolute;
+  width: 25vw;
+  height: 80vh;
+  top: 25vh;
+  left: 38vw;
+  background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
+.winterFront{
+  position: absolute;
+  /* display: none; */
+  width: 25vw;
+  height: 70vh;
+  top: 15vh;
+  left: 59vw;
+}
+.winter{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 35vh;
+  left: 59vw;
+  background: url("../../asset/images/SelfstudyImg/SDwinter1.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+.winter:hover{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 59vw;
+  background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
+.heroLang{
+  position: absolute;
+  /* display: none; */
+  width: 25vw;
+  height: 70vh;
+  top: 15vh;
+  left: 79vw;
+}
+.hero{
+  position: absolute;
+  width: 24vw;
+  height: 80vh;
+  top: 30vh;
+  left: 76vw;
+  background: url("../../asset/images/SelfstudyImg/SDhero1.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
+}
+.hero:hover{
+  position: absolute;
+  width: 24vw;
+  height: 80vh;
+  top: 25vh;
+  left: 76vw;
+  background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  z-index: 100;
 }

@@ -44,10 +44,9 @@ const AlgoStudy = () => {
             {coteList.map((cote, index) => (
               <div key={index} className="col-3 StudyCompnent">
                 <p>
-                  <p></p>
-                  {cote.a}
+                  {cote.title}
                 </p>
-                <p>{cote.b}</p>
+                <p>{cote.problem}</p>
               </div>
             ))}
           </div>
@@ -60,6 +59,8 @@ const AlgoStudy = () => {
           <ul className="dropdown-menu">
             <li className="dropdown-item" onClick={() => {changeLang('py')}}>PYTHON</li>
             <li className="dropdown-item" onClick={() => {changeLang('java')}}>JAVA</li>
+            <li className="dropdown-item" onClick={() => {changeLang('C')}}>C언어</li>
+            <li className="dropdown-item" onClick={() => {changeLang('js')}}>JavaScrpit</li>
           </ul>
         </div>
 
