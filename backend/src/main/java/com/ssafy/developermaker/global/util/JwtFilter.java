@@ -1,7 +1,5 @@
 package com.ssafy.developermaker.global.util;
 
-import com.ssafy.developermaker.domain.user.entity.User;
-import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +14,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-import java.util.Optional;
 
 public class JwtFilter extends GenericFilterBean {
 
@@ -29,7 +26,7 @@ public class JwtFilter extends GenericFilterBean {
 
     private final TokenProvider tokenProvider;
 
-    public JwtFilter(TokenProvider tokenProvider,UserRepository userRepository) {
+    public JwtFilter(TokenProvider tokenProvider, UserRepository userRepository) {
         this.tokenProvider = tokenProvider;
         this.userRepository = userRepository;
     }
@@ -49,10 +46,6 @@ public class JwtFilter extends GenericFilterBean {
             Authentication authentication = tokenProvider.getAuthentication(jwt);
             // SecurityContext에 set 해준다.
             SecurityContextHolder.getContext().setAuthentication(authentication);
-
-//            String email = (String) authentication.getPrincipal();
-//            Optional<User> user = userRepository.findByEmail(email);
-//            if (!user.isPresent()) throw new UserNotFoundException();
 
             logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(), requestURI);
         } else {
