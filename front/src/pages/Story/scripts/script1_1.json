@@ -614,10 +614,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"최악, 최악, 절대로 최악이야\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -1159,7 +1159,8 @@
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "a",
-    "selfStudyRequired": 15,
+    "selfStudyRequired": {"cs": 15},
+    "getAlbumNum": 2,
     "plusIndex": 1
   },
   {
