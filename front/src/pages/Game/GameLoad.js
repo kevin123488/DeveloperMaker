@@ -108,7 +108,7 @@ const GameLoad = () => {
   const navigate = useNavigate();
   const story = useSelector((state) => state.story);
   const storySlots = story.userStoryData;
-  console.log(storySlots)
+  // console.log(storySlots)
   // story라는 이름의 reducer에 있는 state의 userStoryData를 story라는 변수에 넣어두자는 뜻
 
   const dispatch = useDispatch();
@@ -121,17 +121,17 @@ const GameLoad = () => {
   const startStory1 = () => {
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 1});
-    console.log("왜 스토리로 넘어가짐?")
+    // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory2 = () => {
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 2});
-    console.log("왜 스토리로 넘어가짐?")
+    // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory3 = () => {
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 3});
-    console.log("왜 스토리로 넘어가짐?")
+    // console.log("왜 스토리로 넘어가짐?")
   };
 
   useEffect(() => {
