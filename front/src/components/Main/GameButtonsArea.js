@@ -10,7 +10,6 @@ import AlbumBtnImg from "../../asset/images/Main/AlbumBtn.png";
 
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { persistor } from "../../index";
 
 const GameButtons = Styled.div`
   margin-top: 10%;
@@ -54,8 +53,8 @@ const GameButtonsArea = () => {
   const navigate = useNavigate();
 
   const purge = async () => {
+    await sessionStorage.clear();
     window.location.reload();
-    await persistor.purge();
   };
 
   // 이동 함수
@@ -92,7 +91,7 @@ const GameButtonsArea = () => {
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={async () => purge()}/>
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={purge}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (

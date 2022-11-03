@@ -40,7 +40,6 @@ const Album = () => {
         <button onClick={goPick}>뽑기</button>
         <button onClick={goMain}>메인 화면</button>
       </div>
-      {}
       <div>
         <button onClick={changeType}>스토리</button>
         <button onClick={changeType}>컬렉션</button>

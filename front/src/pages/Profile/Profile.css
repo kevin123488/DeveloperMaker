@@ -1,0 +1,130 @@
+/* ---------------------- Profile----------------------- */
+.ProfileBack {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+/* ::before 는 가상요소로 그 내용은 content, 그외의 요소들을 입력(배경만 투명도 낮출 때) */
+.ProfileBack::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.75;
+  z-index: -1;
+  content: "";
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/ProfileBack.png");
+}
+
+/* UserInfo */
+.ProfileUserInfo {
+  position: absolute;
+  top: 10vh;
+  left: 8vw;
+  width: 20vw;
+  height: 20vw *1.5;
+  border-radius: 5px;
+  background-color: antiquewhite;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileLogoImg {
+  /* 중앙정렬 */
+  margin: auto;
+  margin-top: 2vh;
+  display: block;
+  width: 20vw;
+  height: 20vw * 0.2;
+}
+.ProfileUserInfoImg {
+  /* 중앙정렬 */
+  margin: auto;
+  margin-top: 2vh;
+  display: block;
+  width: 10vw;
+  height: 20vh;
+  /* background-image: url("../../asset/images/Profile/Profile.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; */
+}
+.ProfileUserInfoData {
+  margin: auto;
+  padding: 0.1vw;
+  margin-top: 1.5vh;
+  width: max-content;
+  height: 3vh;
+  font-size: 1vw;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+}
+.ProfileUserInput {
+  display: block;
+  margin: auto;
+  height: 3vh;
+  margin-top: 1.5vh;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+}
+.ProfileUserInfoBtn {
+  margin-top: 1.5vh;
+  margin-left: auto;
+  float: right;
+}
+
+/* Chart */
+.ProfileProgressChart {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: 10vh;
+  left: 30vw;
+  width: 60vw;
+  height: 40vh;
+  background-color: antiquewhite;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileChart {
+  width: 15vw;
+  align-self: center;
+}
+.ProfileRadicalChart {
+  margin: auto;
+  width: 20vw;
+}
+.ProfileProgressFont {
+
+}
+.ProfileLikeBtn {
+  margin: 0.2vw;
+}
+
+.ProfileLikeChartBack {
+  position: absolute;
+  top: 55vh;
+  left: 30vw;
+  width: 60vw;
+  height: 40vh;
+}
+.ProfileLikeChart {
+  width: 60vw;
+  height: 35vh;
+  background-color: antiquewhite;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileLikeChartsize {
+  margin: auto;
+  width: 20vw;
+}
+
+.ProfileMain {
+  position: absolute;
+  left: 8vw;
+  bottom: 5vh;
+}
+

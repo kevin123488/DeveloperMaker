@@ -1,0 +1,30 @@
+.storyTeller {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  transform: translate(0%, -50%);
+  width: 10vw;
+  height: 5vh;
+  background: white;
+  border: 5px solid #79491e;
+  border-radius: 20px;
+}
+
+.storyTellerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 5vh;
+  width: 9vw;
+  height: 5vh;
+  text-align: center;
+  vertical-align: middle;
+  color: #79491e;
+  font-size: 1.2vw;
+  overflow: auto;
+}
+
+.storyTellerText::-webkit-scrollbar {
+  display: none;
+}
