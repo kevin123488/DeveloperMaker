@@ -28,4 +28,9 @@ public class AlbumController {
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.resistUserAlbum(email, albumId)));
     }
 
+    @GetMapping("/find/{albumId}")
+    @ApiOperation(value = "유저 앨범 체크", notes = "유저가 앨범을 가지고 있는지 확인")
+    public ResponseEntity<BaseResponseBody> findAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.findAlbum(email, albumId)));
+    }
 }
