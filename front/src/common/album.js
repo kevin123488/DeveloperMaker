@@ -17,3 +17,10 @@ export const albumCheck = async (albumId) => {
   console.log("album-check", response);
   return response;
 };
+
+export const getNewAlbum = async () => {
+  const response = await axiosInstance.get("/album/new")
+  console.log("get new Album")
+  return response
+}
+

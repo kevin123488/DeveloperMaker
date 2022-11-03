@@ -20,19 +20,11 @@ const StudyAlbumChart = () =>{
     events: [],
     cutout: 35, //  구멍 크기
     // responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        text: '자율학습 앨범 진행도'
-      },
-    },
   };
 
   return(
     <div className="ProfileChart">
+      <p className="ProfileStudyTitle">학습 앨범 진행도({progress}%)</p>
       <Doughnut data={data} options={options} />
     </div>
   )

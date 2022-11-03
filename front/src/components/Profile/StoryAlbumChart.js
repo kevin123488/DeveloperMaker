@@ -12,7 +12,6 @@ const StoryAlbumChart = () =>{
   const data = {
     datasets: [
       {
-        label: "스토리 앨범 진행도",
         data: [progress, 100-progress],
         // [data[1], data[0]]
         backgroundColor: ["#003B95", "#F2F7FF"],
@@ -21,20 +20,17 @@ const StoryAlbumChart = () =>{
   };
   const options = {
     cutout: 35, //  구멍 크기
+    borderColor: 'white',
+    // 폰트 컬러
+    color: "#003B95",
+    // 범례
+    // legend: {},
     // responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      title: {
-        display: true,
-        text: '스토리 앨범 진행도'
-      },
-    },
   };
 
   return(
     <div className="ProfileChart">
+      <p className="ProfileStoryTitle">스토리 앨범 진행도({progress}%)</p>
       <Doughnut data={data} options={options} />
     </div>
   )

@@ -10,7 +10,6 @@ import LangFrameSelfStudy from "./pages/SelfStudy/LangFrameSelfStudy.js";
 import Album from "./pages/Album/Album.js";
 import Story from "./pages/Story/Story.js";
 import GameLoad from "./pages/Game/GameLoad.js";
-import Pick from "./pages/Pick/Pick.js";
 import Profile from "./pages/Profile/Profile.js";
 import "bootstrap/dist/css/bootstrap.css";
 import store from "./slices/index.js";
@@ -45,7 +44,6 @@ root.render(
           <Route path='/Story' element={<Story />} />
           <Route path="/SelfStudy/lang-frame" element={<LangFrameSelfStudy />}/>
           <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
-          <Route path="/Pick" element={<Pick />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/SelfStudy/quiz" element={<Quiz />} />
         </Routes>

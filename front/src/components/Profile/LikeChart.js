@@ -16,7 +16,7 @@ const LikeChart = (props) =>{
   useEffect(()=>{
     setLikeData({ 
       labels: ['서봄', '한여름', '차가을', '한겨울'],
-      datasets: [{ label: `${data.slot}번 슬롯 호감도`,
+      datasets: [{
         data: [data.likeSpring, data.likeSummer, data.likeAutumn, data.likeWinter],
         backgroundColor: ['rgb(255, 99, 132)', 'rgb(75, 192, 192)', 'rgb(255, 205, 86)', 'rgb(201, 203, 207)']
       }]
@@ -26,29 +26,34 @@ const LikeChart = (props) =>{
   const config = {
     type: 'Bar',
     data: likeData,
-    options: {
-      title: {
-        display: true,
-        text: `${data.slot}번 호감도`
-      },
-      scales: {
-        y: {
-          beginAtZero: true
+    // 라벨 지우기
+    plugins: {
+      legend: {
+        display: false
+      }
+    },
+    scales: {
+      y: {
+        max: 10,
+        min: 0,
+        ticks: {
+          stepSize: 1
         }
       }
-    }
+    },
   };
   if (show) {
     if (data.chapter === 1 && data.num === 0) {
       return(
         <div className="ProfileLikeChart">
-          <span className="badge bg-secondary">{data.slot}번 슬롯의 저장 정보가 없습니다.</span>
+          <p className="ProfileLikeNoData">{data.slot}번 슬롯의 저장 정보가 없습니다.</p>
         </div>
       )
     }
     else {
       return (
         <div className="ProfileLikeChart">
+          <p className="ProfileLikeTitle">{data.slot}번 슬롯 호감도</p>
           <div className="ProfileLikeChartsize">
             <Bar data={likeData} options={config}  />
           </div>  

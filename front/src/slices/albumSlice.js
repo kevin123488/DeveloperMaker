@@ -24,7 +24,7 @@ export const putAlbumList = createAsyncThunk(
   async (albumId, { rejectWithValue }) => {
     try {
       const { response } = await albumCreate(albumId);
-      return response;
+      return response.data.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -52,20 +52,59 @@ export const getAlbumCheck = createAsyncThunk(
   }
 );
 
+// 새 앨범 여부 확인
+export const getNewAlbum = createAsyncThunk(
+  "album/new",
+  async(albumId, {rejectWithValue}) => {
+    try {
+      const {response} = await getNewAlbum()
+      return response.data.data
+    } catch (error) {
+        if (error.response && error.response.data.message) {
+          return rejectWithValue(error.response.data.message);
+        } else {
+          return rejectWithValue(error.message);
+        }
+      }
+    }
+  )
+
+
 const album = createSlice({
   name: "album",
   // 앨범 리스트를 받을 시작 리스트
-  initialState: {albumList: [], haveCheck: [false]},
+  initialState: {
+    storyAlbumList: [],
+    studyAlbumList: [],
+    albumPickShow: false,
+    newAlbum: {},
+    haveCheck: [false],
+  },
   reducers: {
+    changeMode: (state, action) => {
+      state.albumPickShow = !state.albumPickShow
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(readAlbum.fulfilled, (state, action) => {
-        state.albumList = action.payload;
+        state.studyAlbumList = action.payload.studyAlbumList
+        state.storyAlbumList = action.payload.storyAlbumList
       })
       .addCase(getAlbumCheck.fulfilled, (state, action) => {
         state.haveCheck = [action.payload];
         console.log(state.haveCheck);
+      })
+      .addCase(putAlbumList.fulfilled, async (state, action) => {
+        // 새 앨범 값 추가
+        state.newAlbum = action.payload
+        // 앨범 뽑는거 보여주기
+        state.albumPickShow = true
+        // 새롭게 해당 앨범 리스트의 is owned 변경을 해야함
+      })
+
+      .addCase(getNewAlbum.fulfilled, (state, action) => {
+        state.newAlbum = action.payload
       })
       // // 거절됨
       // .addCase(readAlbum.rejected, (state, action) => {
@@ -76,6 +115,7 @@ const album = createSlice({
       //   state.isLoading = true;
       //   console.log("Now Loading");
       // })
+      
   },
 });
 

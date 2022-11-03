@@ -26,7 +26,6 @@ const Profile = () => {
     <div className='ProfileBack'>
       <UserInfo />
       <div className='ProfileProgressChart'>
-        <span className='ProfileProgressFont'>진행도</span>
         <StoryAlbumChart />
         <StudyAlbumChart />
         <RadicalChart />
@@ -36,7 +35,7 @@ const Profile = () => {
         {[1,2,3].map((idx) => {return (<button className='btn btn-primary ProfileLikeBtn' key={`btn-${idx}`} onClick={()=>{setLikeSel(idx)}}>{idx}번</button>) })}
         {loadData.map((data,idx)=> {return (<LikeChart key={`LikeChart-${idx}`} data={data} show={likeSel === idx+1} />) })}
       </div>
-      <button className='ProfileMain btn btn-primary' onClick={goMain}>메인</button>
+      <button className='ProfileMainBtn btn btn-primary' onClick={goMain}>메인</button>
     </div>
   );
 };
