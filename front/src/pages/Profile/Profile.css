@@ -24,7 +24,7 @@
   top: 10vh;
   left: 8vw;
   width: 20vw;
-  height: 20vw *1.5;
+  height: 20* 1.5vw;
   border-radius: 5px;
   background-color: antiquewhite;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
@@ -44,15 +44,12 @@
   display: block;
   width: 10vw;
   height: 20vh;
-  /* background-image: url("../../asset/images/Profile/Profile.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat; */
 }
 .ProfileUserInfoData {
   margin: auto;
   padding: 0.1vw;
   margin-top: 1.5vh;
+  padding: 0.1vh;
   width: max-content;
   height: 3vh;
   font-size: 1vw;
@@ -87,19 +84,31 @@
   width: 60vw;
   height: 40vh;
   background-color: antiquewhite;
+  border-radius: 5px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
 .ProfileChart {
   width: 15vw;
+  margin-left: 1vw;
   align-self: center;
 }
+.ProfileStoryTitle {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #003B95;
+  max-width: 100%;
+}
+.ProfileStudyTitle {
+  font-size: 1.5vw;
+  text-align: center;
+  color: #D40000;
+}
+
 .ProfileRadicalChart {
   margin: auto;
   width: 20vw;
 }
-.ProfileProgressFont {
 
-}
 .ProfileLikeBtn {
   margin: 0.2vw;
 }
@@ -114,15 +123,40 @@
 .ProfileLikeChart {
   width: 60vw;
   height: 35vh;
+  margin: auto;
   background-color: antiquewhite;
+  border-radius: 5px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.ProfileLikeNoData {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  padding: 1vh;
+  width: max-content;
+  height: max-content;
+  font-size: 1vw;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+}
+.ProfileLikeTitle {
+  padding-top: 2vh;
+  margin-bottom: 0;
+  font-size: 1.5vw;
+  text-align: center;
+  color: purple
 }
 .ProfileLikeChartsize {
   margin: auto;
-  width: 20vw;
+  vertical-align: 50;
+  width: 28vw;
 }
 
-.ProfileMain {
+
+.ProfileMainBtn {
   position: absolute;
   left: 8vw;
   bottom: 5vh;
