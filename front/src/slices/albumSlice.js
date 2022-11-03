@@ -69,6 +69,7 @@ export const getNewAlbum = createAsyncThunk(
     }
   )
 
+
 const album = createSlice({
   name: "album",
   // 앨범 리스트를 받을 시작 리스트
@@ -77,6 +78,7 @@ const album = createSlice({
     studyAlbumList: [],
     albumPickShow: false,
     newAlbum: {},
+    haveCheck: [false],
   },
   reducers: {
     changeMode: (state, action) => {
