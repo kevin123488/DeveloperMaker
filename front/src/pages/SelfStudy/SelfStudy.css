@@ -13,7 +13,7 @@
   width: 70vw;
   height: 70vh;
   top: 5vh;
-  left: 25vw;
+  left: 22vw;
 }
 
 .StudyCompnentDiv{
@@ -67,7 +67,7 @@
   height: 10vh;
   width: 20vw;
   margin-top: 10vh;
-  color: white;
+  color: rgb(0, 0, 0);
   /* background-color: white; */
 }
 .paginationItem {
@@ -103,7 +103,7 @@
 .QuizContainer {
   position: absolute;
   top: 5vh;
-  left: 25vw;
+  left: 22vw;
   width: 70vw;
 }
 
@@ -203,10 +203,12 @@
 .springCS{
   position: fixed;
   /* display: none; */
+  opacity: 0.6;
   width: 25vw;
   height: 70vh;
   top: 15vh;
   left: 0vw;
+  transition: all ease 0.3s;
 }
 .spring{
   position: absolute;
@@ -216,8 +218,9 @@
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring1.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
   cursor: pointer;
+  opacity: 0.8;
   z-index: 100;
 }
 .spring:hover{
@@ -228,7 +231,20 @@
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.springSelected{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.5s;
   cursor: pointer;
   z-index: 100;
 }
@@ -238,10 +254,12 @@
 .fallAlgo {
   position: absolute;
   /* display: none; */
+  opacity: 0.6;
   width: 25vw;
   height: 70vh;
   top: 15vh;
   left: 19.5vw;
+  transition: all ease 0.3s;
 }
 .fall{
   position: absolute;
@@ -249,10 +267,11 @@
   height: 70vh;
   top: 35vh;
   left: 20vw;
-  background: url("../../asset/images/SelfstudyImg/SDfall11.png") center no-repeat;
+  background: url("../../asset/images/SelfstudyImg/SDfall1.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
   cursor: pointer;
+  opacity: 0.8;
   z-index: 100;
 }
 .fall:hover{
@@ -261,22 +280,36 @@
   height: 70vh;
   top: 30vh;
   left: 20vw;
-  background: url("../../asset/images/SelfstudyImg/SDfall21.png") center no-repeat;
+  background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.fallSelected{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.5s;
   cursor: pointer;
   z-index: 100;
 }
 
 
-
 .summerBack {
   position: absolute;
   /* display: none; */
+  opacity: 0.6;
   width: 25vw;
   height: 70vh;
   top: 15vh;
   left: 39vw;
+  transition: all ease 0.3s;
 }
 .summer{
   position: absolute;
@@ -286,8 +319,9 @@
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer1.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
   cursor: pointer;
+  opacity: 0.8;
   z-index: 100;
 }
 .summer:hover{
@@ -298,22 +332,37 @@
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.summerSelected{
+  position: absolute;
+  width: 25vw;
+  height: 80vh;
+  top: 25vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.5s;
   cursor: pointer;
   z-index: 100;
 }
 
 
-
 .winterFront{
   position: absolute;
   /* display: none; */
+  opacity: 0.6;
   width: 25vw;
   height: 70vh;
   top: 15vh;
   left: 59vw;
+  transition: all ease 0.3s;
 }
 .winter{
+  color: #80b9ff;
   position: absolute;
   width: 22vw;
   height: 70vh;
@@ -321,8 +370,9 @@
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter1.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
   cursor: pointer;
+  opacity: 0.8;
   z-index: 100;
 }
 .winter:hover{
@@ -333,20 +383,34 @@
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.winterSelected{
+  position: absolute;
+  width: 22vw;
+  height: 70vh;
+  top: 30vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.5s;
   cursor: pointer;
   z-index: 100;
 }
 
 
-
 .heroLang{
   position: absolute;
   /* display: none; */
+  opacity: 0.6;
   width: 25vw;
   height: 70vh;
   top: 15vh;
   left: 79vw;
+  transition: all ease 0.3s;
 }
 .hero{
   position: absolute;
@@ -356,8 +420,9 @@
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero1.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
   cursor: pointer;
+  opacity: 0.8;
   z-index: 100;
 }
 .hero:hover{
@@ -368,7 +433,59 @@
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
   background-size: 100% 100%;
-  transition: all ease 0.3s;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  opacity: 1;
+  z-index: 100;
+}
+.heroSelected{
+  position: absolute;
+  width: 24vw;
+  height: 80vh;
+  top: 25vh;
+  left: 0vw;
+  background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
+  background-size: 100% 100%;
+  transition: all ease 0.5s;
   cursor: pointer;
   z-index: 100;
+}
+
+
+/* 스터디, 퀴즈 선택 화면 */
+/* 스터디, 퀴즈 선택 화면 */
+/* 스터디, 퀴즈 선택 화면 */
+.choiceInfo {
+  position: absolute;
+  background-color: white;
+  top: 3vh;
+  left: 22vw;
+  width: 70vw;
+  height: 15vh;
+}
+
+.workContainer {
+  position: relative;
+  display: flex;
+  background-color: white;
+  margin-left: 22vw;
+  margin-top: 0vh;
+  left: 0vw;
+  width: 70vw;
+  height: 80vh;
+}
+.studySelectButton {
+  background-color: #749fbb;
+  text-align: center;
+  padding: 0;
+  line-height: 40vh;
+  cursor: pointer;
+}
+.quizSelectButton {
+  background-color: #797979;
+  text-align: center;
+  padding: 0;
+  display:table-cell;
+  line-height: 40vh;
+  cursor: pointer;
 }
