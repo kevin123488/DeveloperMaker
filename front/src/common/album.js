@@ -24,4 +24,3 @@ export const getNewAlbum = async () => {
   return response
 }
 
-

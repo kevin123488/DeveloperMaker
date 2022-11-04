@@ -7,6 +7,7 @@ import {
   postQuizSolveApi,
   getCodingTestListApi,
   getSelfStudyProgressApi,
+  postCodingTestSolveApi,
 } from "../common/selfstudy";
 
 
@@ -16,7 +17,8 @@ export const getStudyInfo = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getStudyInfoApi();
-      console.log(data)
+      console.log("스터디 정보",data)
+
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -34,7 +36,7 @@ export const getQuizInfo = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getQuizInfoApi();
-      console.log(data)
+      console.log("퀴즈정보",data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -51,6 +53,7 @@ export const getStudyList = createAsyncThunk(
   "study/info",
   async (studyRequestDto, { rejectWithValue }) => {
     try {
+      console.log("스터디정보요청", studyRequestDto)
       const { data } = await getStudyListApi(studyRequestDto);
       return data.data
     } catch (error) {
@@ -69,6 +72,7 @@ export const getQuizList = createAsyncThunk(
   async (quizRequestDto, { rejectWithValue }) => {
     try {
       const { data } = await getQuizListApi(quizRequestDto);
+      // console.log("퀴즈리스트 슬라이스", data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -99,9 +103,29 @@ export const postQuizSolve = createAsyncThunk(
 
 export const getCodingTestList = createAsyncThunk(
   "cote/list",
-  async (temp, { rejectWithValue }) => {
+  async (coteListRequestDto, { rejectWithValue }) => {
     try {
-      const { data } = await getCodingTestListApi();
+      console.log("코테리스트 요청", coteListRequestDto)
+
+      const { data } = await getCodingTestListApi(coteListRequestDto);
+      console.log("코테리스트", data)
+      return data.data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const postCodingTestSolve = createAsyncThunk(
+  "cote/solve",
+  async (solveInfo, { rejectWithValue }) => {
+    try {
+      const { data } = await postCodingTestSolveApi(solveInfo);
+      console.log(data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -132,8 +156,8 @@ export const getSelfStudyProgress = createAsyncThunk(
 
   
 const initialState = {
-  studyList: {studyInfo: [1, 2]},
-  studyInfo:  [
+  studyList: {studyInfo: []},
+  studyInfo: [
     {
       "category": "ㅇㅂㅇ",
       "subjectList": [
@@ -178,37 +202,82 @@ const initialState = {
       ]
     }
   ],
-  quizList: [
+  quizList: {quizInfo: []},
+  // [
+  //   {
+  //     "quizId": 1,
+  //     "no": 1,
+  //     "subject": "네트워크",
+  //     "title": "가나다라",
+  //     "problem": "다음 중, '가'를 고르시오.",
+  //     "example": [
+  //       "가",
+  //       "나",
+  //       "다",
+  //       "라",
+  //     ],
+  //     "correct": 2
+  //   },
+  //   {
+  //     "quizId": 2,
+  //     "no": 2,
+  //     "subject": "네트워크",
+  //     "title": "가나다라2",
+  //     "problem": "다음 중 '나'를 고르시오",
+  //     "example": [
+  //       "가",
+  //       "나",
+  //       "다",
+  //       "라",
+  //     ],
+  //     "correct": 0
+  //   }
+  // ],
+  quizInfo: [
     {
-      "quizId": 1,
-      "no": 1,
-      "subject": "네트워크",
-      "title": "가나다라",
-      "problem": "다음 중, '가'를 고르시오.",
-      "example": [
-        "가",
-        "나",
-        "다",
-        "라",
-      ],
-      "correct": 2
+      "category": "ㅇㅂㅇ",
+      "subjectList": [
+        {
+            "subject": "network",
+            "count": 4
+        },
+        {
+            "subject": "computer",
+            "count": 2
+        },
+        {
+            "subject": "database",
+            "count": 3
+        }
+      ]
     },
     {
-      "quizId": 2,
-      "no": 2,
-      "subject": "네트워크",
-      "title": "가나다라2",
-      "problem": "다음 중 '나'를 고르시오",
-      "example": [
-        "가",
-        "나",
-        "다",
-        "라",
-      ],
-      "correct": 0
+      "category": "BACKEND",
+      "subjectList": [
+        {
+            "subject": "spring",
+            "count": 2
+        },
+        {
+            "subject": "jpa",
+            "count": 1
+        }
+      ]
+    },
+    {
+      "category": "FRONTEND",
+      "subjectList": [
+        {
+            "subject": "react",
+            "count": 1
+        },
+        {
+            "subject": "vue",
+            "count": 1
+        }
+      ]
     }
   ],
-  quizInfo: [],
   coteList: [],
   progress: {},
 };
@@ -225,13 +294,17 @@ const selfstudySlice = createSlice({
       state.studyInfo = action.payload;
     })
     builder.addCase(getQuizList.fulfilled, (state, action) => {
+      console.log("퀴즈리스트 페이로드", action.payload)
       state.quizList = action.payload;
     })
     builder.addCase(getQuizInfo.fulfilled, (state, action) => {
       state.quizInfo = action.payload;
     })
     builder.addCase(getCodingTestList.fulfilled, (state, action) => {
-      state.coteList = action.payload;
+      const res = action.payload
+      res['quizInfo'] = action.payload.coteInfoList;
+      state.quizList = res
+      console.log('quizInfo', state.quizList)
     })
     builder.addCase(getSelfStudyProgress.fulfilled, (state, action) => {
       state.progress = action.payload

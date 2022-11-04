@@ -127,17 +127,21 @@ const SelfStudy = () => {
   useEffect(() => {
     dispatch(getSelfStudyProgress())
     dispatch(getStudyInfo())
-    // dispatch(getQuizInfo())
+    dispatch(getQuizInfo())
   }, [dispatch])
+
+  const goMain = () => {
+    navigate('/')
+  }
 
   return (
     <SelfStudyBlock>
-      <Type onClick={userGetStudy} style={{ textDecoration: "none", cursor: "pointer", }}>
-        스터디
-      </Type>
-      <TypeLink to="/selfstudy/algo" style={{ textDecoration: "none" }}>
-        알고리즘
-      </TypeLink>
+      <button onClick={goMain}>홈으로</button>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
       <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
         퀴즈
       </TypeLink>

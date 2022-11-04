@@ -12,7 +12,7 @@ import script1_2 from "./scripts/script1_2.json"
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
-import { putAlbumList } from "../../slices/albumSlice";
+import { putAlbumList, getAlbumCheck } from "../../slices/albumSlice";
 import { useNavigate } from "react-router-dom";
 import textBackground from "./talkingTab.png";
 import hamburger from "./Hamburger.png";
@@ -160,39 +160,54 @@ const StoryNonPassedModal = styled.div`
 const StoryNonpassedDiv = styled.div`
   position: absolute;
   top: 50%;
-  left: 15%;
+  left: 50%;
   transform: translate(-50%, -50%);
   height: 100vh;
-  width: 30vw;
+  width: 100vw;
   background-image: url(${seobomNonPass});
-  background-size: 30vw 100vh;
+  background-size: 100vw 100vh;
 `;
 
 const StoryNonPassedText = styled.div`
   position: absolute;
-  top: 15%;
-  left: 50%;
+  top: 24%;
+  left: 25%;
   transform: translate(-50%, -50%);
   height: 15vh;
   width: 20vw;
   text-align: center;
-  background: red;
   font-size: 2vw;
 `;
 
 const StoryGoSelfstudy = styled.div`
+  cursor: pointer;
   position: absolute;
   top: 80%;
   left: 80%;
   transform: translate(-50%, -50%);
   height: 10vh;
   width: 15vw;
+  text-align: center;
   background: red;
+`;
+
+const StoryGetAlbumModal = styled.div`
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 50vw;
+  height: 50vh;
+  background: black;
 `;
 
 const Story = () => {
   const story =  useSelector((state) => {return state.story.userStoryData}); // 유저가 갖고있는 슬롯 3개의 데이터
   const slotIndex = useSelector((state) => {return state.story.selectedSlot}); // 몇번 슬롯 선택했는지 확인
+  const userAlbumCheck = useSelector((state) => {return state.album.haveCheck}); // 추가하고자 하는 앨범 아이디가 사용자 보유 목록에 있는지 없는지 결과값
+  // console.log(userAlbumCheck);
   const dispatch = useDispatch();
   const scriptIndex = useRef(0); // 보여주고 있는 스크립트의 인덱스(num)
   const increaseIndex = useRef(1); // 인덱스 상승폭
@@ -203,13 +218,14 @@ const Story = () => {
   const [scriptInfo, changeScriptInfo] = useState(''); // 현재 보고있는 스크립트 한 단위
   const [saveStoryIdx, setSaveStoryIdx] = useState(0); // 저장해야 하는 부분의 인덱스
   const [storyInfo, changeStoryInfo] = useState(story[slotIndex-1]); // 저장 대상 관리 값
-  console.log(story);
-  console.log(slotIndex);
-  console.log(storyInfo);
+  // console.log(story);
+  // console.log(slotIndex);
+  // console.log(storyInfo);
   const scriptFileName = useRef(storyInfo.script); // 저장시 사용할 스크립트 파일 이름
-  console.log(storyInfo.script);
+  // console.log(storyInfo.script);
   // const scriptFileName = useRef("script1"); // 저장시 사용할 스크립트 파일 이름
   const [storyObj, setStoryObj] = useState(storyInfo); // 저장 대상
+  const storyObjCheck = useRef(false);
   const firstRenderControl = useRef(false);
   const storyTeller = useRef('');
   // 보여줄 이미지 관리
@@ -222,42 +238,48 @@ const Story = () => {
   // changeScript일 때 자율학습 진행도에 따라 보여줄 것
   // const selfStudyNonpassed = useRef(false);
   const [selfStudyNonpassed, setSelfStudyNonpassed] = useState(false);
+  const [selfStudyChanged, setSelfStudyChanged] = useState(0);
   const selfStudyRequired = useRef(-1);
   const userProgress = useSelector((state) => {return state.study.progress}); // 유저의 자율학습 진행도 확인
   const firstPassCheck = useRef(false);
   const selfStudyNonpassedCheck = useRef(false);
+  const userAlbumCheckfirst = useRef(false);
+  const [openAlbumGetModal, setOpenAlbumGetModal] = useState(false);
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
-    console.log(storyInfo)
+    // console.log(storyInfo)
     scriptFile.current = scripts[storyInfo.script]; // 스크립트 파일 교체(script라는 문자열로 옴)
     scriptIndex.current = storyInfo.num; // 스크립트 인덱스 교체
     changeScript(scriptFile.current[scriptIndex.current].text);
-    console.log(scriptIndex.current)
+    // console.log(scriptIndex.current)
     storyTeller.current = scriptFile.current[scriptIndex.current].storyTeller;
     backgroundImg.current = scriptFile.current[scriptIndex.current].backgroundImageUrl;
     leftCharImg.current = scriptFile.current[scriptIndex.current].LeftImageUrl2;
-    console.log(leftCharImg.current);
-    console.log(backgroundImg.current);
+    // console.log(leftCharImg.current);
+    // console.log(backgroundImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
   }, []);
 
   useEffect(() => {
-    console.log(scriptFile.current[scriptIndex.current].backgroundImageUrl);
+    // console.log(scriptFile.current[scriptIndex.current].backgroundImageUrl);
     increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex
-    console.log(scriptFile.current[scriptIndex.current].plusIndex);
+    // console.log(scriptFile.current[scriptIndex.current].plusIndex);
     backgroundImg.current = scriptFile.current[scriptIndex.current].backgroundImageUrl;
-    console.log(backgroundImg.current);
+    // console.log(backgroundImg.current);
     leftCharImg.current = scriptFile.current[scriptIndex.current].LeftImageUrl2;
-    console.log(leftCharImg.current);
+    // console.log(leftCharImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
   }, [scriptFile.current])
 
   useEffect(() => {
-    console.log("storyObj 변경되면 저장 로직 실행시키자")
-    dispatch(userPutMemory(storyObj));
+    if (storyObjCheck.current) {
+      console.log("storyObj 변경되면 저장 로직 실행시키자")
+      dispatch(userPutMemory(storyObj));
+    }
+    storyObjCheck.current = true;
   }, [storyObj]);
 
   // useEffect(() => {
@@ -267,7 +289,7 @@ const Story = () => {
   // }, [userProgress]);
 
   useEffect(() => {
-    console.log("saveStoryIdx 값 변경");
+    // console.log("saveStoryIdx 값 변경");
     if (firstRenderControl.current) {
       storyObjHandler(saveStoryIdx, scriptFileName.current);
     };
@@ -275,7 +297,7 @@ const Story = () => {
   }, [saveStoryIdx]);
 
   useEffect(() => {
-    console.log('프로그래스 진척도 받아오나?')
+    // console.log('프로그래스 진척도 받아오나?')
     if (firstPassCheck.current) {
       console.log('이거 찍히는 것 같은데?');
       let whichProgress = scriptFile.current[scriptIndex.current].whichSelfStudy;
@@ -284,14 +306,16 @@ const Story = () => {
       console.log(scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]);
       if (userProgress[whichProgress] < scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]) {
         setSelfStudyNonpassed(true);
+        setSelfStudyChanged(selfStudyChanged+1);
         console.log('모달 띄워라');
       } else {
         setSelfStudyNonpassed(false);
+        setSelfStudyChanged(selfStudyChanged+1);
         console.log(userProgress);
         console.log('스크립트 넘겨라');
       }
     } else {
-      console.log('스터디 논패스 여부 확인 안된 상황');
+      // console.log('스터디 논패스 여부 확인 안된 상황');
     }
     firstPassCheck.current = true;
   }, [userProgress]);
@@ -304,22 +328,54 @@ const Story = () => {
       } else {
         console.log('통과했나?');
         // 통과했다면?
-        // 앨범 획득 넣어주고
-        dispatch(putAlbumList(scriptFile.current[scriptIndex.current].getAlbumNum));
+        // 보유 여부 확인하자
+        dispatch(getAlbumCheck(scriptFile.current[scriptIndex.current].getAlbumNum));
+        // 앨범 목록 갱신되면?
+
+        // readAlbum 쓸 필요 없어짐
+        // 보내고자 하는 앨범id를 보유중인지 아닌지 확인하는 요청 보내고
+        // 그 값 세팅되면 false일 때 앨범 추가하는 로직 넣으면 될 듯
+
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
-        scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
-        scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        // scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
+        // scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
         // 스크립트 파일 이름을 바꿔주고
-        scriptIndex.current = 0
+        // scriptIndex.current = 0
         // 보여줄 부분 바꿔주고
-        increaseIndex.current = 1
+        // increaseIndex.current = 1
         // 인덱스 변화폭 세팅 기본값으로 넣어주고
+
+
         // selfstudy 진행도 값 넣어주는 로직 필요
-        changeScript(scriptFile.current[scriptIndex.current].text)
+        changeScript(scriptFile.current[scriptIndex.current].text);
       }
     }
     selfStudyNonpassedCheck.current = true;
-  }, [selfStudyNonpassed])
+  }, [selfStudyChanged]);
+
+  useEffect(() => {
+    console.log("앨범 체크 값 변경");
+    if (userAlbumCheckfirst.current) {
+      console.log(userAlbumCheck);
+      if (userAlbumCheck[0]) {
+        console.log("앨범에 있음");
+        // 실험용
+        // setOpenAlbumGetModal(true);
+        // 실험용
+      } else {
+        console.log("앨범에 없음");
+        setOpenAlbumGetModal(true); // 띄우자
+        dispatch(putAlbumList(scriptFile.current[scriptIndex.current].getAlbumNum));
+        // 앨범 획득 이펙트 보여주는 거 띄우는 값 설정하자
+      }
+    }
+    userAlbumCheckfirst.current = true;
+    console.log(userAlbumCheckfirst.current);
+  }, [userAlbumCheck]);
+
+  useEffect(() => {
+    console.log(openAlbumGetModal);
+  }, [openAlbumGetModal]);
 
   const [storyMap] = useState(
   { 
@@ -368,6 +424,10 @@ const Story = () => {
     navigate("/Game");
   }
 
+  const goSelfStudy = () => {
+    navigate("/SelfStudy");
+  }
+
   const storyObjHandler = (num, script) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.num = num;
@@ -397,6 +457,11 @@ const Story = () => {
     setStoryObj(storyObjCopy);
   }
 
+  // 앨범 획득 모달 관련 함수
+  const closeAlbumModal = () => {
+    setOpenAlbumGetModal(false);
+  };
+
   function nextScript(n) {
     scriptIndex.current += increaseIndex.current;
     storyTeller.current = scriptFile.current[scriptIndex.current].storyTeller;
@@ -404,14 +469,14 @@ const Story = () => {
     leftCharImg.current = scriptFile.current[scriptIndex.current].LeftImageUrl2;
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
-    console.log(scriptIndex.current)
-    console.log(storyTeller.current)
+    // console.log(scriptIndex.current)
+    // console.log(storyTeller.current)
     switch(scriptFile.current[scriptIndex.current].scriptType) {
       case 'text':  
         changeScript(scriptFile.current[scriptIndex.current].text)
         increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex
-        console.log(scriptFile.current[scriptIndex.current])
-        console.log(increaseIndex.current);
+        // console.log(scriptFile.current[scriptIndex.current])
+        // console.log(increaseIndex.current);
         break;
 
       case 'question':
@@ -445,7 +510,18 @@ const Story = () => {
         break;
       
       case 'changeScript':
+        // scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
+        // scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        // 스크립트 파일 이름을 바꿔주고
+        // scriptIndex.current = 0
+        // 보여줄 부분 바꿔주고
+        // increaseIndex.current = 1
+        // 인덱스 변화폭 세팅 기본값으로 넣어주고
+        // selfstudy 진행도 값 넣어주는 로직 필요
+        // changeScript(scriptFile.current[scriptIndex.current].text)
         dispatch(getSelfStudyProgress());
+        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+        // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
         console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
         // 자율학습 진행도 받아옴 -> userProgress 값 변경 -> 그거 보고있던 useEffect에서 바뀜 감지
         // -> userProgress값과 현재 보고있는 스크립트의 selfStudyRequired값과 비교
@@ -503,7 +579,13 @@ const Story = () => {
           <StoryGoHome onClick={goHome}></StoryGoHome>
           <StoryGoSlot onClick={goSlot}></StoryGoSlot>
         </StoryNavigate>
-        :null
+        : null
+      }
+      {
+        openAlbumGetModal
+        ?
+        <StoryGetAlbumModal onClick={closeAlbumModal}></StoryGetAlbumModal>
+        : null
       }
       <img src={process.env.PUBLIC_URL + `/storyImages/${backgroundImg.current}.png`} style={{
         width: '100%',
@@ -589,7 +671,7 @@ const Story = () => {
                 %까지 채우도록 하세요
               </StoryNonPassedText>
             </StoryNonpassedDiv>
-            <StoryGoSelfstudy>
+            <StoryGoSelfstudy onClick={goSelfStudy}>
               자율학습 가기
             </StoryGoSelfstudy>
           </StoryNonPassedModal>
