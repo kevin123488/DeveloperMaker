@@ -3,8 +3,7 @@ package com.ssafy.developermaker.domain.codingtest.dto;
 import lombok.Getter;
 
 @Getter
-public class CoteRequestDto {
+public class CoteSubmitRequestDto {
     String language;
-    String input;
     String code;
 }

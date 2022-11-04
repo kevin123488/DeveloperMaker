@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.codingtest.entity;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,6 +25,8 @@ public class Cote {
 
     @Column(length = 10000)
     private String answerInput;
+
+    private Long timeLimit;
 
     @Column(nullable = false, length = 1000)
     private String answerOutput;
