@@ -60,7 +60,7 @@ public class TokenProvider implements InitializingBean {
 
     // access token 생성
     public String createAccessToken(Authentication authentication) {
-        long accessTokenValidityInMilliseconds = 1800 * 1000;
+        long accessTokenValidityInMilliseconds = 86400 * 1000;
         return createToken(authentication, accessTokenValidityInMilliseconds);
     }
 
