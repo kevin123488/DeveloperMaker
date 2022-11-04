@@ -1,9 +1,6 @@
 package com.ssafy.developermaker.domain.codingtest.application;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteListRequestDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteListResponseDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteResultDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteSubmitRequestDto;
+import com.ssafy.developermaker.domain.codingtest.dto.*;
 import com.ssafy.developermaker.domain.codingtest.entity.Cote;
 import com.ssafy.developermaker.domain.codingtest.entity.UserCote;
 import com.ssafy.developermaker.domain.codingtest.repository.CoteRepository;
@@ -43,18 +40,22 @@ public class CoteService {
     private String rapidAPI_KEY;
 
 
-    public List<CoteListResponseDto> getList(String email, CoteListRequestDto coteListRequestDto) {
+    public CoteListResponseDto getList(String email, CoteListRequestDto coteListRequestDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
         PageRequest pageRequest = PageRequest.of(coteListRequestDto.getOffset(), coteListRequestDto.getLimit());
         Page<Cote> page = coteRepository.findAll(pageRequest);
 
-        return page.stream().map(cote ->
-                        new CoteListResponseDto(cote.getCoteId(), cote.getTitle(), cote.getProblem(),
+        CoteListResponseDto coteListResponseDto = new CoteListResponseDto(page.getTotalElements() ,page.getTotalPages());
+        List<CoteInfoDto> coteInfoList = page.stream().map(cote ->
+                        new CoteInfoDto(cote.getCoteId(), cote.getTitle(), cote.getProblem(),
                                 userCoteRepository.findByUserAndCote(user, cote).isPresent()
                                         ? userCoteRepository.findByUserAndCote(user, cote).get().getCorrect() : 0))
                 .collect(Collectors.toList());
+
+        coteListResponseDto.setCoteInfoList(coteInfoList);
+        return coteListResponseDto;
     }
 
     @Transactional

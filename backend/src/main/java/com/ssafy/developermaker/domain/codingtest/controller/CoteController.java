@@ -27,8 +27,7 @@ public class CoteController {
     @ApiOperation(value = "코딩테스트 문제 리스트 확인", notes = "response의 correct가 0 : 풀지않음, 1 : 맞음, 2 : 맞음")
     public ResponseEntity<BaseResponseBody> getList(@AuthenticationPrincipal String email,
                                                     @RequestBody CoteListRequestDto coteListRequestDto) {
-        List<CoteListResponseDto> list = coteService.getList(email, coteListRequestDto);
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", list));
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.getList(email, coteListRequestDto)));
     }
 
     @PostMapping("/{coteId}")

@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.codingtest.entity;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
