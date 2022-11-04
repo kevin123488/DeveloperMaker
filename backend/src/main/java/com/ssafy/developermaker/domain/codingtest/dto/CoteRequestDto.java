@@ -5,5 +5,6 @@ import lombok.Getter;
 @Getter
 public class CoteRequestDto {
     String language;
+    String input;
     String code;
 }
