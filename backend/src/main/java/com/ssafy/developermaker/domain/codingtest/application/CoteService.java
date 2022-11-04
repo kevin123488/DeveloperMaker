@@ -1,9 +1,6 @@
 package com.ssafy.developermaker.domain.codingtest.application;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteListRequestDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteListResponseDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteRequestDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteResultDto;
+import com.ssafy.developermaker.domain.codingtest.dto.*;
 import com.ssafy.developermaker.domain.codingtest.entity.Cote;
 import com.ssafy.developermaker.domain.codingtest.entity.UserCote;
 import com.ssafy.developermaker.domain.codingtest.repository.CoteRepository;
@@ -12,7 +9,6 @@ import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
 import kong.unirest.HttpResponse;
-import kong.unirest.JsonNode;
 import kong.unirest.Unirest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,9 +21,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -47,21 +40,26 @@ public class CoteService {
     private String rapidAPI_KEY;
 
 
-    public List<CoteListResponseDto> getList(String email, CoteListRequestDto coteListRequestDto) {
+    public CoteListResponseDto getList(String email, CoteListRequestDto coteListRequestDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
         PageRequest pageRequest = PageRequest.of(coteListRequestDto.getOffset(), coteListRequestDto.getLimit());
         Page<Cote> page = coteRepository.findAll(pageRequest);
 
-        return page.stream().map(cote ->
-                        new CoteListResponseDto(cote.getCoteId(), cote.getTitle(), cote.getProblem(),
+        CoteListResponseDto coteListResponseDto = new CoteListResponseDto(page.getTotalElements() ,page.getTotalPages());
+        List<CoteInfoDto> coteInfoList = page.stream().map(cote ->
+                        new CoteInfoDto(cote.getCoteId(), cote.getTitle(), cote.getProblem(),
                                 userCoteRepository.findByUserAndCote(user, cote).isPresent()
                                         ? userCoteRepository.findByUserAndCote(user, cote).get().getCorrect() : 0))
                 .collect(Collectors.toList());
+
+        coteListResponseDto.setCoteInfoList(coteInfoList);
+        return coteListResponseDto;
     }
 
-    public String submitCote(String email, Long coteId, CoteRequestDto coteRequestDto) {
+    @Transactional
+    public String submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
         String response = "";
         Cote cote = coteRepository.findById(coteId).get();
         User user = userRepository.findByEmail(email).get();
@@ -70,60 +68,41 @@ public class CoteService {
         Optional<UserCote> userCoteOpt = userCoteRepository.findByUserAndCote(user, cote);
 
         // 정답 여부 API 통해 연산.
-        boolean correct = false;
-
-        String code = coteRequestDto.getCode();
-        CoteResultDto coteResultDto;
-        coteResultDto = javaCompilerApi(coteRequestDto);
+        CoteResultDto coteResultDto = compilerApi(coteSubmitRequestDto, cote);
 
 
         if (userCoteOpt.isPresent()) { // 푼 기록이 있을 때.
             userCote = userCoteOpt.get();
-            if (correct) {
+            if (coteResultDto.getPass() && userCote.getCorrect() == -1) { // 맞췄을 때
+                userCote.updateCorrect(1);
             }
         } else {
-            userCote = new UserCote();
+            userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : -1).build());
         }
 
 
+        response = coteResultDto.getMessage() + "\n spendTime :" + coteResultDto.getSpendTime();
         return response;
     }
 
-    public CoteResultDto javaCompilerApi(CoteRequestDto coteRequestDto) {
+    public CoteResultDto compilerApi(CoteSubmitRequestDto coteSubmitRequestDto, Cote cote) {
+        String error = null, output = "";
         CoteResultDto coteResultDto = CoteResultDto.builder().build();
         String language = "0";
-        if (coteRequestDto.getLanguage().equals("java")) {
+        if (coteSubmitRequestDto.getLanguage().equals("java")) {
             language = "4";
-        } else if (coteRequestDto.getLanguage().equals("python")) {
+        } else if (coteSubmitRequestDto.getLanguage().equals("python")) {
             language = "5";
-        } else if (coteRequestDto.getLanguage().equals("cpp")) {
+        } else if (coteSubmitRequestDto.getLanguage().equals("cpp")) {
             language = "7";
         }
 
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("LanguageChoice", language);
+        jsonObject.put("Program", coteSubmitRequestDto.getCode());
+        jsonObject.put("Input", cote.getAnswerInput());
 
-        String reqURL = "https://code-compiler.p.rapidapi.com/v2";
-        try {
-            URL url = new URL(reqURL);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-
-            conn.setDoOutput(true);
-            conn.setRequestProperty("content-type", "application/json");
-            conn.setRequestProperty("X-RapidAPI-Key", rapidAPI_KEY);
-            conn.setRequestProperty("X-RapidAPI-Host", rapidAPI_HOST);
-
-
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        JSONObject jsonObject =  new JSONObject();
-        jsonObject.put("LanguageChoice",language);
-        jsonObject.put("Program",coteRequestDto.getCode());
-        jsonObject.put("Input",coteRequestDto.getInput());
-
-
+        long start = System.currentTimeMillis();
         HttpResponse<String> response = Unirest.post("https://code-compiler.p.rapidapi.com/v2")
                 .header("content-type", "application/json")
                 .header("X-RapidAPI-Key", rapidAPI_KEY)
@@ -133,17 +112,29 @@ public class CoteService {
         try {
             JSONParser parser = new JSONParser();
             JSONObject jsonObj = (JSONObject) parser.parse(response.getBody());
-            if(jsonObj.get("Errors") != null){
-                coteResultDto.setOutput(jsonObj.get("Errors").toString());
+            if (jsonObj.get("Errors") != null) {
+                error = jsonObj.get("Errors").toString();
             } else if (jsonObj.get("Result") != null) {
-                coteResultDto.setOutput(jsonObj.get("Result").toString());
+                output = jsonObj.get("Result").toString();
             }
-        }catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
+        }
+        long time = System.currentTimeMillis() - start;
+        coteResultDto.setSpendTime(time);
+        if (error != null) {
+            coteResultDto.setMessage(error);
+        } else if (time > cote.getTimeLimit()) { // 시간 초과 경우.
+            coteResultDto.setMessage("제한시간 초과입니다. : " + time + "ms");
+        } else if (!cote.getAnswerOutput().equals(output)) {
+            coteResultDto.setMessage("정답이 일치하지 않습니다.");
+        } else {
+            coteResultDto.setPass(true);
+            coteResultDto.setMessage("정답입니다!");
         }
         System.out.println(response.getBody());
 
-        return CoteResultDto.builder().build();
+        return coteResultDto;
     }
 
 

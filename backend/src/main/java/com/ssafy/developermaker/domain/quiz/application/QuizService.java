@@ -6,6 +6,7 @@ import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
 import com.ssafy.developermaker.domain.quiz.exception.QuizNotFoundException;
 import com.ssafy.developermaker.domain.quiz.repository.QuizRepository;
 import com.ssafy.developermaker.domain.quiz.repository.UserQuizRepository;
+import com.ssafy.developermaker.domain.study.entity.Category;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
@@ -40,8 +41,6 @@ public class QuizService {
         PageRequest pageRequest = PageRequest.of(quizListRequestDto.getOffset(), quizListRequestDto.getLimit());
         Page<Quiz> page = quizRepository.findByCategoryAndSubject(pageRequest, quizListRequestDto.getCategory(), quizListRequestDto.getSubject());
 
-
-
         QuizDto quizDto = new QuizDto(quizListRequestDto.getCategory(), quizListRequestDto.getSubject(), page.getTotalElements() ,page.getTotalPages());
         List<QuizInfoDto> quizInfoDtoList = page.stream().map(quiz ->
                 new QuizInfoDto(quiz.getQuizId(), quiz.getTitle(), quiz.getProblem(),
@@ -55,7 +54,7 @@ public class QuizService {
     }
 
     @Transactional
-    public Boolean submitQuiz(String email, QuizRequestDto quizRequestDto) {
+    public String submitQuiz(String email, QuizRequestDto quizRequestDto) {
         User findUser = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
         Quiz findQuiz = quizRepository.findById(quizRequestDto.getQuizId()).orElseThrow(QuizNotFoundException::new);
 
@@ -71,6 +70,14 @@ public class QuizService {
             userQuizRepository.save(userQuiz);
         } else if(findUserQuiz.get().getCorrect() == 2 && result) findUserQuiz.get().updateCorrect(1);
 
-        return result;
+        String answer;
+        Category category = findQuiz.getCategory();
+        if(category.equals(Category.CS)) answer = result ? "cs 맞췄네요" : "cs 빡통대가리야";
+        else if (category.equals(Category.ALGORITHM)) answer = result ? "알고리즘 맞췄네요" : "알고리즘 빡통대가리야";
+        else if (category.equals(Category.BACKEND)) answer = result ? "백엔드 맞췄네요" : "백엔드 빡통대가리야";
+        else if (category.equals(Category.FRONTEND)) answer = result ? "프론트 맞췄네요" : "프론트 빡통대가리야";
+        else answer = result ? "" : "빡통대가리야";
+
+        return answer;
     }
 }
