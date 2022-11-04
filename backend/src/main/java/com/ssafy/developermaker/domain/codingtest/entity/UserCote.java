@@ -20,7 +20,7 @@ public class UserCote {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userCoteId;
 
-    private Boolean correct;
+    private Integer correct;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userId")
@@ -28,6 +28,6 @@ public class UserCote {
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "coteId")
-    private Cote codingTest;
+    private Cote cote;
 
 }

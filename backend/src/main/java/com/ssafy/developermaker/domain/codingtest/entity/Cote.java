@@ -18,22 +18,16 @@ public class Cote {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long coteId;
 
-    @Column(nullable = false)
-    private Integer no;
-
     @Column(nullable = false,length = 50)
     private String title;
 
     @Column(nullable = false,length = 5000)
     private String problem;
 
-    public CoteDto toDto(Boolean correct) {
-        return CoteDto.builder()
-                .no(this.no)
-                .title(this.title)
-                .problem(this.problem)
-                .correct(correct)
-                .build();
-    }
+    @Column(length = 10000)
+    private String answerInput;
+
+    @Column(nullable = false, length = 1000)
+    private String answerOutput;
 
 }

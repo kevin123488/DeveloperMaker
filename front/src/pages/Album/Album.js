@@ -41,13 +41,13 @@ const Album = () => {
     <div className={"albumBack"+ (show ? "albumOpacity": "")}>
       <div className="albumMenu" >
         <h1 onClick={changeShow}> {user.nickname} 's Album</h1>
+        <div>
+          <button onClick={() => {changeType(true)}}>스토리</button>
+          <button onClick={() => {changeType(false)}}>컬렉션</button>
+        </div>
         <button onClick={goMain}>메인 화면</button>
       </div>
       <div>
-        <button onClick={() => {changeType(true)}}>스토리</button>
-        <button onClick={() => {changeType(false)}}>컬렉션</button>
-      </div>
-      <div className="albumCardList">
         {selType ? <StoryAlbum />: <SelectionAlbum/>}
       </div>
       {/* 조건부 렌더링 */}

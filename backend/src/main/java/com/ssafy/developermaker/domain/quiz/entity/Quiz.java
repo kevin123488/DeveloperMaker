@@ -1,7 +1,7 @@
 package com.ssafy.developermaker.domain.quiz.entity;
 
 
-import com.ssafy.developermaker.domain.quiz.dto.QuizResponseDto;
+import com.ssafy.developermaker.domain.study.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,8 +20,9 @@ public class Quiz {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long quizId;
 
-    @Column(nullable = false)
-    private Integer no;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 30)
+    private Category category;
 
     @Column(nullable = false, length = 30)
     private String subject;
@@ -37,8 +38,4 @@ public class Quiz {
 
     @Column(nullable = false, length = 30)
     private String answer;
-
-    public QuizResponseDto toDto() {
-        return QuizResponseDto.builder().quizId(quizId).no(no).subject(subject).title(title).problem(problem).example(example).build();
-    }
 }
