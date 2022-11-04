@@ -72,11 +72,11 @@ public class QuizService {
 
         String answer;
         Category category = findQuiz.getCategory();
-        if(category.equals(Category.CS)) answer = result ? "cs 맞췄네요" : "cs 빡통대가리야";
-        else if (category.equals(Category.ALGORITHM)) answer = result ? "알고리즘 맞췄네요" : "알고리즘 빡통대가리야";
-        else if (category.equals(Category.BACKEND)) answer = result ? "백엔드 맞췄네요" : "백엔드 빡통대가리야";
-        else if (category.equals(Category.FRONTEND)) answer = result ? "프론트 맞췄네요" : "프론트 빡통대가리야";
-        else answer = result ? "" : "빡통대가리야";
+        if(category.equals(Category.CS)) answer = result ? "오.. 제법인데?" : "이런 쉬운문제를 틀리다니.. 최악이네, 너.";
+        else if (category.equals(Category.ALGORITHM)) answer = result ? "축하해. 정답이야." : "틀렸어.";
+        else if (category.equals(Category.BACKEND)) answer = result ? "... 생각보단 쓸만하네요." : "틀릴줄은 알았지만.. 실망스럽네요.";
+        else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "아까워라~ 다음엔 맞춰보자고!";
+        else answer = result ? "쉽네 ㅋㅋ" : "아 틀렸네ㅋㅋ";
 
         return answer;
     }
