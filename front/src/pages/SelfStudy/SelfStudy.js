@@ -130,16 +130,18 @@ const SelfStudy = () => {
     dispatch(getQuizInfo())
   }, [dispatch])
 
+  const goMain = () => {
+    navigate('/')
+  }
+
   return (
     <SelfStudyBlock>
+      <button onClick={goMain}>홈으로</button>
       <br />
       <br />
       <br />
       <br />
       <br />
-      <TypeLink to="/selfstudy/study" style={{ textDecoration: "none" }}>
-        스터디
-      </TypeLink>
       <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
         퀴즈
       </TypeLink>

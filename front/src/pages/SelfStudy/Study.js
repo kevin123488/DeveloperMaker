@@ -50,7 +50,7 @@ const Type = styled.div`
     z-index: -1;
   } 
 `;
-const CSselfStudy = () => {
+const CSselfStudy = (prop) => {
 
   const dispatch = useDispatch();
   // const location = useLocation()
@@ -68,6 +68,8 @@ const CSselfStudy = () => {
         offset: offset,
         limit: limit,
       }
+      console.log('스터디 요청정보', initialStudyInfo)
+      console.log(studyInfo)
       const res = await dispatch(getStudyList(initialStudyInfo))
       const newStudyList = res.payload
     };
@@ -83,8 +85,8 @@ const CSselfStudy = () => {
   // const [studyList, setStudyList] = useState(study.studyList.studyInfo)
   const [showingMarkdown, setShowingMarkdown] = useState('')
   const [isShowMarkdown, setIsShowMarkdown] = useState(false)
-  const [category, setCategory] = useState(0)
-  const [subject, setSubject] = useState('network')
+  const [category, setCategory] = useState(studyInfo[prop.category].category)
+  const [subject, setSubject] = useState(prop.subject)
   const [offset, setOffset] = useState(0)
   const [limit, setlimit] = useState(6)
   const [nowpage, setNowpage] = useState(0)
@@ -134,7 +136,7 @@ const CSselfStudy = () => {
   // 서브젝트 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeSubject = async (info) => {
     const newStudyInfo = {
-      category: studyInfo[category].category,
+      category: category,
       subject: info.subject,
       offset: 0,
       limit: limit,
@@ -221,27 +223,12 @@ const CSselfStudy = () => {
         <br />
         <br />
         <br />
-        <Type onClick={changeCategory.bind(null, {category: 0, subject: "network",})} style={{ textDecoration: "none", cursor: "pointer", }}>
-          CS
-        </Type>
-        <Type onClick={changeCategory.bind(null, {category: 4, subject: "algorithm",})} style={{ textDecoration: "none", cursor: "pointer", }}>
-          알고리즘
-        </Type>
-        <Type onClick={changeCategory.bind(null, {category: 1, subject: "spring",})} style={{ textDecoration: "none", cursor: "pointer", }}>
-          백앤드
-        </Type>
-        <Type onClick={changeCategory.bind(null, {category: 2, subject: "react",})} style={{ textDecoration: "none", cursor: "pointer", }}>
-          프론트앤드
-        </Type>
-        <Type onClick={changeCategory.bind(null, {category: 3, subject: "java",})} style={{ textDecoration: "none", cursor: "pointer", }}>
-          프로그래밍 언어
-        </Type>
 
         <div className="StudyContainer">
 
           {/* 과목 목록 */}
           <div className="subjectbar">
-            {studyInfo[category].subjectList.map((subject, index) => (
+            {studyInfo[prop.category].subjectList.map((subject, index) => (
               <p key={index} className="subjectItem" onClick={changeSubject.bind(null, {subject: subject.subject})}>
                 {subject.subject}
               </p>
