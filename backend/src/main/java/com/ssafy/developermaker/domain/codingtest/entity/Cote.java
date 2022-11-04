@@ -27,6 +27,8 @@ public class Cote {
     @Column(length = 10000)
     private String answerInput;
 
+    private Long timeLimit;
+
     @Column(nullable = false, length = 1000)
     private String answerOutput;
 

@@ -3,7 +3,7 @@ package com.ssafy.developermaker.domain.codingtest.controller;
 import com.ssafy.developermaker.domain.codingtest.application.CoteService;
 import com.ssafy.developermaker.domain.codingtest.dto.CoteListRequestDto;
 import com.ssafy.developermaker.domain.codingtest.dto.CoteListResponseDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteRequestDto;
+import com.ssafy.developermaker.domain.codingtest.dto.CoteSubmitRequestDto;
 import com.ssafy.developermaker.global.model.BaseResponseBody;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -33,7 +33,7 @@ public class CoteController {
 
     @PostMapping("/{coteId}")
     @ApiOperation(value = "", notes = "")
-    public ResponseEntity<BaseResponseBody> submitCote(@AuthenticationPrincipal String email, @RequestBody CoteRequestDto coteRequestDto, @PathVariable Long coteId){
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.submitCote(email, coteId, coteRequestDto)));
+    public ResponseEntity<BaseResponseBody> submitCote(@AuthenticationPrincipal String email, @RequestBody CoteSubmitRequestDto coteSubmitRequestDto, @PathVariable Long coteId){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.submitCote(email, coteId, coteSubmitRequestDto)));
     }
 }
