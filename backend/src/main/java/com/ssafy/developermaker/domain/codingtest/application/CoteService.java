@@ -67,24 +67,24 @@ public class CoteService {
         Optional<UserCote> userCoteOpt = userCoteRepository.findByUserAndCote(user, cote);
 
         // 정답 여부 API 통해 연산.
-        CoteResultDto coteResultDto = CompilerApi(coteSubmitRequestDto, cote);
+        CoteResultDto coteResultDto = compilerApi(coteSubmitRequestDto, cote);
 
 
         if (userCoteOpt.isPresent()) { // 푼 기록이 있을 때.
             userCote = userCoteOpt.get();
-            if (coteResultDto.getPass()) { // 맞췄을 때
+            if (coteResultDto.getPass() && userCote.getCorrect() == -1) { // 맞췄을 때
+                userCote.updateCorrect(1);
             }
         } else {
-            userCote = new UserCote();
-            userCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : -1).build();
-            userCoteRepository.save(userCote);
+            userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : -1).build());
         }
 
 
-        return response = coteResultDto.getMessage() + "\n" + coteResultDto.getSpendTime();
+        response = coteResultDto.getMessage() + "\n spendTime :" + coteResultDto.getSpendTime();
+        return response;
     }
 
-    public CoteResultDto CompilerApi(CoteSubmitRequestDto coteSubmitRequestDto, Cote cote) {
+    public CoteResultDto compilerApi(CoteSubmitRequestDto coteSubmitRequestDto, Cote cote) {
         String error = null, output = "";
         CoteResultDto coteResultDto = CoteResultDto.builder().build();
         String language = "0";
