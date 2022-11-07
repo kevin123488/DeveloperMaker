@@ -39,7 +39,7 @@ export const postQuizSolveApi = async (solveInfo) => {
 
 // 코테 리스트 조회
 export const getCodingTestListApi = async (coteListRequestDto) => {
-  const res = await axiosInstance.get("/cote", coteListRequestDto);
+  const res = await axiosInstance.post("/cote", coteListRequestDto);
   return res;
 };
 
