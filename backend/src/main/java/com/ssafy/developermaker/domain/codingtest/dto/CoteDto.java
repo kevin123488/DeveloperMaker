@@ -9,7 +9,6 @@ import lombok.*;
 @NoArgsConstructor
 public class CoteDto {
 
-    private Integer no;
     private String title;
     private String problem;
     private Boolean correct;

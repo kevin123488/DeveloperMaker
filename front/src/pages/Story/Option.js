@@ -1,5 +1,6 @@
 import React, { } from "react";
 import styled from "styled-components";
+import "./Option.css";
 
 const OptionPage = styled.div`
   position: absolute;
@@ -14,12 +15,11 @@ const OptionPage = styled.div`
 const OptionBox = styled.div`
   position: absolute;
   width: 70vw;
-  height: 50vh;
-  background: white;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
+  text-align: center;
 `;
 
 const Option = ({scriptInfo, choiceNextScript}) => {
@@ -49,7 +49,7 @@ const Option = ({scriptInfo, choiceNextScript}) => {
     <OptionPage>
       <OptionBox>
         { options.map(function(option, idx){
-          return <div key={idx} onClick={choice.bind(null, idx)}>{option.name}</div>
+          return <div className="optionSelector" key={idx} onClick={choice.bind(null, idx)}>{option.name}</div>
         }) }
       </OptionBox>
     </OptionPage>

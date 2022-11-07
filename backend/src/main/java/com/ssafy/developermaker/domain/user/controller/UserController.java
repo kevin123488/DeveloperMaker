@@ -2,8 +2,10 @@ package com.ssafy.developermaker.domain.user.controller;
 
 import com.ssafy.developermaker.domain.user.application.KakaoUserService;
 import com.ssafy.developermaker.domain.user.application.NaverUserService;
+import com.ssafy.developermaker.domain.user.application.UserLoginService;
 import com.ssafy.developermaker.domain.user.application.UserManageService;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
+import com.ssafy.developermaker.domain.user.dto.TokenDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.global.model.BaseResponseBody;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
@@ -28,6 +31,7 @@ public class UserController {
     private final KakaoUserService kakaoUserService;
     private final NaverUserService naverUserService;
     private final UserManageService userManageService;
+    private final UserLoginService userLoginService;
 
     @PostMapping("/kakao")
     @ApiOperation(value = "카카오 로그인", notes = "카카오 아이디로 로그인합니다.")
@@ -79,6 +83,18 @@ public class UserController {
                                                    @RequestBody SignupDto signupDto) {
         UserDto user = userManageService.signup(email, signupDto);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", user));
+    }
+
+    @GetMapping("/logout")
+    public ResponseEntity<BaseResponseBody> logout(HttpServletRequest request) {
+        userLoginService.logout(request);
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", null));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<BaseResponseBody>  recreateToken(@RequestBody TokenDto tokenDto) {
+        TokenDto token = userLoginService.recreateToken(tokenDto);
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", token));
     }
 
 }

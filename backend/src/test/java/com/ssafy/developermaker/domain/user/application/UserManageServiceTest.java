@@ -3,6 +3,7 @@ package com.ssafy.developermaker.domain.user.application;
 import com.ssafy.developermaker.domain.progress.entity.Progress;
 import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
+import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
@@ -55,7 +56,11 @@ class UserManageServiceTest {
 
         // when
         String nickname = "닉네임수정";
-        savedUser.updateNickname(nickname);
+        Language language = Language.C;
+        UserDto userDto = new UserDto();
+        userDto.setNickname(nickname);
+        userDto.setLanguage(language);
+        savedUser.updateProfile(userDto);
 
         // then
         assertThat(savedUser.getNickname()).isEqualTo(nickname);

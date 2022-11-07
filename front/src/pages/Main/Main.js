@@ -22,12 +22,12 @@ const Title = Styled.p`
 const TitleDivision = styled.div`
   position: absolute;
   top: 25%;
-  left: 20%;
+  left: 17%;
   transform: translate(-50%, -50%);
-  height: 30vh;
-  width: 60vh;
+  height: 25vh;
+  width: 50vh;
   background-image: url(${MainLogo});
-  background-size: 60vh 30vh;
+  background-size: 50vh 25vh;
 `;
 
 const TitleDivision2 = styled.div`

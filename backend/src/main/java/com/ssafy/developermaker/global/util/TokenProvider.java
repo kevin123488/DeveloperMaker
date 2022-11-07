@@ -1,5 +1,6 @@
 package com.ssafy.developermaker.global.util;
 
+import com.ssafy.developermaker.global.BlackListException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -7,6 +8,7 @@ import io.jsonwebtoken.security.SignatureException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,15 +32,23 @@ public class TokenProvider implements InitializingBean {
     private static final String AUTHORITIES_KEY = "auth";
 
     private final String secret;
-    private final long tokenValidityInMilliseconds;
-
     private Key key;
 
+    private final RedisUtil redisUtil;
+
+//        private final long tokenValidityInMilliseconds;
+
+//    public TokenProvider(
+//            @Value("${jwt.secret}") String secret,
+//            @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
+//        this.secret = secret;
+//        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
+//    }
+
     public TokenProvider(
-            @Value("${jwt.secret}") String secret,
-            @Value("${jwt.token-validity-in-seconds}") long tokenValidityInSeconds) {
+            @Value("${jwt.secret}") String secret, RedisUtil redisUtil) {
         this.secret = secret;
-        this.tokenValidityInMilliseconds = tokenValidityInSeconds * 1000;
+        this.redisUtil = redisUtil;
     }
 
     // 생성자에서 빈이 생성되고 주입을 받은 후에, secret 값을 Base64 Decode해서 key 변수에 할당한다
@@ -48,8 +58,20 @@ public class TokenProvider implements InitializingBean {
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
+    // access token 생성
+    public String createAccessToken(Authentication authentication) {
+        long accessTokenValidityInMilliseconds = 1800 * 1000;
+        return createToken(authentication, accessTokenValidityInMilliseconds);
+    }
+
+    // refresh token 생성
+    public String createRefreshToken(Authentication authentication) {
+        long refreshTokenValidityInMilliseconds = 86400 * 14 * 1000;
+        return createToken(authentication, refreshTokenValidityInMilliseconds);
+    }
+
     // Authentication 객체의 권한정보를 이용해 토큰을 생성하는 메서드
-    public String createToken(Authentication authentication) {
+    public String createToken(Authentication authentication, long validateTime) {
         // 권한들
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
@@ -57,7 +79,7 @@ public class TokenProvider implements InitializingBean {
 
         long now = (new Date()).getTime();
         // 토큰 만료시간 설정
-        Date validity = new Date(now + this.tokenValidityInMilliseconds);
+        Date validity = new Date(now + validateTime);
 
         // JWT 토큰 생성 후 리턴
         return Jwts.builder()
@@ -96,9 +118,14 @@ public class TokenProvider implements InitializingBean {
     // 토큰을 파라미터로 받아서 토큰의 유효성 검증
     public boolean validateToken(String token) {
         try {
+            // blacklist token 확인
+            if (redisUtil.getList("blacklist").contains(token)) throw new BlackListException();
+
             // 토큰을 파싱해보고 나오는 예외를 catch하고, 예외가 없으면 true 반환
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
+        } catch (BlackListException e) {
+            logger.info("사용할 수 없는 토큰입니다.");
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             logger.info("잘못된 JWT 서명입니다.");
         } catch (ExpiredJwtException e) {

@@ -1,18 +1,15 @@
 package com.ssafy.developermaker.domain.album.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Builder
+import java.util.List;
+
 @Getter
+@Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class AlbumResponseDto {
-    private Long albumId;
-    private String albumTitle;
-    private String albumImg;
-    private Boolean isOwned = false;
-    private Double ownerRate = 0.0;
+    List<AlbumDto> storyAlbumList;
+    List<AlbumDto> studyAlbumList;
 }
