@@ -7,6 +7,7 @@ import styled from "styled-components";
 import background from "../../asset/images/SelfstudyImg/CsStudyBackground.png";
 import btn from "../../asset/images/SelfstudyImg/버튼.png";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
@@ -217,12 +218,12 @@ const CSselfStudy = (prop) => {
 
   return (
     <>
-      <CsStudyBackground>
+      {/* <CsStudyBackground>
         <br />
         <br />
         <br />
         <br />
-        <br />
+        <br /> */}
 
         <div className="StudyContainer">
 
@@ -236,10 +237,12 @@ const CSselfStudy = (prop) => {
           </div>
 
           <div className="studyItems container">
-            <div className="row justify-content-center">
+            <div className="">
               {studyList.map((study, index) => (
-                <div key={index} className="col-3 StudyCompnent" onClick={showMarkdown.bind(null, study.content)}>
-                  {study.title}
+                <div key={index} className=" StudyCompnent" onClick={showMarkdown.bind(null, study.content)}>
+                  <p className="studyTitle">
+                    {study.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -250,7 +253,7 @@ const CSselfStudy = (prop) => {
             ?
             <div className="showingMarkdown">
                 <div onClick={closeStudy} className="CloseQuiz">X</div>
-              <ReactMarkdown children = {showingMarkdown} remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown children = {showingMarkdown} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               </ReactMarkdown>  
             </div>
             : null
@@ -267,7 +270,7 @@ const CSselfStudy = (prop) => {
             <p className="paginationItem" onClick={rightArrow}>{`>`}</p>
           </div>
         </div>
-      </CsStudyBackground>
+      {/* </CsStudyBackground> */}
     </>
   );
 };

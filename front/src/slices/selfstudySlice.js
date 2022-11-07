@@ -142,6 +142,7 @@ export const getSelfStudyProgress = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const  { data } = await getSelfStudyProgressApi();
+      console.log('자율학습 진행도 받기', data.data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
