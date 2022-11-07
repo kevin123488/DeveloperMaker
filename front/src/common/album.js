@@ -20,7 +20,13 @@ export const albumCheck = async (albumId) => {
 
 export const getNewAlbum = async () => {
   const response = await axiosInstance.get("/album/new")
-  console.log("get new Album")
+  console.log("get new Album", response)
+  return response
+}
+
+export const deleteNewAlbum = async () => {
+  const response = await axiosInstance.delete("/album/new")
+  console.log("delete new Album", response)
   return response
 }
 

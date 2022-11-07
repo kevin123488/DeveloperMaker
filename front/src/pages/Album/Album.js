@@ -6,23 +6,19 @@ import "./Album.css";
 import { readAlbum } from "../../slices/albumSlice";
 import { useDispatch, useSelector } from "react-redux";
 import GetAlbum from "../../components/Album/GetAlbum";
+import {putAlbumList, getAlbumCheck} from "../../slices/albumSlice"
+
 
 const Album = () => {
   const dispatch = useDispatch()
-  // 페이지 렌더링 시 1회 실행
-  useEffect(()=>{
-      dispatch(readAlbum());
-  }, [dispatch]);
-  const albumList = useSelector((state)=> {
-    return state.album.storyAlbumList;
-  })
-  const show = useSelector((state)=>{
-    return state.album.albumPickShow
-  })
   const user = useSelector((state)=>{
     return state.user.userInfo;
   })
   const navigate = useNavigate()
+  // 페이지 렌더링 시 1회 실행
+  useEffect(()=>{
+      dispatch(readAlbum());
+  }, [dispatch]);
 
   // 현재 보고 싶은 앨범 유형 선택 스토리 or 컬렉션
   const [selType, setSelType] = useState(true);
@@ -33,19 +29,33 @@ const Album = () => {
   function goMain() {
     navigate('/')
   }
-  // 화면뽑기 보기
+  // 앨범 뽑기 보여주기용 변수
+  const show = useSelector((state)=>{
+    return state.album.albumPickShow
+  })
+
   function changeShow() {
     dispatch({type:'album/changeMode'})
   }
+  // 앨범 뽑기 함수
+  const putAlbum =  async(albumId) => {
+    const response = await dispatch(getAlbumCheck(albumId))
+    // 중복이면 true이므로 false일 때 실행
+    if (!response.payload) {
+      dispatch(putAlbumList(albumId))
+    }
+  }
+
   return (
-    <div className={"albumBack"+ (show ? "albumOpacity": "")}>
+    <div className="albumBack">
       <div className="albumMenu" >
-        <h1 onClick={changeShow}> {user.nickname} 's Album</h1>
+        <p onClick={changeShow} className="albumMainTitle"> {user.nickname}'s Collection</p>
+        <button onClick={()=>{ putAlbum(4)}}>테스트</button>
         <div>
-          <button onClick={() => {changeType(true)}}>스토리</button>
-          <button onClick={() => {changeType(false)}}>컬렉션</button>
+          <button className={"albumBtn" + (!selType ? " albumBtnSel" : "")} onClick={() => {changeType(true)}}>스토리</button>
+          <button className={"albumBtn" + (selType ? " albumBtnSel" : "")} onClick={() => {changeType(false)}}>스터디</button>
         </div>
-        <button onClick={goMain}>메인 화면</button>
+        <button className="albumBtn" onClick={goMain}>Home</button>
       </div>
       <div>
         {selType ? <StoryAlbum />: <SelectionAlbum/>}

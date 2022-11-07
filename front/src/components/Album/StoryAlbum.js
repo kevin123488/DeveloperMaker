@@ -25,6 +25,7 @@ const StoryAlbum = () => {
       return album.theme === "total"
     }) ;
   })
+
     return (
       <div>
         {/* 캐릭터로 선택하는 창 */}
@@ -32,13 +33,12 @@ const StoryAlbum = () => {
           {[0,1,2,3].map((idx)=> { return <img className={"albumStoryTypeBtn" + ((show === idx) ? " albumStoryBtnSel": "" )} key={`albumStoryBtn-${idx}`}
           onClick={()=>{setShow(idx)}}  src={require(`../../asset/images/Album/Head/Head${idx}.png`)} alt="" /> })}
         </div>
-        <button></button>
         {/* 실제 앨범 */}
         <div className="albumCardList">
-          {(show === 0)? totalAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)}): <div></div>}
-          {(show === 1)? springAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album}  />)}): <div></div>}
-          {(show === 2)? fallAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)}): <div></div>}
-          {(show === 3)? winterAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)}): <div></div>}
+          {(show === 0) && totalAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)})}
+          {(show === 1) && springAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album}  />)})}
+          {(show === 2) && fallAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)})}
+          {(show === 3) && winterAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)})}
         </div>
       </div>
     )

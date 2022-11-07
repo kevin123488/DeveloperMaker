@@ -4,14 +4,14 @@ import { useSelector } from "react-redux";
 import AlbumComponent from "./AlbumComponent";
 
 const SelectionAlbum = () => {
-  const springAlbumList = useSelector((state)=> {
+  const studyAlbumList = useSelector((state)=> {
     return state.album.studyAlbumList
   })
     return (
       <div>
         {/* 실제 앨범 */}
         <div className="albumCardList">
-          {springAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)})}
+          {studyAlbumList.map(album => {return (<AlbumComponent key={album.albumId} album={album} />)})}
         </div>
       </div>
     )

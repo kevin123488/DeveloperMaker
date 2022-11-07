@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Styled from "styled-components";
 
 import GameRuleImg from "../../asset/images/Main/GameRuleBtn.png";
@@ -7,8 +7,11 @@ import LogoutBtnImg from "../../asset/images/Main/LogoutBtn.png";
 import ProfileBtnImg from "../../asset/images/Main/ProfileBtn.png";
 import StudyBtnImg from "../../asset/images/Main/StudyBtn.png";
 import AlbumBtnImg from "../../asset/images/Main/AlbumBtn.png";
+import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
+import { getNewAlbum} from "../../slices/albumSlice"
+import { useEffect } from "react";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const GameButtons = Styled.div`
@@ -47,8 +50,20 @@ const GameBtn = Styled.img`
   color: white;
 `;
 
+const NewAlbum = Styled.img`
+  position: absolute;
+  height: 3vw;
+  width: 3vw;
+`;
+
 const GameButtonsArea = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
+  const [newAlbum, setNewAlbum] = useState(false)
+  // 새앨범 여부 확인
+  const dispatch = useDispatch()
+  useEffect(()=> {
+    setNewAlbum(dispatch(getNewAlbum()))
+  }, [])
 
   const navigate = useNavigate();
 
@@ -88,6 +103,7 @@ const GameButtonsArea = () => {
             <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy} />
           </BtnArea>
           <BtnArea>
+            {newAlbum && <NewAlbum src={NewAlbumLogo} alt="New" />}
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>

@@ -3,7 +3,7 @@ import selfstudySlice from "./selfstudySlice";
 import UserSlice from "./userSlice";
 import album from "./albumSlice";
 import storageSession from "redux-persist/lib/storage/session";
-import { persistReducer, PERSIST, PURGE } from "redux-persist";
+import { persistReducer } from "redux-persist";
 import storySlice from "./storySlice";
 
 // persistReducer에 저장할 정보가 여러개가 되면 활성화
@@ -28,11 +28,7 @@ const store = configureStore({
     album: album,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoreActions: [PERSIST, PURGE],
-      },
-    }),
+    getDefaultMiddleware({serializableCheck: false}),
 });
 
 export default store;
