@@ -1,5 +1,8 @@
 package com.ssafy.developermaker.domain.quiz.application;
 
+import com.ssafy.developermaker.domain.progress.entity.Progress;
+import com.ssafy.developermaker.domain.progress.exception.ProgressNotFoundException;
+import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.quiz.dto.*;
 import com.ssafy.developermaker.domain.quiz.entity.Quiz;
 import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
@@ -29,7 +32,8 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final UserQuizRepository userQuizRepository;
     private final UserRepository userRepository;
-    
+
+    private final ProgressRepository progressRepository;
     public List<QuizCategoryResponseDto> getQuizList() {
         return quizRepository.getQuizList();
     }
@@ -60,24 +64,54 @@ public class QuizService {
 
         Optional<UserQuiz> findUserQuiz = userQuizRepository.findByUserAndQuiz(findUser, findQuiz);
 
+        Optional<Progress> findProgress = progressRepository.findByUser(findUser);
+        Progress progress = findProgress.orElseThrow(ProgressNotFoundException::new);
+
         boolean result = findQuiz.getAnswer().equals(quizRequestDto.getAnswer());
         if(!findUserQuiz.isPresent()) {
+
+            if (result) updateProgress(findQuiz.getCategory(), progress);
+
             UserQuiz userQuiz = UserQuiz.builder()
                     .correct(result ? 1 : 2)
                     .user(findUser)
                     .quiz(findQuiz)
                     .build();
             userQuizRepository.save(userQuiz);
-        } else if(findUserQuiz.get().getCorrect() == 2 && result) findUserQuiz.get().updateCorrect(1);
+        } else if(findUserQuiz.get().getCorrect() == 2 && result) {
+            updateProgress(findQuiz.getCategory(), progress);
+            findUserQuiz.get().updateCorrect(1);
+        }
 
         String answer;
         Category category = findQuiz.getCategory();
-        if(category.equals(Category.CS)) answer = result ? "오.. 제법인데?" : "이런 쉬운문제를 틀리다니.. 최악이네, 너.";
+        if(category.equals(Category.CS)) answer = result ? "오.. 제법인데?" : "이런걸 틀리다니.. 최악이네, 너.";
         else if (category.equals(Category.ALGORITHM)) answer = result ? "축하해. 정답이야." : "틀렸어.";
-        else if (category.equals(Category.BACKEND)) answer = result ? "... 생각보단 쓸만하네요." : "틀릴줄은 알았지만.. 실망스럽네요.";
-        else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "아까워라~ 다음엔 맞춰보자고!";
+        else if (category.equals(Category.BACKEND)) answer = result ? "... 의외네요." : "... 실망스럽네요.";
+        else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "까비~ 다시 풀어보자!";
         else answer = result ? "쉽네 ㅋㅋ" : "아 틀렸네ㅋㅋ";
 
         return answer;
+    }
+
+
+    public void updateProgress(Category category, Progress progress) {
+        switch (category.name()) {
+            case "CS":
+                progress.updateCS();
+                break;
+            case "ALGORITHM":
+                progress.updateAlgo();
+                break;
+            case "BACKEND":
+                progress.updateBackend();
+                break;
+            case "FRONTEND":
+                progress.updateFrontend();
+                break;
+            default:
+                progress.updateLanguage();
+                break;
+        }
     }
 }
