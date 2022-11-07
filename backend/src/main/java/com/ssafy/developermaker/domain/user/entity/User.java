@@ -81,7 +81,6 @@ public class User {
                 .loginType(this.loginType)
                 .gender(this.gender)
                 .language(this.language)
-                .progressDto(this.progress.toDto())
                 .build();
     }
 
