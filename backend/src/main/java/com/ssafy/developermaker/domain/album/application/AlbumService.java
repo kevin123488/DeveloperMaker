@@ -39,12 +39,13 @@ public class AlbumService {
         List<AlbumDto> storyAlbumList = new ArrayList<>();
         List<AlbumDto> studyAlbumList = new ArrayList<>();
         for(Album album : albumList) {
-            boolean isGet = userAlbumRepository.findByUserAndAlbum(user,album).isPresent();
+            Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum(user, album);
+            boolean isGet = findUserAlbum.isPresent();
 
             double ownerRate = 0.0;
             if(isGet){ ownerRate =  userAlbumRepository.countByAlbum(album).doubleValue() / userCount;}
 
-            AlbumDto albumDto = album.toDto(isGet,ownerRate);
+            AlbumDto albumDto = album.toDto(isGet,ownerRate, findUserAlbum.map(UserAlbum::getIsRead).orElse(false));
             if(album.getType().equals("story")) storyAlbumList.add(albumDto);
             else studyAlbumList.add(albumDto);
         }
@@ -60,12 +61,12 @@ public class AlbumService {
         Album album = findAlbum.orElseThrow(AlbumNotFoundException::new);
 
         if(!userAlbumRepository.findByUserAndAlbum(user,album).isPresent()) {
-            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).build();
+            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).isRead(false).build();
             userAlbumRepository.save(userAlbum);
         }
 
         long userCount = userRepository.count();
-        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount);
+        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount,false);
     }
 
     public Boolean findAlbum(String email, Long albumId) {
@@ -76,4 +77,27 @@ public class AlbumService {
         return findUserAlbum.isPresent();
     }
 
+
+    public Boolean findNewAlbum(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        return findNewUserAlbum.isPresent();
+    }
+
+    @Transactional
+    public boolean checkNewAlbum(String email, Long albumId) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum_AlbumId(user, albumId);
+
+        if(findUserAlbum.isPresent() && !findUserAlbum.get().getIsRead()) {
+            findUserAlbum.get().checkRead();
+            return true;
+        }
+
+        return false;
+    }
 }
