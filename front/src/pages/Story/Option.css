@@ -1,0 +1,28 @@
+.optionSelector {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  width: 70vw;
+  height: 5vh;
+  z-index: 4;
+  text-align: center;
+  background: rgb(245, 245, 245);
+  border-radius: 20px;
+  line-height: 5vh;
+  vertical-align: middle;
+  font-size: 1.8vw;
+  background-image: url("./optionBackground.png");
+  background-size: 70vw 5vh;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+.optionSelector:hover {
+  background: #d7e5e8;
+  background-image: url("./optionBackground.png");
+  background-size: 70vw 5vh;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  transition: 0.05s;
+  border: 2px solid rgb(245, 245, 245);
+}
