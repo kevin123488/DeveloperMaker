@@ -20,6 +20,7 @@ import saveIcon from "./saveIcon.png";
 import homeIcon from "./homeIcon.png";
 import slotIcon from "./slot.png";
 import seobomNonPass from "./seobom_nonpass.png";
+import storyGoAlert from "./storyGoAlert.png";
 
 const StoryPage = styled.div`
   width: 100vw;
@@ -51,7 +52,18 @@ const StoryTextBox = styled.div`
   transform: translate(-50%, -50%);
   width: 70vw;
   height: 25vh;
-  font-size: 1.5vw;
+  font-size: 1.8vw;
+`;
+
+const StoryPassAlert = styled.div`
+  position: absolute;
+  top: 85%;
+  left: 95%;
+  transfrom: translate(-50%, -50%);
+  height: 2vh;
+  width: 2vh;
+  background-image: url(${storyGoAlert});
+  background-size: 2vh 2vh;
 `;
 
 const StoryHamburger = styled.div`
@@ -260,6 +272,7 @@ const Story = () => {
     // console.log(backgroundImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
+    console.log("이미지 파일 확인하자", backgroundImg.current, middleCharImg.current);
   }, []);
 
   useEffect(() => {
@@ -497,6 +510,12 @@ const Story = () => {
         console.log(scriptFile.current);
         console.log(storyInfo.script);
         console.log("스토리오브젝트핸들러", saveStoryIdx, scriptFileName.current)
+        //
+        backgroundImg.current = scriptFile.current[scriptIndex.current].resultList[n].backgroundImageUrl;
+        leftCharImg.current = scriptFile.current[scriptIndex.current].resultList[n].LeftImageUrl2;
+        middleCharImg.current = scriptFile.current[scriptIndex.current].resultList[n].centerImageUrl;
+        rightCharImg.current = scriptFile.current[scriptIndex.current].resultList[n].RightImageUrl3;
+        //
         if (scriptFile.current[scriptIndex.current].resultList[n].score.char === "서봄") {
           storyObjSpring(scriptFile.current[scriptIndex.current].resultList[n].score.point)
         } else if (scriptFile.current[scriptIndex.current].resultList[n].score.char === "차가을") {
@@ -561,6 +580,7 @@ const Story = () => {
         console.log("간다간다넘어간다");
         changeScriptInfo(scriptFile.current[scriptIndex.current])
         changeIsOption(true)
+        // 여기선 저장할 때 chapter 정보와 인덱스 0 정보만 갱신해서 넣으면 될 것 같음
         break;
 
       default:
@@ -641,6 +661,7 @@ const Story = () => {
               <Typo scriptText={scriptText}/>
             </StoryTextBox> */}
           </StoryTextWrap>
+          <StoryPassAlert></StoryPassAlert>
         </StoryBox>
         {
           isQuestion

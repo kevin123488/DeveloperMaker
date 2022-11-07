@@ -318,7 +318,7 @@
     "backgroundImageUrl": "classroom",
     "nextScript": "script1_1",
     "whichSelfStudy": "cs",
-    "selfStudyRequired": {"cs": 101},
+    "selfStudyRequired": {"cs": 0},
     "getAlbumNum": 1,
     "plusIndex": 1
   },
