@@ -32,7 +32,7 @@ public class Album {
     private String theme;
 
 
-    public AlbumDto toDto(Boolean isOwned, Double ownerRate) {
+    public AlbumDto toDto(Boolean isOwned, Double ownerRate,Boolean isRead) {
         return AlbumDto.builder()
                 .albumId(albumId)
                 .albumImg(albumImg)
@@ -40,6 +40,7 @@ public class Album {
                 .ownerRate(ownerRate)
                 .isOwned(isOwned)
                 .theme(theme)
+                .isRead(isRead)
                 .build();
     }
 }

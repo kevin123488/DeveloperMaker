@@ -20,6 +20,9 @@ public class UserAlbum {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userAlbumId;
 
+    @Column(nullable = false)
+    private Boolean isRead = false;
+
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "userId")
     private User user;
@@ -27,5 +30,9 @@ public class UserAlbum {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "albumId")
     private Album album;
+
+    public void checkRead() {
+        this.isRead = true;
+    }
 
 }
