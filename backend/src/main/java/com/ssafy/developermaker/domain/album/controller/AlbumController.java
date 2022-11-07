@@ -33,4 +33,14 @@ public class AlbumController {
     public ResponseEntity<BaseResponseBody> findAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.findAlbum(email, albumId)));
     }
+
+    @GetMapping("/new")
+    public ResponseEntity<BaseResponseBody> findNewAlbum(@AuthenticationPrincipal String email){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.findNewAlbum(email)));
+    }
+
+    @GetMapping("/new/{albumId}")
+    public ResponseEntity<BaseResponseBody> checkNewAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.checkNewAlbum(email,albumId)));
+    }
 }
