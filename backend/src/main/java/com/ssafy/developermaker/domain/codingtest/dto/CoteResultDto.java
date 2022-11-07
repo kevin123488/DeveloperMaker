@@ -9,6 +9,6 @@ import lombok.Setter;
 @Setter
 public class CoteResultDto {
     Long spendTime;
-    Boolean pass = false;
+    Boolean pass = Boolean.FALSE;
     String message;
 }

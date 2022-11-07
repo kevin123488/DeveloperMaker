@@ -70,7 +70,7 @@ public class CoteService {
         // 정답 여부 API 통해 연산.
         CoteResultDto coteResultDto = compilerApi(coteSubmitRequestDto, cote);
 
-
+        System.out.println(coteResultDto.getPass() + "\n" + coteResultDto.getMessage());
         if (userCoteOpt.isPresent()) { // 푼 기록이 있을 때.
             userCote = userCoteOpt.get();
             if (coteResultDto.getPass() && userCote.getCorrect() == 2) { // 맞췄을 때
@@ -88,6 +88,7 @@ public class CoteService {
     public CoteResultDto compilerApi(CoteSubmitRequestDto coteSubmitRequestDto, Cote cote) {
         String error = null, output = "";
         CoteResultDto coteResultDto = CoteResultDto.builder().build();
+        coteResultDto.setPass(false);
         String language = "0";
         if (coteSubmitRequestDto.getLanguage().equals("java")) {
             language = "4";
@@ -96,7 +97,7 @@ public class CoteService {
         } else if (coteSubmitRequestDto.getLanguage().equals("cpp")) {
             language = "7";
         }
-
+        coteSubmitRequestDto.setCode(coteSubmitRequestDto.getCode().replaceFirst("Solution", "Progman"));
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("LanguageChoice", language);
         jsonObject.put("Program", coteSubmitRequestDto.getCode());
@@ -121,6 +122,7 @@ public class CoteService {
             e.printStackTrace();
         }
         long time = System.currentTimeMillis() - start;
+        time = 100;
         coteResultDto.setSpendTime(time);
         if (error != null) {
             coteResultDto.setMessage(error);
