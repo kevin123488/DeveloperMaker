@@ -73,11 +73,11 @@ public class CoteService {
 
         if (userCoteOpt.isPresent()) { // 푼 기록이 있을 때.
             userCote = userCoteOpt.get();
-            if (coteResultDto.getPass() && userCote.getCorrect() == -1) { // 맞췄을 때
+            if (coteResultDto.getPass() && userCote.getCorrect() == 2) { // 맞췄을 때
                 userCote.updateCorrect(1);
             }
         } else {
-            userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : -1).build());
+            userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : 2).build());
         }
 
 
