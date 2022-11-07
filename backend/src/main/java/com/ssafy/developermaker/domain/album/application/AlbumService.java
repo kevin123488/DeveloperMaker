@@ -52,7 +52,7 @@ public class AlbumService {
         return new AlbumResponseDto(storyAlbumList,studyAlbumList);
     }
     @Transactional
-    public Boolean resistUserAlbum(String email, Long albumId){
+    public AlbumDto resistUserAlbum(String email, Long albumId){
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
@@ -62,10 +62,10 @@ public class AlbumService {
         if(!userAlbumRepository.findByUserAndAlbum(user,album).isPresent()) {
             UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).build();
             userAlbumRepository.save(userAlbum);
-            return true;
         }
 
-        return false;
+        long userCount = userRepository.count();
+        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount);
     }
 
     public Boolean findAlbum(String email, Long albumId) {
