@@ -6,4 +6,7 @@ import lombok.Getter;
 public class CoteSubmitRequestDto {
     String language;
     String code;
+    public void setCode(String code){
+        this.code = code;
+    }
 }

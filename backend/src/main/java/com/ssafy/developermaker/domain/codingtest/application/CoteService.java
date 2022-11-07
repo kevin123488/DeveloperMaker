@@ -97,7 +97,7 @@ public class CoteService {
         } else if (coteSubmitRequestDto.getLanguage().equals("cpp")) {
             language = "7";
         }
-
+        coteSubmitRequestDto.setCode(coteSubmitRequestDto.getCode().replaceFirst("Solution", "Progman"));
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("LanguageChoice", language);
         jsonObject.put("Program", coteSubmitRequestDto.getCode());
