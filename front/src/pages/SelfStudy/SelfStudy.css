@@ -1,3 +1,19 @@
+.homeBtn {
+  position: absolute;
+  top: 2vh;
+  right: 2vw;
+  height: 15vh;
+  width: 10vw;
+  overflow: hidden;
+  background: url(../../asset/images/SelfstudyImg/homeBtn.png) center no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  transition: all ease 0.1s;
+}
+.homeBtn:hover {
+  transform: scale(1.1);
+}
+
 /* ==========스터디========== */
 .CsStudyBackground {
   position: relative;
@@ -17,17 +33,38 @@
 }
 
 .StudyCompnentDiv{
+  /* display: flex; */
   margin-top: 10vh;
+  text-align: center;
+  /* justify-content: center; */
 }
 .StudyCompnent {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5vw;
+  color: wheat;
+  /* line-height: 15vh; */
+  margin-right: 3.5vw;
+  margin-left: 3.5vw;
   text-align: center;
-  height: 10vw;
-  border: 0.4em inset #e2fffc;
-  margin: 1vw;
-  margin-top: 1vh;
-  background-color: white;
+  background: url(../../asset/images/SelfstudyImg/studyNote.png) center no-repeat;
+  background-size: 100% 100%;
+  height: 30vh;
+  width: 15vw;
+  margin-bottom: 3vh;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
+.StudyCompnent:hover {
+  transform: scale(1.1);
+}
+.studyTitle{
+  position: absolute;
+  margin-top: 6vh;
+  margin-left: 2.7vw;
+  width: 10vw;
+}
+
 .showingMarkdown {
   position: absolute;
   top: 0vh;
@@ -61,7 +98,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 70vh;
+  top: 77vh;
   left: 50%;
   transform: translate(-50%, -50%);
   height: 10vh;
@@ -84,13 +121,14 @@
   left: 50%;
   transform: translate(-50%, -50%);
   height: 10vh;
-  width: 20vw;
+  /* width: 10; */
   margin-top: 10vh;
   /* background-color: white; */
 }
 .subjectItem {
   font-size: 2vw;
   margin: 1vw;
+  width: 10vw;
   cursor: pointer;
 }
 .studyItems {
@@ -102,9 +140,10 @@
 /* ==========퀴즈 css========== */
 .QuizContainer {
   position: absolute;
+  width: 70vw;
+  height: 70vh;
   top: 5vh;
   left: 22vw;
-  width: 70vw;
 }
 
 .showingQuiz {
@@ -134,30 +173,57 @@
 }
 
 .quizcomp2 {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5vw;
+  color: wheat;
+  /* line-height: 15vh; */
+  margin-right: 3.5vw;
+  margin-left: 3.5vw;
   text-align: center;
-  height: 10vw;
-  border: 0.4em inset #e2fffc;
-  margin: 1vw;
-  background-color: rgb(255, 0, 0);
+  background: url(../../asset/images/SelfstudyImg/quizPaper.png) center no-repeat;
+  background-size: 100% 100%;
+  height: 30vh;
+  width: 15vw;
+  margin-bottom: 3vh;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 
 .quizcomp0 {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5vw;
+  color: wheat;
+  /* line-height: 15vh; */
+  margin-right: 3.5vw;
+  margin-left: 3.5vw;
   text-align: center;
-  height: 10vw;
-  border: 0.4em inset #e2fffc;
-  margin: 1vw;
-  background-color: white;
+  background: url(../../asset/images/SelfstudyImg/quizPaper.png) center no-repeat;
+  background-size: 100% 100%;
+  height: 30vh;
+  width: 15vw;
+  margin-bottom: 3vh;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 
 .quizcomp1 {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5vw;
+  color: wheat;
+  /* line-height: 15vh; */
+  margin-right: 3.5vw;
+  margin-left: 3.5vw;
   text-align: center;
-  height: 10vw;
-  border: 0.4em inset #e2fffc;
-  margin: 1vw;
-  background-color: rgb(0, 0, 255);
+  background: url(../../asset/images/SelfstudyImg/quizPaper.png) center no-repeat;
+  background-size: 100% 100%;
+  height: 30vh;
+  width: 15vw;
+  margin-bottom: 3vh;
   cursor: pointer;
+  transition: all ease 0.3s;
 }
 
 .QuizCompnent {
@@ -174,7 +240,7 @@
   text-align: center;
   top: 17vh;
   font-size: 3vw;
-  right: 9vw;
+  right: 11vw;
   height: 2vw;
   width: 1vw;
   background-color: white;
@@ -206,7 +272,7 @@
   opacity: 0.6;
   width: 25vw;
   height: 70vh;
-  top: 15vh;
+  top: 25vh;
   left: 0vw;
   transition: all ease 0.3s;
 }
@@ -214,7 +280,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 35vh;
+  top: 40vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring1.png") center no-repeat;
   background-size: 100% 100%;
@@ -227,7 +293,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 35vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
   background-size: 100% 100%;
@@ -257,7 +323,7 @@
   opacity: 0.6;
   width: 25vw;
   height: 70vh;
-  top: 15vh;
+  top: 20vh;
   left: 19.5vw;
   transition: all ease 0.3s;
 }
@@ -265,7 +331,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 35vh;
+  top: 40vh;
   left: 20vw;
   background: url("../../asset/images/SelfstudyImg/SDfall1.png") center no-repeat;
   background-size: 100% 100%;
@@ -278,7 +344,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 35vh;
   left: 20vw;
   background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
   background-size: 100% 100%;
@@ -307,7 +373,7 @@
   opacity: 0.6;
   width: 25vw;
   height: 70vh;
-  top: 15vh;
+  top: 18vh;
   left: 39vw;
   transition: all ease 0.3s;
 }
@@ -315,7 +381,7 @@
   position: absolute;
   width: 25vw;
   height: 80vh;
-  top: 30vh;
+  top: 32vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer1.png") center no-repeat;
   background-size: 100% 100%;
@@ -328,7 +394,7 @@
   position: absolute;
   width: 25vw;
   height: 80vh;
-  top: 25vh;
+  top: 27vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
   background-size: 100% 100%;
@@ -357,7 +423,7 @@
   opacity: 0.6;
   width: 25vw;
   height: 70vh;
-  top: 15vh;
+  top: 22vh;
   left: 59vw;
   transition: all ease 0.3s;
 }
@@ -366,7 +432,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 35vh;
+  top: 42vh;
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter1.png") center no-repeat;
   background-size: 100% 100%;
@@ -379,7 +445,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 37vh;
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
   background-size: 100% 100%;
@@ -408,7 +474,7 @@
   opacity: 0.6;
   width: 25vw;
   height: 70vh;
-  top: 15vh;
+  top: 18vh;
   left: 79vw;
   transition: all ease 0.3s;
 }
@@ -416,7 +482,7 @@
   position: absolute;
   width: 24vw;
   height: 80vh;
-  top: 30vh;
+  top: 33vh;
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero1.png") center no-repeat;
   background-size: 100% 100%;
@@ -429,7 +495,7 @@
   position: absolute;
   width: 24vw;
   height: 80vh;
-  top: 25vh;
+  top: 28vh;
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
   background-size: 100% 100%;
@@ -457,7 +523,7 @@
 /* 스터디, 퀴즈 선택 화면 */
 .choiceInfo {
   position: absolute;
-  background-color: white;
+  /* background-color: white; */
   top: 3vh;
   left: 22vw;
   width: 70vw;
@@ -467,25 +533,161 @@
 .workContainer {
   position: relative;
   display: flex;
-  background-color: white;
+  /* background-color: white; */
   margin-left: 22vw;
   margin-top: 0vh;
   left: 0vw;
   width: 70vw;
   height: 80vh;
+  /* border: solid; */
+  border-radius: 10px;
 }
 .studySelectButton {
-  background-color: #749fbb;
+  /* background-color: #749fbb; */
+  
   text-align: center;
-  padding: 0;
-  line-height: 40vh;
+  color: black;
+  padding: 1vw;
+  margin-right: 1vw;
+  line-height: 50vh;
+  font-size: 3vw;
+  height: 60vh; 
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: solid 1vw;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+.studySelectButton:hover {
+  /* background-color: #749fbb; */
+  
+  text-align: center;
+  color: black;
+  padding: 1vw;
+  line-height: 50vh;
+  font-size: 4vw;
+  height: 60vh; 
+  cursor: pointer;
+  border: solid 1vw;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+
+.quizSelectButton {
+  /* background-color: #797979; */
+  text-align: center;
+  color: black;
+  padding: 1vw;
+  display:table-cell;
+  line-height: 50vh;
+  font-size: 3vw;
+  height: 60vh; 
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: solid 1vw;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+.quizSelectButton:hover {
+  /* background-color: #797979; */
+  text-align: center;
+  color: black;
+  padding: 1vw;
+  display:table-cell;
+  line-height: 50vh;
+  font-size: 4vw;
+  height: 60vh; 
+  cursor: pointer;
+  border: solid 1vw;
+  border-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  transition: all ease 0.3s;
+}
+
+
+/* 퀴즈 내부 */
+/* 퀴즈 내부 */
+/* 퀴즈 내부 */
+
+.npcSpeechBalloon {
+  display: flex;
+  justify-content: center;
+  text: center;
+  /* line-height: 20vh; */
+  align-items: center;
+  font-size: 2vw;
+  color: #80b9ff;
+  /* padding-top: 10vh; */
+  /* vertical-align: center; */
+  /* margin-bottom: 1.5vw; */
+  height: 22vh;
+  width: 21vw;
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  opacity: 1;
+  background: url("../../asset/images/SelfstudyImg/speechBalloon.png") center no-repeat;
+  background-size: 100% 100%;
+}
+
+.algoContainer {
+  position: absolute;
+  top: 5vh;
+  left: 22vw;
+  /* height: 70vh; */
+  width: 70vw;
+}
+.algoProblem {
+  margin-left: 1vw;
+  width: 30vw;
+}
+
+.codeEditor {
+  position: absolute;
+  top: 10vh;
+  left: 35vw;
+  width: 30vw;
+  height: 50vh;
+  /* overflow: scroll; */
+}
+.codeArea::-webkit-scrollbar {
+  width: 0.5vw;
+  height: 0;
+  background-color: white;
+}
+.codeArea::-webkit-scrollbar-thumb {
+  background-color: #a5fffe;
+  border-radius: 20px;
+}
+.codeArea::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  background-color: #ebffff;
+}
+
+.algoSubmitBtn{
+  position: absolute;
+  text-align: center;
+  line-height: 5vh;
+  width: 5vw;
+  height: 5vh;
+  font-size: 3vh;
+  top: 50vh;
+  left: 25vw;
+  border-radius: 10px;
+  border: black solid;
+  z-index: 100;
   cursor: pointer;
 }
-.quizSelectButton {
-  background-color: #797979;
+.langChoice {
+  position: absolute;
   text-align: center;
-  padding: 0;
-  display:table-cell;
-  line-height: 40vh;
-  cursor: pointer;
+  width: 5vw;
+  height: 5vh;
+  font-size: 3vh;
+  top: 60vh;
+  left: 35vw;
 }
