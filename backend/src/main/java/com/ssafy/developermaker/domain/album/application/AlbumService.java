@@ -76,4 +76,27 @@ public class AlbumService {
         return findUserAlbum.isPresent();
     }
 
+
+    public Boolean findNewAlbum(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        return findNewUserAlbum.isPresent();
+    }
+
+    @Transactional
+    public boolean checkNewAlbum(String email, Long albumId) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum_AlbumId(user, albumId);
+
+        if(findUserAlbum.isPresent() && !findUserAlbum.get().getIsRead()) {
+            findUserAlbum.get().checkRead();
+            return true;
+        }
+
+        return false;
+    }
 }
