@@ -15,10 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -79,16 +76,16 @@ public class AlbumService {
     }
 
 
-    public Boolean findNewAlbum(String email) {
+    public boolean findNewAlbum(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        Optional<List<UserAlbum>> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
         return findNewUserAlbum.isPresent();
     }
 
     @Transactional
-    public boolean checkNewAlbum(String email, Long albumId) {
+    public AlbumResponseDto checkNewAlbum(String email, Long albumId) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
@@ -96,10 +93,9 @@ public class AlbumService {
 
         if(findUserAlbum.isPresent() && !findUserAlbum.get().getIsRead()) {
             findUserAlbum.get().checkRead();
-            return true;
         }
 
-        return false;
+        return getAlbumList(email);
     }
 
     public HashMap<String, Integer> getAlbumProgress(String email) {
