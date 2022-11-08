@@ -7,6 +7,7 @@ import styled from "styled-components";
 import background from "../../asset/images/SelfstudyImg/CsStudyBackground.png";
 import btn from "../../asset/images/SelfstudyImg/버튼.png";
 import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
@@ -75,6 +76,12 @@ const CSselfStudy = (prop) => {
     };
     getInitialStudy()
 
+    setTimeout(() => {
+      const pageNum = document.getElementById('pageNums')
+      console.log('스타일', pageNum.style)
+      pageNum.style.color = '#80b9ff'
+    }, 100)
+  
   }, [dispatch])
 
   const study = useSelector((state) => state.study)
@@ -150,6 +157,16 @@ const CSselfStudy = (prop) => {
 
   // 페이지 변경하는 함수
   const changePage = async (page) => {
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum) => {
+      if (parseInt(pageNum.innerText) === page) {
+        console.log(pageNum.innerText)
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
+
     const newStudyInfo = {
       category: category,
       subject: subject,
@@ -175,8 +192,18 @@ const CSselfStudy = (prop) => {
 
   // 왼쪽 화살표 클릭
   const leftArrow = () => {
-    console.log('왼')
+
     if (nowpage > 0) {
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+
       const newStudyInfo = {
         category: category,
         subject: subject,
@@ -191,8 +218,18 @@ const CSselfStudy = (prop) => {
 
   // 오른쪽 화살표 클릭
   const rightArrow = () => { 
-    console.log('오')
+
     if ((nowpage + 1) * 4 + 1 <= maxPage){
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+
       const newStudyInfo = {
         category: category,
         subject: subject,
@@ -217,12 +254,12 @@ const CSselfStudy = (prop) => {
 
   return (
     <>
-      <CsStudyBackground>
+      {/* <CsStudyBackground>
         <br />
         <br />
         <br />
         <br />
-        <br />
+        <br /> */}
 
         <div className="StudyContainer">
 
@@ -236,10 +273,12 @@ const CSselfStudy = (prop) => {
           </div>
 
           <div className="studyItems container">
-            <div className="row justify-content-center">
+            <div className="">
               {studyList.map((study, index) => (
-                <div key={index} className="col-3 StudyCompnent" onClick={showMarkdown.bind(null, study.content)}>
-                  {study.title}
+                <div key={index} className=" StudyCompnent" onClick={showMarkdown.bind(null, study.content)}>
+                  <p className="studyTitle">
+                    {study.title}
+                  </p>
                 </div>
               ))}
             </div>
@@ -250,7 +289,7 @@ const CSselfStudy = (prop) => {
             ?
             <div className="showingMarkdown">
                 <div onClick={closeStudy} className="CloseQuiz">X</div>
-              <ReactMarkdown children = {showingMarkdown} remarkPlugins={[remarkGfm]}>
+              <ReactMarkdown children = {showingMarkdown} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               </ReactMarkdown>  
             </div>
             : null
@@ -260,14 +299,14 @@ const CSselfStudy = (prop) => {
           <div className="paginationBar">
             <p className="paginationItem" onClick={leftArrow}> {`<`} </p>
             {pages.map((page, index) => (
-              <p key={index} className="paginationItem" onClick={changePage.bind(null, page + nowpage * 4)}>
-                {page + nowpage * 4}
+              <p id="pageNums" key={index} className="paginationItem" onClick={changePage.bind(null, page)}>
+                {page}
               </p>
               ))}
             <p className="paginationItem" onClick={rightArrow}>{`>`}</p>
           </div>
         </div>
-      </CsStudyBackground>
+      {/* </CsStudyBackground> */}
     </>
   );
 };

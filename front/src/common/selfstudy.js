@@ -43,9 +43,15 @@ export const getCodingTestListApi = async (coteListRequestDto) => {
   return res;
 };
 
+// 코테 테스트 돌리기
+export const postCodingTestTestApi = async (coteListRequestDto) => {
+  const res = await axiosInstance.post("/cote/test", coteListRequestDto);
+  return res;
+};
+
 // 코테 답 제출
 export const postCodingTestSolveApi = async (solveInfo) => {
-  const res = await axiosInstance.post(`/cote/${solveInfo}`);
+  const res = await axiosInstance.post(`/cote/${solveInfo.coteId}`, solveInfo.answer);
   return res;
 };
 

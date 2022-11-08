@@ -59,7 +59,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"다들 너처럼 살진 않는다고.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -70,7 +70,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"살지 않는게 아니라, 살 수 없는거 아닐까(웃음)\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -81,10 +81,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"딱밤 딱 1대만 때리면 안될까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -92,10 +92,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"쓸데없는 소리 할거면 공부나 하지 그래?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -103,10 +103,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"말 안해도 할 생각이었거든?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -125,7 +125,7 @@
     "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -140,7 +140,7 @@
         "centerImageUrl": "seobom",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "classroom",
         "plusIndex": 1
       },
       {
@@ -148,10 +148,10 @@
         "text": "\"cs의 기본도 모르면서 다른 책을 보다니. 어디 가서 싸피 교육생이라고 말하지 말아줘. 창피하니까.\"",
         "storyTeller": "서봄",
         "score": {"char": "서봄", "point": 0},
-        "centerImageUrl": "a",
+        "centerImageUrl": "seobom",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "classroom",
         "plusIndex": 2
       },
       {
@@ -159,10 +159,10 @@
         "text": "\"cs의 기본도 모르면서 다른 책을 보다니. 어디 가서 싸피 교육생이라고 말하지 말아줘. 창피하니까.\"",
         "storyTeller": "서봄",
         "score": {"char": "서봄", "point": 0},
-        "centerImageUrl": "a",
+        "centerImageUrl": "seobom",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "classroom",
         "plusIndex": 2
       }
     ]
@@ -172,10 +172,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"역시 개발자라면 cs지식을 탄탄히 쌓아야지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 2
   },
   {
@@ -183,10 +183,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "말투가 재수없긴 하지만, 맞는 말이다. cs의 기본도 모르는데 개발자라고 말할 수 있을까? 서봄의 말에 설득된 나는 cs책을 펼쳤다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -197,7 +197,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -205,10 +205,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"근데 이렇게 책만 볼거면 오늘 대면 왜온거야?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -216,10 +216,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"듣기론 무슨 이벤트가 있다던데. CS 퀴즈왕 이벤트였나?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -227,10 +227,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"하필 cs네. 내가 잘 못하는 부분인데.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -238,10 +238,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"난 잘하지만.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -249,10 +249,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그럼… 나랑…\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -260,10 +260,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"음~ 어떻게 할까~\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -271,10 +271,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아직 아무 얘기도 안했는데?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -282,10 +282,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"보나마나 같이 출전해달라는 얘기겠지\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -293,10 +293,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아닌데? 나 같이 나갈 사람 있는데?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -307,7 +307,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -318,7 +318,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -329,7 +329,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -340,7 +340,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -351,7 +351,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -362,7 +362,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -373,7 +373,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -384,7 +384,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -395,7 +395,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -406,7 +406,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -417,7 +417,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -435,7 +435,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -450,7 +450,7 @@
         "centerImageUrl": "a",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "classroom",
         "plusIndex": 1
       },
       {
@@ -461,7 +461,7 @@
         "centerImageUrl": "a",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "classroom",
         "plusIndex": 7
       }
     ]
@@ -474,7 +474,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -485,7 +485,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -496,7 +496,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -507,7 +507,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -518,7 +518,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -529,7 +529,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 9
   },
   {
@@ -540,7 +540,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -551,7 +551,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -562,7 +562,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -573,7 +573,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -584,7 +584,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -595,7 +595,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -606,7 +606,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -628,7 +628,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -639,7 +639,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -650,7 +650,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -661,7 +661,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -672,7 +672,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -683,7 +683,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -694,7 +694,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -705,7 +705,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -716,7 +716,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -727,7 +727,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -738,7 +738,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -746,10 +746,10 @@
     "scriptType": "text",
     "storyTeller": "박제학",
     "text": "\"이름… 아아… 우선 ‘박제학’ 이라고만 말해두죠.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "jehak",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -760,7 +760,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -771,18 +771,18 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
     "idx": 65,
     "scriptType": "text",
     "storyTeller": "주인공",
-    "text": "\"이상한 사람이네.\"",
+    "text": "\"진짜 이상한 사람이네.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -793,7 +793,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -804,7 +804,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -815,7 +815,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -826,7 +826,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "classroom",
     "plusIndex": 1
   },
   {
@@ -837,7 +837,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -848,7 +848,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -859,7 +859,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -870,7 +870,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -881,7 +881,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -892,7 +892,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -903,7 +903,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -914,7 +914,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -932,7 +932,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -947,7 +947,7 @@
         "centerImageUrl": "a",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "lobby",
         "plusIndex": 1
       },
       {
@@ -958,7 +958,7 @@
         "centerImageUrl": "a",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "a",
+        "backgroundImageUrl": "lobby",
         "plusIndex": 5
       }
     ]
@@ -971,7 +971,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -982,7 +982,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -993,7 +993,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1004,7 +1004,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1015,7 +1015,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1026,7 +1026,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1037,7 +1037,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1048,7 +1048,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1059,7 +1059,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1070,7 +1070,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1081,7 +1081,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1092,7 +1092,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1103,7 +1103,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1114,7 +1114,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1125,7 +1125,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1136,7 +1136,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
@@ -1147,176 +1147,33 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
+    "backgroundImageUrl": "lobby",
     "plusIndex": 1
   },
   {
     "idx": 97,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "훌륭한 우승 상품과 함께, 부울경 퀴즈대회 [마무리]",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "fin",
+    "plusIndex": 1
+  },
+  {
+    "idx": 98,
     "scriptType": "changeScript",
     "storyTeller": null,
     "text": "훌륭한 우승 상품과 함께, 부울경 퀴즈대회 [마무리]",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "selfStudyRequired": {"cs": 15},
+    "backgroundImageUrl": "fin",
+    "nextScript": "script2",
+    "whichSelfStudy": "cs",
+    "selfStudyRequired": {"cs": 0},
     "getAlbumNum": 2,
     "plusIndex": 1
-  },
-  {
-    "idx": 84,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"작업 수행 방식에 차이가 있습니다.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 84,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"작업 수행 방식에 차이가 있습니다.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 84,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"작업 수행 방식에 차이가 있습니다.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 84,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"작업 수행 방식에 차이가 있습니다.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 63,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"이상한 사람이네.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 63,
-    "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"이상한 사람이네.\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 0,
-    "scriptType": "text",
-    "storyTeller": null,
-    "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 0,
-    "scriptType": "text",
-    "storyTeller": null,
-    "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 0,
-    "scriptType": "text",
-    "storyTeller": null,
-    "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 0,
-    "scriptType": "text",
-    "storyTeller": null,
-    "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "idx": 0,
-    "scriptType": "text",
-    "storyTeller": null,
-    "text": "서봄의 옆자리에 앉았다.",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "scriptType": "text",
-    "text": "안녕하세요ㅋㅋ",
-    "imageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "scriptType": "text",
-    "text": "네ㅎㅎ",
-    "imageUrl": "a",
-    "plusIndex": 1
-  },
-  {
-    "scriptType": "choice",
-    "text": "누구와 함께하시겠습니까?",
-    "option": [
-      {
-        "name": "서봄",
-        "nextScript": "script1_1"
-      },
-      {
-        "name": "차가을",
-        "nextScript": "script1_1"
-      },
-      {
-        "name": "한여름",
-        "nextScript": "script1_1"
-      },
-      {
-        "name": "한겨울",
-        "nextScript": "script1_1"
-      }
-    ],
-    "imageUrl": "a"
   }
 ]

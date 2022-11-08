@@ -3,11 +3,25 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router";
 import "./SelfStudy.css";
 import Study from "./Study.js";
-import { getSelfStudyProgress, getStudyInfo, getQuizInfo, getQuizList, postQuizSolve, getCodingTestList } from "../../slices/selfstudySlice";
+import AlgorithmSelfStudy from "./AlgorithmSelfStudy";
+import { 
+  getSelfStudyProgress, 
+  getStudyInfo, 
+  getQuizInfo, 
+  getQuizList, 
+  postQuizSolve, 
+  getCodingTestList, 
+  postCodingTestSolve,
+  postCodingTestTest,
+ } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
 import styled from "styled-components";
 // import btn from "../../asset/images/SelfstudyImg/버튼.png";
 import speechBalloon from "../../asset/images/SelfstudyImg/speechBalloon.png";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
+import CodeTextarea from "./CodeTextarea";
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
@@ -58,12 +72,24 @@ const Quiz = () => {
     }
     startGetQuizInfo()
     
+    // console.log('유저정보', user.language)
+    // 초기 유저 선택 언어 설정
+    if (user.language === 'PYTHON') {
+      changeLang('python')
+    } else if (user.language === 'JAVA') {
+      changeLang('java')
+    } else if (user.language === 'C') {
+      changeLang('C')
+    } else if (user.language === 'JS') {
+      changeLang('javascript')
+    }
 
   }, [dispatch])
 
 
-  
+  const user = useSelector((state)=> state.user.userInfo)
   const study = useSelector((state) => state.study)
+  const progress = useSelector((state) => state.study.progress)
   const quizList = useSelector((state) => state.study.quizList.quizInfo)
   // console.log(quizList)
   const quizInfo = useSelector((state) => state.study.quizInfo)
@@ -72,6 +98,9 @@ const Quiz = () => {
 
 
   // 스터디할지, 문제풀지 고르는 창 나오는거
+  const [isShowNpcBalloon, setIsShowNpcBalloon] = useState(false)
+  const [workType, setWorkType] = useState('')
+  const [npcBalloonContent, setNpcBalloonContent] = useState('')
   const [showWork, setShowWork] = useState(false)
   const [showWorkChoice, setShowWorkChoice] = useState(false)
   const [category, setCategory] = useState(0)
@@ -88,6 +117,15 @@ const Quiz = () => {
   const [isShowQuizProblem, setIsShowQuizProblem] = useState(false)
   const [IsShowStudy, setIsShowStudy] = useState(false)
   const [checkedAnswer, setCheckedAnswer] = useState(null)
+  const [isShowingAlgo, setIsShowingAlgo] = useState(false)
+  const [showingAlgo, setShowingAlgo] = useState([])
+  // 테스트 실행해볼 input값
+  const [inputValue, setInputValue] = useState('')
+  const [outputValue, setOutputValue] = useState('')
+
+  // 알고문제 언어선택
+  const [lang, changeLang] = useState('python')
+
 
   useEffect(() => {
     if (maxPage >= 4) {
@@ -139,6 +177,7 @@ const Quiz = () => {
       setShowWorkChoice(true)
     }, 500)
     setIsShowQuizProblem(false)
+    setIsShowingAlgo(false)
     changeQuizList(newQuizInfo)
     await setOffset(0)
     await setNowpage(0)
@@ -156,6 +195,7 @@ const Quiz = () => {
       limit: limit,
     }
     setIsShowQuizProblem(false)
+    setIsShowingAlgo(false)
     await setOffset(0)
     await setNowpage(0)
     await setSubject(info.subject)
@@ -164,6 +204,17 @@ const Quiz = () => {
 
   // 페이지 변경하는 함수
   const changePage = async (page) => {
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum) => {
+      if (parseInt(pageNum.innerText) === page) {
+        console.log(pageNum.innerText)
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
+
+    // console.log('페이지누름')
     const newQuizInfo = {
       category: category,
       subject: subject,
@@ -176,38 +227,67 @@ const Quiz = () => {
 
   // 보는 퀴즈 변경하는 함수
   const changeQuizList = (newQuizInfo) => {
+    // 알고리즘이면 요청보내는게 다름
     const quizInfo = {
       category: newQuizInfo.category,
       subject: newQuizInfo.subject,
       offset: newQuizInfo.offset,
       limit: newQuizInfo.limit,
     }
+    console.log('카테고리 확인', newQuizInfo.category)
     setIsShowQuizProblem(false)
-    dispatch(getQuizList(quizInfo))
+    setIsShowingAlgo(false)
+    if (newQuizInfo.category === 1 || newQuizInfo.category === "ALGORITHM") {
+      console.log('알고리즘 퀴즈 리스트 변경', newQuizInfo.category)
+      dispatch(getCodingTestList(quizInfo))
+    }
+    else {
+      console.log('그냥 퀴즈 리스트 변경')
+      dispatch(getQuizList(quizInfo))
+    }
   }
 
   // 왼쪽 화살표 클릭
   const leftArrow = () => {
-    console.log('왼')
-    console.log(nowpage)
+
     if (nowpage > 0) {
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+
       const newQuizInfo = {
         category: category,
         subject: subject,
         offset: (nowpage - 1) * 4,
         limit: limit,
       }
-      console.log((nowpage - 1) * 4 + 1)
       setPages([(nowpage - 1) * 4 + 1, (nowpage - 1) * 4 + 2, (nowpage - 1) * 4 + 3, (nowpage - 1) * 4 + 4])
       changeQuizList(newQuizInfo)
       setNowpage(nowpage - 1)
     }
+    setIsShowingAlgo(false)
   }
 
   // 오른쪽 화살표 클릭
-  const rightArrow = () => { 
-    console.log('오')
+  const rightArrow = () => {
+
     if ((nowpage + 1) * 4 + 1 <= maxPage){
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+      
       const newQuizInfo = {
         category: category,
         subject: subject,
@@ -226,26 +306,37 @@ const Quiz = () => {
       changeQuizList(newQuizInfo)
       setNowpage(nowpage + 1)
     }
+    setIsShowingAlgo(false)
   }
 
 
   const showQuiz = (quiz) => {
-    console.log("퀴즈누름", quiz)
-    setShowingQuiz(quiz)
-    setIsShowQuizProblem(true)
-    const checkboxes = document.getElementsByName('quizRadio');
-    // 체크박스 목록을 순회하며 checked 값을 초기화
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = false;
-    })
-    setCheckedAnswer(null)
+    // 알고리즘이면 다른 페이지로
+    if (category === 1 || category === "ALGORITHM"){
+      // navigate('/SelfStudy/algo', )
+      setIsShowingAlgo(true)
+      setShowingAlgo(quiz)
+      console.log('알고문제', quiz)
+    }
+    else {
+      console.log("퀴즈누름", quiz)
+      setShowingQuiz(quiz)
+      setIsShowQuizProblem(true)
+      const checkboxes = document.getElementsByName('quizRadio');
+      // 체크박스 목록을 순회하며 checked 값을 초기화
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      })
+      setCheckedAnswer(null)
+    }
   }
   
   const checkAnswer = (answer) => {
     setCheckedAnswer(answer)
   }
 
-  const sendAnswer = async() => {
+  // 퀴즈 답 제출
+  const solveQuiz = async() => {
     if (checkedAnswer !== null) {
       console.log(showingQuiz)
       const solveInfo = { quizId: showingQuiz.quizId, answer: checkedAnswer }
@@ -257,10 +348,18 @@ const Quiz = () => {
         limit: limit,
       }
       dispatch(getQuizList(newQuizInfo))
-      await alert(solveResult.payload)
+      setNpcBalloonContent(solveResult.payload)
+      setIsShowNpcBalloon(true)
+      setTimeout(() => {
+      setIsShowNpcBalloon(false)
+      }, 2000)
       // window.location.reload();
     } else {
-      alert('정답을 체크해주세요!')
+      setNpcBalloonContent("정답을 체크해줘")
+      setIsShowNpcBalloon(true)
+      setTimeout(() => {
+      setIsShowNpcBalloon(false)
+      }, 2000)
     }
   }
 
@@ -296,17 +395,21 @@ const Quiz = () => {
     const categoryballoon = document.getElementById('categoryballoon')
     console.log("categoryballoon", categoryballoon)
     categoryballoon.style.display = 'block'
+    setWorkType('')
     setShowWork(false)
     setShowWorkChoice(false)
     setIsShowQuiz(false)
     setIsShowStudy(false)
-
+    setIsSelectedCategory(false)
     setIsShowQuizProblem(false)
+    setIsShowingAlgo(false)
 
   } 
 
   const goSelfstudy = () => {
-    navigate('/selfstudy')
+    setTimeout(() => {
+      navigate('/')
+    }, 200)
   }
 
   // 스터디, 퀴즈 골랐을 때 실행될 함수
@@ -315,12 +418,14 @@ const Quiz = () => {
     // 스터디 골랐을 때
     if (work === 'study'){
       console.log('스터디')
+      setWorkType('공부')
       setIsShowStudy(true)
     }
     
     // 퀴즈 골랐을 때
     else {
       console.log('퀴즈')
+      setWorkType('퀴즈')
       setIsShowQuiz(true)
       // 알고리즘이면
       if (category === 1){
@@ -328,41 +433,90 @@ const Quiz = () => {
       }
     }
     setIsSelectedCategory(true)
+
+    setTimeout(() => {
+      const pageNum = document.getElementById('pageNums')
+      console.log('스타일', pageNum.style)
+      pageNum.style.color = '#80b9ff'
+    }, 100)
   }
 
   // 스터디 or 퀴즈 선택하는 창
   const resetWork = () => {
-    setIsSelectedCategory(false)
+    setWorkType('')
+    setTimeout(() => {
+      setIsSelectedCategory(false)
+    }, 200)
     setIsShowQuiz(false)
     setIsShowQuizProblem(false)
     setIsShowStudy(false)
     setShowWorkChoice(true)
+    setIsShowingAlgo(false)
+  }
+
+  const closeAlgo = () => {
+    setIsShowingAlgo(false)
+  }
+
+  const submitAlgo = async (solveInfo) => {
+    setNpcBalloonContent('채점중이야.')
+    setIsShowNpcBalloon(true)
+    const solveResult = await dispatch(postCodingTestSolve(solveInfo))
+    console.log('풀이결과', solveResult.payload)
+    setNpcBalloonContent(solveResult.payload)
+    setTimeout(() => {
+    setIsShowNpcBalloon(false)
+    }, 2000)
+  }
+
+  // 코드 테스트 요청
+  const submitTestAlgo = async (solveInfo) => {
+    setOutputValue('실행중...')
+    const coteListRequestDto = {
+      code: solveInfo.code,
+      input: inputValue,
+      language: solveInfo.language,
+    }
+    const solveResult = await dispatch(postCodingTestTest(coteListRequestDto))
+    setOutputValue(solveResult.payload)
+    // console.log('테스트 결과', solveResult.payload)
   }
 
   return ( 
     <>
       <div className="CsStudyBackground">
-        <button onClick={goSelfstudy}>뒤로가기</button>
-        <button onClick={resetCategory}>과목선택</button>
+        <div className="homeBtn" onClick={goSelfstudy}></div>
+        <div className="categoryChoice" onClick={resetCategory}>과목선택</div>
         {
           isSelectedCategory?
-          <button onClick={resetWork}>스터디 OR 퀴즈</button> 
+          <div className="subjectChoice" onClick={resetWork}>스터디 OR 퀴즈</div> 
           : null
         }
 
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
-        <div id="spring" onClick={() => { changeCategory({category: 0, subject: "network", character: "spring", class: "springSelected",}); moveSDchractor('springCS') }} onMouseOver={showCategory.bind(null, 'springCS')} onMouseOut={hideCategory.bind(null, 'springCS')} className="spring"></div>
-        <div id="fall" onClick={() => { changeCategory({category: 1, subject: "algorithm", character: "fall", class: "fallSelected",}); moveSDchractor('fallAlgo') }} onMouseOver={showCategory.bind(null, 'fallAlgo')} onMouseOut={hideCategory.bind(null, 'fallAlgo')} className="fall"></div>
+        <div id="spring" onClick={() => { changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected",}); moveSDchractor('springCS') }} onMouseOver={showCategory.bind(null, 'springCS')} onMouseOut={hideCategory.bind(null, 'springCS')} className="spring"></div>
+        <div id="fall" onClick={() => { changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected",}); moveSDchractor('fallAlgo') }} onMouseOver={showCategory.bind(null, 'fallAlgo')} onMouseOut={hideCategory.bind(null, 'fallAlgo')} className="fall"></div>
         <div id="summer" onClick={() => { changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected",}); moveSDchractor('summerBack') }} onMouseOver={showCategory.bind(null, 'summerBack')} onMouseOut={hideCategory.bind(null, 'summerBack')} className="summer"></div>
         <div id="winter" onClick={() => { changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected",}) ; moveSDchractor('winterFront') }} onMouseOver={showCategory.bind(null, 'winterFront')} onMouseOut={hideCategory.bind(null, 'winterFront')} className="winter"></div>
-        <div id="hero" onClick={() => { changeCategory({category: 4, subject: "java", character: "hero", class: "heroSelected",}) ; moveSDchractor('heroLang') }} onMouseOver={showCategory.bind(null, 'heroLang')} onMouseOut={hideCategory.bind(null, 'heroLang')} className="hero"></div>
+        <div id="hero" onClick={() => { changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected",}) ; moveSDchractor('heroLang') }} onMouseOver={showCategory.bind(null, 'heroLang')} onMouseOut={hideCategory.bind(null, 'heroLang')} className="hero"></div>
         <br />
         <br />
         <br />
         <br />
         <br />
+
+        {
+          isShowNpcBalloon?
+          <div className="npcSpeechBalloon">
+            <div className="npcSpeechBalloonContent">
+              {npcBalloonContent}
+            </div>
+          </div>
+          : null
+        }
+
 
         <div id="categoryballoon">
           <div id="springCS" className="springCS">
@@ -404,7 +558,7 @@ const Quiz = () => {
         {
           showWork?
           <div className="choiceInfo">
-            {quizInfo[category].category}, 작업 종류
+            {quizInfo[category].category} 진행도: {progress[quizInfo[category].category.toLowerCase()]}%
           </div>
           : null
         }
@@ -414,8 +568,8 @@ const Quiz = () => {
             {
               showWorkChoice?
               <div className="container row m-0 p-0">
-                <div onClick={() => {choiceWork('study')}} className="studySelectButton col-6">study</div>
-                <div onClick={() => {choiceWork('quiz')}} className="quizSelectButton col-6">quiz</div>
+                <div onClick={() => {choiceWork('study')}} className="studySelectButton col-5 pop">공부하기(사진)</div>
+                <div onClick={() => {choiceWork('quiz')}} className="quizSelectButton col-5 pop">문제풀기(사진)</div>
               </div>
               : null
             }
@@ -446,10 +600,22 @@ const Quiz = () => {
             </div>
 
             <div className="studyItems container">
-              <div className="row justify-content-center">
+              <div className="popup">
                 {quizList.map((quiz, index) => (
-                  <div key={index} className={"col-3 quizcomp" + quiz.correct} onClick={showQuiz.bind(null, quiz)}>
-                    {quiz.title}
+                  <div key={index} className={"quizHover quizcomp"} onClick={showQuiz.bind(null, quiz)}>
+                    <p className="quizTitle">
+                      {quiz.title}
+                    </p> 
+                    {
+                      quiz.correct === 1 ?
+                      <div className="correct"></div>
+                      : null
+                    }
+                     {
+                      quiz.correct === 2 ?
+                      <div className="wrong"></div>
+                      : null
+                    }
                   </div>
                 ))}
               {/* {quizList.category} */}
@@ -468,12 +634,12 @@ const Quiz = () => {
                 <div className="form-radio-wrap">
                     <p id="quizCheckBox" className="form-sub-title">선택지: </p>
                       {showingQuiz.example.map((example, index) => (
-                        <div key={index} className="col-3 QuizCompnent">
+                        <div key={index} className="col-3">
                           <span className="form-inline"><input onClick={checkAnswer.bind(null, example)} type="radio" className="input-radio" name="quizRadio" id={index}/><label htmlFor={index} className="form-radio">{example}</label></span>
                         </div>
                       ))}
                 </div>
-                <button onClick={sendAnswer}>제출</button>
+                <button onClick={solveQuiz}>제출</button>
               </div>
 
               : null
@@ -485,7 +651,7 @@ const Quiz = () => {
           <div className="paginationBar">
             <p className="paginationItem" onClick={leftArrow}> {`<`} </p>
             {pages.map((page, index) => (
-              <p key={index} className="paginationItem" onClick={changePage.bind(null, page)}>
+              <p id="pageNums" key={index} className="paginationItem" onClick={changePage.bind(null, page)}>
                 {page}
               </p>
               ))}
@@ -500,11 +666,85 @@ const Quiz = () => {
         {/* 퀴즈 화면 끝*/}
 
 
-      {
-        IsShowStudy?
-        <Study category = {category} subject = {subject}></Study>
-        : null
-      }
+        {/* 알고리즘 화면 */}
+        {/* 알고리즘 화면 */}
+        {/* 알고리즘 화면 */}
+
+        {
+          isShowingAlgo?
+          <div className="algoContainer">
+            <div className="algoBox">
+            {/* 문제보여주는 부분 */}
+            <div className="algoProblem">
+              <br />
+              <p style={{fontSize: '2vw'}}>
+                문제
+              </p>
+              <hr />
+              <ReactMarkdown  children = {showingAlgo.problem} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+              </ReactMarkdown>  
+            </div>
+            <div onClick={closeAlgo} className="CloseAlgo">X</div>
+            <div className="langChoice">
+
+              <div className="dropdown">
+                <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {lang}
+                </button>
+                <ul className="dropdown-menu">
+                  <li className="dropdown-item" onClick={() => {changeLang('python')}}>PYTHON</li>
+                  <li className="dropdown-item" onClick={() => {changeLang('java')}}>JAVA</li>
+                  <li className="dropdown-item" onClick={() => {changeLang('C')}}>C언어</li>
+                  <li className="dropdown-item" onClick={() => {changeLang('javascript')}}>JavaScrpit</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="codeEditor">
+              <CodeTextarea 
+              lang = {lang} 
+              algoInfo = {showingAlgo} 
+              submitAlgo = {submitAlgo} 
+              submitTestAlgo = {submitTestAlgo}
+              ></CodeTextarea>
+            </div>
+            
+            <div className="inputBox">
+              <div style={{position: "relative",}}>
+                <p className="alarmText">
+                  input
+                </p>
+                <textarea onChange={(evn) => {setInputValue(evn.target.value)}} className="inputTextArea" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+
+            <div className="outputBox">
+              <div style={{position: "relative",}}>
+                <p className="alarmText">
+                  output
+                </p>
+                <div className="outputResult">
+                  {outputValue}
+                </div>
+              </div>
+            </div>
+            {/* <AlgorithmSelfStudy></AlgorithmSelfStudy> */}
+              
+            
+            </div>
+          </div>
+          : null
+        }
+
+        {/* 알고리즘 화면 끝 */}
+        {/* 알고리즘 화면 끝 */}
+        {/* 알고리즘 화면 끝 */}
+
+        {
+          IsShowStudy?
+          <Study category = {category} subject = {subject}></Study>
+          : null
+        }
 
 
       </div>

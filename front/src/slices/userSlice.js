@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
 
@@ -9,7 +9,6 @@ export const userLoginKakao = createAsyncThunk(
     try {
       const response = await loginKakao({ access_token });
       sessionStorage.setItem("accessToken", response.data["accessToken"]);
-      console.log("data", response);
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -26,7 +25,6 @@ export const userLoginNaver = createAsyncThunk(
     try {
       const response = await loginNaver({access_token});
       sessionStorage.setItem("accessToken", response.data["accessToken"])
-      console.log("naver Data", response)
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -58,10 +56,26 @@ export const getUser = createAsyncThunk(
 );
 
 export const getProgress = createAsyncThunk(
-  "user/progress",
+  "user/studyProgress",
   async (temp, {rejectWithValue}) => {
     try {
       const {data} = await studyProgress()
+      return data.data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
+export const getAlbumProgress = createAsyncThunk(
+  "user/albumProgress",
+  async (temp, {rejectWithValue}) => {
+    try {
+      const {data} = await albumProgress()
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -78,6 +92,7 @@ const initialState = {
   userInfo: null,
   isLogIn: false,
   error: null,
+  progress: {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} }
 };
 
 const userSlice = createSlice({
@@ -117,7 +132,6 @@ const userSlice = createSlice({
       })
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
-        console.log("Now Loading");
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.userInfo = payload.data;
@@ -130,7 +144,10 @@ const userSlice = createSlice({
       })
       .addCase(PURGE, () => initialState)
       .addCase(getProgress.fulfilled, (state, {payload})=>{
-        state.userInfo.progressDto = payload
+        state.progress.study = payload
+      })
+      .addCase(getAlbumProgress.fulfilled, (state, {payload}) => {
+        state.progress.album = payload
       })
   },
 });

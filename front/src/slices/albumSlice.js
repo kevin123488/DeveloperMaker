@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { albumList, albumCreate, albumCheck } from "../common/album";
+import { albumList, albumCreate, albumCheck, deleteNewAlbum, getNewAlbum } from "../common/album";
 
 // 앨범 정보를 받아오는 경우
 export const readAlbum = createAsyncThunk(
@@ -7,7 +7,6 @@ export const readAlbum = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const response = await albumList();
-      console.log(response.data.data)
       return response.data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -23,7 +22,7 @@ export const putAlbumList = createAsyncThunk(
   "album/put",
   async (albumId, { rejectWithValue }) => {
     try {
-      const { response } = await albumCreate(albumId);
+      const response = await albumCreate(albumId);
       return response.data.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -35,12 +34,12 @@ export const putAlbumList = createAsyncThunk(
   }
 );
 
+// 중복확인
 export const getAlbumCheck = createAsyncThunk(
   "album/check",
   async (albumId, { rejectWithValue }) => {
     try {
       const response = await albumCheck(albumId);
-      console.log(response.data.data);
       return response.data.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -53,11 +52,11 @@ export const getAlbumCheck = createAsyncThunk(
 );
 
 // 새 앨범 여부 확인
-export const getNewAlbum = createAsyncThunk(
+export const getNew = createAsyncThunk(
   "album/new",
-  async(albumId, {rejectWithValue}) => {
+  async(temp, {rejectWithValue}) => {
     try {
-      const {response} = await getNewAlbum()
+      const response = await getNewAlbum()
       return response.data.data
     } catch (error) {
         if (error.response && error.response.data.message) {
@@ -69,6 +68,23 @@ export const getNewAlbum = createAsyncThunk(
     }
   )
 
+  // 새 앨범 삭제
+  export const deleteNew = createAsyncThunk(
+    "album/newDelete",
+    async(albumId, {rejectWithValue, dispatch}) => {
+      try {
+        const response = await deleteNewAlbum(albumId)
+        // 전체 리스트 재요청
+        return response.data.data
+      } catch (error) {
+          if (error.response && error.response.data.message) {
+            return rejectWithValue(error.response.data.message);
+          } else {
+            return rejectWithValue(error.message);
+          }
+        }
+      }
+  )
 
 const album = createSlice({
   name: "album",
@@ -78,12 +94,22 @@ const album = createSlice({
     studyAlbumList: [],
     albumPickShow: false,
     newAlbum: {},
-    haveCheck: [false],
+    // haveCheck: [false],
+    checkNew: { story: false, study:false, total: false, spring:false, fall: false, winter: false}
   },
   reducers: {
     changeMode: (state, action) => {
       state.albumPickShow = !state.albumPickShow
     },
+    // 1회용
+    changeCheckNew: (state, action) => {
+      if (action.data === "study") {
+        state.checkNew.study = true
+      } else {
+        state.checkNew[action.data] = true;
+        state.checkNew.story = true;
+      }
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -91,20 +117,33 @@ const album = createSlice({
         state.studyAlbumList = action.payload.studyAlbumList
         state.storyAlbumList = action.payload.storyAlbumList
       })
-      .addCase(getAlbumCheck.fulfilled, (state, action) => {
-        state.haveCheck = [action.payload];
-        console.log(state.haveCheck);
-      })
-      .addCase(putAlbumList.fulfilled, async (state, action) => {
-        // 새 앨범 값 추가
+      // .addCase(getAlbumCheck.fulfilled, (state, action) => {
+      //   state.haveCheck = [action.payload];
+      //   console.log(state.haveCheck);
+      // })
+      .addCase(putAlbumList.fulfilled, (state, action) => {
+        // 뽑기를 위해 새앨범 을 NEW에 입력
         state.newAlbum = action.payload
         // 앨범 뽑는거 보여주기
         state.albumPickShow = true
-        // 새롭게 해당 앨범 리스트의 is owned 변경을 해야함
+        // 새롭게 해당 앨범 리스트의 is owned 변경을 해야함 => 어차피 다른 페이지에서 함
       })
-
-      .addCase(getNewAlbum.fulfilled, (state, action) => {
-        state.newAlbum = action.payload
+      .addCase(deleteNew.fulfilled, (state, action)=>{
+        state.storyAlbumList = action.payload.storyAlbumList
+        state.studyAlbumList = action.payload.studyAlbumList
+        state.checkNew = { story: false, study:false, total: false, spring:false, fall: false, winter: false}
+        // 경신용
+        action.payload.storyAlbumList.forEach((album)=>{
+          if (album.isOwned && !album.isRead) {
+            state.checkNew[album.theme] = true;
+            state.checkNew.story = true;
+          }
+        })
+        action.payload.studyAlbumList.forEach((album)=>{
+          if (album.isOwned && !album.isRead) {
+            state.checkNew.study = true
+          }
+        })
       })
       // // 거절됨
       // .addCase(readAlbum.rejected, (state, action) => {
@@ -115,7 +154,6 @@ const album = createSlice({
       //   state.isLoading = true;
       //   console.log("Now Loading");
       // })
-      
   },
 });
 

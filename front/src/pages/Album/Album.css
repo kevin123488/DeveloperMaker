@@ -6,28 +6,79 @@
   background-position: 'center';
   background-size: cover;
   background-repeat: no-repeat;
+  overflow: hidden;
 }
-.albumOpacity {
-  opacity: 70%;
+.albumMainTitle {
+  align-self: baseline;
+  font-size: 2vw;
+  color: white;
+  background-color: pink;
+  padding: 0.5vw;
+  border-radius: 10px;
+  vertical-align: center;
+  width: max-content;
 }
-.albumMenu {
+.albumModeSel {
+  position: absolute;
+  top: 3vh;
+  left: 40vw;
   display: flex;
-  color: black;
-  justify-content: space-between;
+}
+.albumBtn {
+  color:white;
+  border-radius: 5px;
+  width: max-content;
+  padding: 1vh;
+  font-size: 2vw;
+  background-color: navy;
+}
+.albumBtnSel {
+  opacity: 30%;
+  transform: scale3d(0.9, 0.9, 0.9);
+  transition: 0.2s;
+}
+.albumBtnNew {
+  position: absolute;
+  width: 2.5vw;
 }
 
+
+.albumMainBtn {
+  position: absolute;
+  right: 1vw;
+  top: 1vh;
+  width: 5vw;
+  height: 8vh;
+  cursor: pointer;
+}
+.albumMainBtn:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
+}
 
 
 /* ----------------------Story Album----------------------- */
 /* 앨범 리스트 */
 .albumCardList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(24%, auto));
-  width: 95vw;
-  height: 83vh;
+  grid-template-columns: repeat(4, 1fr);
+  width: 93vw;
+  height: 80vh;
   /* 중앙정렬 */
   margin: auto;
+  margin-top: 0.5vh;
   overflow-y: auto;
+  animation: albumListslide 0.5s;
+}
+@keyframes albumListslide {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 .albumCardList::-webkit-scrollbar {
   width: 0.8vw;
@@ -47,11 +98,13 @@
 /* 스토리 앨범 타입 변경 */
 .albumStoryTypeBtnBack {
   display: flex;
+  margin-left: 3.25vw;
 }
 .albumStoryTypeBtn {
-  width: 5vw;
-  height: 10vh;
+  width: 4vw;
+  height: 8vh;
   opacity: 50%;
+  cursor: pointer;
 }
 .albumStoryTypeBtn:hover {
   transform: scale3d(1.1, 1.1, 1.1);
@@ -66,7 +119,7 @@
 
 /* 앨범 리스트 개별 카드 크기 */
 .albumNocard {
-  background-image: url('../../asset/images/Album/NoAlbumBack.png');
+  background-image: url('../../asset/images/Album/NoAlbumImg.png');
   background-size: 20vw 35vh;
   background-repeat: no-repeat;
   filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
@@ -76,6 +129,7 @@
   margin-left: 2vw ;
   border-radius: 1vw;
 }
+
 .albumCard {
   background-image: url('../../asset/images/Album/AlbumStructure.png') ;
   background-size: 20vw 35vh;
@@ -102,6 +156,9 @@
   height: 50%;
   border-radius: 10px;
 }
+.albumImgOwned {
+  cursor: pointer;
+}
 .albumDetail {
   border: 15px solid transparent;
   /* url이미지, slice 순서는 top right bottom */
@@ -111,19 +168,20 @@
   left: 10vw;
   width: 80vw;
   height: 90vh;
-  z-index: 1;
+  z-index: 2;
   border-radius: 5px;
   filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
+  cursor: pointer;
 }
 
 /* 앨범 이름 */
 .albumTitle {
   position: absolute;
   width: auto;
-  font-size: 25px;
+  font-size: 2.3vh;
   margin: 0.5vw;
   left: 10%;
-  top: 74%;
+  top: 73%;
 }
 /* 앨범 레이팅 */
 .albumRating {
@@ -132,15 +190,22 @@
   height: 3.5vh;
   right: 10%;
   top: 75%;
+  filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
+  border-radius: 5px;
+}
+
+.albumNewLogo {
+  position: absolute;
+  width: 5vw;
 }
 
 
 
-/* ----------------------Selection Album----------------------- */
+/* ----------------------Get Album----------------------- */
 
 
 .GetAlbum {
-  background-image: url('../../asset/images/Album/AlbumCover.png') ;
+  background-image: url('../../asset/images/Album/AlbumPick/AlbumCover.png') ;
   background-position: 'center';
   background-size: cover;
   background-repeat: no-repeat;
@@ -148,13 +213,35 @@
 /* GetAlbum */
 .GetAlbumBack {
   position: absolute;
-  top: 25vh;
-  left: 36vw;
-  width: 60vw;
-  height: 50vh;
+  top: 10vh;
+  left: 10vw;
+  width: 80vw;
+  height: 80vh;
+  animation: start 0.3s;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 5px white;
+  filter: brightness(90%)
+}
+@keyframes start {
+  0% { transform: scale3d(0, 0, 0) }
+  10% { transform: scale3d(0.1, 0.1, 0.1) }
+  20% { transform: scale3d(0.2, 0.2, 0.2) }
+  30% { transform: scale3d(0.3, 0.3, 0.3) }
+  40% { transform: scale3d(0.4, 0.4, 0.4) }
+  50% { transform: scale3d(0.5, 0.5, 0.5) }
+  60% { transform: scale3d(0.6, 0.6, 0.6) }
+  70% { transform: scale3d(0.7, 0.7, 0.7) }
+  80% { transform: scale3d(0.8, 0.8, 0.8) }
+  90% { transform: scale3d(0.9, 0.9, 0.9) }
+  100% { transform: scale3d(1, 1, 1) }
 }
 /* 앨범 커버 흔들기 */
 .GetAlbumCover {
+  position: absolute;
+  top: 25vh;
+  left: 37.5vw;
+  width: 25vw;
+  height: 40vh;
   animation: vibration .15s infinite;
 }
 @keyframes vibration {
@@ -168,35 +255,34 @@
 /* 펴친 책 */
 .GetAlbumOpenBook {
   position: absolute;
-  width: 60vw;
+  width: 50vw;
   height: 20vh;
-  bottom: 1vh;
-  left: 20vw;
+  top: 70vh;
+  left: 25vw;
   z-index: 1;
+  animation: start 0.1s;
 }
 
 /* 이미지 */
 .GetAlbumImgTransfer {
+  background-image: url('../../asset/images/Album/AlbumStructure.png') ;
+  background-size: 40vw 50vh;
+  background-repeat: no-repeat;
   position: absolute;
-  top: 20%;
-  left: 40%;
-  z-index: 2;
-  width: 20vw;
+  top: 17vh;
+  left: 30vw;
+  z-index: 1;
+  width: 40vw;
   height: 50vh;
-  border: 3px gold double;
   border-radius: 5px;
-  animation: riseCard 1.5s ease-out forwards;
+  animation: riseCard 1.8s ease-out forwards;
 }
 /* 뿌연 상황에서 올라감 */
 @keyframes riseCard {
-  0% { transform: translateY(100%); filter: brightness(800%); }
+  0% { transform: translateY(50%); filter: brightness(1000%); }
   100% { transform: translateY(0);   }
 }
-.GetAlbumImg {
-  width: 100%;
-  height: 90%;
-  border-radius: 5px;
-}
+
 .GetAlbumTitle {
   font-size: 2vw;
   color: gold;
@@ -210,4 +296,18 @@
   top: 30%;
   left: 50%;
   transform: translate(-25%, -25%);
+}
+
+.albumCloseBtn{
+  position: absolute;
+  top: 50vh;
+  left: 18vw;
+  color: white;
+  font-size: 2vw;
+  background-color: pink;
+  width: max-content;
+  padding: 0.1vw;
+  border-radius: 5px;
+  border: 0px;
+  cursor: pointer;
 }

@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState} from "react";
-import "./SelfStudy.css";
+import React, {useState} from "react";
+import "./LangFrameSelfStudy.css";
 import * as htmlToImage from 'html-to-image';
 import Webcam from "react-webcam";
 import styled from "styled-components";
@@ -42,8 +42,6 @@ const LangFrameStudy = () => {
       // setUrl(URL.createObjectURL(blob))
     });
   }
-
-  const [imageSrc, setImageSrc] = useState('')
   const webcamRef = React.useRef(null);
 
   function dataURItoBlob(dataURI) {
@@ -62,27 +60,55 @@ const LangFrameStudy = () => {
     return blob;
   }
 
+  // 캡쳐하기
+  const [imageSrc, setImageSrc] = useState('')
   const capture = React.useCallback(
     () => {
       setImageSrc(webcamRef.current.getScreenshot());
-      // const blobData = dataURItoBlob(imageSrc)
-      // console.log(blobData)
+      const blobData = dataURItoBlob(imageSrc)
+      console.log(blobData)
     },
     [webcamRef]
   );
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 5
+  recognition.lang = "ko-KR";
+
+  recognition.onresult = (event) => {
+    const color = event.results[0][0].transcript;
+    console.log(`color: ${color}`);
+  }
+
+  // useEffect(() => {
+  //   console.log('다시')
+  // }, [recognition])
+
+  const startListen = () => {
+    recognition.start()
+  }
+
+  const endListen = () => {
+    recognition.stop()
+  }
+
   return (
     <>
       <InterviewBlock>
         <Webcam
           className="interviewCam"
-          audio={false}
+          audio={true}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
+          screenshotQuality={1}
           videoConstraints={videoConstraints}
         />
         <button onClick={capture}>Capture photo</button>
         <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
         <button onClick={saveCam}>백으로</button>
+        <button onClick={startListen}>음성인식 시작</button>
+        <button onClick={endListen}>음성인식 끝</button>
       </InterviewBlock>
     </>
   );
