@@ -4,7 +4,16 @@ import { useNavigate } from "react-router";
 import "./SelfStudy.css";
 import Study from "./Study.js";
 import AlgorithmSelfStudy from "./AlgorithmSelfStudy";
-import { getSelfStudyProgress, getStudyInfo, getQuizInfo, getQuizList, postQuizSolve, getCodingTestList, postCodingTestSolve } from "../../slices/selfstudySlice";
+import { 
+  getSelfStudyProgress, 
+  getStudyInfo, 
+  getQuizInfo, 
+  getQuizList, 
+  postQuizSolve, 
+  getCodingTestList, 
+  postCodingTestSolve,
+  postCodingTestTest,
+ } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
 import styled from "styled-components";
 // import btn from "../../asset/images/SelfstudyImg/버튼.png";
@@ -63,12 +72,24 @@ const Quiz = () => {
     }
     startGetQuizInfo()
     
+    // console.log('유저정보', user.language)
+    // 초기 유저 선택 언어 설정
+    if (user.language === 'PYTHON') {
+      changeLang('python')
+    } else if (user.language === 'JAVA') {
+      changeLang('java')
+    } else if (user.language === 'C') {
+      changeLang('C')
+    } else if (user.language === 'JS') {
+      changeLang('javascript')
+    }
 
   }, [dispatch])
 
 
-  
+  const user = useSelector((state)=> state.user.userInfo)
   const study = useSelector((state) => state.study)
+  const progress = useSelector((state) => state.study.progress)
   const quizList = useSelector((state) => state.study.quizList.quizInfo)
   // console.log(quizList)
   const quizInfo = useSelector((state) => state.study.quizInfo)
@@ -98,6 +119,9 @@ const Quiz = () => {
   const [checkedAnswer, setCheckedAnswer] = useState(null)
   const [isShowingAlgo, setIsShowingAlgo] = useState(false)
   const [showingAlgo, setShowingAlgo] = useState([])
+  // 테스트 실행해볼 input값
+  const [inputValue, setInputValue] = useState('')
+  const [outputValue, setOutputValue] = useState('')
 
   // 알고문제 언어선택
   const [lang, changeLang] = useState('python')
@@ -180,6 +204,17 @@ const Quiz = () => {
 
   // 페이지 변경하는 함수
   const changePage = async (page) => {
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum) => {
+      if (parseInt(pageNum.innerText) === page) {
+        console.log(pageNum.innerText)
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
+
+    // console.log('페이지누름')
     const newQuizInfo = {
       category: category,
       subject: subject,
@@ -214,16 +249,24 @@ const Quiz = () => {
 
   // 왼쪽 화살표 클릭
   const leftArrow = () => {
-    console.log('왼')
-    console.log(nowpage)
+
     if (nowpage > 0) {
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+
       const newQuizInfo = {
         category: category,
         subject: subject,
         offset: (nowpage - 1) * 4,
         limit: limit,
       }
-      console.log((nowpage - 1) * 4 + 1)
       setPages([(nowpage - 1) * 4 + 1, (nowpage - 1) * 4 + 2, (nowpage - 1) * 4 + 3, (nowpage - 1) * 4 + 4])
       changeQuizList(newQuizInfo)
       setNowpage(nowpage - 1)
@@ -232,9 +275,19 @@ const Quiz = () => {
   }
 
   // 오른쪽 화살표 클릭
-  const rightArrow = () => { 
-    console.log('오')
+  const rightArrow = () => {
+
     if ((nowpage + 1) * 4 + 1 <= maxPage){
+      const pageNums = document.querySelectorAll('#pageNums')
+      pageNums.forEach((pageNum, idx) => {
+        if (idx === 0) {
+          console.log(pageNum.innerText)
+          pageNum.style.color = '#80b9ff'
+        } else {
+          pageNum.style.color = 'white'
+        }
+      })
+      
       const newQuizInfo = {
         category: category,
         subject: subject,
@@ -283,7 +336,7 @@ const Quiz = () => {
   }
 
   // 퀴즈 답 제출
-  const sendAnswer = async() => {
+  const solveQuiz = async() => {
     if (checkedAnswer !== null) {
       console.log(showingQuiz)
       const solveInfo = { quizId: showingQuiz.quizId, answer: checkedAnswer }
@@ -302,7 +355,11 @@ const Quiz = () => {
       }, 2000)
       // window.location.reload();
     } else {
-      alert('정답을 체크해주세요!')
+      setNpcBalloonContent("정답을 체크해줘")
+      setIsShowNpcBalloon(true)
+      setTimeout(() => {
+      setIsShowNpcBalloon(false)
+      }, 2000)
     }
   }
 
@@ -350,7 +407,9 @@ const Quiz = () => {
   } 
 
   const goSelfstudy = () => {
-    navigate('/')
+    setTimeout(() => {
+      navigate('/')
+    }, 200)
   }
 
   // 스터디, 퀴즈 골랐을 때 실행될 함수
@@ -374,12 +433,20 @@ const Quiz = () => {
       }
     }
     setIsSelectedCategory(true)
+
+    setTimeout(() => {
+      const pageNum = document.getElementById('pageNums')
+      console.log('스타일', pageNum.style)
+      pageNum.style.color = '#80b9ff'
+    }, 100)
   }
 
   // 스터디 or 퀴즈 선택하는 창
   const resetWork = () => {
     setWorkType('')
-    setIsSelectedCategory(false)
+    setTimeout(() => {
+      setIsSelectedCategory(false)
+    }, 200)
     setIsShowQuiz(false)
     setIsShowQuizProblem(false)
     setIsShowStudy(false)
@@ -392,18 +459,37 @@ const Quiz = () => {
   }
 
   const submitAlgo = async (solveInfo) => {
+    setNpcBalloonContent('채점중이야.')
+    setIsShowNpcBalloon(true)
     const solveResult = await dispatch(postCodingTestSolve(solveInfo))
     console.log('풀이결과', solveResult.payload)
+    setNpcBalloonContent(solveResult.payload)
+    setTimeout(() => {
+    setIsShowNpcBalloon(false)
+    }, 2000)
+  }
+
+  // 코드 테스트 요청
+  const submitTestAlgo = async (solveInfo) => {
+    setOutputValue('실행중...')
+    const coteListRequestDto = {
+      code: solveInfo.code,
+      input: inputValue,
+      language: solveInfo.language,
+    }
+    const solveResult = await dispatch(postCodingTestTest(coteListRequestDto))
+    setOutputValue(solveResult.payload)
+    // console.log('테스트 결과', solveResult.payload)
   }
 
   return ( 
     <>
       <div className="CsStudyBackground">
         <div className="homeBtn" onClick={goSelfstudy}></div>
-        <button onClick={resetCategory}>과목선택</button>
+        <div className="categoryChoice" onClick={resetCategory}>과목선택</div>
         {
           isSelectedCategory?
-          <button onClick={resetWork}>스터디 OR 퀴즈</button> 
+          <div className="subjectChoice" onClick={resetWork}>스터디 OR 퀴즈</div> 
           : null
         }
 
@@ -411,10 +497,10 @@ const Quiz = () => {
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
         <div id="spring" onClick={() => { changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected",}); moveSDchractor('springCS') }} onMouseOver={showCategory.bind(null, 'springCS')} onMouseOut={hideCategory.bind(null, 'springCS')} className="spring"></div>
-        <div id="fall" onClick={() => { changeCategory({category: 1, subject: "algorithm", character: "fall", class: "fallSelected",}); moveSDchractor('fallAlgo') }} onMouseOver={showCategory.bind(null, 'fallAlgo')} onMouseOut={hideCategory.bind(null, 'fallAlgo')} className="fall"></div>
+        <div id="fall" onClick={() => { changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected",}); moveSDchractor('fallAlgo') }} onMouseOver={showCategory.bind(null, 'fallAlgo')} onMouseOut={hideCategory.bind(null, 'fallAlgo')} className="fall"></div>
         <div id="summer" onClick={() => { changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected",}); moveSDchractor('summerBack') }} onMouseOver={showCategory.bind(null, 'summerBack')} onMouseOut={hideCategory.bind(null, 'summerBack')} className="summer"></div>
         <div id="winter" onClick={() => { changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected",}) ; moveSDchractor('winterFront') }} onMouseOver={showCategory.bind(null, 'winterFront')} onMouseOut={hideCategory.bind(null, 'winterFront')} className="winter"></div>
-        <div id="hero" onClick={() => { changeCategory({category: 4, subject: "java", character: "hero", class: "heroSelected",}) ; moveSDchractor('heroLang') }} onMouseOver={showCategory.bind(null, 'heroLang')} onMouseOut={hideCategory.bind(null, 'heroLang')} className="hero"></div>
+        <div id="hero" onClick={() => { changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected",}) ; moveSDchractor('heroLang') }} onMouseOver={showCategory.bind(null, 'heroLang')} onMouseOut={hideCategory.bind(null, 'heroLang')} className="hero"></div>
         <br />
         <br />
         <br />
@@ -423,10 +509,12 @@ const Quiz = () => {
 
         {
           isShowNpcBalloon?
-        <div className="npcSpeechBalloon">
-          {npcBalloonContent}
-        </div>
-        : null
+          <div className="npcSpeechBalloon">
+            <div className="npcSpeechBalloonContent">
+              {npcBalloonContent}
+            </div>
+          </div>
+          : null
         }
 
 
@@ -470,7 +558,7 @@ const Quiz = () => {
         {
           showWork?
           <div className="choiceInfo">
-            {quizInfo[category].category} {workType}
+            {quizInfo[category].category} 진행도: {progress[quizInfo[category].category.toLowerCase()]}%
           </div>
           : null
         }
@@ -512,10 +600,22 @@ const Quiz = () => {
             </div>
 
             <div className="studyItems container">
-              <div className="">
+              <div className="popup">
                 {quizList.map((quiz, index) => (
-                  <div key={index} className={"quizcomp" + quiz.correct} onClick={showQuiz.bind(null, quiz)}>
-                    {quiz.title}
+                  <div key={index} className={"quizHover quizcomp"} onClick={showQuiz.bind(null, quiz)}>
+                    <p className="quizTitle">
+                      {quiz.title}
+                    </p> 
+                    {
+                      quiz.correct === 1 ?
+                      <div className="correct"></div>
+                      : null
+                    }
+                     {
+                      quiz.correct === 2 ?
+                      <div className="wrong"></div>
+                      : null
+                    }
                   </div>
                 ))}
               {/* {quizList.category} */}
@@ -534,11 +634,12 @@ const Quiz = () => {
                 <div className="form-radio-wrap">
                     <p id="quizCheckBox" className="form-sub-title">선택지: </p>
                       {showingQuiz.example.map((example, index) => (
-                        <div key={index} className="col-3 QuizCompnent">
+                        <div key={index} className="col-3">
                           <span className="form-inline"><input onClick={checkAnswer.bind(null, example)} type="radio" className="input-radio" name="quizRadio" id={index}/><label htmlFor={index} className="form-radio">{example}</label></span>
                         </div>
                       ))}
                 </div>
+                <button onClick={solveQuiz}>제출</button>
               </div>
 
               : null
@@ -550,7 +651,7 @@ const Quiz = () => {
           <div className="paginationBar">
             <p className="paginationItem" onClick={leftArrow}> {`<`} </p>
             {pages.map((page, index) => (
-              <p key={index} className="paginationItem" onClick={changePage.bind(null, page)}>
+              <p id="pageNums" key={index} className="paginationItem" onClick={changePage.bind(null, page)}>
                 {page}
               </p>
               ))}
@@ -572,16 +673,18 @@ const Quiz = () => {
         {
           isShowingAlgo?
           <div className="algoContainer">
-            <div className="showingMarkdown">
+            <div className="algoBox">
             {/* 문제보여주는 부분 */}
             <div className="algoProblem">
               <br />
+              <p style={{fontSize: '2vw'}}>
                 문제
+              </p>
               <hr />
               <ReactMarkdown  children = {showingAlgo.problem} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               </ReactMarkdown>  
             </div>
-            <div onClick={closeAlgo} className="CloseQuiz">X</div>
+            <div onClick={closeAlgo} className="CloseAlgo">X</div>
             <div className="langChoice">
 
               <div className="dropdown">
@@ -591,14 +694,39 @@ const Quiz = () => {
                 <ul className="dropdown-menu">
                   <li className="dropdown-item" onClick={() => {changeLang('python')}}>PYTHON</li>
                   <li className="dropdown-item" onClick={() => {changeLang('java')}}>JAVA</li>
-                  <li className="dropdown-item" onClick={() => {changeLang('c++')}}>C언어</li>
+                  <li className="dropdown-item" onClick={() => {changeLang('C')}}>C언어</li>
                   <li className="dropdown-item" onClick={() => {changeLang('javascript')}}>JavaScrpit</li>
                 </ul>
               </div>
             </div>
 
             <div className="codeEditor">
-              <CodeTextarea lang = {lang} algoInfo = {showingAlgo} submitAlgo = {submitAlgo}></CodeTextarea>
+              <CodeTextarea 
+              lang = {lang} 
+              algoInfo = {showingAlgo} 
+              submitAlgo = {submitAlgo} 
+              submitTestAlgo = {submitTestAlgo}
+              ></CodeTextarea>
+            </div>
+            
+            <div className="inputBox">
+              <div style={{position: "relative",}}>
+                <p className="alarmText">
+                  input
+                </p>
+                <textarea onChange={(evn) => {setInputValue(evn.target.value)}} className="inputTextArea" cols="30" rows="10"></textarea>
+              </div>
+            </div>
+
+            <div className="outputBox">
+              <div style={{position: "relative",}}>
+                <p className="alarmText">
+                  output
+                </p>
+                <div className="outputResult">
+                  {outputValue}
+                </div>
+              </div>
             </div>
             {/* <AlgorithmSelfStudy></AlgorithmSelfStudy> */}
               
