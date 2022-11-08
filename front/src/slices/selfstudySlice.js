@@ -6,6 +6,7 @@ import {
   getQuizInfoApi,
   postQuizSolveApi,
   getCodingTestListApi,
+  postCodingTestTestApi,
   getSelfStudyProgressApi,
   postCodingTestSolveApi,
 } from "../common/selfstudy";
@@ -120,11 +121,30 @@ export const getCodingTestList = createAsyncThunk(
   }
 );
 
+// 코테 정답제출
 export const postCodingTestSolve = createAsyncThunk(
   "cote/solve",
   async (solveInfo, { rejectWithValue }) => {
     try {
       const { data } = await postCodingTestSolveApi(solveInfo);
+      console.log(data)
+      return data.data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+// 코테 테스트
+export const postCodingTestTest = createAsyncThunk(
+  "cote/test",
+  async (coteListRequestDto, { rejectWithValue }) => {
+    try {
+      const { data } = await postCodingTestTestApi(coteListRequestDto);
       console.log(data)
       return data.data
     } catch (error) {

@@ -9,29 +9,89 @@ const CodeTextarea = (prop) => {
   const [code, setCode] = useState(
     `### 여기에 코드를 작성하세요 ###`
   );
-  const [textareaLang, setTextareaLang] = useState(prop.lang);
+  // const [codeTypeToBack, setCodeTypeToBack] = useState(prop.lang);
   const solveAlgo = () => {
-    console.log(prop.algoInfo.coteId)
+    let language = prop.lang
+    if (prop.lang === 'C') {
+      language = 'cpp'
+    }
     const solveInfo = {
       coteId: prop.algoInfo.coteId,
-      answer: { language: prop.lang, code: code }
+      answer: { language: language, code: code }
     }
     console.log(solveInfo)
     prop.submitAlgo(solveInfo)
   }
 
-  useEffect(() => {
-    if (prop.lang === 'c++') {
-      setTextareaLang('C')
-    } 
-  }, [])
+  const testAlgo = () => {
+    let language = prop.lang
+    if (prop.lang === 'C') {
+      language = 'cpp'
+    }
+    const solveInfo = { language: language, code: code }
+    prop.submitTestAlgo(solveInfo)
+  }
 
+  useEffect(() => {
+    console.log('선택한 언어', prop.lang)
+  }, [prop.lang])
+
+  useEffect(() => {
+    if (prop.lang === 'java') {
+      setCode(
+        `import java.util.*;
+import java.io.*;
+
+class Solution
+{
+   public static void main(String args[]) throws Exception
+   {
+      Scanner sc = new Scanner(System.in);
+      int T;
+      T=sc.nextInt();
+      for(int test_case = 1; test_case <= T; test_case++)
+      {
+      
+         /////////////////////////////////////////////////////////////////////////////////////////////
+         /*
+             이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+          */
+         /////////////////////////////////////////////////////////////////////////////////////////////
+
+      }
+   }
+}`
+      )
+    } else if (prop.lang === 'C') {
+      setCode(
+        `#include<iostream>
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  int test_case;
+  int T;
+  cin>>T;
+  for(test_case = 1; test_case <= T; ++test_case)
+    {
+      /////////////////////////////////////////////////////////////////////////////////////////////
+      /*
+          이 부분에 여러분의 알고리즘 구현이 들어갑니다.
+        */
+      /////////////////////////////////////////////////////////////////////////////////////////////
+    }
+  return 0;
+}`
+      )
+    }
+  }, [prop.lang])
 
   return (
     <>
       <CodeEditor
         value={code}
-        language={textareaLang}
+        language={prop.lang}
         placeholder="코드를 작성해주세요."
         onChange={(evn) => 
           {
@@ -46,10 +106,12 @@ const CodeTextarea = (prop) => {
           backgroundColor: "#f5f5f5",
           fontFamily: 'Jua, sans-serif',
           width: "30vw",
-          height: "50vh",
+          height: "40vh",
+          borderBottom: "1vw",
           overflow: "scroll",
         }}
         />
+        <div className="algoRunBtn" onClick={testAlgo}>실행</div>
         <div className="algoSubmitBtn" onClick={solveAlgo}>제출</div>
     </>
   );
