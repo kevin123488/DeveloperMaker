@@ -43,4 +43,9 @@ public class AlbumController {
     public ResponseEntity<BaseResponseBody> checkNewAlbum(@AuthenticationPrincipal String email, @PathVariable Long albumId){
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.checkNewAlbum(email,albumId)));
     }
+
+    @GetMapping("/progress")
+    public ResponseEntity<BaseResponseBody> checkNewAlbum(@AuthenticationPrincipal String email){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", albumService.getAlbumProgress(email)));
+    }
 }
