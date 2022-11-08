@@ -34,9 +34,14 @@
 }
 .albumBtnSel {
   opacity: 30%;
-  transform: scale3d(0.8, 0.8, 0.8);
+  transform: scale3d(0.9, 0.9, 0.9);
   transition: 0.2s;
 }
+.albumBtnNew {
+  position: absolute;
+  width: 2.5vw;
+}
+
 
 .albumMainBtn {
   position: absolute;

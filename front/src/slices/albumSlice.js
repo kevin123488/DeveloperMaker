@@ -75,7 +75,6 @@ export const getNew = createAsyncThunk(
       try {
         const response = await deleteNewAlbum(albumId)
         // 전체 리스트 재요청
-        dispatch(readAlbum())
         return response.data.data
       } catch (error) {
           if (error.response && error.response.data.message) {
@@ -102,12 +101,13 @@ const album = createSlice({
     changeMode: (state, action) => {
       state.albumPickShow = !state.albumPickShow
     },
+    // 1회용
     changeCheckNew: (state, action) => {
-      if (action.story) {
-        state.checkNew[action.story] = true;
-        state.checkNew.story = true;
-      } else {
+      if (action.data === "study") {
         state.checkNew.study = true
+      } else {
+        state.checkNew[action.data] = true;
+        state.checkNew.story = true;
       }
     }
   },
@@ -129,7 +129,21 @@ const album = createSlice({
         // 새롭게 해당 앨범 리스트의 is owned 변경을 해야함 => 어차피 다른 페이지에서 함
       })
       .addCase(deleteNew.fulfilled, (state, action)=>{
-        console.log('삭제가 성공함')
+        state.storyAlbumList = action.payload.storyAlbumList
+        state.studyAlbumList = action.payload.studyAlbumList
+        state.checkNew = { story: false, study:false, total: false, spring:false, fall: false, winter: false}
+        // 경신용
+        action.payload.storyAlbumList.forEach((album)=>{
+          if (album.isOwned && !album.isRead) {
+            state.checkNew[album.theme] = true;
+            state.checkNew.story = true;
+          }
+        })
+        action.payload.studyAlbumList.forEach((album)=>{
+          if (album.isOwned && !album.isRead) {
+            state.checkNew.study = true
+          }
+        })
       })
       // // 거절됨
       // .addCase(readAlbum.rejected, (state, action) => {

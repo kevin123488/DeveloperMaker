@@ -9,7 +9,6 @@ export const userLoginKakao = createAsyncThunk(
     try {
       const response = await loginKakao({ access_token });
       sessionStorage.setItem("accessToken", response.data["accessToken"]);
-      console.log("data", response);
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -26,7 +25,6 @@ export const userLoginNaver = createAsyncThunk(
     try {
       const response = await loginNaver({access_token});
       sessionStorage.setItem("accessToken", response.data["accessToken"])
-      console.log("naver Data", response)
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -62,7 +60,6 @@ export const getProgress = createAsyncThunk(
   async (temp, {rejectWithValue}) => {
     try {
       const {data} = await studyProgress()
-      console.log("자율학습 진행도", data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -135,7 +132,6 @@ const userSlice = createSlice({
       })
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
-        console.log("Now Loading");
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
         state.userInfo = payload.data;

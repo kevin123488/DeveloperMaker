@@ -110,7 +110,7 @@ const GameButtonsArea = () => {
             <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy} />
           </BtnArea>
           <BtnArea>
-            {newAlbum ? <NewAlbum src={NewAlbumLogo} alt="New" /> : null}
+            {newAlbum && <NewAlbum src={NewAlbumLogo} alt="New" />}
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>

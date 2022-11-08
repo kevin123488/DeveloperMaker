@@ -45,6 +45,5 @@ export const studyProgress = () => {
 
 export const albumProgress = async () => {
   const response = await axiosInstance.get("album/progress")
-  console.log("getAlbumProgress", response)
   return response
 }
