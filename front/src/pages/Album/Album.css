@@ -6,26 +6,49 @@
   background-position: 'center';
   background-size: cover;
   background-repeat: no-repeat;
-}
-.albumMenu {
-  display: flex;
-  color: black;
-  justify-content: space-between;
+  overflow: hidden;
 }
 .albumMainTitle {
-  font-size: 1.5vw;
+  align-self: baseline;
+  font-size: 2vw;
   color: white;
   background-color: pink;
-  padding: 0.2vw;
+  padding: 0.5vw;
   border-radius: 10px;
+  vertical-align: center;
+  width: max-content;
+}
+.albumModeSel {
+  position: absolute;
+  top: 3vh;
+  left: 40vw;
+  display: flex;
 }
 .albumBtn {
   color:white;
   border-radius: 5px;
-  background-color: pink;
+  width: max-content;
+  padding: 1vh;
+  font-size: 2vw;
+  background-color: navy;
 }
 .albumBtnSel {
-  opacity: 50%;
+  opacity: 30%;
+  transform: scale3d(0.8, 0.8, 0.8);
+  transition: 0.2s;
+}
+
+.albumMainBtn {
+  position: absolute;
+  right: 1vw;
+  top: 1vh;
+  width: 5vw;
+  height: 8vh;
+  cursor: pointer;
+}
+.albumMainBtn:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
 }
 
 
@@ -38,8 +61,19 @@
   height: 80vh;
   /* 중앙정렬 */
   margin: auto;
-  margin-top: 2vh;
+  margin-top: 0.5vh;
   overflow-y: auto;
+  animation: albumListslide 0.5s;
+}
+@keyframes albumListslide {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
 }
 .albumCardList::-webkit-scrollbar {
   width: 0.8vw;
@@ -62,9 +96,10 @@
   margin-left: 3.25vw;
 }
 .albumStoryTypeBtn {
-  width: 5vw;
-  height: 10vh;
+  width: 4vw;
+  height: 8vh;
   opacity: 50%;
+  cursor: pointer;
 }
 .albumStoryTypeBtn:hover {
   transform: scale3d(1.1, 1.1, 1.1);

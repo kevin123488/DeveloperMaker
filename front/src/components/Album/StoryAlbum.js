@@ -1,10 +1,19 @@
 import React, { useState } from "react";
 import '../../pages/Album/Album.css';
 import { useSelector } from "react-redux";
+// import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
 import AlbumComponent from "./AlbumComponent";
+
 
 const StoryAlbum = () => {
   const [show, setShow] = useState(0)
+  // new 여부 확인
+  // const newAlbum = [useSelector(state=> state.albun.checkNew.total),
+  //   useSelector(state=> state.albun.checkNew.spring),
+  //   useSelector(state=> state.albun.checkNew.fall),
+  //   useSelector(state=> state.albun.checkNew.winter)
+  // ]
+
   const springAlbumList = useSelector((state)=> {
     return state.album.storyAlbumList.filter((album) => {
       return album.theme === "spring"
@@ -30,8 +39,12 @@ const StoryAlbum = () => {
       <div>
         {/* 캐릭터로 선택하는 창 */}
         <div className="albumStoryTypeBtnBack">
-          {[0,1,2,3].map((idx)=> { return <img className={"albumStoryTypeBtn" + ((show === idx) ? " albumStoryBtnSel": "" )} key={`albumStoryBtn-${idx}`}
-          onClick={()=>{setShow(idx)}}  src={require(`../../asset/images/Album/Head/Head${idx}.png`)} alt="" /> })}
+          {[0,1,2,3].map((idx)=> { return (
+          <div key={`storyList-${idx}`}>
+            {/* {newAlbum[idx] && <img src={NewAlbumLogo} alt="New" key={`newAlbum-${idx}`} />} */}
+            <img className={"albumStoryTypeBtn" + ((show === idx) ? " albumStoryBtnSel": "" )} key={`albumStoryBtn-${idx}`}
+          onClick={()=>{setShow(idx)}}  src={require(`../../asset/images/Album/Head/Head${idx}.png`)} alt="" />
+          </div> )})}
         </div>
         {/* 실제 앨범 */}
         <div className="albumCardList">

@@ -8,7 +8,8 @@ import LikeChart from '../../components/Profile/LikeChart';
 import { userGetMemory } from "../../slices/storySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import { getAlbumProgress, getProgress } from '../../slices/userSlice';
+import MainImg from "../Game/gohomeIcon.png"
 
 
 const Profile = () => {
@@ -18,6 +19,8 @@ const Profile = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(userGetMemory())
+    dispatch(getAlbumProgress())
+    dispatch(getProgress())
   }, [dispatch]);
   function goMain() {
     navigate('/')
@@ -35,7 +38,7 @@ const Profile = () => {
         {[1,2,3].map((idx) => {return (<button className='btn btn-primary ProfileLikeBtn' key={`btn-${idx}`} onClick={()=>{setLikeSel(idx)}}>{idx}번</button>) })}
         {loadData.map((data,idx)=> {return (<LikeChart key={`LikeChart-${idx}`} data={data} show={likeSel === idx+1} />) })}
       </div>
-      <button className='ProfileMainBtn btn btn-primary' onClick={goMain}>메인</button>
+      <img src={MainImg} alt="MainBtn" className='ProfileMainBtn' onClick={goMain} />
     </div>
   );
 };

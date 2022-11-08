@@ -3,21 +3,25 @@ import StoryAlbum from "../../components/Album/StoryAlbum";
 import SelectionAlbum from "../../components/Album/SelectionAlbum";
 import { useNavigate } from "react-router";
 import "./Album.css";
-import { readAlbum } from "../../slices/albumSlice";
+import { readAlbum, putAlbumList, getAlbumCheck } from "../../slices/albumSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getAlbumProgress } from "../../slices/userSlice";
+import mainImg from "../Game/gohomeIcon.png"
+
 import GetAlbum from "../../components/Album/GetAlbum";
-import {putAlbumList, getAlbumCheck} from "../../slices/albumSlice"
+
 
 
 const Album = () => {
   const dispatch = useDispatch()
   const user = useSelector((state)=>{
-    return state.user.userInfo;
+    return state.user;
   })
   const navigate = useNavigate()
   // 페이지 렌더링 시 1회 실행
   useEffect(()=>{
       dispatch(readAlbum());
+      dispatch(getAlbumProgress())
   }, [dispatch]);
 
   // 현재 보고 싶은 앨범 유형 선택 스토리 or 컬렉션
@@ -33,30 +37,23 @@ const Album = () => {
   const show = useSelector((state)=>{
     return state.album.albumPickShow
   })
-
-  function changeShow() {
-    dispatch({type:'album/changeMode'})
-  }
   // 앨범 뽑기 함수
   const putAlbum =  async(albumId) => {
     const response = await dispatch(getAlbumCheck(albumId))
+    console.log('앨범 중복 확인 요청',response)
     // 중복이면 true이므로 false일 때 실행
     if (!response.payload) {
       dispatch(putAlbumList(albumId))
     }
   }
-
   return (
     <div className="albumBack">
-      <div className="albumMenu" >
-        <p onClick={changeShow} className="albumMainTitle"> {user.nickname}'s Collection</p>
-        <button onClick={()=>{ putAlbum(4)}}>테스트</button>
-        <div>
-          <button className={"albumBtn" + (!selType ? " albumBtnSel" : "")} onClick={() => {changeType(true)}}>스토리</button>
-          <button className={"albumBtn" + (selType ? " albumBtnSel" : "")} onClick={() => {changeType(false)}}>스터디</button>
-        </div>
-        <button className="albumBtn" onClick={goMain}>Home</button>
+      <p onClick={()=>{ putAlbum(6)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
+      <div className="albumModeSel">
+        <p className={"albumBtn" + (!selType ? " albumBtnSel" : "")} onClick={() => {changeType(true)}}>스토리({user.progress.album.storyAlbum}%)</p>
+        <p className={"albumBtn" + (selType ? " albumBtnSel" : "")} onClick={() => {changeType(false)}}>스터디({user.progress.album.studyAlbum}%)</p>
       </div>
+      <img className="albumMainBtn" src={mainImg} alt="" onClick={goMain} />
       <div>
         {selType ? <StoryAlbum />: <SelectionAlbum/>}
       </div>

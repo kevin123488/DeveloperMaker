@@ -18,7 +18,7 @@ const LikeChart = (props) =>{
       labels: ['서봄', '한여름', '차가을', '한겨울'],
       datasets: [{
         data: [data.likeSpring, data.likeSummer, data.likeAutumn, data.likeWinter],
-        backgroundColor: ['rgb(255, 99, 132)', 'rgb(75, 192, 192)', 'rgb(255, 205, 86)', 'rgb(201, 203, 207)']
+        backgroundColor: ['gold', 'white', 'brown', 'white']
       }]
     })
   }, [data])
@@ -37,7 +37,7 @@ const LikeChart = (props) =>{
         max: 10,
         min: 0,
         ticks: {
-          stepSize: 1
+          stepSize: 2
         }
       }
     },

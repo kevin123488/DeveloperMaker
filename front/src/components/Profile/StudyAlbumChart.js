@@ -2,9 +2,12 @@ import React from "react";
 import "chart.js/auto"; // import 안하면 차트 오류남
 import { Doughnut } from "react-chartjs-2";
 import "../../pages/Profile/Profile.css"
+import { useSelector } from "react-redux";
 
 const StudyAlbumChart = () =>{
-  const progress = 70
+  const progress = useSelector((state)=>{
+    return state.user.progress.album.studyAlbum
+  })
   const data = {
     datasets: [
       {
