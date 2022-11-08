@@ -6,9 +6,10 @@ import styled from "styled-components";
 import Typo from './TypingText.js'
 import Question from './Question.js'
 import Option from './Option.js'
-import script1 from "./scripts/script1.json"
-import script1_1 from "./scripts/script1_1.json"
-import script1_2 from "./scripts/script1_2.json"
+import script1 from "./scripts/script1.json";
+import script1_1 from "./scripts/script1_1.json";
+import script1_2 from "./scripts/script1_2.json";
+import script2 from "./scripts/script2.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
@@ -45,25 +46,26 @@ const StoryTextWrap = styled.div`
 `;
 
 const StoryTextBox = styled.div`
-  cursor: pointer;
   position: absolute;
-  top: 60%;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 70vw;
-  height: 25vh;
+  height: 22vh;
   font-size: 1.8vw;
+  overflow: auto;
 `;
 
 const StoryPassAlert = styled.div`
+  cursor: pointer;
   position: absolute;
   top: 85%;
-  left: 95%;
+  left: 90%;
   transfrom: translate(-50%, -50%);
-  height: 2vh;
-  width: 2vh;
+  height: 4vh;
+  width: 8vh;
   background-image: url(${storyGoAlert});
-  background-size: 2vh 2vh;
+  background-size: 8vh 4vh;
 `;
 
 const StoryHamburger = styled.div`
@@ -257,6 +259,9 @@ const Story = () => {
   const selfStudyNonpassedCheck = useRef(false);
   const userAlbumCheckfirst = useRef(false);
   const [openAlbumGetModal, setOpenAlbumGetModal] = useState(false);
+  const [canGoNext, setCanGoNext] = useState(true); // 스크립트 넘기는 속도 관리
+  // next 버튼 따로 만들어주자
+  const getAlbum = useRef(0); // 획득할 앨범 번호
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
@@ -343,6 +348,9 @@ const Story = () => {
         // 통과했다면?
         // 보유 여부 확인하자
         dispatch(getAlbumCheck(scriptFile.current[scriptIndex.current].getAlbumNum));
+        // 여기서 실행하면 될 것 같은데?
+        // 앨범체크 실행한 다음 결과값을 가지고 바로 받을지 말지 결정하면 될듯?
+        
         // 앨범 목록 갱신되면?
 
         // readAlbum 쓸 필요 없어짐
@@ -350,12 +358,12 @@ const Story = () => {
         // 그 값 세팅되면 false일 때 앨범 추가하는 로직 넣으면 될 듯
 
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
-        // scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
-        // scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
         // 스크립트 파일 이름을 바꿔주고
-        // scriptIndex.current = 0
+        scriptIndex.current = 0
         // 보여줄 부분 바꿔주고
-        // increaseIndex.current = 1
+        increaseIndex.current = 1
         // 인덱스 변화폭 세팅 기본값으로 넣어주고
 
 
@@ -378,7 +386,12 @@ const Story = () => {
       } else {
         console.log("앨범에 없음");
         setOpenAlbumGetModal(true); // 띄우자
-        dispatch(putAlbumList(scriptFile.current[scriptIndex.current].getAlbumNum));
+        console.log(scriptFile.current);
+        console.log(scriptIndex.current);
+        console.log(scriptFile.current[scriptIndex.current]);
+        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+        console.log(getAlbum);
+        dispatch(putAlbumList(getAlbum.current));
         // 앨범 획득 이펙트 보여주는 거 띄우는 값 설정하자
       }
     }
@@ -400,6 +413,7 @@ const Story = () => {
       "script1": script1,
       "script1_1": script1_1,
       "script1_2": script1_2,
+      "script2": script2,
     });
 
   const returnNextScript = (n) => {
@@ -423,9 +437,10 @@ const Story = () => {
   const saveStory = () => { 
     // 얘가 애매한게, 어느 시점에 저장하든 문제 전후 부분에서 저장된 부분부터 실행
     // 돼서 자동저장이랑 큰 차이가 없어짐
-    console.log("저장되나?");
-    let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
-    setStoryObj(storyObjCopy);
+    // console.log("저장되나?");
+    // let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
+    // setStoryObj(storyObjCopy);
+    setSaveStoryIdx(scriptIndex.current);
   }
 
   const goHome = () => {
@@ -476,6 +491,10 @@ const Story = () => {
   };
 
   function nextScript(n) {
+    setCanGoNext(false);
+    setTimeout(() => {
+      setCanGoNext(true);
+    }, 800);
     scriptIndex.current += increaseIndex.current;
     storyTeller.current = scriptFile.current[scriptIndex.current].storyTeller;
     backgroundImg.current = scriptFile.current[scriptIndex.current].backgroundImageUrl;
@@ -542,6 +561,7 @@ const Story = () => {
         console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
         console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+        getAlbum.current = scriptFile.current[scriptIndex.current].getAlbumNum;
         // 자율학습 진행도 받아옴 -> userProgress 값 변경 -> 그거 보고있던 useEffect에서 바뀜 감지
         // -> userProgress값과 현재 보고있는 스크립트의 selfStudyRequired값과 비교
         // userProgress값이 더 작으면? selfStudyNonPassed 값 true로 바꿈
@@ -636,33 +656,38 @@ const Story = () => {
         height: '90vh',
         objectFit: 'contain',
       }} alt={rightCharImg.current} /></StoryCharRight>
-        <StoryBox>
-          {/* <StoryTeller> */}
-          <div className="storyTeller">
-            <div className="storyTellerText">
-              {storyTeller.current}
-            </div>
+      <StoryBox>
+        {/* <StoryTeller> */}
+        <div className="storyTeller">
+          <div className="storyTellerText">
+            {storyTeller.current}
           </div>
-          {/* </StoryTeller> */}
-          {/* <StorySaveBox onClick={saveStory}></StorySaveBox> */}
-          <StoryTextWrap>
-            {
-              isQuestion || isOption
-              ?
-              <StoryTextBox>
-                <Typo scriptText={scriptText}/>
-              </StoryTextBox>
-              :
-              <StoryTextBox onClick={nextScript}>
-                <Typo scriptText={scriptText}/>
-              </StoryTextBox>
-            }
-            {/* <StoryTextBox onClick={nextScript}>
+        </div>
+        {/* </StoryTeller> */}
+        {/* <StorySaveBox onClick={saveStory}></StorySaveBox> */}
+        <StoryTextWrap>
+          {
+            isQuestion || isOption
+            ?
+            <StoryTextBox>
               <Typo scriptText={scriptText}/>
-            </StoryTextBox> */}
-          </StoryTextWrap>
-          <StoryPassAlert></StoryPassAlert>
-        </StoryBox>
+            </StoryTextBox>
+            :
+            <StoryTextBox>
+              <Typo scriptText={scriptText}/>
+            </StoryTextBox>
+          }
+          {/* <StoryTextBox onClick={nextScript}>
+            <Typo scriptText={scriptText}/>
+          </StoryTextBox> */}
+        </StoryTextWrap>
+        {
+          canGoNext && !isOption && !isQuestion
+          ?
+          <StoryPassAlert onClick={nextScript}></StoryPassAlert>
+          : null
+        }
+      </StoryBox>
         {
           isQuestion
           ? 
