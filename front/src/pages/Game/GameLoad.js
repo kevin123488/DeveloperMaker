@@ -337,7 +337,7 @@ const GameLoad = () => {
               slot3Info
               ?
               <GameslotSpeechBubble>
-                <div className="speechBubbleText">{storySlots[2].script} 이었나?</div>
+                <div className="speechBubbleText">{storySlots[2].script}로 가도록 해</div>
               </GameslotSpeechBubble>
               : null
             }
