@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 
 @Service
@@ -80,7 +81,7 @@ public class AlbumService {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        Optional<List<UserAlbum>> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
         return findNewUserAlbum.isPresent();
     }
 
