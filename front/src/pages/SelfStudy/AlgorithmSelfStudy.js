@@ -13,11 +13,9 @@ import CodeTextarea from "./CodeTextarea";
 const AlgoStudyBackground = styled.div`
   position: fixed;
   display: ;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   /* background-color: #352208; */
-  background: url(${background}) center no-repeat;
-  background-size: 100vw 100vh;
 `;
 
 const AlgoStudy = () => {
@@ -38,20 +36,6 @@ const AlgoStudy = () => {
 
   return (
     <>
-      <AlgoStudyBackground>
-        <div className="container">
-          <div className="row justify-content-center">
-            {coteList.map((cote, index) => (
-              <div key={index} className="col-3 StudyCompnent">
-                <p>
-                  {cote.title}
-                </p>
-                <p>{cote.problem}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="dropdown" style={{marginLeft: "55vw", marginTop: "5vh"}}>
           <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             {lang}
@@ -65,7 +49,6 @@ const AlgoStudy = () => {
         </div>
 
         <CodeTextarea lang = {lang}></CodeTextarea>
-      </AlgoStudyBackground>
     </>
   );
 };
