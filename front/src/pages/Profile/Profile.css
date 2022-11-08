@@ -152,13 +152,19 @@
 .ProfileLikeChartsize {
   margin: auto;
   vertical-align: 50;
-  width: 28vw;
+  width: max(28vw, 467px);
 }
-
 
 .ProfileMainBtn {
   position: absolute;
   left: 8vw;
   bottom: 5vh;
+  width: 5vw;
+  height: 10vh;
+  cursor: pointer;
+}
+.ProfileMainBtn:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
 }
 

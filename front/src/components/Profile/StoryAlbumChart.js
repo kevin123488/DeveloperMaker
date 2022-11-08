@@ -2,13 +2,13 @@ import React from "react";
 import "chart.js/auto"; // import 안하면 차트 오류남
 import { Doughnut } from "react-chartjs-2";
 import "../../pages/Profile/Profile.css"
+import { useSelector } from "react-redux";
 
 const StoryAlbumChart = () =>{
-  const progress = 30
   // 스토리 앨범 변수 받아오기
-  // const progress = useSelector((state)=>{
-  //   return state.album.albumProgress
-  // })
+  const progress = useSelector((state)=>{
+    return state.user.progress.album.storyAlbum
+  })
   const data = {
     datasets: [
       {
@@ -19,6 +19,7 @@ const StoryAlbumChart = () =>{
     ],
   };
   const options = {
+    events: [],
     cutout: 35, //  구멍 크기
     borderColor: 'white',
     // 폰트 컬러

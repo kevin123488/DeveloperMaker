@@ -8,7 +8,7 @@ import { getProgress } from '../../slices/userSlice';
 const RadicalChart = () => {
   const dispatch = useDispatch()
   const progress = useSelector((state)=>{
-    return state.user.userInfo.progressDto
+    return state.user.progress.study
   })
   const nickname = useSelector((state)=>{
     return state.user.userInfo.nickname
