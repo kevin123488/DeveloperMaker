@@ -24,7 +24,7 @@ public class CoteController {
 
     private final CoteService coteService;
 
-    @GetMapping
+    @PostMapping
     @ApiOperation(value = "코딩테스트 문제 리스트 확인", notes = "response의 correct가 0 : 풀지않음, 1 : 맞음, 2 : 맞음")
     public ResponseEntity<BaseResponseBody> getList(@AuthenticationPrincipal String email,
                                                     @RequestBody CoteListRequestDto coteListRequestDto) {
@@ -32,13 +32,13 @@ public class CoteController {
     }
 
     @PostMapping("/{coteId}")
-    @ApiOperation(value = "", notes = "")
+    @ApiOperation(value = "코테 제출", notes = "")
     public ResponseEntity<BaseResponseBody> submitCote(@AuthenticationPrincipal String email, @RequestBody CoteSubmitRequestDto coteSubmitRequestDto, @PathVariable Long coteId){
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.submitCote(email, coteId, coteSubmitRequestDto)));
     }
 
-    @PostMapping
-    @ApiOperation(value = "", notes = "")
+    @PostMapping("/test")
+    @ApiOperation(value = "코테 인풋 테스트 실행", notes = "")
     public ResponseEntity<BaseResponseBody> testCote(@RequestBody CoteTestRequestDto coteTestRequestDto){
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.testCote(coteTestRequestDto)));
     }
