@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -99,5 +100,21 @@ public class AlbumService {
         }
 
         return false;
+    }
+
+    public HashMap<String, Integer> getAlbumProgress(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        int storyCount = albumRepository.countByType("story");
+        int studyCount = albumRepository.countByType("study");
+
+        int userStory = userAlbumRepository.countByUserAndAlbum_Type(user,"story");
+        int userStudy = userAlbumRepository.countByUserAndAlbum_Type(user,"study");
+
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("storyAlbum", (int) ((double) userStory / storyCount * 100));
+        map.put("studyAlbum", (int) ((double) userStudy / studyCount * 100));
+        return map;
     }
 }

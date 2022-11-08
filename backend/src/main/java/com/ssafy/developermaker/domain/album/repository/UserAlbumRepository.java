@@ -14,4 +14,6 @@ public interface UserAlbumRepository extends JpaRepository<UserAlbum, Long> {
     Optional<UserAlbum> findByUserAndAlbum_AlbumId(User user,Long albumId);
 
     Optional<UserAlbum> findByUserAndIsReadIsFalse(User user);
+
+    Integer countByUserAndAlbum_Type(User user, String type);
 }
