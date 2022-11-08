@@ -84,6 +84,47 @@ public class CoteService {
         response = coteResultDto.getMessage() + "\n spendTime :" + coteResultDto.getSpendTime();
         return response;
     }
+    public String testCote(CoteTestRequestDto coteTestRequestDto){
+        String error = null, output = "";
+        String language = "0";
+        if (coteTestRequestDto.getLanguage().equals("java")) {
+            language = "4";
+        } else if (coteTestRequestDto.getLanguage().equals("python")) {
+            language = "5";
+        } else if (coteTestRequestDto.getLanguage().equals("cpp")) {
+            language = "7";
+        } else if (coteTestRequestDto.getLanguage().equals("javascript")) {
+            language = "17";
+        }
+        coteTestRequestDto.setCode(coteTestRequestDto.getCode().replaceFirst("Solution", "Progman"));
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("LanguageChoice", language);
+        jsonObject.put("Program", coteTestRequestDto.getCode());
+        jsonObject.put("Input", coteTestRequestDto.getInput());
+
+        HttpResponse<String> response = Unirest.post("https://code-compiler.p.rapidapi.com/v2")
+                .header("content-type", "application/json")
+                .header("X-RapidAPI-Key", rapidAPI_KEY)
+                .header("X-RapidAPI-Host", rapidAPI_HOST)
+                .body(jsonObject.toString())
+                .asString();
+        try {
+            JSONParser parser = new JSONParser();
+            JSONObject jsonObj = (JSONObject) parser.parse(response.getBody());
+            if (jsonObj.get("Errors") != null) {
+                error = jsonObj.get("Errors").toString();
+            } else if (jsonObj.get("Result") != null) {
+                output = jsonObj.get("Result").toString();
+                if(output.charAt(output.length() - 1) == '\n') output = output.substring(0, output.length() - 1);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if(error != null){
+            output = error;
+        }
+        return output;
+    }
 
     public CoteResultDto compilerApi(CoteSubmitRequestDto coteSubmitRequestDto, Cote cote) {
         String error = null, output = "";
@@ -96,6 +137,8 @@ public class CoteService {
             language = "5";
         } else if (coteSubmitRequestDto.getLanguage().equals("cpp")) {
             language = "7";
+        } else if (coteSubmitRequestDto.getLanguage().equals("javascript")) {
+            language = "17";
         }
         coteSubmitRequestDto.setCode(coteSubmitRequestDto.getCode().replaceFirst("Solution", "Progman"));
         JSONObject jsonObject = new JSONObject();
@@ -117,12 +160,13 @@ public class CoteService {
                 error = jsonObj.get("Errors").toString();
             } else if (jsonObj.get("Result") != null) {
                 output = jsonObj.get("Result").toString();
+                if(output.charAt(output.length() - 1) == '\n') output = output.substring(0, output.length() - 1);
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        long time = System.currentTimeMillis() - start;
-        time = 100;
+        long time = System.currentTimeMillis() - start - 2000;
+
         coteResultDto.setSpendTime(time);
         if (error != null) {
             coteResultDto.setMessage(error);
