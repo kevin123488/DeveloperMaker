@@ -65,21 +65,25 @@ const LangFrameStudy = () => {
   const capture = React.useCallback(
     () => {
       setImageSrc(webcamRef.current.getScreenshot());
-      // const blobData = dataURItoBlob(imageSrc)
-      // console.log(blobData)
+      const blobData = dataURItoBlob(imageSrc)
+      console.log(blobData)
     },
     [webcamRef]
   );
-
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 5
   recognition.lang = "ko-KR";
 
   recognition.onresult = (event) => {
     const color = event.results[0][0].transcript;
     console.log(`color: ${color}`);
   }
+
+  // useEffect(() => {
+  //   console.log('다시')
+  // }, [recognition])
 
   const startListen = () => {
     recognition.start()

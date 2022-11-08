@@ -30,7 +30,8 @@
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "bus",
-    "plusIndex": 1
+    "plusIndex": 1,
+    "effect": "띠용"
   },
   {
     "idx": 3,
