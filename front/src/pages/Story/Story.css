@@ -28,3 +28,13 @@
 .storyTellerText::-webkit-scrollbar {
   display: none;
 }
+
+.storyLikeValue {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(0%, -50%);
+  font-size: 2vw;
+  width: 4vw;
+  height: 2vw;
+}

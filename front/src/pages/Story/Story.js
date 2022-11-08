@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import "./Story.css";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Typo from './TypingText.js'
 import Question from './Question.js'
 import Option from './Option.js'
@@ -22,6 +22,13 @@ import homeIcon from "./homeIcon.png";
 import slotIcon from "./slot.png";
 import seobomNonPass from "./seobom_nonpass.png";
 import storyGoAlert from "./storyGoAlert.png";
+import { userGetMemory } from "../../slices/storySlice";
+import seobomLikeIcon from "./seobomLikeIcon.png";
+import gaeulLikeIcon from "./gaeulLikeIcon.png";
+import geowolLikeIcon from "./geowolLikeIcon.png";
+import yeoreumLikeIcon from "./yeoreumLikeIcon.png";
+import likeValueIcon from "./likeValueIcon.png";
+import checkLikeTitle from "./checkLikeTitle.png";
 
 const StoryPage = styled.div`
   width: 100vw;
@@ -81,6 +88,15 @@ const StoryHamburger = styled.div`
   border-radius: 1000px;
 `;
 
+const ModalEffect = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const StoryNavigate = styled.div`
   position: absolute;
   top: 15%;
@@ -90,13 +106,14 @@ const StoryNavigate = styled.div`
   background: white;
   border-radius: 20px;
   border: 5px solid #79491e;
+  animation: ${ModalEffect} 0.4s;
 `;
 
 const StorySaveBtn = styled.div`
   z-index: 1;
   position: absolute;
   cursor: pointer;
-  top: 10%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 2.5vw;
@@ -110,7 +127,7 @@ const StoryGoHome = styled.div`
   z-index: 1;
   position: absolute;
   cursor: pointer;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 2.5vw;
@@ -124,7 +141,7 @@ const StoryGoSlot = styled.div`
   z-index: 1;
   position: absolute;
   cursor: pointer;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 2.5vw;
@@ -132,6 +149,86 @@ const StoryGoSlot = styled.div`
   background-image: url(${slotIcon});
   background-size: 2.5vw 2.5vw;
   background-repeat: no-repeat;
+`;
+
+const StoryLikeCheck = styled.div`
+  z-index: 1;
+  position: absolute;
+  cursor: pointer;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.5vw;
+  height: 2.5vw;
+  background-image: url(${likeValueIcon});
+  background-size: 2.5vw 2.5vw;
+`;
+
+const StoryLikeModal = styled.div`
+  z-index: 1;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transform: translate(-100%, 0%);
+  width: 15vw;
+  height: 25vh;
+  background: white;
+  transition: 0.4s;
+  border-radius: 20px;
+  border: 5px solid #79491e;
+  animation: ${ModalEffect} 0.4s;
+`;
+
+const StoryLikeCheckTitle = styled.div`
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10vw;
+  height: 4vw;
+  background-image: url(${checkLikeTitle});
+  background-size: 10vw 4vw;
+`;
+
+const StorySpringLike = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 3vw;
+  height: 3vw;
+  background-image: url(${seobomLikeIcon});
+  background-size: 3vw 3vw;
+`;
+const StorySummerLike = styled.div`
+  position: absolute;
+  top: 40%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 3vw;
+  height: 3vw;
+  background-image: url(${yeoreumLikeIcon});
+  background-size: 3vw 3vw;
+`;
+const StoryAutumnLike = styled.div`
+  position: absolute;
+  top: 75%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  width: 3vw;
+  height: 3vw;
+  background-image: url(${gaeulLikeIcon});
+  background-size: 3vw 3vw;
+`;
+const StoryWinterLike = styled.div`
+  position: absolute;
+  top: 75%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 3vw;
+  height: 3vw;
+  background-image: url(${geowolLikeIcon});
+  background-size: 3vw 3vw;
 `;
 
 const StoryCharLeft = styled.div`
@@ -262,6 +359,7 @@ const Story = () => {
   const [canGoNext, setCanGoNext] = useState(true); // 스크립트 넘기는 속도 관리
   // next 버튼 따로 만들어주자
   const getAlbum = useRef(0); // 획득할 앨범 번호
+  const [openLikeValue, setOpenLikeValue] = useState(false);
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
@@ -490,6 +588,13 @@ const Story = () => {
     setOpenAlbumGetModal(false);
   };
 
+  // 호감도 수치 보여주는 부분 관리하는 함수
+  const getLikeValue = () => {
+    console.log(story[slotIndex-1].likeAutumn);
+    dispatch(userGetMemory());
+    setOpenLikeValue(!openLikeValue);
+  };
+
   function nextScript(n) {
     setCanGoNext(false);
     setTimeout(() => {
@@ -618,6 +723,31 @@ const Story = () => {
           <StorySaveBtn onClick={saveStory}></StorySaveBtn>
           <StoryGoHome onClick={goHome}></StoryGoHome>
           <StoryGoSlot onClick={goSlot}></StoryGoSlot>
+          <StoryLikeCheck onClick={getLikeValue}></StoryLikeCheck>
+          {
+            openLikeValue
+            ?
+            <StoryLikeModal>
+              <StoryLikeCheckTitle></StoryLikeCheckTitle>
+              <StorySpringLike>
+                <div className="storyLikeValue">: {story[slotIndex-1].likeSpring}</div>
+              </StorySpringLike>
+              <StorySummerLike>
+                <div className="storyLikeValue">: {story[slotIndex-1].likeSummer}</div>
+              </StorySummerLike>
+              <StoryAutumnLike>
+                <div className="storyLikeValue">: {story[slotIndex-1].likeAutumn}</div>
+              </StoryAutumnLike>
+              <StoryWinterLike>
+                <div className="storyLikeValue">: {story[slotIndex-1].likeWinter}</div>
+              </StoryWinterLike>
+              {/* <div>서봄호감도: {story[slotIndex-1].likeSpring}</div>
+              <div>차가을호감도: {story[slotIndex-1].likeAutumn}</div>
+              <div>한여름호감도: {story[slotIndex-1].likeSummer}</div>
+              <div>한겨울호감도: {story[slotIndex-1].likeWinter}</div> */}
+            </StoryLikeModal>
+            : null
+          }
         </StoryNavigate>
         : null
       }
