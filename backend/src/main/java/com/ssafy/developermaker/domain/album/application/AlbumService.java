@@ -15,9 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import javax.swing.text.html.Option;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -39,12 +38,13 @@ public class AlbumService {
         List<AlbumDto> storyAlbumList = new ArrayList<>();
         List<AlbumDto> studyAlbumList = new ArrayList<>();
         for(Album album : albumList) {
-            boolean isGet = userAlbumRepository.findByUserAndAlbum(user,album).isPresent();
+            Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum(user, album);
+            boolean isGet = findUserAlbum.isPresent();
 
             double ownerRate = 0.0;
             if(isGet){ ownerRate =  userAlbumRepository.countByAlbum(album).doubleValue() / userCount;}
 
-            AlbumDto albumDto = album.toDto(isGet,ownerRate);
+            AlbumDto albumDto = album.toDto(isGet,ownerRate, findUserAlbum.map(UserAlbum::getIsRead).orElse(false));
             if(album.getType().equals("story")) storyAlbumList.add(albumDto);
             else studyAlbumList.add(albumDto);
         }
@@ -52,7 +52,7 @@ public class AlbumService {
         return new AlbumResponseDto(storyAlbumList,studyAlbumList);
     }
     @Transactional
-    public Boolean resistUserAlbum(String email, Long albumId){
+    public AlbumDto resistUserAlbum(String email, Long albumId){
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
@@ -60,12 +60,12 @@ public class AlbumService {
         Album album = findAlbum.orElseThrow(AlbumNotFoundException::new);
 
         if(!userAlbumRepository.findByUserAndAlbum(user,album).isPresent()) {
-            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).build();
+            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).isRead(false).build();
             userAlbumRepository.save(userAlbum);
-            return true;
         }
 
-        return false;
+        long userCount = userRepository.count();
+        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount,false);
     }
 
     public Boolean findAlbum(String email, Long albumId) {
@@ -76,4 +76,42 @@ public class AlbumService {
         return findUserAlbum.isPresent();
     }
 
+
+    public boolean findNewAlbum(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        return findNewUserAlbum.isPresent();
+    }
+
+    @Transactional
+    public AlbumResponseDto checkNewAlbum(String email, Long albumId) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum_AlbumId(user, albumId);
+
+        if(findUserAlbum.isPresent() && !findUserAlbum.get().getIsRead()) {
+            findUserAlbum.get().checkRead();
+        }
+
+        return getAlbumList(email);
+    }
+
+    public HashMap<String, Integer> getAlbumProgress(String email) {
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+
+        int storyCount = albumRepository.countByType("story");
+        int studyCount = albumRepository.countByType("study");
+
+        int userStory = userAlbumRepository.countByUserAndAlbum_Type(user,"story");
+        int userStudy = userAlbumRepository.countByUserAndAlbum_Type(user,"study");
+
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("storyAlbum", (int) ((double) userStory / storyCount * 100));
+        map.put("studyAlbum", (int) ((double) userStudy / studyCount * 100));
+        return map;
+    }
 }
