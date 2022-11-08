@@ -70,6 +70,25 @@ const LangFrameStudy = () => {
     },
     [webcamRef]
   );
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  recognition.lang = "ko-KR";
+
+  recognition.onresult = (event) => {
+    const color = event.results[0][0].transcript;
+    console.log(`color: ${color}`);
+  }
+
+  const startListen = () => {
+    recognition.start()
+  }
+
+  const endListen = () => {
+    recognition.stop()
+  }
+
   return (
     <>
       <InterviewBlock>
@@ -83,6 +102,9 @@ const LangFrameStudy = () => {
         <button onClick={capture}>Capture photo</button>
         <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
         <button onClick={saveCam}>백으로</button>
+        <button onClick={startListen}>음성인식 시작</button>
+        <button onClick={endListen}>음성인식 끝</button>
+
       </InterviewBlock>
     </>
   );
