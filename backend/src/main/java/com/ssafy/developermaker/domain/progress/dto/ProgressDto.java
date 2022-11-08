@@ -21,10 +21,10 @@ public class ProgressDto {
 
     public ProgressDto(Progress progress, int csCount, int algoCount, int backCount, int frontCount, int langCount) {
 
-        this.cs = (int) Math.ceil((double) progress.getCs() / csCount * 100);
-        this.algorithm = (int) Math.ceil((double) progress.getAlgorithm() / algoCount * 100);
-        this.backend = (int) Math.ceil((double) progress.getBackend() / backCount * 100);
-        this.frontend = (int) Math.ceil((double) progress.getFrontend() / frontCount * 100);
-        this.language = (int) Math.ceil((double) progress.getLanguage() / langCount * 100);
+        this.cs = (int) ((double) progress.getCs() / csCount * 100);
+        this.algorithm = (int) ((double) progress.getAlgorithm() / algoCount * 100);
+        this.backend = (int) ((double) progress.getBackend() / backCount * 100);
+        this.frontend = (int) ((double) progress.getFrontend() / frontCount * 100);
+        this.language = (int) ((double) progress.getLanguage() / langCount * 100);
     }
 }
