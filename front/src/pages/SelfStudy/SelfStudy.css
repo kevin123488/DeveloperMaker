@@ -41,7 +41,7 @@
   transform: scale(1.05);
 }
 .subjectChoice:active {
-  top: 4%;
+  top: 3%;
 }
 
 .homeBtn {
@@ -361,7 +361,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 35vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
   background-size: 100% 100%;
@@ -412,7 +412,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 35vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
   background-size: 100% 100%;
@@ -462,7 +462,7 @@
   position: absolute;
   width: 25vw;
   height: 80vh;
-  top: 25vh;
+  top: 30vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
   background-size: 100% 100%;
@@ -513,7 +513,7 @@
   position: absolute;
   width: 22vw;
   height: 70vh;
-  top: 30vh;
+  top: 35vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
   background-size: 100% 100%;
@@ -563,7 +563,7 @@
   position: absolute;
   width: 24vw;
   height: 80vh;
-  top: 25vh;
+  top: 30vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
   background-size: 100% 100%;
@@ -663,7 +663,19 @@
   border-radius: 10px;
   transition: all ease 0.3s;
 }
-
+.quizSubmit {
+  text-align: center;
+  line-height: 5vh;
+  width: 5vw;
+  height: 5vh;
+  font-size: 3vh;
+  /* top: 67vh;
+  left: 25vw; */
+  border-radius: 10px;
+  border: black solid;
+  z-index: 100;
+  cursor: pointer;
+}
 
 /* 퀴즈 내부 */
 /* 퀴즈 내부 */
@@ -673,7 +685,7 @@
   position: absolute;
   height: 22vh;
   width: 21vw;
-  top: 5vh;
+  top: 12vh;
   left: 1vw;
   opacity: 1;
   background: url("../../asset/images/SelfstudyImg/speechBalloon.png") center no-repeat;

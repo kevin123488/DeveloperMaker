@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router";
 import "./SelfStudy.css";
 import Study from "./Study.js";
-import AlgorithmSelfStudy from "./AlgorithmSelfStudy";
+import AlgorithmSelfStudy from "./TestInterview";
 import { 
   getSelfStudyProgress, 
   getStudyInfo, 
@@ -175,7 +175,7 @@ const Quiz = () => {
     setTimeout(() => {
       setShowWork(true)
       setShowWorkChoice(true)
-    }, 500)
+    }, 200)
     setIsShowQuizProblem(false)
     setIsShowingAlgo(false)
     changeQuizList(newQuizInfo)
@@ -347,6 +347,7 @@ const Quiz = () => {
         offset: nowpage,
         limit: limit,
       }
+      // console.log("채점결과", solveResult.payload)
       dispatch(getQuizList(newQuizInfo))
       setNpcBalloonContent(solveResult.payload)
       setIsShowNpcBalloon(true)
@@ -360,6 +361,15 @@ const Quiz = () => {
       setTimeout(() => {
       setIsShowNpcBalloon(false)
       }, 2000)
+    }
+
+    // 프로그래스가 분기를 넘었는지 판별
+    await dispatch(getSelfStudyProgress())
+    const solveCategory = quizInfo[category].category.toLowerCase()
+    const progressPer = parseInt(progress[solveCategory] / 25)
+    if (progressPer !== 0) {
+      const checkAlbumNum = category * 4
+      checkAlbum(checkAlbumNum)
     }
   }
 
@@ -467,6 +477,15 @@ const Quiz = () => {
     setTimeout(() => {
     setIsShowNpcBalloon(false)
     }, 2000)
+
+    // 프로그래스가 분기를 넘었는지 판별
+    await dispatch(getSelfStudyProgress())
+    const solveCategory = quizInfo[category].category.toLowerCase()
+    const progressPer = parseInt(progress[solveCategory] / 25)
+    if (progressPer !== 0) {
+      const checkAlbumNum = category * 4
+      checkAlbum(checkAlbumNum)
+    }
   }
 
   // 코드 테스트 요청
@@ -481,6 +500,11 @@ const Quiz = () => {
     setOutputValue(solveResult.payload)
     // console.log('테스트 결과', solveResult.payload)
   }
+
+  // 체크할 엘범 번호 받아서 체크하고 띄워주는 함수
+  const checkAlbum = ((checkAlbumNum) => {
+    console.log('체크엘범 번호', checkAlbumNum)
+  })
 
   return ( 
     <>
@@ -568,8 +592,8 @@ const Quiz = () => {
             {
               showWorkChoice?
               <div className="container row m-0 p-0">
-                <div onClick={() => {choiceWork('study')}} className="studySelectButton col-5 pop">공부하기(사진)</div>
-                <div onClick={() => {choiceWork('quiz')}} className="quizSelectButton col-5 pop">문제풀기(사진)</div>
+                <div onClick={() => {choiceWork('study')}} className="studySelectButton col-5 pop">공부하기</div>
+                <div onClick={() => {choiceWork('quiz')}} className="quizSelectButton col-5 pop">문제풀기</div>
               </div>
               : null
             }
@@ -639,7 +663,7 @@ const Quiz = () => {
                         </div>
                       ))}
                 </div>
-                <button onClick={solveQuiz}>제출</button>
+                <div className="quizSubmit" onClick={solveQuiz}>제출</div>
               </div>
 
               : null

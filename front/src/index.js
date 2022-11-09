@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from "./pages/Main/Main.js";
 import SelfStudy from "./pages/SelfStudy/SelfStudy.js";
 import Study from "./pages/SelfStudy/Study.js";
-import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import LangFrameSelfStudy from "./components/SelfStudy/LangFrameSelfStudy.js";
 import Album from "./pages/Album/Album.js";
 import Story from "./pages/Story/Story.js";
@@ -34,7 +33,6 @@ root.render(
           <Route path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
           <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
           <Route path="/SelfStudy/study" element={<Study />} />
-          <Route path="/SelfStudy/algo" element={<AlgorithmSelfStudy />} />
           <Route
             path="/SelfStudy/lang-frame"
             element={<LangFrameSelfStudy />}

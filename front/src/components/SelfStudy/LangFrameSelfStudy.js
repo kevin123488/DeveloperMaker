@@ -78,7 +78,7 @@ const LangFrameStudy = () => {
 
   recognition.onresult = (event) => {
     const color = event.results[0][0].transcript;
-    console.log(`color: ${color}`);
+    console.log(`말: ${color}`);
   }
 
   // useEffect(() => {
