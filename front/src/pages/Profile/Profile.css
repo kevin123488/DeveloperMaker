@@ -111,6 +111,18 @@
 
 .ProfileLikeBtn {
   margin: 0.2vw;
+  width: max-content;
+  padding: 1vh;
+  background-color: pink;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0.5;
+  color: white;
+}
+.ProfileLikeBtnSel {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
+  opacity: 1;
 }
 
 .ProfileLikeChartBack {
@@ -152,7 +164,7 @@
 .ProfileLikeChartsize {
   margin: auto;
   vertical-align: 50;
-  width: max(28vw, 467px);
+  width: max(26vw, 467px);
 }
 
 .ProfileMainBtn {

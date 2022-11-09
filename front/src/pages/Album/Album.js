@@ -64,6 +64,8 @@ const Album = () => {
   function goMain() {
     navigate('/')
   }
+
+  
   // 앨범 뽑기 보여주기용 변수
   const show = useSelector((state)=>{
     return state.album.albumPickShow
@@ -79,7 +81,7 @@ const Album = () => {
 
   return (
     <div className="albumBack">
-      <p onClick={()=>{ putAlbum(1)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
+      <p onClick={()=>{ putAlbum(2)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
       <div className="albumModeSel">
         <div>
           {newStory && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (!selType ? " albumBtnSel" : "")}/>}

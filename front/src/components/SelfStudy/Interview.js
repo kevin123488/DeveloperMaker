@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./LangFrameSelfStudy.css";
+import "./Interview.css";
 import * as htmlToImage from 'html-to-image';
 import Webcam from "react-webcam";
 import styled from "styled-components";
