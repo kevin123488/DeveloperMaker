@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router";
 import "./SelfStudy.css";
 import Study from "./Study.js";
-import AlgorithmSelfStudy from "./TestInterview";
+import { putAlbumList, getAlbumCheck } from "../../slices/albumSlice";
+import GetAlbum from "../../components/Album/GetAlbum";
 import { 
   getSelfStudyProgress, 
   getStudyInfo, 
@@ -362,7 +363,7 @@ const Quiz = () => {
       setIsShowNpcBalloon(false)
       }, 2000)
     }
-
+    checkAlbum(25)
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
     const solveCategory = quizInfo[category].category.toLowerCase()
@@ -477,6 +478,7 @@ const Quiz = () => {
     setTimeout(() => {
     setIsShowNpcBalloon(false)
     }, 2000)
+    // checkAlbum(32)
 
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
@@ -501,8 +503,22 @@ const Quiz = () => {
     // console.log('테스트 결과', solveResult.payload)
   }
 
+  // 앨범 뽑기 보여주기용 변수
+  const show = useSelector((state)=>{
+    return state.album.albumPickShow
+  })
+  // 앨범 뽑기 함수
+  const putAlbum =  async(albumId) => {
+    const response = await dispatch(getAlbumCheck(albumId))
+    // 중복이면 true이므로 false일 때 실행
+    if (!response.payload) {
+      dispatch(putAlbumList(albumId))
+    }
+  }
+
   // 체크할 엘범 번호 받아서 체크하고 띄워주는 함수
   const checkAlbum = ((checkAlbumNum) => {
+    putAlbum(checkAlbumNum)
     console.log('체크엘범 번호', checkAlbumNum)
   })
 
@@ -772,6 +788,8 @@ const Quiz = () => {
 
 
       </div>
+      {/* 조건부 렌더링 */}
+      {show && <GetAlbum />}
     </>
   );
 };

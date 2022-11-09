@@ -367,7 +367,7 @@
   background-size: 100% 100%;
   transition: all ease 0.5s;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
 
@@ -418,7 +418,7 @@
   background-size: 100% 100%;
   transition: all ease 0.5s;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
 
@@ -468,7 +468,7 @@
   background-size: 100% 100%;
   transition: all ease 0.5s;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
 
@@ -519,7 +519,7 @@
   background-size: 100% 100%;
   transition: all ease 0.5s;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
 
@@ -569,7 +569,7 @@
   background-size: 100% 100%;
   transition: all ease 0.5s;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
 

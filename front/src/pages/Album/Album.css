@@ -168,7 +168,7 @@
   left: 10vw;
   width: 80vw;
   height: 90vh;
-  z-index: 2;
+  z-index: 1002;
   border-radius: 5px;
   filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
   cursor: pointer;
@@ -220,7 +220,8 @@
   animation: start 0.3s;
   border-radius: 5px;
   box-shadow: inset 0px 0px 5px white;
-  filter: brightness(90%)
+  filter: brightness(90%);
+  z-index: 1000;
 }
 @keyframes start {
   0% { transform: scale3d(0, 0, 0) }
@@ -243,6 +244,7 @@
   width: 25vw;
   height: 40vh;
   animation: vibration .15s infinite;
+  z-index: 1000;
 }
 @keyframes vibration {
   0% { transform: rotate(0deg); }
@@ -259,7 +261,7 @@
   height: 20vh;
   top: 70vh;
   left: 25vw;
-  z-index: 1;
+  z-index: 1001;
   animation: start 0.1s;
 }
 
@@ -271,7 +273,7 @@
   position: absolute;
   top: 17vh;
   left: 30vw;
-  z-index: 1;
+  z-index: 1001;
   width: 40vw;
   height: 50vh;
   border-radius: 5px;
