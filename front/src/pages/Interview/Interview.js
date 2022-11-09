@@ -2,23 +2,11 @@ import React, {useState} from "react";
 import "./Interview.css";
 import * as htmlToImage from 'html-to-image';
 import Webcam from "react-webcam";
-import styled from "styled-components";
-import background from "../../asset/images/SelfstudyImg/InterviewBackground.png";
 // import { toBlob} from 'html-to-image';
 // import styled from "styled-components";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
 // import { Link } from 'react-router-dom';
-
-const InterviewBlock = styled.div`
-  position: related;
-  display: ;
-  height: 100vh;
-  width: 100vw;
-  /* background-color: #352208; */
-  background: url(${background}) center no-repeat;
-  background-size: 100vw 100vh;
-`;
 
 const videoConstraints = {
   width: 1280,
@@ -26,37 +14,37 @@ const videoConstraints = {
   facingMode: "user"
 };
 
-const LangFrameStudy = () => {
+const Interview = () => {
+  const [now, setNow] = useState(0)
+
+  const interviewScript = ['얼굴인식을 진행하도록 하겠습니다. 사용자의 얼굴을 화면 중앙에 맞춘 후 확인을 눌러주세요',
+ 'HTTP Mehthod의 종류와 그 내용에 대해 설명해 보세요.',
+ 'HTTP 상태코드의 종류와 그 내용에 대해 설명해 보세요.',
+ 'RDB와 NoSQL의 차이에 대해 설명해 보세요.',]
+
 
   const saveCam = () => {
     htmlToImage.toBlob(document.getElementById('captureDiv'))
     .then(function (blob) {
       console.log(blob)
-
       // const tempCapture = new File([blob], "test.png", { type: 'image/png' })
       // let capture = new FormData
       // capture.append('capture', tempCapture)
       // console.log(capture)
-
-      
       // setUrl(URL.createObjectURL(blob))
     });
   }
+
   const webcamRef = React.useRef(null);
-
   function dataURItoBlob(dataURI) {
-
     var byteString = atob(dataURI.split(',')[1]);
     var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-    
     var ab = new ArrayBuffer(byteString.length);
     var ia = new Uint8Array(ab);
-    
     for (var i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
     }
     var blob = new Blob([ab], {type: mimeString});
-    
     return blob;
   }
 
@@ -94,24 +82,28 @@ const LangFrameStudy = () => {
   }
 
   return (
-    <>
-      <InterviewBlock>
-        <Webcam
+    <div className="interviewBack">
+      <p className="interviewTitle" >00기업 면접</p>
+      <Webcam
           className="interviewCam"
-          audio={true}
+          audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           screenshotQuality={1}
           videoConstraints={videoConstraints}
         />
-        <button onClick={capture}>Capture photo</button>
-        <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
+      <div className="interviewScriptBack">
+        <p className="interviewScriptContent">{interviewScript[now]}</p>
+        <span className="interviewScriptNextBtn">다음</span>
+        <span className="interviewScriptNextBtn" onClick={capture} >캡쳐</span>
+      </div>
+        {/*
         <button onClick={saveCam}>백으로</button>
         <button onClick={startListen}>음성인식 시작</button>
-        <button onClick={endListen}>음성인식 끝</button>
-      </InterviewBlock>
-    </>
+        <button onClick={endListen}>음성인식 끝</button> */}
+        <img id="captureDiv" className="interviewCaptureImg" src={imageSrc} alt="ㅋㅋ"></img>
+    </div>
   );
 };
 
-export default LangFrameStudy;
+export default Interview;
