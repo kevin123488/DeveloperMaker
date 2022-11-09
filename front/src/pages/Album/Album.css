@@ -213,10 +213,10 @@
 /* GetAlbum */
 .GetAlbumBack {
   position: absolute;
-  top: 10vh;
-  left: 10vw;
-  width: 80vw;
-  height: 80vh;
+  top: 1vh;
+  left: 1vw;
+  width: 98vw;
+  height: 98vh;
   animation: start 0.3s;
   border-radius: 5px;
   box-shadow: inset 0px 0px 5px white;

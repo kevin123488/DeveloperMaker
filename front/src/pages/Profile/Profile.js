@@ -35,7 +35,7 @@ const Profile = () => {
       </div>
       {/* 데이터별 진행도 */}
       <div className="ProfileLikeChartBack">
-        {[1,2,3].map((idx) => {return (<button className='btn btn-primary ProfileLikeBtn' key={`btn-${idx}`} onClick={()=>{setLikeSel(idx)}}>{idx}번</button>) })}
+        {[1,2,3].map((idx) => {return (<span className={'ProfileLikeBtn' + (likeSel === idx ? " ProfileLikeBtnSel" : "" )} key={`btn-${idx}`} onClick={()=>{setLikeSel(idx)}}>{idx}번</span>) })}
         {loadData.map((data,idx)=> {return (<LikeChart key={`LikeChart-${idx}`} data={data} show={likeSel === idx+1} />) })}
       </div>
       <img src={MainImg} alt="MainBtn" className='ProfileMainBtn' onClick={goMain} />

@@ -145,8 +145,8 @@ const SelfStudy = () => {
       <TypeLink to="/selfstudy/quiz" style={{ textDecoration: "none" }}>
         퀴즈
       </TypeLink>
-      <TypeLink to="/selfstudy/lang-frame" style={{ textDecoration: "none" }}>
-        면접 test
+      <TypeLink to="/Interview" style={{ textDecoration: "none" }}>
+        AI 면접
       </TypeLink>
     </SelfStudyBlock>
   );
