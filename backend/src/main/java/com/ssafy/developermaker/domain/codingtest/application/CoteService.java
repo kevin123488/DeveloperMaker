@@ -81,7 +81,7 @@ public class CoteService {
         }
 
 
-        response = coteResultDto.getMessage() + "\n spendTime :" + coteResultDto.getSpendTime();
+        response = coteResultDto.getMessage();
         return response;
     }
     public String testCote(CoteTestRequestDto coteTestRequestDto){
@@ -146,7 +146,7 @@ public class CoteService {
         jsonObject.put("Program", coteSubmitRequestDto.getCode());
         jsonObject.put("Input", cote.getAnswerInput());
 
-        long start = System.currentTimeMillis();
+        //long start = System.currentTimeMillis();
         HttpResponse<String> response = Unirest.post("https://code-compiler.p.rapidapi.com/v2")
                 .header("content-type", "application/json")
                 .header("X-RapidAPI-Key", rapidAPI_KEY)
@@ -165,18 +165,20 @@ public class CoteService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        long time = System.currentTimeMillis() - start - 2000;
+        //long time = System.currentTimeMillis() - start - 2000;
 
-        coteResultDto.setSpendTime(time);
+        //coteResultDto.setSpendTime(time);
         if (error != null) {
             coteResultDto.setMessage(error);
-        } else if (time > cote.getTimeLimit()) { // 시간 초과 경우.
-            coteResultDto.setMessage("제한시간 초과입니다. : " + time + "ms");
-        } else if (!cote.getAnswerOutput().equals(output)) {
-            coteResultDto.setMessage("정답이 일치하지 않습니다.");
+        }
+//        else if (time > cote.getTimeLimit()) { // 시간 초과 경우.
+//            coteResultDto.setMessage("제한시간 초과입니다. : " + time + "ms");
+//        }
+        else if (!cote.getAnswerOutput().equals(output)) {
+            coteResultDto.setMessage("틀렸어.");
         } else {
             coteResultDto.setPass(true);
-            coteResultDto.setMessage("정답입니다!");
+            coteResultDto.setMessage("축하해. 정답이야.");
         }
         System.out.println(response.getBody());
 
