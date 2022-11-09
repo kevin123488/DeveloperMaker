@@ -10,11 +10,13 @@ import com.ssafy.developermaker.domain.album.repository.UserAlbumRepository;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
+import com.ssafy.developermaker.global.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
 import javax.swing.text.html.Option;
 import java.util.*;
 
@@ -26,19 +28,16 @@ public class AlbumService {
     private final AlbumRepository albumRepository;
     private final UserRepository userRepository;
     private final UserAlbumRepository userAlbumRepository;
+    private final RedisUtil redisUtil;
 
     public AlbumResponseDto getAlbumList(String email) {
         List<Album> albumList = albumRepository.findAll();
-        long userCount = userRepository.count();
-        if(userCount == 0) userCount++;
-
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
+        long userCount = Long.parseLong(redisUtil.getData("userCount"));
 
         List<AlbumDto> storyAlbumList = new ArrayList<>();
         List<AlbumDto> studyAlbumList = new ArrayList<>();
         for(Album album : albumList) {
-            Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum(user, album);
+            Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUser_EmailAndAlbum_AlbumId(email, album.getAlbumId());
             boolean isGet = findUserAlbum.isPresent();
 
             double ownerRate = 0.0;
@@ -53,44 +52,38 @@ public class AlbumService {
     }
     @Transactional
     public AlbumDto resistUserAlbum(String email, Long albumId){
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
-
         Optional<Album> findAlbum = albumRepository.findById(albumId);
         Album album = findAlbum.orElseThrow(AlbumNotFoundException::new);
 
-        if(!userAlbumRepository.findByUserAndAlbum(user,album).isPresent()) {
-            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).isRead(false).build();
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUser_EmailAndAlbum_AlbumId(email, albumId);
+
+        if(!findUserAlbum.isPresent()) {
+            Optional<User> findUser = userRepository.findByEmail(email);
+            User user = findUser.orElseThrow(UserNotFoundException::new);
+
+            UserAlbum userAlbum = UserAlbum.builder().album(albumRepository.getReferenceById(albumId)).user(user).isRead(false).build();
             userAlbumRepository.save(userAlbum);
         }
 
-        long userCount = userRepository.count();
+        long userCount = Long.parseLong(redisUtil.getData("userCount"));
+
         return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount,false);
     }
 
     public Boolean findAlbum(String email, Long albumId) {
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
-
-        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum_AlbumId(user, albumId);
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUser_EmailAndAlbum_AlbumId(email, albumId);
         return findUserAlbum.isPresent();
     }
 
 
     public boolean findNewAlbum(String email) {
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
-
-        Optional<UserAlbum> findNewUserAlbum = userAlbumRepository.findByUserAndIsReadIsFalse(user);
+        Optional<List<UserAlbum>> findNewUserAlbum = userAlbumRepository.findByUser_EmailAndIsReadIsFalse(email);
         return findNewUserAlbum.isPresent();
     }
 
     @Transactional
     public AlbumResponseDto checkNewAlbum(String email, Long albumId) {
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
-
-        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUserAndAlbum_AlbumId(user, albumId);
+        Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUser_EmailAndAlbum_AlbumId(email, albumId);
 
         if(findUserAlbum.isPresent() && !findUserAlbum.get().getIsRead()) {
             findUserAlbum.get().checkRead();
@@ -100,14 +93,11 @@ public class AlbumService {
     }
 
     public HashMap<String, Integer> getAlbumProgress(String email) {
-        Optional<User> findUser = userRepository.findByEmail(email);
-        User user = findUser.orElseThrow(UserNotFoundException::new);
+        int storyCount = Integer.parseInt(redisUtil.getData("storyCount"));
+        int studyCount = Integer.parseInt(redisUtil.getData("studyCount"));
 
-        int storyCount = albumRepository.countByType("story");
-        int studyCount = albumRepository.countByType("study");
-
-        int userStory = userAlbumRepository.countByUserAndAlbum_Type(user,"story");
-        int userStudy = userAlbumRepository.countByUserAndAlbum_Type(user,"study");
+        int userStory = userAlbumRepository.countByUser_EmailAndAlbum_Type(email,"story");
+        int userStudy = userAlbumRepository.countByUser_EmailAndAlbum_Type(email,"study");
 
         HashMap<String, Integer> map = new HashMap<>();
         map.put("storyAlbum", (int) ((double) userStory / storyCount * 100));

@@ -35,6 +35,8 @@ public class QuizService {
 
     private final ProgressRepository progressRepository;
     public List<QuizCategoryResponseDto> getQuizList() {
+
+
         return quizRepository.getQuizList();
     }
 
@@ -64,8 +66,7 @@ public class QuizService {
 
         Optional<UserQuiz> findUserQuiz = userQuizRepository.findByUserAndQuiz(findUser, findQuiz);
 
-        Optional<Progress> findProgress = progressRepository.findByUser(findUser);
-        Progress progress = findProgress.orElseThrow(ProgressNotFoundException::new);
+        Progress progress = findUser.getProgress();
 
         boolean result = findQuiz.getAnswer().equals(quizRequestDto.getAnswer());
         if(!findUserQuiz.isPresent()) {
