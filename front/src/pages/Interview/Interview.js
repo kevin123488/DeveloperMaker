@@ -22,6 +22,7 @@ const videoConstraints = {
 const Interview = () => {
   const [now, setNow] = useState(0)
   const navigate = useNavigate()
+  const [faceCheck, setFaceCheck] = useState(false)
 
   const interviewScript = ['얼굴인식을 진행하도록 하겠습니다. 사용자의 얼굴을 화면 중앙에 맞춘 후 확인을 눌러주세요',
  'HTTP Mehthod의 종류와 그 내용에 대해 설명해 보세요.',
@@ -97,7 +98,11 @@ const Interview = () => {
       <img className="Interviewer2" src={Interviewer2} alt="Interviewer2" />
       <img className="Interviewer3" src={Interviewer3} alt="Interviewer3" />
       <div className="interviewScriptBack">
-
+        <p className="InterviewerName">『누군가의 발언』</p>
+        <p className="InterviewContent">질문 내용</p>
+        <div>
+          <p>버튼모음</p>
+        </div>
       </div>
       <Webcam
         className="interviewWebCam"
@@ -107,6 +112,7 @@ const Interview = () => {
         screenshotQuality={1}
       />
       <img id="captureDiv" className="interviewCaptureImg" src={imageSrc} alt="ㅋㅋ"></img>
+      {!faceCheck}
     </div>
   );
 };

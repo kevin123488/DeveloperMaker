@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
-
+import sessionStorage from "redux-persist/es/storage/session";
 import GameRuleImg from "../../asset/images/Main/GameRuleBtn.png";
 import GameStartImg from "../../asset/images/Main/GameStartBtn.png";
 import LogoutBtnImg from "../../asset/images/Main/LogoutBtn.png";
@@ -116,7 +116,8 @@ const GameButtonsArea = () => {
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}/>
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())
+            sessionStorage.clear();}}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (

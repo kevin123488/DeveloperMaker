@@ -41,37 +41,58 @@
   transition: 0.2s;
 }
 
-.interviewInterviewerImg {
-  position: absolute;
-  left: 25vw;
-  top: 10vh;
-  width: 50vw;
-  height: 60vh;
-}
 .Interviewer1 {
   position: absolute;
-  left: 2vw;
+  top: 15vh;
+  left: 20vw;
+  width: 20vw;
+  height: 45vh;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
-
-
+.Interviewer2 {
+  position: absolute;
+  top: 15vh;
+  left: 45vw;
+  width: 20vw;
+  height: 45vh;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.Interviewer3 {
+  position: absolute;
+  top: 15vh;
+  left: 70vw;
+  width: 20vw;
+  height: 45vh;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.InterviewerNoSpeach {
+  opacity: 0.8;
+}
 
 .interviewScriptBack {
   position: absolute;
-  left: 2vw;
-  bottom: 3vh;
+  left: 10vw;
+  bottom: 4vh;
   width: 60vw;
-  height: 40vh;
-  background-color: beige;
-  border-radius: 5px;
+  height: min(25vw * 0.75, 400px);
+  background-color: white;
+  border-radius: 65px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
+  /* border: 20px solid transparent;
+  border-image: url('../../asset/images/Interview/ChatStructure.png') 30; */
 }
-.interviewScriptContent {
-  position: absolute;
-  top: 5vh;
-  left: 1vw;
-  width: 38vw;
-  height: 70vh;
+
+.InterviewerName {
+  margin-left: 2vw;
+  margin-top: 2vh;
   font-size: 3vw;
+}
+.InterviewContent {
+  margin-left: 1vw;
+  font-size: 1.5vw;
+  margin-top: 1vh;
+  width: 58vw;
+  height: 25vh;
 }
 .interviewScriptNextBtn{
   position: absolute;
@@ -87,16 +108,15 @@
 /* 100(가로): 75(세로) */
 .interviewWebCam {
   position: absolute;
-  width: 25vw;
+  width: min(25vw, 400px);
   right: 2vw;
-  bottom: 3vh;
+  bottom: 4vh;
   padding: 10;
   border-radius: 5px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
   border: 3px double navy;
   /* url이미지, slice 순서는 top right bottom */
 }
-
 
 .interviewCaptureImg {
   position: absolute;
