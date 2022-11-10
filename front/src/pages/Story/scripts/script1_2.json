@@ -1528,7 +1528,7 @@
     "nextScript": "script2",
     "whichSelfStudy": "algorithm",
     "selfStudyRequired": {"algorithm": 0},
-    "getAlbumNum": 3,
+    "getAlbumNum": 5,
     "plusIndex": 1
   }
 ]

@@ -1172,7 +1172,7 @@
     "backgroundImageUrl": "fin",
     "nextScript": "script2",
     "whichSelfStudy": "cs",
-    "selfStudyRequired": {"cs": 0},
+    "selfStudyRequired": {"cs": 15},
     "getAlbumNum": 2,
     "plusIndex": 1
   }
