@@ -70,7 +70,7 @@ const RadicalChart = () => {
   useEffect(()=> {
     dispatch(getProgress())
   },[dispatch])
-
+  console.log('자율학습 진행도', progress)
   return (
     <div className='ProfileRadicalChart'>
       <Radar data={data} options={config} />    
