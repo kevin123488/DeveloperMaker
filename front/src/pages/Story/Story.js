@@ -13,7 +13,7 @@ import script2 from "./scripts/script2.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
-import { putAlbumList, getAlbumCheck } from "../../slices/albumSlice";
+import { readAlbum, putAlbumList, getAlbumCheck } from "../../slices/albumSlice";
 import { useNavigate } from "react-router-dom";
 import textBackground from "./talkingTab.png";
 import hamburger from "./Hamburger.png";
@@ -29,6 +29,8 @@ import geowolLikeIcon from "./geowolLikeIcon.png";
 import yeoreumLikeIcon from "./yeoreumLikeIcon.png";
 import likeValueIcon from "./likeValueIcon.png";
 import checkLikeTitle from "./checkLikeTitle.png";
+import GetAlbum from "../../components/Album/GetAlbum";
+import nowSlot from "./nowSlot.png";
 
 const StoryPage = styled.div`
   width: 100vw;
@@ -63,6 +65,34 @@ const StoryTextBox = styled.div`
   overflow: auto;
 `;
 
+const StoryGoEffect = keyframes`
+  0% {
+    top: 85%;
+    left: 90%;
+    transfrom: translate(-50%, -50%);
+  }
+  25% {
+    top: 85%;
+    left: 90%;
+    transfrom: translate(-50%, -50%);
+  }
+  50% {
+    top: 83%;
+    left: 90%;
+    transfrom: translate(-50%, -50%);
+  }
+  75% {
+    top: 85%;
+    left: 90%;
+    transfrom: translate(-50%, -50%);
+  }
+  100% {
+    top: 85%;
+    left: 90%;
+    transfrom: translate(-50%, -50%);
+  }
+`;
+
 const StoryPassAlert = styled.div`
   cursor: pointer;
   position: absolute;
@@ -73,6 +103,7 @@ const StoryPassAlert = styled.div`
   width: 8vh;
   background-image: url(${storyGoAlert});
   background-size: 8vh 4vh;
+  animation: ${StoryGoEffect} infinite 1s;
 `;
 
 const StoryHamburger = styled.div`
@@ -86,6 +117,11 @@ const StoryHamburger = styled.div`
   background: url(${hamburger}) center no-repeat;
   background-size: 4vw 4vw;
   border-radius: 1000px;
+  box-shadow: 1px 1px 1px 1px #79491e;
+  transition: 0.2s;
+  &:active {
+    top: 11%;
+  }
 `;
 
 const ModalEffect = keyframes`
@@ -121,6 +157,10 @@ const StorySaveBtn = styled.div`
   background-image: url(${saveIcon});
   background-size: 2.5vw 2.5vw;
   background-repeat: no-repeat;
+  transition: 0.2s;
+  &:active {
+    top: 22%;
+  }
 `;
 
 const StoryGoHome = styled.div`
@@ -135,6 +175,10 @@ const StoryGoHome = styled.div`
   background-image: url(${homeIcon});
   background-size: 2.5vw 2.5vw;
   background-repeat: no-repeat;
+  transition: 0.2s;
+  &:active {
+    top: 42%;
+  }
 `;
 
 const StoryGoSlot = styled.div`
@@ -149,6 +193,10 @@ const StoryGoSlot = styled.div`
   background-image: url(${slotIcon});
   background-size: 2.5vw 2.5vw;
   background-repeat: no-repeat;
+  transition: 0.2s;
+  &:active {
+    top: 62%;
+  }
 `;
 
 const StoryLikeCheck = styled.div`
@@ -162,6 +210,10 @@ const StoryLikeCheck = styled.div`
   height: 2.5vw;
   background-image: url(${likeValueIcon});
   background-size: 2.5vw 2.5vw;
+  transition: 0.2s;
+  &:active {
+    top: 82%;
+  }
 `;
 
 const StoryLikeModal = styled.div`
@@ -191,44 +243,80 @@ const StoryLikeCheckTitle = styled.div`
 `;
 
 const StorySpringLike = styled.div`
+  cursor: pointer;
   position: absolute;
-  top: 40%;
-  left: 20%;
-  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 10%;
   width: 3vw;
   height: 3vw;
   background-image: url(${seobomLikeIcon});
   background-size: 3vw 3vw;
+  &:hover {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    animation: vibration 1s infinite;
+    width: 3.2vw;
+    height: 3.2vw;
+    background-size: 3.2vw 3.2vw;
+  }
 `;
 const StorySummerLike = styled.div`
+  cursor: pointer;
   position: absolute;
-  top: 40%;
-  left: 65%;
-  transform: translate(-50%, -50%);
+  top: 30%;
+  left: 55%;
   width: 3vw;
   height: 3vw;
   background-image: url(${yeoreumLikeIcon});
   background-size: 3vw 3vw;
+  &:hover {
+    position: absolute;
+    top: 30%;
+    left: 55%;
+    animation: vibration 1s infinite;
+    width: 3.2vw;
+    height: 3.2vw;
+    background-size: 3.2vw 3.2vw;
+  }
 `;
 const StoryAutumnLike = styled.div`
+  cursor: pointer;
   position: absolute;
-  top: 75%;
-  left: 20%;
-  transform: translate(-50%, -50%);
+  top: 65%;
+  left: 10%;
   width: 3vw;
   height: 3vw;
   background-image: url(${gaeulLikeIcon});
   background-size: 3vw 3vw;
+  &:hover {
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    animation: vibration 1s infinite;
+    width: 3.2vw;
+    height: 3.2vw;
+    background-size: 3.2vw 3.2vw;
+  }
 `;
 const StoryWinterLike = styled.div`
+  cursor: pointer;
   position: absolute;
-  top: 75%;
-  left: 65%;
-  transform: translate(-50%, -50%);
+  top: 65%;
+  left: 55%;
   width: 3vw;
   height: 3vw;
   background-image: url(${geowolLikeIcon});
   background-size: 3vw 3vw;
+  &:hover {
+    position: absolute;
+    top: 65%;
+    left: 55%;
+    animation: vibration 1s infinite;
+    width: 3.2vw;
+    height: 3.2vw;
+    background-size: 3.2vw 3.2vw;
+  }
 `;
 
 const StoryCharLeft = styled.div`
@@ -314,6 +402,79 @@ const StoryGetAlbumModal = styled.div`
   background: black;
 `;
 
+const SaveSlotSelector = styled.div`
+  z-index: 3;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25vw;
+  height: 30vh;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #79491e;
+  animation: ${ModalEffect} 1s;
+`;
+
+const PointerEffect = keyframes`
+  0% {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  50% {
+    top: 45%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  75% {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+  }
+`;
+
+const NowSlotPointer = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  width: 3vw;
+  height: 1.5vw;
+  background-image: url(${nowSlot});
+  background-size: 3vw 1.5vw;
+  animation: ${PointerEffect} infinite 1s;
+`;
+
+const SaveFinModal = styled.div`
+  z-index: 5;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25vw;
+  height: 10vh;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #79491e;
+  font-size: 3vw;
+  text-align: center;
+  line-height: 10vh;
+  vertical-align: middle;
+  animation: ${ModalEffect} 0.4s;
+`;
+
 const Story = () => {
   const story =  useSelector((state) => {return state.story.userStoryData}); // 유저가 갖고있는 슬롯 3개의 데이터
   const slotIndex = useSelector((state) => {return state.story.selectedSlot}); // 몇번 슬롯 선택했는지 확인
@@ -344,7 +505,7 @@ const Story = () => {
   const leftCharImg = useRef('a');
   const middleCharImg = useRef('a');
   const rightCharImg = useRef('a');
-  const [hamburgerOpened, sethamburgerOpened] = useState(false);
+  const [hamburgerOpened, sethamburgerOpened] = useState(true);
   const navigate = useNavigate();
   // changeScript일 때 자율학습 진행도에 따라 보여줄 것
   // const selfStudyNonpassed = useRef(false);
@@ -360,10 +521,27 @@ const Story = () => {
   // next 버튼 따로 만들어주자
   const getAlbum = useRef(0); // 획득할 앨범 번호
   const [openLikeValue, setOpenLikeValue] = useState(false);
+  const [dataSaveSlot, setDataSaveSlot] = useState(-1); // 몇번 슬롯 선택해서 저장시킬지 관리
+  const [openSlotSelector, setOpenSlotSelector] = useState(false); // 저장 슬롯 선택창 띄우는 값
+  const [saveFinModalControler, setSaveFinModalControler] = useState(false); // 저장 완료 후 결과 모달 관리
+  // 앨범 뽑기 보여주기용 변수
+  const show = useSelector((state)=>{
+    return state.album.albumPickShow
+  })
+  // 앨범 뽑기 함수
+  const putAlbum =  async(albumId) => {
+    const response = await dispatch(getAlbumCheck(albumId))
+    // 중복이면 true이므로 false일 때 실행
+    if (!response.payload) {
+      dispatch(putAlbumList(albumId))
+    }
+  }
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
     // console.log(storyInfo)
+    setDataSaveSlot(slotIndex-1); // 몇 번 슬롯에 저장할지 확인
+    console.log(dataSaveSlot);
     scriptFile.current = scripts[storyInfo.script]; // 스크립트 파일 교체(script라는 문자열로 옴)
     scriptIndex.current = storyInfo.num; // 스크립트 인덱스 교체
     changeScript(scriptFile.current[scriptIndex.current].text);
@@ -445,18 +623,18 @@ const Story = () => {
         console.log('통과했나?');
         // 통과했다면?
         // 보유 여부 확인하자
-        dispatch(getAlbumCheck(scriptFile.current[scriptIndex.current].getAlbumNum));
+        // dispatch(getAlbumCheck(scriptFile.current[scriptIndex.current].getAlbumNum));
         // 여기서 실행하면 될 것 같은데?
         // 앨범체크 실행한 다음 결과값을 가지고 바로 받을지 말지 결정하면 될듯?
-        
+        putAlbum(scriptFile.current[scriptIndex.current].getAlbumNum);
         // 앨범 목록 갱신되면?
-
         // readAlbum 쓸 필요 없어짐
         // 보내고자 하는 앨범id를 보유중인지 아닌지 확인하는 요청 보내고
         // 그 값 세팅되면 false일 때 앨범 추가하는 로직 넣으면 될 듯
-
+        
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
         scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
+        storyObjHandler(0, scriptFileName.current);
         scriptFile.current = scripts[scriptFile.current[scriptIndex.current].nextScript]
         // 스크립트 파일 이름을 바꿔주고
         scriptIndex.current = 0
@@ -472,30 +650,30 @@ const Story = () => {
     selfStudyNonpassedCheck.current = true;
   }, [selfStudyChanged]);
 
-  useEffect(() => {
-    console.log("앨범 체크 값 변경");
-    if (userAlbumCheckfirst.current) {
-      console.log(userAlbumCheck);
-      if (userAlbumCheck[0]) {
-        console.log("앨범에 있음");
-        // 실험용
-        // setOpenAlbumGetModal(true);
-        // 실험용
-      } else {
-        console.log("앨범에 없음");
-        setOpenAlbumGetModal(true); // 띄우자
-        console.log(scriptFile.current);
-        console.log(scriptIndex.current);
-        console.log(scriptFile.current[scriptIndex.current]);
-        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
-        console.log(getAlbum);
-        dispatch(putAlbumList(getAlbum.current));
-        // 앨범 획득 이펙트 보여주는 거 띄우는 값 설정하자
-      }
-    }
-    userAlbumCheckfirst.current = true;
-    console.log(userAlbumCheckfirst.current);
-  }, [userAlbumCheck]);
+  // useEffect(() => {
+  //   console.log("앨범 체크 값 변경");
+  //   if (userAlbumCheckfirst.current) {
+  //     console.log(userAlbumCheck);
+  //     if (userAlbumCheck[0]) {
+  //       console.log("앨범에 있음");
+  //       // 실험용
+  //       // setOpenAlbumGetModal(true);
+  //       // 실험용
+  //     } else {
+  //       console.log("앨범에 없음");
+  //       setOpenAlbumGetModal(true); // 띄우자
+  //       console.log(scriptFile.current);
+  //       console.log(scriptIndex.current);
+  //       console.log(scriptFile.current[scriptIndex.current]);
+  //       console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+  //       console.log(getAlbum);
+  //       dispatch(putAlbumList(getAlbum.current));
+  //       // 앨범 획득 이펙트 보여주는 거 띄우는 값 설정하자
+  //     }
+  //   }
+  //   userAlbumCheckfirst.current = true;
+  //   console.log(userAlbumCheckfirst.current);
+  // }, [userAlbumCheck]);
 
   useEffect(() => {
     console.log(openAlbumGetModal);
@@ -541,6 +719,35 @@ const Story = () => {
     setSaveStoryIdx(scriptIndex.current);
   }
 
+  // 저장 버튼 누르면 슬롯 선택창 띄워야 함
+  const openSaveSlot = () => {
+    setOpenSlotSelector(!openSlotSelector); // 모달 여닫이
+  }
+
+  // 저장 버튼 로직
+  const saveStory1 = () => {
+    saveStorySelf(1);
+  }
+  const saveStory2 = () => {
+    saveStorySelf(2);
+  }
+  const saveStory3 = () => {
+    saveStorySelf(3);
+  }
+
+  // 슬롯 변경 포함해서 저장하는 로직
+  const saveStorySelf = (n) => {
+    let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
+    storyObjCopy.slot = n;
+    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    setStoryObj(storyObjCopy); // 값 새로 세팅한 후 저장 ㄱ
+    setSaveFinModalControler(true);
+    setTimeout(() => {
+      setSaveFinModalControler(false);
+    }, 1000);
+  }
+
   const goHome = () => {
     navigate("/");
     console.log("홈으로 가는 중입니다.");
@@ -565,21 +772,25 @@ const Story = () => {
   const storyObjSpring = (spring) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSpring += spring;
+    storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     setStoryObj(storyObjCopy);
   }
   const storyObjSummer = (summer) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSummer += summer;
+    storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     setStoryObj(storyObjCopy);
   }
   const storyObjAutumn = (autumn) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeAutumn += autumn;
+    storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     setStoryObj(storyObjCopy);
   }
   const storyObjWinter = (winter) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeWinter += winter;
+    storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     setStoryObj(storyObjCopy);
   }
 
@@ -715,12 +926,51 @@ const Story = () => {
   return (
     <>
     <StoryPage>
+      {show && <GetAlbum />}
       <StoryHamburger onClick={ocHamburger}></StoryHamburger>
+      {
+        openSlotSelector
+        ?
+        <SaveSlotSelector>
+          <div className="storySlotTitle">저장슬롯 선택</div>
+          <div className="storySlot" onClick={saveStory1}>슬롯1: {story[0].script}
+            {
+              slotIndex === 1
+              ?
+              <NowSlotPointer></NowSlotPointer>
+              : null
+            }
+          </div>
+          <div className="storySlot" onClick={saveStory2}>슬롯2: {story[1].script}
+            {
+              slotIndex === 2
+              ?
+              <NowSlotPointer></NowSlotPointer>
+              : null
+            }
+          </div>
+          <div className="storySlot" onClick={saveStory3}>슬롯3: {story[2].script}
+            {
+              slotIndex === 3
+              ?
+              <NowSlotPointer></NowSlotPointer>
+              : null
+            }
+          </div>
+        </SaveSlotSelector>
+        : null
+      }
+      {
+        saveFinModalControler
+        ?
+        <SaveFinModal>저장 완료!</SaveFinModal>
+        : null
+      }
       {
         hamburgerOpened
         ?
         <StoryNavigate>
-          <StorySaveBtn onClick={saveStory}></StorySaveBtn>
+          <StorySaveBtn onClick={openSaveSlot}></StorySaveBtn>
           <StoryGoHome onClick={goHome}></StoryGoHome>
           <StoryGoSlot onClick={goSlot}></StoryGoSlot>
           <StoryLikeCheck onClick={getLikeValue}></StoryLikeCheck>

@@ -209,6 +209,7 @@
   background-position: 'center';
   background-size: cover;
   background-repeat: no-repeat;
+  
 }
 /* GetAlbum */
 .GetAlbumBack {
@@ -222,6 +223,7 @@
   box-shadow: inset 0px 0px 5px white;
   filter: brightness(90%);
   z-index: 1000;
+  border: 10px double #5C4033;
 }
 @keyframes start {
   0% { transform: scale3d(0, 0, 0) }
