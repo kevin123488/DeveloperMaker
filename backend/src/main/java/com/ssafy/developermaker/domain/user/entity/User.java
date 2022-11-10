@@ -15,6 +15,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Getter
 @Builder
@@ -50,7 +52,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "progressId")
     private Progress progress;
 

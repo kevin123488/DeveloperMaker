@@ -101,8 +101,8 @@ public class KakaoUserService implements SocialUserService {
             JSONObject kakao_account = (JSONObject) jsonObj.get("kakao_account");
             JSONObject profile = (JSONObject) kakao_account.get("profile");
 
-            String email = kakao_account.get("email").toString();
-            userDto.setEmail(email+"-KAKAO");
+            String email = jsonObj.get("id").toString();
+            userDto.setEmail(email+"KAKAO");
             userDto.setSocialId(jsonObj.get("id").toString());
 
             Optional<User> findUser = userRepository.findByEmail(email);

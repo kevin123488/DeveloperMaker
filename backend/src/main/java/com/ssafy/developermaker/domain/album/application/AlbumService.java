@@ -77,8 +77,7 @@ public class AlbumService {
 
 
     public boolean findNewAlbum(String email) {
-        Optional<List<UserAlbum>> findNewUserAlbum = userAlbumRepository.findByUser_EmailAndIsReadIsFalse(email);
-        return findNewUserAlbum.isPresent();
+        return userAlbumRepository.existsByUser_EmailAndIsReadIsFalse(email);
     }
 
     @Transactional
