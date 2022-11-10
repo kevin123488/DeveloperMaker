@@ -97,8 +97,8 @@ public class NaverUserService implements SocialUserService {
             JSONObject jsonObj = (JSONObject) parser.parse(userInfo);
             JSONObject account = (JSONObject) jsonObj.get("response");
 
-            String email = account.get("email").toString();
-            userDto.setEmail(email+"-NAVER");
+            String email = account.get("id").toString();
+            userDto.setEmail(email+"NAVER");
             userDto.setSocialId(account.get("id").toString());
 
             Optional<User> findUser = userRepository.findByEmail(email);

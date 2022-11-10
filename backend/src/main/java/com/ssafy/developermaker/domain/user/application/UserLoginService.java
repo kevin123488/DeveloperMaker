@@ -80,6 +80,9 @@ public class UserLoginService {
 
         User user = userDto.toEntity(loginType,progress);
         userRepository.save(user);
+
+        int userCount = Integer.parseInt(redisUtil.getData("userCount")) + 1;
+        redisUtil.setData("userCount", String.valueOf(userCount));
     }
 
     public void logout(HttpServletRequest request) {
