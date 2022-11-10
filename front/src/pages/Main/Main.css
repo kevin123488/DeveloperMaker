@@ -18,13 +18,13 @@
   position: absolute;
   /* display: flex; */
   /* flex-direction: row; */
-  width: 107vw;
-  height: 107vh;
+  width: 106vw;
+  height: 106vh;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   overflow: hidden;
   z-index: -1;
-  animation: bgMove 15s infinite, changeImg 60s infinite;
+  animation: bgMove 28s infinite, changeImg 28s infinite;
 }
 
 .backFlow {
@@ -32,7 +32,7 @@
   background-color: rgba(255, 255, 255, 0.5);
   width: 100vw;
   height: 100vh;
-  animation: bright 15s infinite;
+  animation: bright 7s infinite;
 }
 /* @keyframes wave {
   0% { transform: translate(-50%) rotate(-180deg); }
@@ -88,11 +88,19 @@
 @keyframes bgMove {
   0%, 100% {
    
-    top: -7vh;
-    left: -7vw;
+    top: -6vh;
+    left: -6vw;
+  }
+  25% {
+    top: 0vh;
+    left: 0vw; 
   }
   50% {
     top: 0vh;
+    left: -6vw; 
+  }
+  75% {
+    top: -6vh;
     left: 0vw; 
   }
 }
@@ -149,7 +157,7 @@
 
 .MainFormWrapper {
   height: 100%;
-  width: 30%;
+  width: 35%;
   display: flex;
   flex-direction: column;
   /* background-color: rgb(255, 255, 255, 0.4); */
@@ -160,11 +168,11 @@
   width: 80%;
   display: flex;
   flex-direction: column;
-  margin-left: 10%;
+  margin-left: 8%;
 }
 .MainLogo {
   margin-top: 10%;
-  height: 40%;
+  height: 35%;
   width: 100%;
   justify-content: center;
   align-items: center;

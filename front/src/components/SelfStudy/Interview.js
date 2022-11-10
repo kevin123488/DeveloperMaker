@@ -95,7 +95,7 @@ const LangFrameStudy = () => {
 
   return (
     <>
-      <InterviewBlock>
+      <InterviewBlock style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }}>
         <Webcam
           className="interviewCam"
           audio={true}

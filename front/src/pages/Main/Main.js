@@ -70,7 +70,7 @@ const Main = () => {
             </defs>
             <path fill="url(#a)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
           </svg> */}
-    <div className="MainContainerWrapper">
+    <div style={{ position: "absolute", top: "0vh", left: "0vw", }} className="MainContainerWrapper">
       <div className="MainContainer">
       </div>
         <div className="backFlow">
