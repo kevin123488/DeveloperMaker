@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { userLogout } from "../../slices/userSlice";
+
 const GameButtons = Styled.div`
   margin-top: 10%;
   height: 40%;
@@ -114,7 +116,7 @@ const GameButtonsArea = () => {
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
           </BtnArea>
           <BtnArea>
-            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={purge}/>
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (
