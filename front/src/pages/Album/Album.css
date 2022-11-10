@@ -209,6 +209,7 @@
   background-position: 'center';
   background-size: cover;
   background-repeat: no-repeat;
+  
 }
 /* GetAlbum */
 .GetAlbumBack {
@@ -220,7 +221,8 @@
   animation: start 0.3s;
   border-radius: 5px;
   box-shadow: inset 0px 0px 5px white;
-  filter: brightness(90%)
+  filter: brightness(90%);
+  border: 10px double #5C4033;
 }
 @keyframes start {
   0% { transform: scale3d(0, 0, 0) }
