@@ -2,7 +2,6 @@ package com.ssafy.developermaker.domain.user.application;
 
 import com.ssafy.developermaker.domain.user.dto.LoginDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
-import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
@@ -116,12 +115,6 @@ public class KakaoUserService implements SocialUserService {
 
             String nickname = (String)profile.getOrDefault("nickname", temp_nickname);
             userDto.setNickname(nickname);
-
-            if(kakao_account.get("gender").toString().equals("male")) {
-                userDto.setGender(Gender.MAN);
-            } else {
-                userDto.setGender(Gender.WOMAN);
-            }
 
         } catch (ParseException e) {
             e.printStackTrace();
