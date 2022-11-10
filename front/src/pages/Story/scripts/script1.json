@@ -310,30 +310,15 @@
   },
   {
     "idx": 28,
-    "scriptType": "changeScript",
-    "storyTeller": "주인공",
-    "text": "\"서봄 스크립트로 가자\"",
-    "centerImageUrl": "a",
-    "LeftImageUrl2": "a",
-    "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
-    "nextScript": "script1_1",
-    "whichSelfStudy": "cs",
-    "selfStudyRequired": {"cs": 0},
-    "getAlbumNum": 1,
-    "plusIndex": 1
-  },
-  {
-    "idx": 29,
     "scriptType": "choice",
     "text": "자리가 어디였을까?",
     "option": [
       {
-        "name": "서봄",
+        "name": "서봄의 옆자리",
         "nextScript": "script1_1"
       },
       {
-        "name": "차가을",
+        "name": "차가을의 옆자리",
         "nextScript": "script1_2"
       }
     ],
