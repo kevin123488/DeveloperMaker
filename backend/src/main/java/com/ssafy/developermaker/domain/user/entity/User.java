@@ -37,12 +37,6 @@ public class User {
     @Column(nullable = false, unique = true, length = 30)
     @ApiModelProperty(value="유저 닉네임", example = "닉네임", required = true)
     private String nickname;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
-    @ApiModelProperty(value="유저 성별", example = "MAN / WOMAN", required = true)
-    private Gender gender;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     @ApiModelProperty(value="선택언어", example = "JAVA", required = true)
@@ -67,7 +61,7 @@ public class User {
         return this;
     }
 
-    public User signupFirst (SignupDto signupDto) {
+    public User loginFirst (SignupDto signupDto) {
         this.nickname = signupDto.getNickname();
         this.language = signupDto.getLanguage();
         return this;
@@ -79,7 +73,6 @@ public class User {
                 .nickname(this.nickname)
                 .socialId(this.socialId)
                 .loginType(this.loginType)
-                .gender(this.gender)
                 .language(this.language)
                 .build();
     }

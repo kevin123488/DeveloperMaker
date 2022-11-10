@@ -61,13 +61,13 @@ public class AlbumService {
             Optional<User> findUser = userRepository.findByEmail(email);
             User user = findUser.orElseThrow(UserNotFoundException::new);
 
-            UserAlbum userAlbum = UserAlbum.builder().album(albumRepository.getReferenceById(albumId)).user(user).isRead(false).build();
+            UserAlbum userAlbum = UserAlbum.builder().album(album).user(user).isRead(false).build();
             userAlbumRepository.save(userAlbum);
         }
 
         long userCount = Long.parseLong(redisUtil.getData("userCount"));
 
-        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount,false);
+        return albumRepository.getReferenceById(albumId).toDto(true, userAlbumRepository.countByAlbum(albumRepository.getReferenceById(albumId)).doubleValue() / userCount,false);
     }
 
     public Boolean findAlbum(String email, Long albumId) {

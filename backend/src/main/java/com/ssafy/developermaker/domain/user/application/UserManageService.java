@@ -44,11 +44,11 @@ public class UserManageService {
     }
 
     @Transactional
-    public UserDto signup(String email, SignupDto signupDto) {
+    public UserDto loginFirst(String email, SignupDto signupDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        user.signupFirst(signupDto);
+        user.loginFirst(signupDto);
         return user.toDto();
     }
 
