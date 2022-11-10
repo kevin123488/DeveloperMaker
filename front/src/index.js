@@ -6,7 +6,6 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Main from "./pages/Main/Main.js";
 import SelfStudy from "./pages/SelfStudy/SelfStudy.js";
 import Study from "./pages/SelfStudy/Study.js";
-import AlgorithmSelfStudy from "./pages/SelfStudy/AlgorithmSelfStudy.js";
 import Interview from "./pages/Interview/Interview.js";
 import Album from "./pages/Album/Album.js";
 import Story from "./pages/Story/Story.js";

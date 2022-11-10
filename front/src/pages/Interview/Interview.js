@@ -88,26 +88,7 @@ const Interview = () => {
   }
 
   return (
-<<<<<<< HEAD:front/src/components/SelfStudy/Interview.js
-    <>
-      <InterviewBlock style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }}>
-        <Webcam
-          className="interviewCam"
-          audio={true}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          screenshotQuality={1}
-          videoConstraints={videoConstraints}
-        />
-        <button onClick={capture}>Capture photo</button>
-        <img id="captureDiv" src={imageSrc} alt="ㅋㅋ"></img>
-        <button onClick={saveCam}>백으로</button>
-        <button onClick={startListen}>음성인식 시작</button>
-        <button onClick={endListen}>음성인식 끝</button>
-      </InterviewBlock>
-    </>
-=======
-    <div className="interviewBack">
+    <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="interviewBack">
       <div className="interviewTopMenu">
         <p className="interviewTitle" >00기업 면접</p>
         <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={()=>{navigate('/')}} />
@@ -127,7 +108,6 @@ const Interview = () => {
       />
       <img id="captureDiv" className="interviewCaptureImg" src={imageSrc} alt="ㅋㅋ"></img>
     </div>
->>>>>>> 4d694ea2584dc83c21d1a369bd93dad2c32f4468:front/src/pages/Interview/Interview.js
   );
 };
 
