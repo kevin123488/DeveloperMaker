@@ -47,3 +47,14 @@ export const albumProgress = async () => {
   const response = await axiosInstance.get("album/progress")
   return response
 }
+
+export const logout = async () => {
+  const response = await axiosInstance.get("user/logout")
+  return response
+}
+
+
+export const userDelete = async () => {
+  const response = await axiosInstance.delete("user/")
+  return response
+}

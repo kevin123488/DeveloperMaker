@@ -32,11 +32,12 @@ function GetAlbum () {
     }
 
     setTimeout(()=>{ setShowCover(true) }, 500)
-    setTimeout(()=>{ setShowCover(false); setShowAlbum(true) }, 2000);
-  },[]);
+    setTimeout(()=>{ setShowCover(false);
+      setShowAlbum(true)} , 2000);
+  },[album.ownerRate]);
 
   function changeShow() {
-    dispatch({type:'album/changeMode'})
+    dispatch({type:'album/closeShow'})
   }
     return (
       <div>
