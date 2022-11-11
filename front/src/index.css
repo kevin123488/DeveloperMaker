@@ -1,0 +1,78 @@
+.transition {
+  animation: routerMove 2s;
+}
+
+@keyframes routerMove {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+body {
+  overflow: hidden;
+}
+
+.transition-group {
+  position: relative;
+}
+
+.pageSlider-enter {
+  transform: translateX(-100vw);
+  opacity: 0.3;
+  /* background-color: rgba(255, 255, 255, 0); */
+  transform: scale(1);
+}
+
+.pageSlider-enter-active {
+  transform: translateX(0vw);
+  opacity: 1;
+  /* background-color: rgba(255, 255, 255, 1); */
+  transform: scale(1);
+  animation: routerMove 500;
+  transition: opacity 500ms, transform 500ms;
+  /* transition: opacity 1000ms, transform 1000ms; */
+}
+
+.pageSlider-exit {
+  transform: translateX(0vw);
+  opacity: 1;
+  /* background-color: rgba(255, 255, 255, 1); */
+  transform: scale(1);
+}
+
+.pageSlider-exit-active {
+  transform: translateX(100vw);
+  opacity: 0;
+  /* background-color: rgba(255, 255, 255, 0); */
+  transform: scale(1);
+  transition: opacity 500ms, transform 500ms;
+  /* transition: opacity 1000ms, transform 1000ms; */
+}
+
+/* bgm컨트롤 */
+.muted {
+  position: absolute;
+  bottom: 2vh;
+  right: 1vw;
+  width: 4vw;
+  height: 4vw;
+  background: url(./asset/images/Main/muted.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  z-index: 2000;
+}
+.playing {
+  position: absolute;
+  bottom: 2vh;
+  right: 1vw;
+  width: 4vw;
+  height: 4vw;  
+  background: url(./asset/images/Main/playing.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  z-index: 2000;
+}

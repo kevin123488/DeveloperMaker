@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress, userDelete, logout } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
+import { useNavigate } from "react-router-dom";
 
 export const userLoginKakao = createAsyncThunk(
   "user/loginKakao",
@@ -87,6 +88,38 @@ export const getAlbumProgress = createAsyncThunk(
   }
 )
 
+export const userLogout = createAsyncThunk(
+  'user/logout',
+  async (temp, {rejectWithValue}) => {
+    try {
+      const {data} = await logout()
+    } catch(error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
+export const DeleteUser = createAsyncThunk(
+  'user/delete',
+  async (temp, {rejectWithValue}) => {
+    try {
+      const {data} = await userDelete()
+      console.log('탈퇴 결과',data)
+      return data.data
+    } catch(error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
 
 const initialState = {
   userInfo: null,
@@ -95,7 +128,8 @@ const initialState = {
   progress: {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} }
 };
 
-const userSlice = createSlice({
+const userSlice = createSlice(
+  {
   name: "user",
   initialState,
   reducers: {
@@ -148,6 +182,28 @@ const userSlice = createSlice({
       })
       .addCase(getAlbumProgress.fulfilled, (state, {payload}) => {
         state.progress.album = payload
+      })
+      .addCase(userLogout.fulfilled, (state, {payload})=> {
+        // state 초기화
+        state.userInfo = null;
+        state.isLogIn = false;
+        state.error = null;
+        state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        sessionStorage.removeItem('accessToken', '');
+        // 페이지 새로고침 필요x
+        // window.location.reload()
+      })
+      .addCase(DeleteUser.fulfilled, (state, {payload})=> {
+        // state 초기화
+        state.userInfo = null;
+        state.isLogIn = false;
+        state.error = null;
+        state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        // 세션의 토큰 초기화
+        sessionStorage.removeItem('accessToken', '');
+        // 메인페이지로 이동
+        const navigate = useNavigate()
+        navigate('/')
       })
   },
 });

@@ -6,6 +6,8 @@ import { SignupForm } from "../../components/Main/SignupForm";
 // import Characters from "../../asset/images/Main/Characters.png";
 import MainLogo from "../../asset/images/Main/developermakerLogo.png";
 import styled from "styled-components";
+import { useEffect } from "react";
+import mainBGM from "../../asset/soundEffects/mainBGM.mp3";
 
 
 // const Title = Styled.p`
@@ -49,24 +51,68 @@ const TitleDivision = styled.div`
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
 
+  useEffect(() => {
+    const BGM = document.getElementById('mainBGM')
+    // console.log(BGM.innerText)
+    console.log(BGM.played.length)
+    if (BGM.innerText !== 'mainBGM'){
+      BGM.innerText = 'mainBGM'
+      BGM.src = mainBGM
+    }
+    if (BGM.played.length === 0) {
+      // BGM.muted = true;
+      BGM.load()
+      // BGM.muted = false;
+    }
+  }, [])
+
   return (
     <>
-    <TitleDivision></TitleDivision>
-    <div className="MainContainerWrapper">
+          {/* 흰색 물결 */}
+          {/* <svg className="wave" xmlns="http://www.w3.org/2000/svg" width="1600" height="198">
+            <defs>
+              <linearGradient id="a" x1="50%" x2="50%" y1="-10.959%" y2="100%">
+                <stop stop-color="#eeeeee" stop-opacity=".25" offset="0%"/>
+                <stop stop-color="#eeeeee" offset="100%"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#a)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
+          </svg>
+          <svg className="wave" xmlns="http://www.w3.org/2000/svg" width="1600" height="198">
+            <defs>
+              <linearGradient id="a" x1="50%" x2="50%" y1="-10.959%" y2="100%">
+                <stop stop-color="#eeeeee" stop-opacity=".25" offset="0%"/>
+                <stop stop-color="#eeeeee" offset="100%"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#a)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
+          </svg> */}
+    <div style={{ position: "absolute", top: "0vh", left: "0vw", }} className="MainContainerWrapper">
       <div className="MainContainer">
-        <div className="MainFormWrapper">
-          <div className="MainLayoutWrapper">
-            <div className="MainLogo">
-              {/* <Title> Developer Maker </Title> */}
+      </div>
+        <div className="backFlow">
+          <TitleDivision></TitleDivision>
+
+          {/* <div class="ocean">
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div> */}
+
+
+
+          <div className="MainFormWrapper">
+            <div className="MainLayoutWrapper">
+              <div className="MainLogo">
+                {/* <Title> Developer Maker </Title> */}
+              </div>
+              {userInfo !== null && userInfo.language === "NONE" ? (
+                <SignupForm />
+              ) : (
+                <MainForm userInfo={userInfo} />
+              )}
             </div>
-            {userInfo !== null && userInfo.language === "NONE" ? (
-              <SignupForm />
-            ) : (
-              <MainForm userInfo={userInfo} />
-            )}
           </div>
         </div>
-      </div>
     </div>
     </>
   );

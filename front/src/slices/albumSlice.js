@@ -98,10 +98,11 @@ const album = createSlice({
     checkNew: { story: false, study:false, total: false, spring:false, fall: false, winter: false}
   },
   reducers: {
-    changeMode: (state, action) => {
+    closeShow: (state, action) => {
       state.albumPickShow = !state.albumPickShow
+      state.newAlbum = {}
     },
-    // 1회용
+    // 안 읽은 내용이 있는 경우 state 경신용
     changeCheckNew: (state, action) => {
       if (action.data === "study") {
         state.checkNew.study = true
@@ -129,21 +130,11 @@ const album = createSlice({
         // 새롭게 해당 앨범 리스트의 is owned 변경을 해야함 => 어차피 다른 페이지에서 함
       })
       .addCase(deleteNew.fulfilled, (state, action)=>{
+        // New 확인 초기화
+        state.checkNew = { story: false, study:false, total: false, spring:false, fall: false, winter: false}
+        // 앨범 리스트 경신
         state.storyAlbumList = action.payload.storyAlbumList
         state.studyAlbumList = action.payload.studyAlbumList
-        state.checkNew = { story: false, study:false, total: false, spring:false, fall: false, winter: false}
-        // 경신용
-        action.payload.storyAlbumList.forEach((album)=>{
-          if (album.isOwned && !album.isRead) {
-            state.checkNew[album.theme] = true;
-            state.checkNew.story = true;
-          }
-        })
-        action.payload.studyAlbumList.forEach((album)=>{
-          if (album.isOwned && !album.isRead) {
-            state.checkNew.study = true
-          }
-        })
       })
       // // 거절됨
       // .addCase(readAlbum.rejected, (state, action) => {

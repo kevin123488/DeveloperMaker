@@ -9,23 +9,25 @@ const CodeTextarea = (prop) => {
   const [code, setCode] = useState(
     `### 여기에 코드를 작성하세요 ###`
   );
+  const [highlight, setHighlight] = useState(prop.lang)
+  
   // const [codeTypeToBack, setCodeTypeToBack] = useState(prop.lang);
   const solveAlgo = () => {
     let language = prop.lang
-    if (prop.lang === 'C') {
+    if (prop.lang === 'C / C++') {
       language = 'cpp'
     }
     const solveInfo = {
       coteId: prop.algoInfo.coteId,
       answer: { language: language, code: code }
     }
-    console.log(solveInfo)
+    // console.log(solveInfo)
     prop.submitAlgo(solveInfo)
   }
 
   const testAlgo = () => {
     let language = prop.lang
-    if (prop.lang === 'C') {
+    if (prop.lang === 'C / C++') {
       language = 'cpp'
     }
     const solveInfo = { language: language, code: code }
@@ -33,7 +35,7 @@ const CodeTextarea = (prop) => {
   }
 
   useEffect(() => {
-    console.log('선택한 언어', prop.lang)
+    // console.log('선택한 언어', prop.lang)
   }, [prop.lang])
 
   useEffect(() => {
@@ -52,17 +54,14 @@ class Solution
       for(int test_case = 1; test_case <= T; test_case++)
       {
       
-         /////////////////////////////////////////////////////////////////////////////////////////////
-         /*
-             이 부분에 여러분의 알고리즘 구현이 들어갑니다.
-          */
-         /////////////////////////////////////////////////////////////////////////////////////////////
+        // 이곳에 당신의 코드를 작성해주세요
 
       }
    }
 }`
       )
-    } else if (prop.lang === 'C') {
+    } else if (prop.lang === 'C / C++') {
+      setHighlight('C')
       setCode(
         `#include<iostream>
 
@@ -75,14 +74,20 @@ int main(int argc, char** argv)
   cin>>T;
   for(test_case = 1; test_case <= T; ++test_case)
     {
-      /////////////////////////////////////////////////////////////////////////////////////////////
-      /*
-          이 부분에 여러분의 알고리즘 구현이 들어갑니다.
-        */
-      /////////////////////////////////////////////////////////////////////////////////////////////
+      
+      // 이곳에 당신의 코드를 작성해주세요
+
     }
   return 0;
 }`
+      )
+    } else if (prop.lang === 'python') {
+      setCode(
+        `# 이곳에 당신의 코드를 작성해주세요`
+      )
+    } else if (prop.lang === 'javascript') {
+      setCode(
+        `// 이곳에 당신의 코드를 작성해주세요`
       )
     }
   }, [prop.lang])
@@ -91,7 +96,7 @@ int main(int argc, char** argv)
     <>
       <CodeEditor
         value={code}
-        language={prop.lang}
+        language={highlight}
         placeholder="코드를 작성해주세요."
         onChange={(evn) => 
           {
