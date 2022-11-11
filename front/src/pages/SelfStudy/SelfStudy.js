@@ -15,18 +15,18 @@ import {
   postCodingTestSolve,
   postCodingTestTest,
  } from "../../slices/selfstudySlice";
-// import { useDispatch } from "react-redux";
 import styled from "styled-components";
-// import btn from "../../asset/images/SelfstudyImg/버튼.png";
 import speechBalloon from "../../asset/images/SelfstudyImg/speechBalloon.png";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import CodeTextarea from "./CodeTextarea";
-// import styled from "styled-components";
-// 각 주인공 나오는 배경 만들면 될듯
-// import background from './SelfStudyBackground.gif';
-// import { Link } from 'react-router-dom';
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
+import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
+import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
+import mainBGM_v1 from "../../asset/soundEffects/mainBGM_v1.mp3";
 
 
 const Type = styled.div`
@@ -65,6 +65,12 @@ const Quiz = () => {
   // const location = useLocation()
 
   useEffect(() => {
+    const BGM = document.getElementById('mainBGM')
+    if (BGM.innerText !== 'selfstudyBGM'){
+      BGM.innerText = 'selfstudyBGM'
+      BGM.src = mainBGM_v1
+    }
+
     const startGetQuizInfo = async () => {
       await dispatch(getSelfStudyProgress())
       await dispatch(getStudyInfo())
@@ -142,6 +148,7 @@ const Quiz = () => {
 
   // 카테고리 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeCategory = async (pageInfo) => {
+    playBtnCuteSound()
     const newQuizInfo = {
       category: quizInfo[pageInfo.category].category,
       subject: pageInfo.subject,
@@ -189,6 +196,7 @@ const Quiz = () => {
 
   // 서브젝트 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeSubject = async (info) => {
+    playChangePageSound()
     const newQuizInfo = {
       category: quizInfo[category].category,
       subject: info.subject,
@@ -207,6 +215,7 @@ const Quiz = () => {
 
   // 페이지 변경하는 함수
   const changePage = async (page) => {
+    playChangePageSound()
     const pageNums = document.querySelectorAll('#pageNums')
     pageNums.forEach((pageNum) => {
       if (parseInt(pageNum.innerText) === page) {
@@ -252,8 +261,9 @@ const Quiz = () => {
 
   // 왼쪽 화살표 클릭
   const leftArrow = () => {
-
+    
     if (nowpage > 0) {
+      playChangePageSound()
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
@@ -279,8 +289,9 @@ const Quiz = () => {
 
   // 오른쪽 화살표 클릭
   const rightArrow = () => {
-
+    
     if ((nowpage + 1) * 4 + 1 <= maxPage){
+      playChangePageSound()
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
@@ -314,9 +325,12 @@ const Quiz = () => {
 
 
   const showQuiz = (quiz) => {
+    playShowMarkdownSound()
+
     // 알고리즘이면 다른 페이지로
     if (category === 1 || category === "ALGORITHM"){
       // navigate('/SelfStudy/algo', )
+      setOutputValue('')
       setIsShowingAlgo(true)
       setShowingAlgo(quiz)
       console.log('알고문제', quiz)
@@ -335,12 +349,14 @@ const Quiz = () => {
   }
   
   const checkAnswer = (answer) => {
+    playBtnSimpleSound()
     setCheckedAnswer(answer)
   }
 
   // 퀴즈 답 제출
   const solveQuiz = async() => {
     if (checkedAnswer !== null) {
+      playBtnSimpleSound()
       console.log(showingQuiz)
       const solveInfo = { quizId: showingQuiz.quizId, answer: checkedAnswer }
       const solveResult = await dispatch(postQuizSolve(solveInfo))
@@ -350,13 +366,13 @@ const Quiz = () => {
         offset: offset,
         limit: limit,
       }
-      console.log('새퀴즈정보', newQuizInfo)
+      console.log('풀이결과', solveResult.payload)
       // console.log("채점결과", solveResult.payload)
       dispatch(getQuizList(newQuizInfo))
-      setNpcBalloonContent(solveResult.payload)
+      setNpcBalloonContent(solveResult.payload.answer)
       setIsShowNpcBalloon(true)
       setTimeout(() => {
-      setIsShowNpcBalloon(false)
+        setIsShowNpcBalloon(false)
       }, 2000)
       // window.location.reload();
     } else {
@@ -368,11 +384,11 @@ const Quiz = () => {
     }
 
 
-    checkAlbum(25)
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
     const solveCategory = quizInfo[category].category.toLowerCase()
     const progressPer = parseInt(progress[solveCategory] / 25)
+    console.log(progressPer)
     if (progressPer !== 0) {
       const checkAlbumNum = category * 4
       checkAlbum(checkAlbumNum)
@@ -380,6 +396,7 @@ const Quiz = () => {
   }
 
   const closeQuiz = () => {
+    playBtnSimpleSound()
     setIsShowQuizProblem(false)
   }
 
@@ -401,6 +418,7 @@ const Quiz = () => {
 
   // 과목선택부분으로 돌리는 함수
   const resetCategory = () => {
+    playBtnSound()
     // 선택한 카테고리 캐릭터 이동하는 함수
     const characterList = ['spring', 'fall', 'summer', 'winter', 'hero',]
     characterList.forEach((character) => {
@@ -423,12 +441,14 @@ const Quiz = () => {
   } 
 
   const goHome = () => {
+    playBtnSound()
     setTimeout(() => {
       navigate('/')
     }, 200)
   }
 
   const goInterviewTest = () => {
+    playBtnSound()
     setTimeout(() => {
       navigate('/Interview')
     }, 200)
@@ -436,6 +456,7 @@ const Quiz = () => {
 
   // 스터디, 퀴즈 골랐을 때 실행될 함수
   const choiceWork = (work) => {
+    playBtnSimpleSound()
     setShowWorkChoice(false)
     // 스터디 골랐을 때
     if (work === 'study'){
@@ -465,6 +486,7 @@ const Quiz = () => {
 
   // 스터디 or 퀴즈 선택하는 창
   const resetWork = () => {
+    playBtnSound()
     setWorkType('')
     setTimeout(() => {
       setIsSelectedCategory(false)
@@ -481,15 +503,15 @@ const Quiz = () => {
   }
 
   const submitAlgo = async (solveInfo) => {
+    playBtnSimpleSound()
     setNpcBalloonContent('채점중이야.')
     setIsShowNpcBalloon(true)
     const solveResult = await dispatch(postCodingTestSolve(solveInfo))
     console.log('풀이결과', solveResult.payload)
-    setNpcBalloonContent(solveResult.payload)
+    setNpcBalloonContent(solveResult.payload.answer)
     setTimeout(() => {
     setIsShowNpcBalloon(false)
     }, 2000)
-    // checkAlbum(32)
 
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
@@ -503,6 +525,7 @@ const Quiz = () => {
 
   // 코드 테스트 요청
   const submitTestAlgo = async (solveInfo) => {
+    playBtnSimpleSound()
     setOutputValue('실행중...')
     const coteListRequestDto = {
       code: solveInfo.code,
@@ -533,6 +556,41 @@ const Quiz = () => {
     console.log('체크엘범 번호', checkAlbumNum)
   })
 
+
+
+
+  // 효과음 gyrhkdma
+
+  const playChangePageSound = () => {
+    const sound = new Audio()
+    sound.src = changePageSound
+    sound.play()
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
+  
+  const playBtnSimpleSound = () => {
+    const sound = new Audio()
+    sound.src = btnSimpleSound
+    sound.play()
+  }
+
+  const playShowMarkdownSound = () => {
+    const sound = new Audio()
+    sound.src = showMarkdownSound
+    sound.play()
+  }
+  
   return (
     <>
       <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="CsStudyBackground">

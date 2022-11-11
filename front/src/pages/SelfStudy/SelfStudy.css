@@ -10,7 +10,7 @@
   overflow: hidden;
   color: white;
   background: url(../../asset/images/SelfstudyImg/selfstudyBtn.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   cursor: pointer;
   transition: all ease 0.1s;
 }
@@ -33,7 +33,7 @@
   overflow: hidden;
   color: white;
   background: url(../../asset/images/SelfstudyImg/selfstudyBtn.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   cursor: pointer;
   transition: all ease 0.1s;
 }
@@ -87,7 +87,7 @@
   width: 12vh;
   overflow: hidden;
   background: url(../../asset/images/SelfstudyImg/homeBtn.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   cursor: pointer;
   transition: all ease 0.1s;
 }
@@ -106,7 +106,7 @@
   width: 12vh;
   overflow: hidden;
   background: url(../../asset/images/SelfstudyImg/interviewTestBtn.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   cursor: pointer;
   transition: all ease 0.1s;
 }
@@ -152,7 +152,7 @@
   margin-left: 3.5vw;
   text-align: center;
   background: url(../../asset/images/SelfstudyImg/studyNote.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   height: 30vh;
   width: 15vw;
   margin-bottom: 3vh;
@@ -290,7 +290,7 @@
   margin-left: 3.5vw;
   text-align: center;
   background: url(../../asset/images/SelfstudyImg/quizPaper.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   height: 30vh;
   width: 15vw;
   margin-bottom: 3vh;
@@ -309,7 +309,7 @@
   width: 7vw;
   margin: 0 auto;
   background: url(../../asset/images/SelfstudyImg/correct.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
 }
 .wrong {
   position: absolute;
@@ -319,7 +319,7 @@
   width: 7vw;
   margin: 0 auto;
   background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
 }
 
 
@@ -392,7 +392,7 @@
   top: 45vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring1.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 0.8;
@@ -405,7 +405,7 @@
   top: 40vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 1;
@@ -418,7 +418,7 @@
   top: 40vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDspring2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   z-index: 1100;
 }
@@ -442,7 +442,7 @@
   top: 45vh;
   left: 20vw;
   background: url("../../asset/images/SelfstudyImg/SDfall1.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 0.8;
@@ -455,7 +455,7 @@
   top: 40vh;
   left: 20vw;
   background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 1;
@@ -468,7 +468,7 @@
   top: 40vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDfall2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   z-index: 1100;
 }
@@ -491,7 +491,7 @@
   top: 37vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer1.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 0.8;
@@ -504,7 +504,7 @@
   top: 32vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 1;
@@ -517,7 +517,7 @@
   top: 32vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   z-index: 1100;
 }
@@ -541,7 +541,7 @@
   top: 47vh;
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter1.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 0.8;
@@ -554,7 +554,7 @@
   top: 42vh;
   left: 59vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 1;
@@ -567,7 +567,7 @@
   top: 42vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDwinter2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   z-index: 1100;
 }
@@ -590,7 +590,7 @@
   top: 38vh;
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero1.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 0.8;
@@ -603,7 +603,7 @@
   top: 33vh;
   left: 76vw;
   background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   cursor: pointer;
   opacity: 1;
@@ -616,7 +616,7 @@
   top: 33vh;
   left: 0vw;
   background: url("../../asset/images/SelfstudyImg/SDhero2.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   transition: all ease 0.5s;
   z-index: 1100;
 }
@@ -738,7 +738,7 @@
   left: 1vw;
   opacity: 1;
   background: url("../../asset/images/SelfstudyImg/speechBalloon.png") center no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   z-index: 1200;
 }
 .npcSpeechBalloonContent {
@@ -764,8 +764,8 @@
 }
 .algoProblem {
   margin-left: 1vw;
-  padding-right: 1vw;
-  width: 32vw;
+  padding-right: 1.5vw;
+  width: 33vw;
   height: 85vh;
   overflow: scroll;
 }
