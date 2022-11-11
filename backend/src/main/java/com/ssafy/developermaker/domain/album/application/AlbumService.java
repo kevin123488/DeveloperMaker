@@ -34,16 +34,28 @@ public class AlbumService {
         List<Album> albumList = albumRepository.findAll();
         long userCount = Long.parseLong(redisUtil.getData("userCount"));
 
+        Optional<User> findUser = userRepository.findByEmail(email);
+        User user = findUser.orElseThrow(UserNotFoundException::new);
+        List<UserAlbum> userAlbums = user.getUserAlbums();
+
         List<AlbumDto> storyAlbumList = new ArrayList<>();
         List<AlbumDto> studyAlbumList = new ArrayList<>();
         for(Album album : albumList) {
-            Optional<UserAlbum> findUserAlbum = userAlbumRepository.findByUser_EmailAndAlbum_AlbumId(email, album.getAlbumId());
-            boolean isGet = findUserAlbum.isPresent();
+            boolean isGet = false;
+            UserAlbum findUserAlbum = null;
+            for(UserAlbum userAlbum : userAlbums) {
+                if(userAlbum.getAlbum().equals(album)) {
+                    isGet = true;
+                    findUserAlbum = userAlbum;
+                    userAlbums.remove(userAlbum);
+                    break;
+                }
+            }
 
-            double ownerRate = 0.0;
-            if(isGet){ ownerRate =  userAlbumRepository.countByAlbum(album).doubleValue() / userCount;}
+            int size = album.getUserAlbums().size();
+            double ownerRate = (double) size / userCount;
 
-            AlbumDto albumDto = album.toDto(isGet,ownerRate, findUserAlbum.map(UserAlbum::getIsRead).orElse(false));
+            AlbumDto albumDto = album.toDto(isGet,ownerRate, isGet ? findUserAlbum.getIsRead() : false);
             if(album.getType().equals("story")) storyAlbumList.add(albumDto);
             else studyAlbumList.add(albumDto);
         }
@@ -66,8 +78,8 @@ public class AlbumService {
         }
 
         long userCount = Long.parseLong(redisUtil.getData("userCount"));
-
-        return albumRepository.getReferenceById(albumId).toDto(true, userAlbumRepository.countByAlbum(albumRepository.getReferenceById(albumId)).doubleValue() / userCount,false);
+//        return album.toDto(true, (double) album.getUserAlbums().size() / userCount,false);
+        return album.toDto(true, userAlbumRepository.countByAlbum(album).doubleValue() / userCount,false);
     }
 
     public Boolean findAlbum(String email, Long albumId) {

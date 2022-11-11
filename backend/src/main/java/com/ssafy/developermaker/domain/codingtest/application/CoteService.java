@@ -61,7 +61,7 @@ public class CoteService {
     @Transactional
     public CoteResultDto submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
         Cote cote = coteRepository.findById(coteId).get();
-        User user = userRepository.findByEmail(email).get();
+        User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
 
         UserCote userCote;
         Optional<UserCote> userCoteOpt = userCoteRepository.findByUserAndCote(user, cote);
@@ -74,9 +74,11 @@ public class CoteService {
             userCote = userCoteOpt.get();
             if (coteResultDto.getPass() && userCote.getCorrect() == 2) { // 맞췄을 때
                 userCote.updateCorrect(1);
+                user.getProgress().updateAlgo();
             }
         } else {
             userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : 2).build());
+            if(coteResultDto.getPass()) user.getProgress().updateAlgo();
         }
 
 
