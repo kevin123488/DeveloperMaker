@@ -174,14 +174,17 @@
   position: absolute;
   left: 8vw;
   bottom: 5vh;
-  width: 5vw;
   height: 10vh;
+  width: 10vh;
   cursor: pointer;
 }
 .ProfileMainBtn:hover {
-  transform: scale3d(1.1, 1.1, 1.1);
-  transition: 0.2s;
+  transform: scale(1.05);
 }
+.InterviewMainBtn:active {
+  top: 6%;
+}
+
 
 
 .ProfileDelete {
