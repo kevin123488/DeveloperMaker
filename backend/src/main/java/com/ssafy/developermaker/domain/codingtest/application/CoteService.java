@@ -59,8 +59,7 @@ public class CoteService {
     }
 
     @Transactional
-    public String submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
-        String response = "";
+    public CoteResultDto submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
         Cote cote = coteRepository.findById(coteId).get();
         User user = userRepository.findByEmail(email).get();
 
@@ -81,8 +80,7 @@ public class CoteService {
         }
 
 
-        response = coteResultDto.getMessage();
-        return response;
+        return coteResultDto;
     }
     public String testCote(CoteTestRequestDto coteTestRequestDto){
         String error = null, output = "";
