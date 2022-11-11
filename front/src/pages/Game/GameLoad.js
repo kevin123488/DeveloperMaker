@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../Main/Main.css";
-import Styled from "styled-components";
+import Styled, { keyframes } from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { userGetMemory } from "../../slices/storySlice";
+import { userGetMemory, userPutMemory } from "../../slices/storySlice";
 import seobom_slot1 from "./seobom_gameslot1.png";
 import seobom_slot1Smile from "./seobom_gameslot1smile.png";
 import gaeul_gameslot2 from "./gaeul_gameslot2.png";
@@ -16,6 +16,7 @@ import speechBubble from "./speechBubble.png";
 import goHomeIcon from "../../asset/images/SelfstudyImg/selfstudyBtn.png";
 import "./GameLoad.css";
 import gameloadBook from "./gameloadBook.png";
+import deleteSlot from "./deleteSlot.png";
 
 // const GameLoadHeader = styled.div`
 //   width: 100%;
@@ -121,25 +122,96 @@ const GameLoadGoHome = styled.div`
   z-index: 5;
   cursor: pointer;
   position: absolute;
-  top: 5%;
-  left: 5%;
-  transfrom: translate(-50%, -50%);
-  width: 8vw;
-  height: 4vw;
-  background-image: url(${goHomeIcon});
-  background-size: 8vw 4vw;
+  top: 5vh;
+  right: 2vw;
+  width: 12vh;
+  height: 12vh;
+  background-image: url(${gohomeIcon});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   transition: 0.2s;
-  font-size: 1.5vw;
-  color: white;
-  line-height: 4vw;
-  vertical-align: center;
-  text-align: center;
   &:hover {
     transform: scale(1.05);
   }
   &:active {
     top: 6%;
   }
+`;
+
+const DeleteSlotBtn = styled.div`
+  z-index: 5;
+  cursor: pointer;
+  position: absolute;
+  top: 5vh;
+  right: 12vw;
+  height: 12vh;
+  width: 12vh;
+  background-image: url(${deleteSlot});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.05);
+  }
+  &:active {
+    top: 6%;
+  }
+`;
+
+const DeleteModalEffect = keyframes`
+  from {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
+
+const DeleteSlotModal = styled.div`
+  z-index: 50;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25vw;
+  height: 30vh;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #79491e;
+  animation: ${DeleteModalEffect} 0.1s;
+`;
+
+const ModalEffect = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const DeleteFinModal = styled.div`
+  z-index: 5;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25vw;
+  height: 10vh;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #79491e;
+  font-size: 3vw;
+  text-align: center;
+  line-height: 10vh;
+  vertical-align: middle;
+  animation: ${ModalEffect} 0.4s;
 `;
 
 const GameLoadSlots = styled.div`
@@ -162,15 +234,18 @@ const GameLoadSlot1 = styled.div`
   border-radius: 30px;
   transition: 0.5s;
   background-image: url(${seobom_slot1});
-  background-size: 22vw 65vh;
-  object-fit: contain;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.9;
   &:hover {
-    width: 23vw;
-    height: 68vh;
+    z-index: 30;
+    transform: translate(-50%, -50%) scale(1.2);
     transition: 0.5s;
     background-image: url(${seobom_slot1Smile});
-    background-size: 23vw 68vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     opacity: 1;
     object-fit: contain;
   }
@@ -187,14 +262,17 @@ const GameLoadSlot2 = styled.div`
   border-radius: 30px;
   transition: 0.5s;
   background-image: url(${gaeul_gameslot2});
-  background-size: 22vw 65vh;
-  object-fit: contain;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.9;
   &:hover {
-    width: 23vw;
-    height: 68vh;
+    z-index: 30;
+    transform: translate(-50%, -50%) scale(1.2);
     background-image: url(${gaeul_gameslot2smile});
-    background-size: 23vw 68vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: 0.5s;
     opacity: 1;
     object-fit: contain;
@@ -212,14 +290,18 @@ const GameLoadSlot3 = styled.div`
   border-radius: 30px;
   transition: 0.5s;
   background-image: url(${geuwol_gameslot3});
-  background-size: 22vw 65vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   opacity: 0.9;
   object-fit: contain;
   &:hover {
-    width: 23vw;
-    height: 68vh;
+    z-index: 30;
+    transform: translate(-50%, -50%) scale(1.2);
     background-image: url(${geuwol_gameslot3smile});
-    background-size: 23vw 68vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     transition: 0.5s;
     opacity: 1;
     object-fit: contain;
@@ -250,6 +332,9 @@ const GameLoad = () => {
   const [slot1Info, setSlot1Info] = useState(false);
   const [slot2Info, setSlot2Info] = useState(false);
   const [slot3Info, setSlot3Info] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [deleteFinModalOpen, setDeleteFinModal] = useState(false);
+  const [whichSlotDeleted, setWhichSlotDeleted] = useState(-1);
   // console.log(storySlots)
   // story라는 이름의 reducer에 있는 state의 userStoryData를 story라는 변수에 넣어두자는 뜻
 
@@ -298,6 +383,68 @@ const GameLoad = () => {
     // console.log("왜 스토리로 넘어가짐?")
   };
 
+  // 슬롯 데이터 삭제 로직
+  const openDeleteModal = () => {
+    setDeleteModalOpen(!deleteModalOpen);
+  };
+  const deleteSlot1 = async () => {
+    let slotCopy = {
+      "chapter": 1,
+      "likeAutumn": 0,
+      "likeSpring": 0,
+      "likeSummer": 0,
+      "likeWinter": 0,
+      "num": 0,
+      "script": "script1",
+      "slot": 1,
+    }
+    await setWhichSlotDeleted(1);
+    await dispatch(userPutMemory(slotCopy));
+    await dispatch(userGetMemory());
+    await setDeleteFinModal(true);
+    await setTimeout(() => {
+      setDeleteFinModal(false);
+    }, 500);
+  }
+  const deleteSlot2 = async () => {
+    let slotCopy = {
+      "chapter": 1,
+      "likeAutumn": 0,
+      "likeSpring": 0,
+      "likeSummer": 0,
+      "likeWinter": 0,
+      "num": 0,
+      "script": "script1",
+      "slot": 2,
+    }
+    await setWhichSlotDeleted(2);
+    await dispatch(userPutMemory(slotCopy));
+    await dispatch(userGetMemory());
+    await setDeleteFinModal(true);
+    await setTimeout(() => {
+      setDeleteFinModal(false);
+    }, 500);
+  }
+  const deleteSlot3 = async () => {
+    let slotCopy = {
+      "chapter": 1,
+      "likeAutumn": 0,
+      "likeSpring": 0,
+      "likeSummer": 0,
+      "likeWinter": 0,
+      "num": 0,
+      "script": "script1",
+      "slot": 3,
+    }
+    await setWhichSlotDeleted(3);
+    await dispatch(userPutMemory(slotCopy));
+    await dispatch(userGetMemory());
+    await setDeleteFinModal(true);
+    await setTimeout(() => {
+      setDeleteFinModal(false);
+    }, 500);
+  }
+
   useEffect(() => {
     // dispatch(userGetMemory());
     // console.log(storySlots);
@@ -310,7 +457,25 @@ const GameLoad = () => {
   return (
     <>
     <div className="gameloadMain">
-        <GameLoadGoHome onClick={backBtnhandler}>Home</GameLoadGoHome>
+      {
+        deleteFinModalOpen
+        ?
+        <DeleteFinModal>{whichSlotDeleted}번 슬롯 삭제 완료!</DeleteFinModal>
+        : null
+      }
+      {
+        deleteModalOpen
+        ?
+        <DeleteSlotModal>
+          <div className="storySlotTitle">데이터 삭제</div>
+          <div className="storySlot" onClick={deleteSlot1}>슬롯1: {storySlots[0].script}</div>
+          <div className="storySlot" onClick={deleteSlot2}>슬롯2: {storySlots[1].script}</div>
+          <div className="storySlot" onClick={deleteSlot3}>슬롯3: {storySlots[2].script}</div>
+        </DeleteSlotModal>
+        : null
+      }
+        <GameLoadGoHome onClick={backBtnhandler}></GameLoadGoHome>
+        <DeleteSlotBtn onClick={openDeleteModal}></DeleteSlotBtn>
         <GameLoadSlots>
           <GameLoadSlot1 onClick={startStory1} onMouseOver={watchStory1} onMouseOut={stopWatchStory1}>
             {/* {storySlots[0].script} */}
