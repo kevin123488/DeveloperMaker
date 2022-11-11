@@ -223,6 +223,19 @@ const GameLoadSlots = styled.div`
   height: 90vh;
 `;
 
+const SlotAppearEffect = keyframes`
+  from {
+    opacity: 0;
+    position: absolute;
+    top: 0%;
+  }
+  to {
+    opacity: 1;
+    position: absolute;
+    top: 60%;
+  }
+`;
+
 const GameLoadSlot1 = styled.div`
   cursor: pointer;
   position: absolute;
@@ -237,6 +250,7 @@ const GameLoadSlot1 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 0.4s;
   opacity: 0.9;
   &:hover {
     z-index: 30;
@@ -265,6 +279,7 @@ const GameLoadSlot2 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 0.8s;
   opacity: 0.9;
   &:hover {
     z-index: 30;
@@ -293,6 +308,7 @@ const GameLoadSlot3 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 1.2s;
   opacity: 0.9;
   object-fit: contain;
   &:hover {

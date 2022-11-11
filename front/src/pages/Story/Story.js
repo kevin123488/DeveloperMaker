@@ -175,7 +175,9 @@ const StoryPassAlert = styled.div`
   height: 6vh;
   width: 6vw;
   background-image: url(${storyGoAlert});
-  background-size: 6vw 6vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${StoryGoEffect} infinite 1s;
 `;
 
@@ -548,7 +550,9 @@ const NowSlotPointer = styled.div`
   width: 3vw;
   height: 1.5vw;
   background-image: url(${nowSlot});
-  background-size: 3vw 1.5vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${PointerEffect} infinite 1s;
 `;
 
