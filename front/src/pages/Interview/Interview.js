@@ -73,7 +73,7 @@ const Interview = () => {
 
   recognition.onresult = (event) => {
     const color = event.results[0][0].transcript;
-    console.log(`color: ${color}`);
+    console.log(`말: ${color}`);
   }
 
   // useEffect(() => {
@@ -89,7 +89,7 @@ const Interview = () => {
   }
 
   return (
-    <div className="interviewBack">
+    <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="interviewBack">
       <div className="interviewTopMenu">
         <p className="interviewTitle" >00기업 면접</p>
         <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={()=>{navigate('/')}} />
