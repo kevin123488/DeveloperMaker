@@ -83,7 +83,6 @@ public class QuizService {
         String answer;
         Category category = findQuiz.getCategory();
         if(category.equals(Category.CS)) answer = result ? "오.. 제법인데?" : "이런걸 틀리다니.. 최악이네, 너.";
-        else if (category.equals(Category.ALGORITHM)) answer = result ? "축하해. 정답이야." : "틀렸어.";
         else if (category.equals(Category.BACKEND)) answer = result ? "... 의외네요." : "... 실망스럽네요.";
         else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "까비~ 다시 풀어보자!";
         else answer = result ? "쉽네 ㅋㅋ" : "아 틀렸네ㅋㅋ";
@@ -96,9 +95,6 @@ public class QuizService {
         switch (category.name()) {
             case "CS":
                 progress.updateCS();
-                break;
-            case "ALGORITHM":
-                progress.updateAlgo();
                 break;
             case "BACKEND":
                 progress.updateBackend();
