@@ -38,7 +38,7 @@ public class MemoryService {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        Optional<Memory> findMemory = Optional.ofNullable(user.getMemories().get(memoryDto.getSlot()));
+        Optional<Memory> findMemory = memoryRepository.findByUserAndSlot(user, memoryDto.getSlot());
 
         if(findMemory.isPresent()) findMemory.get().updateMemory(memoryDto);
         else memoryRepository.save(memoryDto.toEntity(user));

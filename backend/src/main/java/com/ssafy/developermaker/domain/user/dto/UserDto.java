@@ -19,7 +19,6 @@ public class UserDto {
     private String nickname;
     private LoginType loginType;
     private Language language;
-    private ProgressDto progressDto;
 
     public User toEntity(LoginType loginType, Progress progress){
         return User.builder()

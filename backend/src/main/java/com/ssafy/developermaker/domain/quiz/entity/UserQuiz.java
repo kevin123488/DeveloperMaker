@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.quiz.entity;
 
-import com.ssafy.developermaker.domain.album.entity.Album;
 import com.ssafy.developermaker.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
