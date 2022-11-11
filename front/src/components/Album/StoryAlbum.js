@@ -3,7 +3,12 @@ import '../../pages/Album/Album.css';
 import { useSelector } from "react-redux";
 import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
 import AlbumComponent from "./AlbumComponent";
-
+// 효과음
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
+import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
+import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 
 const StoryAlbum = () => {
   const [show, setShow] = useState(0)
@@ -40,6 +45,40 @@ const StoryAlbum = () => {
 
 
 
+  // 효과음 gyrhkdma
+
+  const playChangePageSound = () => {
+    const sound = new Audio()
+    sound.src = changePageSound
+    sound.play()
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
+  
+  const playBtnSimpleSound = () => {
+    const sound = new Audio()
+    sound.src = btnSimpleSound
+    sound.play()
+  }
+
+  const playShowMarkdownSound = () => {
+    const sound = new Audio()
+    sound.src = showMarkdownSound
+    sound.play()
+  }
+
+
+
     return (
       <div>
         {/* 캐릭터로 선택하는 창 */}
@@ -48,7 +87,7 @@ const StoryAlbum = () => {
           <div key={`storyList-${idx}`}>
             {newAlbumTheme[idx] && <img src={NewAlbumLogo} alt="New" key={`newAlbum-${idx}`} className="albumBtnNew" />}
             <img className={"albumStoryTypeBtn" + ((show === idx) ? " albumStoryBtnSel": "" )} key={`albumStoryBtn-${idx}`}
-          onClick={()=>{setShow(idx)}}  src={require(`../../asset/images/Album/Head/Head${idx}.png`)} alt="" />
+          onClick={()=>{setShow(idx); playBtnCuteSound()}}  src={require(`../../asset/images/Album/Head/Head${idx}.png`)} alt="" />
           </div> )})}
         </div>
         {/* 실제 앨범 */}
