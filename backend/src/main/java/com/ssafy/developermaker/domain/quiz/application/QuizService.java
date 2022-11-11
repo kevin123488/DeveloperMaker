@@ -1,8 +1,6 @@
 package com.ssafy.developermaker.domain.quiz.application;
 
 import com.ssafy.developermaker.domain.progress.entity.Progress;
-import com.ssafy.developermaker.domain.progress.exception.ProgressNotFoundException;
-import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.quiz.dto.*;
 import com.ssafy.developermaker.domain.quiz.entity.Quiz;
 import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
@@ -32,8 +30,6 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final UserQuizRepository userQuizRepository;
     private final UserRepository userRepository;
-
-    private final ProgressRepository progressRepository;
     public List<QuizCategoryResponseDto> getQuizList() {
 
 
@@ -60,7 +56,7 @@ public class QuizService {
     }
 
     @Transactional
-    public String submitQuiz(String email, QuizRequestDto quizRequestDto) {
+    public QuizSubmitDto submitQuiz(String email, QuizRequestDto quizRequestDto) {
         User findUser = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
         Quiz findQuiz = quizRepository.findById(quizRequestDto.getQuizId()).orElseThrow(QuizNotFoundException::new);
 
@@ -92,7 +88,7 @@ public class QuizService {
         else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "까비~ 다시 풀어보자!";
         else answer = result ? "쉽네 ㅋㅋ" : "아 틀렸네ㅋㅋ";
 
-        return answer;
+        return new QuizSubmitDto(answer,result);
     }
 
 
