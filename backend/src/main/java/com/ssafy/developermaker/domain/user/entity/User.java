@@ -1,7 +1,10 @@
 package com.ssafy.developermaker.domain.user.entity;
 
+import com.ssafy.developermaker.domain.album.entity.UserAlbum;
+import com.ssafy.developermaker.domain.codingtest.entity.UserCote;
 import com.ssafy.developermaker.domain.memory.entity.Memory;
 import com.ssafy.developermaker.domain.progress.entity.Progress;
+import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiModelProperty;
@@ -55,6 +58,15 @@ public class User {
     @OneToOne(fetch = LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "progressId")
     private Progress progress;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserAlbum> userAlbums = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserQuiz> userQuizs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserCote> userCotes = new ArrayList<>();
 
 
     public User updateProfile (UserDto userDto) {

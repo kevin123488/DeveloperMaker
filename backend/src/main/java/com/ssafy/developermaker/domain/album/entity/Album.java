@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,6 +32,9 @@ public class Album {
 
     @Column(length = 30)
     private String theme;
+
+    @OneToMany(mappedBy = "album", cascade = CascadeType.REMOVE)
+    private List<UserAlbum> userAlbums = new ArrayList<>();
 
 
     public AlbumDto toDto(Boolean isOwned, Double ownerRate,Boolean isRead) {
