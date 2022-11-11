@@ -4,3 +4,11 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.gameloadMain {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./library.png");
+  background-size: cover;
+  background-position: center;
+}
