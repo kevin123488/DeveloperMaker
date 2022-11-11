@@ -59,10 +59,9 @@ public class CoteService {
     }
 
     @Transactional
-    public String submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
-        String response = "";
+    public CoteResultDto submitCote(String email, Long coteId, CoteSubmitRequestDto coteSubmitRequestDto) {
         Cote cote = coteRepository.findById(coteId).get();
-        User user = userRepository.findByEmail(email).get();
+        User user = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
 
         UserCote userCote;
         Optional<UserCote> userCoteOpt = userCoteRepository.findByUserAndCote(user, cote);
@@ -75,14 +74,15 @@ public class CoteService {
             userCote = userCoteOpt.get();
             if (coteResultDto.getPass() && userCote.getCorrect() == 2) { // 맞췄을 때
                 userCote.updateCorrect(1);
+                user.getProgress().updateAlgo();
             }
         } else {
             userCoteRepository.save(UserCote.builder().cote(cote).user(user).correct(coteResultDto.getPass() ? 1 : 2).build());
+            if(coteResultDto.getPass()) user.getProgress().updateAlgo();
         }
 
 
-        response = coteResultDto.getMessage() + "\n spendTime :" + coteResultDto.getSpendTime();
-        return response;
+        return coteResultDto;
     }
     public String testCote(CoteTestRequestDto coteTestRequestDto){
         String error = null, output = "";
@@ -146,7 +146,7 @@ public class CoteService {
         jsonObject.put("Program", coteSubmitRequestDto.getCode());
         jsonObject.put("Input", cote.getAnswerInput());
 
-        long start = System.currentTimeMillis();
+        //long start = System.currentTimeMillis();
         HttpResponse<String> response = Unirest.post("https://code-compiler.p.rapidapi.com/v2")
                 .header("content-type", "application/json")
                 .header("X-RapidAPI-Key", rapidAPI_KEY)
@@ -165,18 +165,20 @@ public class CoteService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        long time = System.currentTimeMillis() - start - 2000;
+        //long time = System.currentTimeMillis() - start - 2000;
 
-        coteResultDto.setSpendTime(time);
+        //coteResultDto.setSpendTime(time);
         if (error != null) {
             coteResultDto.setMessage(error);
-        } else if (time > cote.getTimeLimit()) { // 시간 초과 경우.
-            coteResultDto.setMessage("제한시간 초과입니다. : " + time + "ms");
-        } else if (!cote.getAnswerOutput().equals(output)) {
-            coteResultDto.setMessage("정답이 일치하지 않습니다.");
+        }
+//        else if (time > cote.getTimeLimit()) { // 시간 초과 경우.
+//            coteResultDto.setMessage("제한시간 초과입니다. : " + time + "ms");
+//        }
+        else if (!cote.getAnswerOutput().equals(output)) {
+            coteResultDto.setMessage("틀렸어.");
         } else {
             coteResultDto.setPass(true);
-            coteResultDto.setMessage("정답입니다!");
+            coteResultDto.setMessage("축하해. 정답이야.");
         }
         System.out.println(response.getBody());
 

@@ -40,7 +40,7 @@ public class Progress {
     @ApiModelProperty(value="언어 진행도", required = true)
     private int language = 0;
 
-    @OneToOne(mappedBy = "progress")
+    @OneToOne(mappedBy = "progress", cascade = CascadeType.REMOVE)
     private User user;
 
     public void setUser(User user) {

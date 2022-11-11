@@ -79,9 +79,9 @@ public class UserController {
 
     @PutMapping("/signup")
     @ApiOperation(value = "최초 유저 닉네임,언어 설정", notes = "최초 유저가입시 닉네임과 언어를 저장합니다")
-    public ResponseEntity<BaseResponseBody> signup(@AuthenticationPrincipal String email,
+    public ResponseEntity<BaseResponseBody> loginFirst(@AuthenticationPrincipal String email,
                                                    @RequestBody SignupDto signupDto) {
-        UserDto user = userManageService.signup(email, signupDto);
+        UserDto user = userManageService.loginFirst(email, signupDto);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", user));
     }
 

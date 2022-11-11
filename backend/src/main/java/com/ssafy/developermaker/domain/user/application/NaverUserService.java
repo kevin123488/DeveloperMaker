@@ -2,7 +2,6 @@ package com.ssafy.developermaker.domain.user.application;
 
 import com.ssafy.developermaker.domain.user.dto.LoginDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
-import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
@@ -98,8 +97,8 @@ public class NaverUserService implements SocialUserService {
             JSONObject jsonObj = (JSONObject) parser.parse(userInfo);
             JSONObject account = (JSONObject) jsonObj.get("response");
 
-            String email = account.get("email").toString();
-            userDto.setEmail(email+"-NAVER");
+            String email = account.get("id").toString();
+            userDto.setEmail(email+"NAVER");
             userDto.setSocialId(account.get("id").toString());
 
             Optional<User> findUser = userRepository.findByEmail(email);
@@ -112,13 +111,6 @@ public class NaverUserService implements SocialUserService {
 
             String nickname =(String)account.getOrDefault("nickname",temp_nickname);
             userDto.setNickname(nickname);
-
-            if(account.get("gender").toString().equals("M")) {
-                userDto.setGender(Gender.MAN);
-            } else {
-                userDto.setGender(Gender.WOMAN);
-            }
-
 
         } catch (ParseException e) {
             e.printStackTrace();

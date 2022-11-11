@@ -1,8 +1,6 @@
 package com.ssafy.developermaker.domain.quiz.application;
 
 import com.ssafy.developermaker.domain.progress.entity.Progress;
-import com.ssafy.developermaker.domain.progress.exception.ProgressNotFoundException;
-import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.quiz.dto.*;
 import com.ssafy.developermaker.domain.quiz.entity.Quiz;
 import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
@@ -32,9 +30,9 @@ public class QuizService {
     private final QuizRepository quizRepository;
     private final UserQuizRepository userQuizRepository;
     private final UserRepository userRepository;
-
-    private final ProgressRepository progressRepository;
     public List<QuizCategoryResponseDto> getQuizList() {
+
+
         return quizRepository.getQuizList();
     }
 
@@ -58,14 +56,13 @@ public class QuizService {
     }
 
     @Transactional
-    public String submitQuiz(String email, QuizRequestDto quizRequestDto) {
+    public QuizSubmitDto submitQuiz(String email, QuizRequestDto quizRequestDto) {
         User findUser = userRepository.findByEmail(email).orElseThrow(UserNotFoundException::new);
         Quiz findQuiz = quizRepository.findById(quizRequestDto.getQuizId()).orElseThrow(QuizNotFoundException::new);
 
         Optional<UserQuiz> findUserQuiz = userQuizRepository.findByUserAndQuiz(findUser, findQuiz);
 
-        Optional<Progress> findProgress = progressRepository.findByUser(findUser);
-        Progress progress = findProgress.orElseThrow(ProgressNotFoundException::new);
+        Progress progress = findUser.getProgress();
 
         boolean result = findQuiz.getAnswer().equals(quizRequestDto.getAnswer());
         if(!findUserQuiz.isPresent()) {
@@ -86,12 +83,11 @@ public class QuizService {
         String answer;
         Category category = findQuiz.getCategory();
         if(category.equals(Category.CS)) answer = result ? "오.. 제법인데?" : "이런걸 틀리다니.. 최악이네, 너.";
-        else if (category.equals(Category.ALGORITHM)) answer = result ? "축하해. 정답이야." : "틀렸어.";
         else if (category.equals(Category.BACKEND)) answer = result ? "... 의외네요." : "... 실망스럽네요.";
         else if (category.equals(Category.FRONTEND)) answer = result ? "오~ 정답! 대단한걸?!" : "까비~ 다시 풀어보자!";
         else answer = result ? "쉽네 ㅋㅋ" : "아 틀렸네ㅋㅋ";
 
-        return answer;
+        return new QuizSubmitDto(answer,result);
     }
 
 
@@ -99,9 +95,6 @@ public class QuizService {
         switch (category.name()) {
             case "CS":
                 progress.updateCS();
-                break;
-            case "ALGORITHM":
-                progress.updateAlgo();
                 break;
             case "BACKEND":
                 progress.updateBackend();

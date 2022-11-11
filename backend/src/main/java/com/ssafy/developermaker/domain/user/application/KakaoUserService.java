@@ -2,7 +2,6 @@ package com.ssafy.developermaker.domain.user.application;
 
 import com.ssafy.developermaker.domain.user.dto.LoginDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
-import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
@@ -102,8 +101,8 @@ public class KakaoUserService implements SocialUserService {
             JSONObject kakao_account = (JSONObject) jsonObj.get("kakao_account");
             JSONObject profile = (JSONObject) kakao_account.get("profile");
 
-            String email = kakao_account.get("email").toString();
-            userDto.setEmail(email+"-KAKAO");
+            String email = jsonObj.get("id").toString();
+            userDto.setEmail(email+"KAKAO");
             userDto.setSocialId(jsonObj.get("id").toString());
 
             Optional<User> findUser = userRepository.findByEmail(email);
@@ -116,12 +115,6 @@ public class KakaoUserService implements SocialUserService {
 
             String nickname = (String)profile.getOrDefault("nickname", temp_nickname);
             userDto.setNickname(nickname);
-
-            if(kakao_account.get("gender").toString().equals("male")) {
-                userDto.setGender(Gender.MAN);
-            } else {
-                userDto.setGender(Gender.WOMAN);
-            }
 
         } catch (ParseException e) {
             e.printStackTrace();

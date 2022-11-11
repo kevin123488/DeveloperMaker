@@ -1,7 +1,10 @@
 package com.ssafy.developermaker.domain.user.entity;
 
+import com.ssafy.developermaker.domain.album.entity.UserAlbum;
+import com.ssafy.developermaker.domain.codingtest.entity.UserCote;
 import com.ssafy.developermaker.domain.memory.entity.Memory;
 import com.ssafy.developermaker.domain.progress.entity.Progress;
+import com.ssafy.developermaker.domain.quiz.entity.UserQuiz;
 import com.ssafy.developermaker.domain.user.dto.SignupDto;
 import com.ssafy.developermaker.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,6 +17,8 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javax.persistence.FetchType.LAZY;
 
 @Entity
 @Getter
@@ -34,15 +39,9 @@ public class User {
     @ApiModelProperty(value="유저 소셜id", required = true)
     private String socialId;
 
-    @Column(nullable = false, unique = true, length = 30)
+    @Column(nullable = false, length = 30)
     @ApiModelProperty(value="유저 닉네임", example = "닉네임", required = true)
     private String nickname;
-
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 10)
-    @ApiModelProperty(value="유저 성별", example = "MAN / WOMAN", required = true)
-    private Gender gender;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     @ApiModelProperty(value="선택언어", example = "JAVA", required = true)
@@ -56,9 +55,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.REMOVE)
+    @OneToOne(fetch = LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "progressId")
     private Progress progress;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserAlbum> userAlbums = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserQuiz> userQuizs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<UserCote> userCotes = new ArrayList<>();
 
 
     public User updateProfile (UserDto userDto) {
@@ -67,7 +75,7 @@ public class User {
         return this;
     }
 
-    public User signupFirst (SignupDto signupDto) {
+    public User loginFirst (SignupDto signupDto) {
         this.nickname = signupDto.getNickname();
         this.language = signupDto.getLanguage();
         return this;
@@ -79,7 +87,6 @@ public class User {
                 .nickname(this.nickname)
                 .socialId(this.socialId)
                 .loginType(this.loginType)
-                .gender(this.gender)
                 .language(this.language)
                 .build();
     }
