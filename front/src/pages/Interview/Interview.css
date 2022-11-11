@@ -1,0 +1,104 @@
+.interviewBack {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.interviewBack::after {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: -1;
+  content: "";
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('../../asset/images/Interview/InterviewBack.png');
+}
+
+.interviewTitle{
+  position: absolute;
+  top: 5vh;
+  left: 15vw;
+  font-size: 3vw;
+  color: white;
+  background-color: blue;
+  width: max-content;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+.InterviewMainBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5vw;
+  height: 10vh;
+  cursor: pointer;
+}
+.InterviewMainBtn:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
+}
+
+.interviewInterviewerImg {
+  position: absolute;
+  left: 25vw;
+  top: 10vh;
+  width: 50vw;
+  height: 60vh;
+}
+.Interviewer1 {
+  position: absolute;
+  left: 2vw;
+}
+
+
+
+.interviewScriptBack {
+  position: absolute;
+  left: 2vw;
+  bottom: 3vh;
+  width: 60vw;
+  height: 40vh;
+  background-color: beige;
+  border-radius: 5px;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.interviewScriptContent {
+  position: absolute;
+  top: 5vh;
+  left: 1vw;
+  width: 38vw;
+  height: 70vh;
+  font-size: 3vw;
+}
+.interviewScriptNextBtn{
+  position: absolute;
+  bottom: 1vh;
+  right: 2vw;
+  cursor: pointer;
+  padding: 1vh;
+  background-color: red;
+  border-radius: 5px;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+
+/* 100(가로): 75(세로) */
+.interviewWebCam {
+  position: absolute;
+  width: 25vw;
+  right: 2vw;
+  bottom: 3vh;
+  padding: 10;
+  border-radius: 5px;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+  border: 3px double navy;
+  /* url이미지, slice 순서는 top right bottom */
+}
+
+
+.interviewCaptureImg {
+  position: absolute;
+  visibility: hidden;
+}

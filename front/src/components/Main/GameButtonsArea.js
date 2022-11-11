@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+import { userLogout } from "../../slices/userSlice";
+
 const GameButtons = Styled.div`
   margin-top: 10%;
   height: 40%;
@@ -38,16 +40,33 @@ const BtnArea = Styled.div`
   width: 50%;
   border-radius: 50%;
 `;
-const GameBtn = Styled.img`
+const GameBtn = Styled.div`
   height: 100%;
   width: 100%;
+  text-align: center;
+  font-size: 2vw;
   cursor: pointer;
+
+  // 텍스트 효과부분
+  // // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  // backdrop-filter: blur( 6.5px );
+  // -webkit-backdrop-filter: blur( 6.5px );
+  // border-radius: 1vw;
+  text-shadow: 0.1vw 0.1vw #000, 0.1vw 0.1vw #000, 0.1vw 0.1vw #000, 0.1vw 0.1vw #000;
+
+
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
   border: 0ch;
   color: white;
+  transition: all ease 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const NewAlbum = Styled.img`
@@ -101,20 +120,20 @@ const GameButtonsArea = () => {
       {userInfo ? (
         <LoginGameButtons>
           <BtnArea>
-            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}/>
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}>게임시작</GameBtn>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={ProfileBtnImg} alt="Profile" onClick={goProfile} />
+            <GameBtn src={ProfileBtnImg} alt="Profile" onClick={goProfile}>내정보</GameBtn>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy} />
+            <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy}>자율학습</GameBtn>
           </BtnArea>
           <BtnArea>
             {newAlbum && <NewAlbum src={NewAlbumLogo} alt="New" />}
-            <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum} />
+            <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum}>사진첩</GameBtn>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={purge}/>
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}/>
           </BtnArea>
         </LoginGameButtons>
       ) : (
