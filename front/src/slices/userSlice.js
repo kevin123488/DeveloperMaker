@@ -93,8 +93,6 @@ export const userLogout = createAsyncThunk(
   async (temp, {rejectWithValue}) => {
     try {
       const {data} = await logout()
-      console.log('로그아웃 결과',data)
-      return data.data
     } catch(error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -186,13 +184,24 @@ const userSlice = createSlice(
         state.progress.album = payload
       })
       .addCase(userLogout.fulfilled, (state, {payload})=> {
-        state = initialState
-        sessionStorage.clear();
-        window.location.reload()
+        // state 초기화
+        state.userInfo = null;
+        state.isLogIn = false;
+        state.error = null;
+        state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        sessionStorage.removeItem('accessToken', '');
+        // 페이지 새로고침 필요x
+        // window.location.reload()
       })
       .addCase(DeleteUser.fulfilled, (state, {payload})=> {
-        state = initialState
-        sessionStorage.clear();
+        // state 초기화
+        state.userInfo = null;
+        state.isLogIn = false;
+        state.error = null;
+        state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        // 세션의 토큰 초기화
+        sessionStorage.removeItem('accessToken', '');
+        // 메인페이지로 이동
         const navigate = useNavigate()
         navigate('/')
       })

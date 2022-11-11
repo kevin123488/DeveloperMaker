@@ -47,8 +47,7 @@ const Profile = () => {
       </div>
       <img src={MainImg} alt="MainBtn" className='ProfileMainBtn' onClick={goMain} />
       <p className='ProfileDelete' onClick={handleShow} >회원탈퇴</p>
-      {show && (
-        <>
+      <>
         <Modal show={show} onHide={handleClose} animation={false}>
           <Modal.Header closeButton>
             <Modal.Title>DeveloperMaker 탈퇴</Modal.Title>
@@ -66,7 +65,6 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
-      )}
     </div>
   );
 };
