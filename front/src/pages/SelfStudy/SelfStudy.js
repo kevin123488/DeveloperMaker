@@ -21,6 +21,8 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import CodeTextarea from "./CodeTextarea";
+
+// 효과음 
 import btnSound from "../../asset/soundEffects/buttonClick.wav";
 import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
 import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
@@ -177,7 +179,7 @@ const Quiz = () => {
       }
     })
     const categoryballoon = document.getElementById('categoryballoon')
-    console.log("categoryballoon", categoryballoon)
+    // console.log("categoryballoon", categoryballoon)
     categoryballoon.style.display = 'none'
 
     setTimeout(() => {
@@ -219,7 +221,7 @@ const Quiz = () => {
     const pageNums = document.querySelectorAll('#pageNums')
     pageNums.forEach((pageNum) => {
       if (parseInt(pageNum.innerText) === page) {
-        console.log(pageNum.innerText)
+        // console.log(pageNum.innerText)
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
@@ -246,15 +248,15 @@ const Quiz = () => {
       offset: newQuizInfo.offset,
       limit: newQuizInfo.limit,
     }
-    console.log('카테고리 확인', newQuizInfo.category)
+    // console.log('카테고리 확인', newQuizInfo.category)
     setIsShowQuizProblem(false)
     setIsShowingAlgo(false)
     if (newQuizInfo.category === 1 || newQuizInfo.category === "ALGORITHM") {
-      console.log('알고리즘 퀴즈 리스트 변경', newQuizInfo.category)
+      // console.log('알고리즘 퀴즈 리스트 변경', newQuizInfo.category)
       dispatch(getCodingTestList(quizInfo))
     }
     else {
-      console.log('그냥 퀴즈 리스트 변경')
+      // console.log('그냥 퀴즈 리스트 변경')
       dispatch(getQuizList(quizInfo))
     }
   }
@@ -267,7 +269,7 @@ const Quiz = () => {
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'
@@ -295,7 +297,7 @@ const Quiz = () => {
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'
@@ -333,10 +335,10 @@ const Quiz = () => {
       setOutputValue('')
       setIsShowingAlgo(true)
       setShowingAlgo(quiz)
-      console.log('알고문제', quiz)
+      // console.log('알고문제', quiz)
     }
     else {
-      console.log("퀴즈누름", quiz)
+      // console.log("퀴즈누름", quiz)
       setShowingQuiz(quiz)
       setIsShowQuizProblem(true)
       const checkboxes = document.getElementsByName('quizRadio');
@@ -357,7 +359,7 @@ const Quiz = () => {
   const solveQuiz = async() => {
     if (checkedAnswer !== null) {
       playBtnSimpleSound()
-      console.log(showingQuiz)
+      // console.log(showingQuiz)
       const solveInfo = { quizId: showingQuiz.quizId, answer: checkedAnswer }
       const solveResult = await dispatch(postQuizSolve(solveInfo))
       const newQuizInfo = {
@@ -366,7 +368,7 @@ const Quiz = () => {
         offset: offset,
         limit: limit,
       }
-      console.log('풀이결과', solveResult.payload)
+      // console.log('풀이결과', solveResult.payload)
       // console.log("채점결과", solveResult.payload)
       dispatch(getQuizList(newQuizInfo))
       setNpcBalloonContent(solveResult.payload.answer)
@@ -388,7 +390,7 @@ const Quiz = () => {
     await dispatch(getSelfStudyProgress())
     const solveCategory = quizInfo[category].category.toLowerCase()
     const progressPer = parseInt(progress[solveCategory] / 25)
-    console.log(progressPer)
+    // console.log(progressPer)
     if (progressPer !== 0) {
       const checkAlbumNum = category * 4
       checkAlbum(checkAlbumNum)
@@ -427,7 +429,7 @@ const Quiz = () => {
       characterTag.style = ''
     })
     const categoryballoon = document.getElementById('categoryballoon')
-    console.log("categoryballoon", categoryballoon)
+    // console.log("categoryballoon", categoryballoon)
     categoryballoon.style.display = 'block'
     setWorkType('')
     setShowWork(false)
@@ -460,14 +462,14 @@ const Quiz = () => {
     setShowWorkChoice(false)
     // 스터디 골랐을 때
     if (work === 'study'){
-      console.log('스터디')
+      // console.log('스터디')
       setWorkType('공부')
       setIsShowStudy(true)
     }
     
     // 퀴즈 골랐을 때
     else {
-      console.log('퀴즈')
+      // console.log('퀴즈')
       setWorkType('퀴즈')
       setIsShowQuiz(true)
       // 알고리즘이면
@@ -479,7 +481,7 @@ const Quiz = () => {
 
     setTimeout(() => {
       const pageNum = document.getElementById('pageNums')
-      console.log('스타일', pageNum.style)
+      // console.log('스타일', pageNum.style)
       pageNum.style.color = '#80b9ff'
     }, 100)
   }
@@ -507,8 +509,8 @@ const Quiz = () => {
     setNpcBalloonContent('채점중이야.')
     setIsShowNpcBalloon(true)
     const solveResult = await dispatch(postCodingTestSolve(solveInfo))
-    console.log('풀이결과', solveResult.payload)
-    setNpcBalloonContent(solveResult.payload.answer)
+    // console.log('풀이결과', solveResult.payload)
+    setNpcBalloonContent(solveResult.payload.message)
     setTimeout(() => {
     setIsShowNpcBalloon(false)
     }, 2000)
@@ -553,7 +555,7 @@ const Quiz = () => {
   // 체크할 엘범 번호 받아서 체크하고 띄워주는 함수
   const checkAlbum = ((checkAlbumNum) => {
     putAlbum(checkAlbumNum)
-    console.log('체크엘범 번호', checkAlbumNum)
+    // console.log('체크엘범 번호', checkAlbumNum)
   })
 
 

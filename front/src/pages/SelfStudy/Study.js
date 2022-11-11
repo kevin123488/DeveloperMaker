@@ -75,8 +75,8 @@ const CSselfStudy = (prop) => {
         offset: offset,
         limit: limit,
       }
-      console.log('스터디 요청정보', initialStudyInfo)
-      console.log(studyInfo)
+      // console.log('스터디 요청정보', initialStudyInfo)
+      // console.log(studyInfo)
       const res = await dispatch(getStudyList(initialStudyInfo))
       const newStudyList = res.payload
     };
@@ -84,7 +84,7 @@ const CSselfStudy = (prop) => {
 
     setTimeout(() => {
       const pageNum = document.getElementById('pageNums')
-      console.log('스타일', pageNum.style)
+      // console.log('스타일', pageNum.style)
       pageNum.style.color = '#80b9ff'
     }, 100)
   
@@ -173,7 +173,7 @@ const CSselfStudy = (prop) => {
     const pageNums = document.querySelectorAll('#pageNums')
     pageNums.forEach((pageNum) => {
       if (parseInt(pageNum.innerText) === page) {
-        console.log(pageNum.innerText)
+        // console.log(pageNum.innerText)
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
@@ -186,7 +186,7 @@ const CSselfStudy = (prop) => {
       offset: page - 1,
       limit: limit,
     }
-    console.log(newStudyInfo)
+    // console.log(newStudyInfo)
     await changeStudyList(newStudyInfo)
     await setOffset(page-1)
   }
@@ -211,7 +211,7 @@ const CSselfStudy = (prop) => {
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'
@@ -238,7 +238,7 @@ const CSselfStudy = (prop) => {
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'

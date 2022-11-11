@@ -21,7 +21,7 @@ const CodeTextarea = (prop) => {
       coteId: prop.algoInfo.coteId,
       answer: { language: language, code: code }
     }
-    console.log(solveInfo)
+    // console.log(solveInfo)
     prop.submitAlgo(solveInfo)
   }
 
@@ -35,7 +35,7 @@ const CodeTextarea = (prop) => {
   }
 
   useEffect(() => {
-    console.log('선택한 언어', prop.lang)
+    // console.log('선택한 언어', prop.lang)
   }, [prop.lang])
 
   useEffect(() => {
