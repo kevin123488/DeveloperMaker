@@ -93,10 +93,10 @@ const GameButtonsArea = () => {
 
   const navigate = useNavigate();
 
-  const purge = async () => {
-    await sessionStorage.clear();
-    window.location.reload();
-  };
+  // const purge = async () => {
+  //   await sessionStorage.clear();
+  //   window.location.reload();
+  // };
 
   // 이동 함수
   const goGame = () => {
@@ -133,8 +133,9 @@ const GameButtonsArea = () => {
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum}>사진첩</GameBtn>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())
-            sessionStorage.clear();}}/>
+            <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}>
+              로그아웃
+            </GameBtn>
           </BtnArea>
         </LoginGameButtons>
       ) : (

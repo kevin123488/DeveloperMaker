@@ -93,7 +93,6 @@ export const userLogout = createAsyncThunk(
   async (temp, {rejectWithValue}) => {
     try {
       const {data} = await logout()
-      console.log('로그아웃 결과',data)
     } catch(error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
