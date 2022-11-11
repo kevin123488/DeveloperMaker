@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,5 +32,8 @@ public class Cote {
 
     @Column(nullable = false, length = 1000)
     private String answerOutput;
+
+    @OneToMany(mappedBy = "cote", cascade = CascadeType.REMOVE)
+    private List<UserCote> userCotes = new ArrayList<>();
 
 }
