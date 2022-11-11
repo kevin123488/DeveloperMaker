@@ -32,7 +32,20 @@ public class AiInterviewService {
         System.out.println(questionDto);
         return questionDto;
     }
+    public boolean getIsFace(String url){
 
+        HttpResponse<JsonNode> response = post_request("https://api.luxand.cloud/photo/emotions",
+                new HashMap<String, Object>() {{ put("photo", url); }});
+
+        if (response.getStatus() != 200){
+            System.out.printf(response.getBody().getObject().getString("message"));
+        }
+        if(response.getBody().getObject().toString().equals("{\"status\":\"success\",\"faces\":[]}")){
+            return false;
+        }
+        System.out.println(response.getBody().getObject().toString());
+        return true;
+    }
     public String getResult(Integer no, String url, String aiInterviewText){
         String result = null;
         HttpResponse<JsonNode> response = post_request("https://api.luxand.cloud/photo/emotions",
