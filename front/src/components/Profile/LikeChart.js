@@ -33,14 +33,23 @@ const LikeChart = (props) =>{
       }
     },
     scales: {
+      x: {
+        grid: {
+          display: false,
+        }
+      },
       y: {
-        max: 10,
+        max: 100,
         min: 0,
         ticks: {
           stepSize: 2
+        },
+        grid: {
+          display: false,
         }
       }
     },
+    maintainAspectRatio: false,
   };
   if (show) {
     if (data.chapter === 1 && data.num === 0) {

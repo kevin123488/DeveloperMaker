@@ -60,14 +60,16 @@
   vertical-align: middle;
   background-color: white;
   font-size: 1.5vw;;
+  color: #79491e;
   /* border: 2px solid #79491e; */
   border-radius: 5px;
   transition: 0.4s;
 }
 
 .storySlot:hover {
-  background-color: #563418;
+  background-color: #79491e;
   color: white;
+  transition: 0.4s;
 }
 
 .storySlot:active {

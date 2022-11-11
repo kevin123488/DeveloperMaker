@@ -13,7 +13,9 @@ import geuwol_gameslot3 from "./geuwol_gameslot3.png";
 import geuwol_gameslot3smile from "./geuwol_gameslot3smile.png";
 import gohomeIcon from "./gohomeIcon.png";
 import speechBubble from "./speechBubble.png";
+import goHomeIcon from "../../asset/images/SelfstudyImg/selfstudyBtn.png";
 import "./GameLoad.css";
+import gameloadBook from "./gameloadBook.png";
 
 // const GameLoadHeader = styled.div`
 //   width: 100%;
@@ -115,28 +117,26 @@ import "./GameLoad.css";
 //   font-size: xx-large;
 // `;
 
-const GameLoadTitle = styled.div`
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 50vw;
-  height: 10vh;
-  font-size: 5vw;
-  color: red;
-`;
-
 const GameLoadGoHome = styled.div`
+  z-index: 5;
   cursor: pointer;
   position: absolute;
   top: 5%;
   left: 5%;
   transfrom: translate(-50%, -50%);
-  width: 6vw;
-  height: 6vw;
-  background-image: url(${gohomeIcon});
-  background-size: 6vw 6vw;
+  width: 8vw;
+  height: 4vw;
+  background-image: url(${goHomeIcon});
+  background-size: 8vw 4vw;
   transition: 0.2s;
+  font-size: 1.5vw;
+  color: white;
+  line-height: 4vw;
+  vertical-align: center;
+  text-align: center;
+  &:hover {
+    transform: scale(1.05);
+  }
   &:active {
     top: 6%;
   }
@@ -144,32 +144,34 @@ const GameLoadGoHome = styled.div`
 
 const GameLoadSlots = styled.div`
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75vw;
-  height: 70vh;
+  width: 85vw;
+  height: 90vh;
 `;
 
 const GameLoadSlot1 = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  left: 15%;
+  top: 60%;
+  left: 20%;
   transform: translate(-50%, -50%);
   width: 22vw;
   height: 65vh;
   border-radius: 30px;
-  transition: 0.4s;
+  transition: 0.5s;
   background-image: url(${seobom_slot1});
   background-size: 22vw 65vh;
   object-fit: contain;
+  opacity: 0.9;
   &:hover {
     width: 23vw;
     height: 68vh;
-    transition: 0.4s;
+    transition: 0.5s;
     background-image: url(${seobom_slot1Smile});
     background-size: 23vw 68vh;
+    opacity: 1;
     object-fit: contain;
   }
 `;
@@ -177,22 +179,24 @@ const GameLoadSlot1 = styled.div`
 const GameLoadSlot2 = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 22vw;
   height: 65vh;
   border-radius: 30px;
-  transition: 0.4s;
+  transition: 0.5s;
   background-image: url(${gaeul_gameslot2});
   background-size: 22vw 65vh;
   object-fit: contain;
+  opacity: 0.9;
   &:hover {
     width: 23vw;
     height: 68vh;
     background-image: url(${gaeul_gameslot2smile});
     background-size: 23vw 68vh;
-    transition: 0.4s;
+    transition: 0.5s;
+    opacity: 1;
     object-fit: contain;
   }
 `;
@@ -200,22 +204,24 @@ const GameLoadSlot2 = styled.div`
 const GameLoadSlot3 = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 50%;
-  left: 85%;
+  top: 60%;
+  left: 80%;
   transform: translate(-50%, -50%);
   width: 22vw;
   height: 65vh;
   border-radius: 30px;
-  transition: 0.4s;
+  transition: 0.5s;
   background-image: url(${geuwol_gameslot3});
   background-size: 22vw 65vh;
+  opacity: 0.9;
   object-fit: contain;
   &:hover {
     width: 23vw;
     height: 68vh;
     background-image: url(${geuwol_gameslot3smile});
     background-size: 23vw 68vh;
-    transition: 0.4s;
+    transition: 0.5s;
+    opacity: 1;
     object-fit: contain;
   }
 `;
@@ -302,12 +308,9 @@ const GameLoad = () => {
   }, [dispatch]);
 
   return (
-    <div className="MainContainerWrapper">
-      <div className="MainContainer">
-        <GameLoadTitle>
-          슬롯페이지 임시 타이틀
-        </GameLoadTitle>
-        <GameLoadGoHome onClick={backBtnhandler}></GameLoadGoHome>
+    <>
+    <div className="gameloadMain">
+        <GameLoadGoHome onClick={backBtnhandler}>Home</GameLoadGoHome>
         <GameLoadSlots>
           <GameLoadSlot1 onClick={startStory1} onMouseOver={watchStory1} onMouseOut={stopWatchStory1}>
             {/* {storySlots[0].script} */}
@@ -401,8 +404,8 @@ const GameLoad = () => {
             </GameFileLoadList>
           </GameLoadContainer>
         </GameLoadBody> */}
-      </div>
-    </div>
+        </div>
+    </>
   );
 };
 export default GameLoad;
