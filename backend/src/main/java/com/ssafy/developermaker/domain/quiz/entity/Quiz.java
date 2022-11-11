@@ -33,9 +33,9 @@ public class Quiz {
     @Column(nullable = false, length = 500)
     private String problem;
 
-    @Column(nullable = false, length = 200)
+    @Column(nullable = false, length = 500)
     private String example;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 200)
     private String answer;
 }
