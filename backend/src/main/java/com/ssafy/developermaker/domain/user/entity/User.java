@@ -36,7 +36,7 @@ public class User {
     @ApiModelProperty(value="유저 소셜id", required = true)
     private String socialId;
 
-    @Column(nullable = false, unique = true, length = 30)
+    @Column(nullable = false, length = 30)
     @ApiModelProperty(value="유저 닉네임", example = "닉네임", required = true)
     private String nickname;
     @Enumerated(EnumType.STRING)
