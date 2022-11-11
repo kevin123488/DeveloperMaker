@@ -32,9 +32,82 @@ import checkLikeTitle from "./checkLikeTitle.png";
 import GetAlbum from "../../components/Album/GetAlbum";
 import nowSlot from "./nowSlot.png";
 
+const StoryKeyFrame = keyframes`
+  0% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.4;
+  }
+  12.5% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.45;
+  }
+  25% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+  }
+  37.5% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+  }
+  50% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.65;
+  }
+  62.5% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.7;
+  }
+  75% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8;
+  }
+  87.5% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+  }
+  100% {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+`;
+
 const StoryPage = styled.div`
   width: 100vw;
   height: 100vh;
+  transition: 0.5s;
+  animation: ${StoryKeyFrame} 0.4s;
+  overflow: hidden;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none
 `;
 
 const StoryBox = styled.div`
@@ -67,28 +140,28 @@ const StoryTextBox = styled.div`
 
 const StoryGoEffect = keyframes`
   0% {
-    top: 85%;
-    left: 90%;
+    top: 82%;
+    left: 88%;
     transfrom: translate(-50%, -50%);
   }
   25% {
-    top: 85%;
-    left: 90%;
+    top: 82%;
+    left: 88%;
     transfrom: translate(-50%, -50%);
   }
   50% {
-    top: 83%;
-    left: 90%;
+    top: 80%;
+    left: 88%;
     transfrom: translate(-50%, -50%);
   }
   75% {
-    top: 85%;
-    left: 90%;
+    top: 82%;
+    left: 88%;
     transfrom: translate(-50%, -50%);
   }
   100% {
-    top: 85%;
-    left: 90%;
+    top: 82%;
+    left: 88%;
     transfrom: translate(-50%, -50%);
   }
 `;
@@ -96,13 +169,13 @@ const StoryGoEffect = keyframes`
 const StoryPassAlert = styled.div`
   cursor: pointer;
   position: absolute;
-  top: 85%;
-  left: 90%;
+  top: 82%;
+  left: 88%;
   transfrom: translate(-50%, -50%);
-  height: 4vh;
-  width: 8vh;
+  height: 6vh;
+  width: 6vw;
   background-image: url(${storyGoAlert});
-  background-size: 8vh 4vh;
+  background-size: 6vw 6vh;
   animation: ${StoryGoEffect} infinite 1s;
 `;
 
@@ -216,6 +289,28 @@ const StoryLikeCheck = styled.div`
   }
 `;
 
+const SaveSlotEffect = keyframes`
+  from {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
+
+const likeModalEffect = keyframes`
+  from {
+    transform: translate(-100%, 0%) scale(0);
+  }
+  to {
+    transform: translate(-100%, 0%) scale(1);
+  }
+`;
+
 const StoryLikeModal = styled.div`
   z-index: 1;
   position: absolute;
@@ -228,7 +323,7 @@ const StoryLikeModal = styled.div`
   transition: 0.4s;
   border-radius: 20px;
   border: 5px solid #79491e;
-  animation: ${ModalEffect} 0.4s;
+  animation: ${likeModalEffect} 0.1s;
 `;
 
 const StoryLikeCheckTitle = styled.div`
@@ -413,7 +508,7 @@ const SaveSlotSelector = styled.div`
   background: white;
   border-radius: 5px;
   border: 2px solid #79491e;
-  animation: ${ModalEffect} 1s;
+  animation: ${SaveSlotEffect} 0.1s;
 `;
 
 const PointerEffect = keyframes`
@@ -516,7 +611,6 @@ const Story = () => {
   const firstPassCheck = useRef(false);
   const selfStudyNonpassedCheck = useRef(false);
   const userAlbumCheckfirst = useRef(false);
-  const [openAlbumGetModal, setOpenAlbumGetModal] = useState(false);
   const [canGoNext, setCanGoNext] = useState(true); // 스크립트 넘기는 속도 관리
   // next 버튼 따로 만들어주자
   const getAlbum = useRef(0); // 획득할 앨범 번호
@@ -536,6 +630,13 @@ const Story = () => {
       dispatch(putAlbumList(albumId))
     }
   }
+  // 이름 세팅
+  const UserInfo = useSelector((state)=>{
+    return state.user.userInfo
+  })
+  // 이름
+  const [nickname, setNickname] = useState(UserInfo.nickname)
+
 
   useEffect(() => {
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
@@ -675,10 +776,6 @@ const Story = () => {
   //   console.log(userAlbumCheckfirst.current);
   // }, [userAlbumCheck]);
 
-  useEffect(() => {
-    console.log(openAlbumGetModal);
-  }, [openAlbumGetModal]);
-
   const [storyMap] = useState(
   { 
     3: [6, 4, 6, 4],
@@ -795,9 +892,6 @@ const Story = () => {
   }
 
   // 앨범 획득 모달 관련 함수
-  const closeAlbumModal = () => {
-    setOpenAlbumGetModal(false);
-  };
 
   // 호감도 수치 보여주는 부분 관리하는 함수
   const getLikeValue = () => {
@@ -806,13 +900,25 @@ const Story = () => {
     setOpenLikeValue(!openLikeValue);
   };
 
+  // 엔터키로 넘기기
+  const enterGoNext = (e) => {
+    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion) {
+      console.log(e.key);
+      nextScript();
+    }
+  };
+
   function nextScript(n) {
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);
     }, 800);
     scriptIndex.current += increaseIndex.current;
-    storyTeller.current = scriptFile.current[scriptIndex.current].storyTeller;
+    if (scriptFile.current[scriptIndex.current].storyTeller === "주인공") {
+      storyTeller.current = nickname;
+    } else {
+      storyTeller.current = scriptFile.current[scriptIndex.current].storyTeller;
+    }
     backgroundImg.current = scriptFile.current[scriptIndex.current].backgroundImageUrl;
     leftCharImg.current = scriptFile.current[scriptIndex.current].LeftImageUrl2;
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
@@ -925,7 +1031,9 @@ const Story = () => {
 
   return (
     <>
-    <StoryPage>
+    <StoryPage
+    onKeyDown={enterGoNext}
+    tabIndex={0}>
       {show && <GetAlbum />}
       <StoryHamburger onClick={ocHamburger}></StoryHamburger>
       {
@@ -1001,12 +1109,6 @@ const Story = () => {
         </StoryNavigate>
         : null
       }
-      {
-        openAlbumGetModal
-        ?
-        <StoryGetAlbumModal onClick={closeAlbumModal}></StoryGetAlbumModal>
-        : null
-      }
       <img src={process.env.PUBLIC_URL + `/storyImages/${backgroundImg.current}.png`} style={{
         width: '100%',
         height: '100%',
@@ -1064,7 +1166,8 @@ const Story = () => {
         {
           canGoNext && !isOption && !isQuestion
           ?
-          <StoryPassAlert onClick={nextScript}></StoryPassAlert>
+          <StoryPassAlert 
+          onClick={nextScript}></StoryPassAlert>
           : null
         }
       </StoryBox>
