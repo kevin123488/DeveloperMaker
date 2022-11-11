@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
-import sessionStorage from "redux-persist/es/storage/session";
 import GameRuleImg from "../../asset/images/Main/GameRuleBtn.png";
 import GameStartImg from "../../asset/images/Main/GameStartBtn.png";
 import LogoutBtnImg from "../../asset/images/Main/LogoutBtn.png";
@@ -10,11 +9,10 @@ import AlbumBtnImg from "../../asset/images/Main/AlbumBtn.png";
 import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
 import { getNew } from "../../slices/albumSlice"
 import { useEffect } from "react";
-
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 import { userLogout } from "../../slices/userSlice";
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
 
 const GameButtons = Styled.div`
   margin-top: 10%;
@@ -100,19 +98,30 @@ const GameButtonsArea = () => {
 
   // 이동 함수
   const goGame = () => {
+    playBtnSound()
     navigate("/Game")
   }
   const goProfile = () =>{
+    playBtnSound()
     navigate("/Profile")
   }
   const goSelfStudy = () => {
+    playBtnSound()
     navigate("/SelfStudy")
   }
   const goAlbum = () => {
+    playBtnSound()
     navigate("/Album")
   }
   const goGameRule = () => {
+    playBtnSound()
     navigate("/GameRule")
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
   }
 
   return (

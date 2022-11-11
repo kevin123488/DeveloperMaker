@@ -6,6 +6,8 @@ import { SignupForm } from "../../components/Main/SignupForm";
 // import Characters from "../../asset/images/Main/Characters.png";
 import MainLogo from "../../asset/images/Main/developermakerLogo.png";
 import styled from "styled-components";
+import { useEffect } from "react";
+import mainBGM from "../../asset/soundEffects/mainBGM.mp3";
 
 
 // const Title = Styled.p`
@@ -48,6 +50,21 @@ const TitleDivision = styled.div`
 
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
+
+  useEffect(() => {
+    const BGM = document.getElementById('mainBGM')
+    // console.log(BGM.innerText)
+    console.log(BGM.played.length)
+    if (BGM.innerText !== 'mainBGM'){
+      BGM.innerText = 'mainBGM'
+      BGM.src = mainBGM
+    }
+    if (BGM.played.length === 0) {
+      // BGM.muted = true;
+      BGM.load()
+      // BGM.muted = false;
+    }
+  }, [])
 
   return (
     <>
