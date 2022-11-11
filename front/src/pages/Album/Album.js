@@ -8,9 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAlbumProgress } from "../../slices/userSlice";
 import mainImg from "../Game/gohomeIcon.png"
 import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
-
 import GetAlbum from "../../components/Album/GetAlbum";
-
+// 효과음
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
+import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
+import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 
 
 const Album = () => {
@@ -62,6 +66,7 @@ const Album = () => {
   }
   // 메인화면
   function goMain() {
+    playBtnSound()
     navigate('/')
   }
 
@@ -79,6 +84,41 @@ const Album = () => {
     }
   }
 
+
+
+  // 효과음 gyrhkdma
+
+  const playChangePageSound = () => {
+    const sound = new Audio()
+    sound.src = changePageSound
+    sound.play()
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
+  
+  const playBtnSimpleSound = () => {
+    const sound = new Audio()
+    sound.src = btnSimpleSound
+    sound.play()
+  }
+
+  const playShowMarkdownSound = () => {
+    const sound = new Audio()
+    sound.src = showMarkdownSound
+    sound.play()
+  }
+
+
   return (
     <div className="albumBack">
       <img src="" alt="" />
@@ -86,11 +126,11 @@ const Album = () => {
       <div className="albumModeSel">
         <div>
           {newStory && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (!selType ? " albumBtnSel" : "")}/>}
-          <p className={"albumBtn" + (!selType ? " albumBtnSel" : "")} onClick={() => {changeType(true)}}>스토리({user.progress.album.storyAlbum}%)</p>
+          <p className={"albumBtn" + (!selType ? " albumBtnSel" : "")} onClick={() => {changeType(true); playShowMarkdownSound()}}>스토리({user.progress.album.storyAlbum}%)</p>
         </div>
         <div>
           {newStudy && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (selType ? " albumBtnSel" : "")} />}
-          <p className={"albumBtn" + (selType ? " albumBtnSel" : "")} onClick={() => {changeType(false)}}>스터디({user.progress.album.studyAlbum}%)</p>
+          <p className={"albumBtn" + (selType ? " albumBtnSel" : "")} onClick={() => {changeType(false); playShowMarkdownSound()}}>스터디({user.progress.album.studyAlbum}%)</p>
         </div>
       </div>
       <img className="albumMainBtn" src={mainImg} alt="" onClick={goMain} />

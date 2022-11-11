@@ -6,6 +6,8 @@ import GoldLogo from "../../asset/images/Album/RatingLogo/GoldLogo.png"
 import NoAlbumImg from "../../asset/images/Album/NoAlbumImg.png"
 import NewAlbumLogo from "../../asset/images/Album/NewAlbumLogo.png"
 import { deleteNew } from "../../slices/albumSlice";
+// 효과음
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 
 const AlbumComponent = (props) => {
   const [show, setShow] = useState(false)
@@ -32,12 +34,22 @@ const AlbumComponent = (props) => {
     // }
   }, [album.ownerRate])
 
+
+
+  // 효과음 tkdnsem
+  
+  const playBtnSimpleSound = () => {
+    const sound = new Audio()
+    sound.src = btnSimpleSound
+    sound.play()
+  }
+
     return (
       <div className="albumLine">
         <div className="albumCard">
           {(album.isOwned && !album.isRead) && <img className="albumNewLogo" src={NewAlbumLogo} alt="" />}
           <img src={album.isOwned ? album.albumImg : NoAlbumImg} onClick={()=>{ if (album.isOwned) {setShow(true);
-          if (!album.isRead) { dispatch(deleteNew(album.albumId))}}}}
+          if (!album.isRead) { dispatch(deleteNew(album.albumId))}}; playBtnSimpleSound()}}
           className={"albumImg" + (album.isOwned? " albumImgOwned" : "")} alt="앨범" />
           <p className="albumTitle">{album.albumTitle}</p>
           <img className="albumRating" src={logoImg[rating]} alt="등급" />

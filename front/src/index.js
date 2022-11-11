@@ -18,6 +18,12 @@ import { persistStore } from "redux-persist";
 import PrivateRoute from "./components/Routes/PrivateRoute.js";
 import "./index.css"
 
+// BGM
+import mainBGM from "./asset/soundEffects/mainBGM.mp3";
+import mainBGM_v1 from "./asset/soundEffects/mainBGM_v1.mp3";
+import { useEffect } from "react";
+
+
 export const persistor = persistStore(store);
 
 const container = document.getElementById("root");
@@ -54,23 +60,61 @@ root.render(
 function App() {
   const location = useLocation();
 
+  useEffect(() => {
+    const mainBGM = document.getElementById('mainBGM')
+    mainBGM.volume = 0.4
+    mainBGM.muted = true
+  }, [])
+
+  // 음소거 함수 
+  const changeVolumeBox = () => {
+    const mainBGM = document.getElementById('mainBGM')
+    mainBGM.muted = !mainBGM.muted
+    const changeBox = document.getElementById('changeVolumeBox')
+    if (mainBGM.muted) {
+      changeBox.className = "muted"
+    } else {
+      mainBGM.play()
+      changeBox.className = "playing"
+    }
+  }
+
+  const playSelfstudyBGM = () => {
+    console.log('들어오나')
+    const mainBGM = document.getElementById('mainBGM')
+    mainBGM.src = mainBGM_v1
+  }
+
   return (
-        <TransitionGroup>
-          <CSSTransition key={location.key} classNames="pageSlider" timeout={300}>
+    <div>
+      <audio 
+      src={mainBGM} loop={true} autoPlay={true} id="mainBGM" 
+      style={{
+        position: "absolute",
+        zIndex: '2000',
+      }}>mainBGM</audio>
+      
+      {/* 음소거 버튼 */}
+      <div onClick={changeVolumeBox}
+      id="changeVolumeBox"
+      className="muted"
+      ></div>
+
+      <TransitionGroup>
+        <CSSTransition key={location.key} classNames="pageSlider" timeout={500}>
           <Routes style={{ backgroundColor: "black", position: "relative" }} location={location}>
-
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/" element={<Main />} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy/study" element={<Study />} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album" element={<Album />} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Story" element={<Story />} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Interview" element={<Interview />}/>
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
-              <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Profile" element={<Profile />} />
-              </Routes>
-
-          </CSSTransition>
-        </TransitionGroup>
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/" element={<Main />} />
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
+            <Route onChange={playSelfstudyBGM} style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy/study" element={<Study />} />
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album" element={<Album />} />
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Story" element={<Story />} />
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Interview" element={<Interview />}/>
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
+            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Profile" element={<Profile />} />
+          </Routes>
+        </CSSTransition>
+      </TransitionGroup>
+    </div>
   );
 }

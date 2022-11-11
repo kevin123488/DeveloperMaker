@@ -13,6 +13,12 @@ import remarkGfm from "remark-gfm";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
 // import { Link } from 'react-router-dom';
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
+import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
+import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
+
 
 const CsStudyBackground = styled.div`
   position: related;
@@ -69,8 +75,8 @@ const CSselfStudy = (prop) => {
         offset: offset,
         limit: limit,
       }
-      console.log('스터디 요청정보', initialStudyInfo)
-      console.log(studyInfo)
+      // console.log('스터디 요청정보', initialStudyInfo)
+      // console.log(studyInfo)
       const res = await dispatch(getStudyList(initialStudyInfo))
       const newStudyList = res.payload
     };
@@ -78,7 +84,7 @@ const CSselfStudy = (prop) => {
 
     setTimeout(() => {
       const pageNum = document.getElementById('pageNums')
-      console.log('스타일', pageNum.style)
+      // console.log('스타일', pageNum.style)
       pageNum.style.color = '#80b9ff'
     }, 100)
   
@@ -116,10 +122,13 @@ const CSselfStudy = (prop) => {
 
   // md정리창 보여주는 함수
   const showMarkdown = (content) => {
+    playShowMarkdownSound()
+
     setShowingMarkdown(content)
     setIsShowMarkdown(true)
   }
   const closeStudy = () => {
+    playBtnSimpleSound()
     setIsShowMarkdown(false)
   }
   
@@ -142,6 +151,8 @@ const CSselfStudy = (prop) => {
 
   // 서브젝트 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeSubject = async (info) => {
+    playChangePageSound()
+
     const newStudyInfo = {
       category: category,
       subject: info.subject,
@@ -157,10 +168,12 @@ const CSselfStudy = (prop) => {
 
   // 페이지 변경하는 함수
   const changePage = async (page) => {
+    playChangePageSound()
+
     const pageNums = document.querySelectorAll('#pageNums')
     pageNums.forEach((pageNum) => {
       if (parseInt(pageNum.innerText) === page) {
-        console.log(pageNum.innerText)
+        // console.log(pageNum.innerText)
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
@@ -173,7 +186,7 @@ const CSselfStudy = (prop) => {
       offset: page - 1,
       limit: limit,
     }
-    console.log(newStudyInfo)
+    // console.log(newStudyInfo)
     await changeStudyList(newStudyInfo)
     await setOffset(page-1)
   }
@@ -194,10 +207,11 @@ const CSselfStudy = (prop) => {
   const leftArrow = () => {
 
     if (nowpage > 0) {
+      playChangePageSound()
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'
@@ -218,12 +232,13 @@ const CSselfStudy = (prop) => {
 
   // 오른쪽 화살표 클릭
   const rightArrow = () => { 
-
+    
     if ((nowpage + 1) * 4 + 1 <= maxPage){
+      playChangePageSound()
       const pageNums = document.querySelectorAll('#pageNums')
       pageNums.forEach((pageNum, idx) => {
         if (idx === 0) {
-          console.log(pageNum.innerText)
+          // console.log(pageNum.innerText)
           pageNum.style.color = '#80b9ff'
         } else {
           pageNum.style.color = 'white'
@@ -250,7 +265,37 @@ const CSselfStudy = (prop) => {
     }
   }
 
+  // 효과음 gyrhkdma
+
+  const playChangePageSound = () => {
+    const sound = new Audio()
+    sound.src = changePageSound
+    sound.play()
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
   
+  const playBtnSimpleSound = () => {
+    const sound = new Audio()
+    sound.src = btnSimpleSound
+    sound.play()
+  }
+
+  const playShowMarkdownSound = () => {
+    const sound = new Audio()
+    sound.src = showMarkdownSound
+    sound.play()
+  }
 
   return (
     <>

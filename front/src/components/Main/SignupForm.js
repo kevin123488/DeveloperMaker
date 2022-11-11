@@ -7,7 +7,7 @@ const Form = styled.div`
   height: 50%;
   width: 100%;
   border: solid 1px;
-  border-color: rgba(0, 0, 0, 0.1);
+  border-color: pink;
   border-radius: 10%;
   align-items: center;
   justify-content: flex-start;
@@ -20,7 +20,7 @@ const Form = styled.div`
 const ContentArea = styled.div`
   width: 80%;
   height: 20%;
-  margin-top: 5%;
+  margin-top: 20%;
   display: flex;
   flex-direction: column;
 `;
@@ -38,16 +38,38 @@ const TitleObject = styled.p`
   text-align: center;
   display: flex;
   justify-content: flex-start;
+  width: max-content;
+  font-size: 2vw;
+  color: pink;
 `;
 const Input = styled.input`
   width: 100%;
+  padding: 0.2vh;
+  width: max-content;
+  font-size: 2vw;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
 `;
 const Select = styled.select`
   width: 100%;
+  padding: 0.2vh;
+  width: max-content;
+  font-size: 2vw;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
 `;
 const Button = styled.button`
   margin-top: 15%;
   width: 50%;
+  padding: 0.2vh;
+  width: max-content;
+  font-size: 2vw;
+  background-color: pink;
+  color: white;
+  border-radius: 5px;
+  border: 0px;
 `;
 
 export const SignupForm = () => {
