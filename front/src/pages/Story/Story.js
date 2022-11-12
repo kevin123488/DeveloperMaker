@@ -659,6 +659,9 @@ const Story = () => {
     // console.log(backgroundImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
+    console.log(scriptFile.current)
+    console.log(scriptIndex.current)
+    console.log(scriptFile.current[scriptIndex.current])
     console.log("이미지 파일 확인하자", backgroundImg.current, middleCharImg.current);
   }, []);
 
@@ -841,7 +844,7 @@ const Story = () => {
   const saveStorySelf = (n) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.slot = n;
-    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     setStoryObj(storyObjCopy); // 값 새로 세팅한 후 저장 ㄱ
     setSaveFinModalControler(true);
@@ -876,7 +879,7 @@ const Story = () => {
     storyObjCopy.likeSpring += spring;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     // 실험
-    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     // 실험끝
     console.log("서봄 호감도 갱신", storyObjCopy);
@@ -887,7 +890,7 @@ const Story = () => {
     storyObjCopy.likeSummer += summer;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     // 실험
-    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     // 실험끝
     setStoryObj(storyObjCopy);
@@ -897,7 +900,7 @@ const Story = () => {
     storyObjCopy.likeAutumn += autumn;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     // 실험
-    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     // 실험끝
     setStoryObj(storyObjCopy);
@@ -907,7 +910,7 @@ const Story = () => {
     storyObjCopy.likeWinter += winter;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
     // 실험
-    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     // 실험끝
     setStoryObj(storyObjCopy);
@@ -966,7 +969,7 @@ const Story = () => {
         changeIsQuestion(false)
         changeScript(scriptFile.current[scriptIndex.current].resultList[n].text)
         increaseIndex.current = scriptFile.current[scriptIndex.current].resultList[n].plusIndex
-        setSaveStoryIdx(scriptIndex.current + increaseIndex.current); // 현재 보고있는 인덱스 + 1 시점에서 로드 가능하도록
+        // setSaveStoryIdx(scriptIndex.current + increaseIndex.current); // 현재 보고있는 인덱스 + 1 시점에서 로드 가능하도록
         console.log(scriptIndex.current);
         console.log(increaseIndex.current);
         console.log(saveStoryIdx);
