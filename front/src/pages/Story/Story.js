@@ -175,7 +175,9 @@ const StoryPassAlert = styled.div`
   height: 6vh;
   width: 6vw;
   background-image: url(${storyGoAlert});
-  background-size: 6vw 6vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${StoryGoEffect} infinite 1s;
 `;
 
@@ -442,6 +444,7 @@ const StoryCharRight = styled.div`
 `;
 
 const StoryNonPassedModal = styled.div`
+  z-index: 25;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -548,7 +551,9 @@ const NowSlotPointer = styled.div`
   width: 3vw;
   height: 1.5vw;
   background-image: url(${nowSlot});
-  background-size: 3vw 1.5vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${PointerEffect} infinite 1s;
 `;
 
@@ -654,6 +659,9 @@ const Story = () => {
     // console.log(backgroundImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
+    console.log(scriptFile.current)
+    console.log(scriptIndex.current)
+    console.log(scriptFile.current[scriptIndex.current])
     console.log("이미지 파일 확인하자", backgroundImg.current, middleCharImg.current);
   }, []);
 
@@ -833,10 +841,18 @@ const Story = () => {
   }
 
   // 슬롯 변경 포함해서 저장하는 로직
+  // 자동저장은 ok
+  // 슬롯 선택 후 저장은 questionResult냐 아니냐에 따리 바뀌어야 할 듯
+  // questionResult 일 때 
   const saveStorySelf = (n) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.slot = n;
-    storyObjCopy.num = scriptIndex.current;
+    if (scriptFile.current[scriptIndex.current].scriptType === 'questionResult') {
+      console.log("여기선 increaseIndex 값을 반영하여 저장해야 함");
+      storyObjCopy.num = scriptIndex.current + increaseIndex.current; // questionResult 일 때
+    } else {
+      storyObjCopy.num = scriptIndex.current
+    }
     storyObjCopy.script = scriptFileName.current;
     setStoryObj(storyObjCopy); // 값 새로 세팅한 후 저장 ㄱ
     setSaveFinModalControler(true);
@@ -870,24 +886,41 @@ const Story = () => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSpring += spring;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
+    console.log("서봄 호감도 갱신", storyObjCopy);
     setStoryObj(storyObjCopy);
   }
   const storyObjSummer = (summer) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSummer += summer;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
   const storyObjAutumn = (autumn) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeAutumn += autumn;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
   const storyObjWinter = (winter) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeWinter += winter;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
 
@@ -902,7 +935,7 @@ const Story = () => {
 
   // 엔터키로 넘기기
   const enterGoNext = (e) => {
-    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion) {
+    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion && !selfStudyNonpassed) {
       console.log(e.key);
       nextScript();
     }
@@ -912,7 +945,7 @@ const Story = () => {
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);
-    }, 800);
+    }, 80);
     scriptIndex.current += increaseIndex.current;
     if (scriptFile.current[scriptIndex.current].storyTeller === "주인공") {
       storyTeller.current = nickname;
@@ -944,7 +977,7 @@ const Story = () => {
         changeIsQuestion(false)
         changeScript(scriptFile.current[scriptIndex.current].resultList[n].text)
         increaseIndex.current = scriptFile.current[scriptIndex.current].resultList[n].plusIndex
-        setSaveStoryIdx(scriptIndex.current + increaseIndex.current); // 현재 보고있는 인덱스 + 1 시점에서 로드 가능하도록
+        // setSaveStoryIdx(scriptIndex.current + increaseIndex.current); // 현재 보고있는 인덱스 + 1 시점에서 로드 가능하도록
         console.log(scriptIndex.current);
         console.log(increaseIndex.current);
         console.log(saveStoryIdx);
