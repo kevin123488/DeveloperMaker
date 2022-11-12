@@ -841,10 +841,18 @@ const Story = () => {
   }
 
   // 슬롯 변경 포함해서 저장하는 로직
+  // 자동저장은 ok
+  // 슬롯 선택 후 저장은 questionResult냐 아니냐에 따리 바뀌어야 할 듯
+  // questionResult 일 때 
   const saveStorySelf = (n) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.slot = n;
-    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    if (scriptFile.current[scriptIndex.current].scriptType === 'questionResult') {
+      console.log("여기선 increaseIndex 값을 반영하여 저장해야 함");
+      storyObjCopy.num = scriptIndex.current + increaseIndex.current; // questionResult 일 때
+    } else {
+      storyObjCopy.num = scriptIndex.current
+    }
     storyObjCopy.script = scriptFileName.current;
     setStoryObj(storyObjCopy); // 값 새로 세팅한 후 저장 ㄱ
     setSaveFinModalControler(true);
