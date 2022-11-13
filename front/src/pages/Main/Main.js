@@ -8,6 +8,7 @@ import MainLogo from "../../asset/images/Main/developermakerLogo.png";
 import styled from "styled-components";
 import { useEffect } from "react";
 import mainBGM from "../../asset/soundEffects/mainBGM.mp3";
+import mainTheme from "../../asset/soundEffects/Running_in_the_Sky.mp3";
 
 
 // const Title = Styled.p`
@@ -57,7 +58,7 @@ const Main = () => {
     console.log(BGM.played.length)
     if (BGM.innerText !== 'mainBGM'){
       BGM.innerText = 'mainBGM'
-      BGM.src = mainBGM
+      BGM.src = mainTheme
     }
     if (BGM.played.length === 0) {
       // BGM.muted = true;
