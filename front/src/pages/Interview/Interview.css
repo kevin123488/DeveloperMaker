@@ -174,11 +174,10 @@
   position: absolute;
   top: 10vh;
   left: 5vw;
-  width: 30vw;
+  width: 20vw;
   border: 2px double black;
 }
 .interviewFaceCheckInfo {
-  position: absolute;
   left: 5vw;
   width: 30vw;
   bottom: 5vh;

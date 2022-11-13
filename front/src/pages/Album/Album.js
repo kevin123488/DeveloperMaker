@@ -122,7 +122,7 @@ const Album = () => {
   return (
     <div className="albumBack">
       <img src="" alt="" />
-      <p onClick={()=>{ putAlbum(33)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
+      <p onClick={()=>{ putAlbum(4)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
       <div className="albumModeSel">
         <div>
           {newStory && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (!selType ? " albumBtnSel" : "")}/>}
