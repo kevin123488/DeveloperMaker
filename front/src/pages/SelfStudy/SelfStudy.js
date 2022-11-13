@@ -29,6 +29,8 @@ import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 import mainBGM_v1 from "../../asset/soundEffects/mainBGM_v1.mp3";
+import rightAnswer from "../../asset/soundEffects/Selfstudy/rightAnswer.wav";
+import wrongAnswer from "../../asset/soundEffects/Selfstudy/wrongAnswer.wav";
 
 
 const Type = styled.div`
@@ -211,8 +213,17 @@ const Quiz = () => {
     await setNowpage(0)
     await setSubject(info.subject)
     await changeQuizList(newQuizInfo)
-    const pageNum = document.getElementById('pageNums')
-    pageNum.style.color = '#80b9ff'
+
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum, idx) => {
+
+      // console.log(pageNum)
+      if (idx === 0) {
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
   }
 
   // 페이지 변경하는 함수
@@ -377,23 +388,30 @@ const Quiz = () => {
         setIsShowNpcBalloon(false)
       }, 2000)
       // window.location.reload();
+
+      // 정오답 소리
+      if (solveResult.payload.result) {
+        playRightAnswer()
+      } else {
+        playWrongAnswer()
+      }
+
+      // 프로그래스가 분기를 넘었는지 판별
+      await dispatch(getSelfStudyProgress())
+      const solveCategory = quizInfo[category].category.toLowerCase()
+      const progressPer = parseInt(progress[solveCategory] / 25)
+      // console.log(progressPer)
+      if (progressPer !== 0) {
+        const checkAlbumNum = category * 4
+        checkAlbum(checkAlbumNum)
+      }
+
     } else {
       setNpcBalloonContent("정답을 체크해줘")
       setIsShowNpcBalloon(true)
       setTimeout(() => {
       setIsShowNpcBalloon(false)
       }, 2000)
-    }
-
-
-    // 프로그래스가 분기를 넘었는지 판별
-    await dispatch(getSelfStudyProgress())
-    const solveCategory = quizInfo[category].category.toLowerCase()
-    const progressPer = parseInt(progress[solveCategory] / 25)
-    // console.log(progressPer)
-    if (progressPer !== 0) {
-      const checkAlbumNum = category * 4
-      checkAlbum(checkAlbumNum)
     }
   }
 
@@ -501,6 +519,7 @@ const Quiz = () => {
   }
 
   const closeAlgo = () => {
+    playBtnSimpleSound()
     setIsShowingAlgo(false)
   }
 
@@ -514,6 +533,13 @@ const Quiz = () => {
     setTimeout(() => {
     setIsShowNpcBalloon(false)
     }, 2000)
+
+    // 정오답 소리
+    if (solveResult.payload.pass) {
+      playRightAnswer()
+    } else {
+      playWrongAnswer()
+    }
 
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
@@ -590,6 +616,18 @@ const Quiz = () => {
   const playShowMarkdownSound = () => {
     const sound = new Audio()
     sound.src = showMarkdownSound
+    sound.play()
+  }
+
+  const playRightAnswer = () => {
+    const sound = new Audio()
+    sound.src = rightAnswer
+    sound.play()
+  }
+
+  const playWrongAnswer = () => {
+    const sound = new Audio()
+    sound.src = wrongAnswer
     sound.play()
   }
   

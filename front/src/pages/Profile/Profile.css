@@ -33,9 +33,10 @@
   /* 중앙정렬 */
   margin: auto;
   margin-top: 2vh;
+  margin-bottom: 2vh;
   display: block;
-  width: 20vw;
-  height: 20vw * 0.2;
+  width: 17vw;
+  height: 17vw * 0.2;
 }
 .ProfileUserInfoImg {
   /* 중앙정렬 */

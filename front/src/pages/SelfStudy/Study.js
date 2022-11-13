@@ -164,6 +164,17 @@ const CSselfStudy = (prop) => {
     await setNowpage(0)
     await setSubject(info.subject)
     await changeStudyList(newStudyInfo)
+
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum, idx) => {
+
+      // console.log(pageNum)
+      if (idx === 0) {
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
   }
 
   // 페이지 변경하는 함수
