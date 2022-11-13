@@ -21,6 +21,9 @@ import "./index.css"
 // BGM
 import mainBGM from "./asset/soundEffects/mainBGM.mp3";
 import mainBGM_v1 from "./asset/soundEffects/mainBGM_v1.mp3";
+import mainTheme from "./asset/soundEffects/Running_in_the_Sky.mp3";
+import gameLoadTheme from "./asset/soundEffects/Lovely_Wind.mp3";
+import albumTheme from "./asset/soundEffects/Under_the_Sky.mp3";
 import { useEffect } from "react";
 
 
@@ -85,10 +88,20 @@ function App() {
     mainBGM.src = mainBGM_v1
   }
 
+  const playGameLoadBGM = () => {
+    const mainBGM = document.getElementById('mainBGM')
+    mainBGM.src = gameLoadTheme
+  }
+
+  const playAlbumBGM = () => {
+    const mainBGM = document.getElementById('mainBGM')
+    mainBGM.src = albumTheme
+  }
+
   return (
     <div>
       <audio 
-      src={mainBGM} loop={true} autoPlay={true} id="mainBGM" 
+      src={mainTheme} loop={true} autoPlay={true} id="mainBGM" 
       style={{
         position: "absolute",
         zIndex: '2000',
@@ -104,10 +117,10 @@ function App() {
         <CSSTransition key={location.key} classNames="pageSlider" timeout={500}>
           <Routes style={{ backgroundColor: "black", position: "relative" }} location={location}>
             <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/" element={<Main />} />
-            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
+            <Route onChange={playGameLoadBGM} style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
             <Route onChange={playSelfstudyBGM} style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
             <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/SelfStudy/study" element={<Study />} />
-            <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album" element={<Album />} />
+            <Route onChange={playAlbumBGM} style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album" element={<Album />} />
             <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Story" element={<Story />} />
             <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Interview" element={<Interview />}/>
             <Route style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
