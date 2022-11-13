@@ -29,6 +29,8 @@ import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 import mainBGM_v1 from "../../asset/soundEffects/mainBGM_v1.mp3";
+import rightAnswer from "../../asset/soundEffects/Selfstudy/rightAnswer.wav";
+import wrongAnswer from "../../asset/soundEffects/Selfstudy/wrongAnswer.wav";
 
 
 const Type = styled.div`
@@ -370,6 +372,11 @@ const Quiz = () => {
       }
       // console.log('풀이결과', solveResult.payload)
       // console.log("채점결과", solveResult.payload)
+      if (solveResult.payload.result) {
+        playRightAnswer()
+      } else if (!solveResult.payload.result) {
+        playWrongAnswer()
+      }
       dispatch(getQuizList(newQuizInfo))
       setNpcBalloonContent(solveResult.payload.answer)
       setIsShowNpcBalloon(true)
@@ -515,6 +522,12 @@ const Quiz = () => {
     setIsShowNpcBalloon(false)
     }, 2000)
 
+    if (solveResult.payload.pass) {
+      playRightAnswer()
+    } else if (!solveResult.payload.pass) {
+      playWrongAnswer()
+    }
+
     // 프로그래스가 분기를 넘었는지 판별
     await dispatch(getSelfStudyProgress())
     const solveCategory = quizInfo[category].category.toLowerCase()
@@ -592,6 +605,18 @@ const Quiz = () => {
     sound.src = showMarkdownSound
     sound.play()
   }
+
+  const playRightAnswer = () => {
+    const sound = new Audio()
+    sound.src = rightAnswer
+    sound.play()
+  }
+
+  const playWrongAnswer= () => {
+    const sound = new Audio()
+    sound.src = wrongAnswer
+    sound.play()
+  }
   
   return (
     <>
@@ -600,7 +625,7 @@ const Quiz = () => {
         {
           !showWork?
           <div>
-            <div className="infoAlarm">분야를 선택해주세요! (이거 디자인 고민좀)</div>
+            <div className="infoAlarm">분야를 선택해주세요!</div>
             <div className="interviewTestBtn" onClick={goInterviewTest}></div>
           </div>
           : null
@@ -749,13 +774,16 @@ const Quiz = () => {
               ? 
               <div className="showingMarkdown">
                 <div onClick={closeQuiz} className="CloseQuiz">X</div>
-                {showingQuiz.problem}
+                <div className="quizProblem">
+                  {showingQuiz.problem}
+                  <hr />
+                </div>
                 <br/>
-                <div className="form-radio-wrap">
-                    <p id="quizCheckBox" className="form-sub-title">선택지: </p>
+                <div className="">
+                    {/* <p id="quizCheckBox" className="">선택지: </p> */}
                       {showingQuiz.example.map((example, index) => (
-                        <div key={index} className="col-3">
-                          <span className="form-inline"><input onClick={checkAnswer.bind(null, example)} type="radio" className="input-radio" name="quizRadio" id={index}/><label htmlFor={index} className="form-radio">{example}</label></span>
+                        <div key={index} className="">
+                          <span className=""><input onClick={checkAnswer.bind(null, example)} type="radio" className="input-radio" name="quizRadio" id={index}/><label htmlFor={index} className="form-radio">{example}</label></span>
                         </div>
                       ))}
                 </div>
