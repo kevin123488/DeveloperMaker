@@ -31,6 +31,8 @@ import likeValueIcon from "./likeValueIcon.png";
 import checkLikeTitle from "./checkLikeTitle.png";
 import GetAlbum from "../../components/Album/GetAlbum";
 import nowSlot from "./nowSlot.png";
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
 
 const StoryKeyFrame = keyframes`
   0% {
@@ -826,17 +828,21 @@ const Story = () => {
 
   // 저장 버튼 누르면 슬롯 선택창 띄워야 함
   const openSaveSlot = () => {
+    playBtnCuteSound();
     setOpenSlotSelector(!openSlotSelector); // 모달 여닫이
   }
 
   // 저장 버튼 로직
   const saveStory1 = () => {
+    playBtnCuteSound();
     saveStorySelf(1);
   }
   const saveStory2 = () => {
+    playBtnCuteSound();
     saveStorySelf(2);
   }
   const saveStory3 = () => {
+    playBtnCuteSound();
     saveStorySelf(3);
   }
 
@@ -862,11 +868,13 @@ const Story = () => {
   }
 
   const goHome = () => {
+    playBtnSound();
     navigate("/");
     console.log("홈으로 가는 중입니다.");
   }
 
   const goSlot = () => {
+    playBtnSound();
     navigate("/Game");
   }
 
@@ -928,6 +936,7 @@ const Story = () => {
 
   // 호감도 수치 보여주는 부분 관리하는 함수
   const getLikeValue = () => {
+    playBtnCuteSound();
     console.log(story[slotIndex-1].likeAutumn);
     dispatch(userGetMemory());
     setOpenLikeValue(!openLikeValue);
@@ -941,7 +950,21 @@ const Story = () => {
     }
   };
 
+  // 효과음 함수
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
+
   function nextScript(n) {
+    playBtnCuteSound();
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);

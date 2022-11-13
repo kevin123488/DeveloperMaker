@@ -15,7 +15,7 @@ import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
 import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
-
+import albumTheme from "../../asset/soundEffects/Under_the_Sky.mp3";
 
 const Album = () => {
   const dispatch = useDispatch()
@@ -55,6 +55,11 @@ const Album = () => {
 
   // 페이지 렌더링 시 1회 실행(앨범 받기 + 앨범 진행도)
   useEffect(()=>{
+    const BGM = document.getElementById('mainBGM');
+    if (BGM.innerText !== 'albumBGM') {
+      BGM.innerText = 'albumBGM';
+      BGM.src = albumTheme;
+    }
       dispatch(readAlbum());
       dispatch(getAlbumProgress())
   }, [dispatch]);
