@@ -64,7 +64,7 @@ const LikeChart = (props) =>{
         <div className="ProfileLikeChart">
           <p className="ProfileLikeTitle">{data.slot}번 슬롯 호감도</p>
           <div className="ProfileLikeChartsize">
-            <Bar data={likeData} options={config}  />
+            <Bar data={likeData} options={config} className="Bar" />
           </div>  
         </div>
       )
