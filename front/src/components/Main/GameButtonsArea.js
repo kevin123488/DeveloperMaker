@@ -69,7 +69,8 @@ const GameBtn = Styled.div`
 
 const NewAlbum = Styled.img`
   position: absolute;
-  height: 3vw;
+  margin-left: 3vw;
+  height: 2.5vw;
   width: 3vw;
 `;
 

@@ -175,7 +175,9 @@ const StoryPassAlert = styled.div`
   height: 6vh;
   width: 6vw;
   background-image: url(${storyGoAlert});
-  background-size: 6vw 6vh;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${StoryGoEffect} infinite 1s;
 `;
 
@@ -442,6 +444,7 @@ const StoryCharRight = styled.div`
 `;
 
 const StoryNonPassedModal = styled.div`
+  z-index: 25;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -548,7 +551,9 @@ const NowSlotPointer = styled.div`
   width: 3vw;
   height: 1.5vw;
   background-image: url(${nowSlot});
-  background-size: 3vw 1.5vw;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: ${PointerEffect} infinite 1s;
 `;
 
@@ -870,24 +875,41 @@ const Story = () => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSpring += spring;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
+    console.log("서봄 호감도 갱신", storyObjCopy);
     setStoryObj(storyObjCopy);
   }
   const storyObjSummer = (summer) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeSummer += summer;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
   const storyObjAutumn = (autumn) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeAutumn += autumn;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
   const storyObjWinter = (winter) => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.likeWinter += winter;
     storyObjCopy.slot = slotIndex; // 자동저장하는 슬롯은 선택한 슬롯이어야 함
+    // 실험
+    storyObjCopy.num = scriptIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    // 실험끝
     setStoryObj(storyObjCopy);
   }
 
@@ -902,7 +924,7 @@ const Story = () => {
 
   // 엔터키로 넘기기
   const enterGoNext = (e) => {
-    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion) {
+    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion && !selfStudyNonpassed) {
       console.log(e.key);
       nextScript();
     }
@@ -912,7 +934,7 @@ const Story = () => {
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);
-    }, 800);
+    }, 80);
     scriptIndex.current += increaseIndex.current;
     if (scriptFile.current[scriptIndex.current].storyTeller === "주인공") {
       storyTeller.current = nickname;
