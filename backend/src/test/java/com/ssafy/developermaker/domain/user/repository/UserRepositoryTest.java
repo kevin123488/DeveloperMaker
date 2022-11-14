@@ -1,6 +1,5 @@
 package com.ssafy.developermaker.domain.user.repository;
 
-import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
@@ -36,7 +35,7 @@ class UserRepositoryTest {
         entityInformation = JpaEntityInformationSupport.getEntityInformation(User.class, entityManager);
     }
 
-    private static final User userA = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO, null, null);
+    private static final User userA = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Language.JAVA, LoginType.KAKAO, null, null,null, null,null);
 
     @Test
     public void UserRepository가Null이아니다() {
@@ -45,7 +44,7 @@ class UserRepositoryTest {
 
     @Test
     public void 유저저장테스트() {
-        User userTest = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO, null, null);
+        User userTest = new User(1L, "test@naver.com-NAVER", "socialId", "유저A", Language.JAVA, LoginType.KAKAO,  null, null,null, null,null);
         System.out.println("비영속 상태인가?? : " + entityInformation.isNew(userTest));
         System.out.println("아이디는 ? :" + userTest.getUserId());
         User user = userRepository.save(userTest);
