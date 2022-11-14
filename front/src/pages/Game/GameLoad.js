@@ -18,6 +18,13 @@ import "./GameLoad.css";
 import gameloadBook from "./gameloadBook.png";
 import deleteSlot from "./deleteSlot.png";
 
+// 효과음 
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
+import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
+import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
+import gameloadTheme from "../../asset/soundEffects/Lovely_Wind.mp3";
+
 // const GameLoadHeader = styled.div`
 //   width: 100%;
 //   height: 15%;
@@ -223,6 +230,19 @@ const GameLoadSlots = styled.div`
   height: 90vh;
 `;
 
+const SlotAppearEffect = keyframes`
+  from {
+    opacity: 0;
+    position: absolute;
+    top: 0%;
+  }
+  to {
+    opacity: 1;
+    position: absolute;
+    top: 60%;
+  }
+`;
+
 const GameLoadSlot1 = styled.div`
   cursor: pointer;
   position: absolute;
@@ -237,6 +257,7 @@ const GameLoadSlot1 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 0.4s;
   opacity: 0.9;
   &:hover {
     z-index: 30;
@@ -265,6 +286,7 @@ const GameLoadSlot2 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 0.8s;
   opacity: 0.9;
   &:hover {
     z-index: 30;
@@ -293,6 +315,7 @@ const GameLoadSlot3 = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  animation: ${SlotAppearEffect} 1.2s;
   opacity: 0.9;
   object-fit: contain;
   &:hover {
@@ -341,9 +364,10 @@ const GameLoad = () => {
   const dispatch = useDispatch();
   // dispatch를 쓰기 위해 dispatch를 선언해주어야 함
   const backBtnhandler = () => {
+    playBtnSound();
     setTimeout(() => {
       navigate("/");
-    }, 200);
+    }, 100);
   };
 
   // 스토리 슬롯 hover시 진행도 보여주는 부분 관리
@@ -368,16 +392,19 @@ const GameLoad = () => {
 
   // 스토리 시작하는 함수
   const startStory1 = () => {
+    playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 1});
     // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory2 = () => {
+    playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 2});
     // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory3 = () => {
+    playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 3});
     // console.log("왜 스토리로 넘어가짐?")
@@ -385,9 +412,11 @@ const GameLoad = () => {
 
   // 슬롯 데이터 삭제 로직
   const openDeleteModal = () => {
+    playBtnCuteSound();
     setDeleteModalOpen(!deleteModalOpen);
   };
   const deleteSlot1 = async () => {
+    playBtnCuteSound();
     let slotCopy = {
       "chapter": 1,
       "likeAutumn": 0,
@@ -407,6 +436,7 @@ const GameLoad = () => {
     }, 500);
   }
   const deleteSlot2 = async () => {
+    playBtnCuteSound();
     let slotCopy = {
       "chapter": 1,
       "likeAutumn": 0,
@@ -426,6 +456,7 @@ const GameLoad = () => {
     }, 500);
   }
   const deleteSlot3 = async () => {
+    playBtnCuteSound();
     let slotCopy = {
       "chapter": 1,
       "likeAutumn": 0,
@@ -445,7 +476,28 @@ const GameLoad = () => {
     }, 500);
   }
 
+  // 효과음 실행 함수
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
+  }
+
+  const playBtnCuteSound = () => {
+    const sound = new Audio()
+    sound.src = btnCuteSound
+    sound.play()
+  }
+
   useEffect(() => {
+    const BGM = document.getElementById('mainBGM');
+    if (BGM.innerText !== 'gameloadBGM') {
+      BGM.innerText = 'gameloadBGM';
+      BGM.src = null;
+      setTimeout(() => {
+        BGM.src = gameloadTheme; // 이 노래는 틀자마자 나와서 타이머 살짝 걸어주는게 좋을 것 같음
+      }, 1500);
+    }
     // dispatch(userGetMemory());
     // console.log(storySlots);
     const dispatchUserMemory = async () => {

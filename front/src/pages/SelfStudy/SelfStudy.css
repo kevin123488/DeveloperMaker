@@ -358,6 +358,41 @@
   animation: hidex 0.2s;
 }
 
+.prevProblem {
+  position: absolute;
+  text-align: center;
+  top: 70vh;
+  font-size: 2vw;
+  left: 11vw;
+  height: 2vw;
+  width: 10vw;
+  background-color: white;
+  cursor: pointer;
+  animation: hidex 0.2s;
+  transition: all ease 0.1s;
+}
+.prevProblem:hover {
+  transform: scale(1.1);
+}
+
+.nextProblem {
+  position: absolute;
+  text-align: center;
+  top: 70vh;
+  font-size: 2vw;
+  right: 11vw;
+  height: 2vw;
+  width: 10vw;
+  background-color: white;
+  cursor: pointer;
+  animation: hidex 0.2s;
+  transition: all ease 0.1s;
+}
+.nextProblem:hover {
+  transform: scale(1.1);
+}
+
+
 .form-chek, .form-radio{display: inline-block; line-height: 20px; vertical-align: middle;}
 .form-chek::before, .form-radio::before{content: ""; display: inline-block; width: 10px; height: 10px; background: #ffffff; border: 1px solid #e0e0e0; margin-right: 8px;}
 .form-radio::before{border-radius: 50%;}
@@ -503,7 +538,7 @@
   position: absolute;
   width: 25vw;
   height: 80vh;
-  top: 32vh;
+  top: 33vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
   background-size: contain;
@@ -725,6 +760,12 @@
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.2s;
+}
+.quizSubmit:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
 }
 
 .quizProblem {
@@ -760,7 +801,7 @@
   /* line-height: 20vh; */
   align-items: center;
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: #80b9ff;
   z-index: 1200;
 }
@@ -938,6 +979,12 @@
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.15s;
+}
+.algoSubmitBtn:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
 }
 .algoRunBtn{
   position: absolute;
@@ -952,6 +999,12 @@
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.15s;
+}
+.algoRunBtn:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
 }
 
 

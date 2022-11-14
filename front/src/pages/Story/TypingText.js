@@ -6,6 +6,7 @@ const Typo = ({scriptText}) => {
     const [currentText, setCurrentText] = useState('');
     
     useEffect(() => {
+        console.log(scriptText)
         index.current = 0;
         setCurrentText('');
     }, [scriptText])

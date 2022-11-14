@@ -39,10 +39,10 @@ const Type = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5vw;
+  font-size: 1.8vw;
   color: #80b9ff;
   vertical-align: center;
-  margin-bottom: 1.5vw;
+  margin-bottom: 1vw;
   height: 7vw;
   width: 20vw;
   z-index: 1;
@@ -124,6 +124,7 @@ const Quiz = () => {
   // const location = useLocation()
   const [isSelectedCategory, setIsSelectedCategory] = useState(false)
   const [showingQuiz, setShowingQuiz] = useState('')
+  const [showingQuizIdx, setShowingQuizIdx] = useState(0)
   const [isShowQuiz, setIsShowQuiz] = useState(false)
   const [isShowQuizProblem, setIsShowQuizProblem] = useState(false)
   const [IsShowStudy, setIsShowStudy] = useState(false)
@@ -149,6 +150,18 @@ const Quiz = () => {
       setPages(pages)
     }
   }, [maxPage])
+
+  // 프로그래스 바뀌면 엘범 체크하는 부분
+  useEffect(() => {
+    const solveCategory = quizInfo[category].category.toLowerCase()
+    console.log('풀고나서 받은 프로그래스', progress[solveCategory])
+    const progressPer = parseInt(progress[solveCategory] / 25)
+    if (progressPer) {
+      const checkAlbumNum = category * 4 + progressPer
+      console.log('확인할 엘범 번호', checkAlbumNum)
+      checkAlbum(checkAlbumNum)
+    }
+  }, [progress])
 
   // 카테고리 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeCategory = async (pageInfo) => {
@@ -184,10 +197,17 @@ const Quiz = () => {
     // console.log("categoryballoon", categoryballoon)
     categoryballoon.style.display = 'none'
 
+    setNpcBalloonContent(pageInfo.text)
     setTimeout(() => {
       setShowWork(true)
       setShowWorkChoice(true)
-    }, 200)
+
+      // 선택시 대사
+      setIsShowNpcBalloon(true)
+    //   setTimeout(() => {
+    //     setIsShowNpcBalloon(false)
+    // }, 3000)
+    }, 500)
     setIsShowQuizProblem(false)
     setIsShowingAlgo(false)
     changeQuizList(newQuizInfo)
@@ -213,8 +233,17 @@ const Quiz = () => {
     await setNowpage(0)
     await setSubject(info.subject)
     await changeQuizList(newQuizInfo)
-    const pageNum = document.getElementById('pageNums')
-    pageNum.style.color = '#80b9ff'
+
+    const pageNums = document.querySelectorAll('#pageNums')
+    pageNums.forEach((pageNum, idx) => {
+
+      // console.log(pageNum)
+      if (idx === 0) {
+        pageNum.style.color = '#80b9ff'
+      } else {
+        pageNum.style.color = 'white'
+      }
+    })
   }
 
   // 페이지 변경하는 함수
@@ -336,12 +365,13 @@ const Quiz = () => {
       // navigate('/SelfStudy/algo', )
       setOutputValue('')
       setIsShowingAlgo(true)
-      setShowingAlgo(quiz)
+      setShowingAlgo(quiz.quiz)
       // console.log('알고문제', quiz)
     }
     else {
       // console.log("퀴즈누름", quiz)
-      setShowingQuiz(quiz)
+      setShowingQuiz(quiz.quiz)
+      setShowingQuizIdx(quiz.idx)
       setIsShowQuizProblem(true)
       const checkboxes = document.getElementsByName('quizRadio');
       // 체크박스 목록을 순회하며 checked 값을 초기화
@@ -384,23 +414,33 @@ const Quiz = () => {
         setIsShowNpcBalloon(false)
       }, 2000)
       // window.location.reload();
+
+      // 정오답 소리
+      if (solveResult.payload.result) {
+        playRightAnswer()
+
+        // 프로그래스가 분기를 넘었는지 판별
+        await dispatch(getSelfStudyProgress())
+        // const solveCategory = quizInfo[category].category.toLowerCase()
+        // console.log('풀고나서 받은 프로그래스', progress[solveCategory])
+        // const progressPer = parseInt(progress[solveCategory] / 25)
+        // // console.log(progressPer)
+        // if (progressPer !== 0) {
+        //   const checkAlbumNum = category * 4
+        //   console.log('확인할 엘범 번호', checkAlbumNum)
+        //   checkAlbum(checkAlbumNum)
+        // }
+      } else {
+        playWrongAnswer()
+      }
+
+
     } else {
       setNpcBalloonContent("정답을 체크해줘")
       setIsShowNpcBalloon(true)
       setTimeout(() => {
       setIsShowNpcBalloon(false)
       }, 2000)
-    }
-
-
-    // 프로그래스가 분기를 넘었는지 판별
-    await dispatch(getSelfStudyProgress())
-    const solveCategory = quizInfo[category].category.toLowerCase()
-    const progressPer = parseInt(progress[solveCategory] / 25)
-    // console.log(progressPer)
-    if (progressPer !== 0) {
-      const checkAlbumNum = category * 4
-      checkAlbum(checkAlbumNum)
     }
   }
 
@@ -409,15 +449,20 @@ const Quiz = () => {
     setIsShowQuizProblem(false)
   }
 
-  const showCategory = (category) => {
-    const categoryDiv = document.getElementById(category)
+  const showCategory = (info) => {
+    const categoryDiv = document.getElementById(info.category)
     categoryDiv.style.opacity = '1'
-    // categoryDiv.style.display = 'block'z
+    // console.log(categoryDiv.style.children[0].fontSize)
+    categoryDiv.children[0].fontSize = "1vw"
+    categoryDiv.children[0].innerText = `${info.text}`
+    categoryDiv.children[0].fontSize = "1vw"
+    // categoryDiv.style.display = 'block'
   }
 
-  const hideCategory = (category) => {
-    const categoryDiv = document.getElementById(category)
+  const hideCategory = (info) => {
+    const categoryDiv = document.getElementById(info.category)
     categoryDiv.style.opacity = '0.6'
+    categoryDiv.children[0].innerText = `${info.text}`
     // categoryDiv.style.display = 'none'
   }
 
@@ -427,6 +472,7 @@ const Quiz = () => {
 
   // 과목선택부분으로 돌리는 함수
   const resetCategory = () => {
+    setIsShowNpcBalloon(false)
     playBtnSound()
     // 선택한 카테고리 캐릭터 이동하는 함수
     const characterList = ['spring', 'fall', 'summer', 'winter', 'hero',]
@@ -453,14 +499,14 @@ const Quiz = () => {
     playBtnSound()
     setTimeout(() => {
       navigate('/')
-    }, 200)
+    }, 100)
   }
 
   const goInterviewTest = () => {
     playBtnSound()
     setTimeout(() => {
       navigate('/Interview')
-    }, 200)
+    }, 100)
   }
 
   // 스터디, 퀴즈 골랐을 때 실행될 함수
@@ -508,6 +554,7 @@ const Quiz = () => {
   }
 
   const closeAlgo = () => {
+    playBtnSimpleSound()
     setIsShowingAlgo(false)
   }
 
@@ -522,20 +569,22 @@ const Quiz = () => {
     setIsShowNpcBalloon(false)
     }, 2000)
 
+    // 정오답 소리
     if (solveResult.payload.pass) {
       playRightAnswer()
-    } else if (!solveResult.payload.pass) {
+
+      // 프로그래스가 분기를 넘었는지 판별
+      await dispatch(getSelfStudyProgress())
+      const solveCategory = quizInfo[category].category.toLowerCase()
+      const progressPer = parseInt(progress[solveCategory] / 25)
+      if (progressPer !== 0) {
+        const checkAlbumNum = category * 4
+        checkAlbum(checkAlbumNum)
+      }
+    } else {
       playWrongAnswer()
     }
 
-    // 프로그래스가 분기를 넘었는지 판별
-    await dispatch(getSelfStudyProgress())
-    const solveCategory = quizInfo[category].category.toLowerCase()
-    const progressPer = parseInt(progress[solveCategory] / 25)
-    if (progressPer !== 0) {
-      const checkAlbumNum = category * 4
-      checkAlbum(checkAlbumNum)
-    }
   }
 
   // 코드 테스트 요청
@@ -567,8 +616,8 @@ const Quiz = () => {
 
   // 체크할 엘범 번호 받아서 체크하고 띄워주는 함수
   const checkAlbum = ((checkAlbumNum) => {
+    console.log('체크엘범 번호', checkAlbumNum)
     putAlbum(checkAlbumNum)
-    // console.log('체크엘범 번호', checkAlbumNum)
   })
 
 
@@ -612,12 +661,38 @@ const Quiz = () => {
     sound.play()
   }
 
-  const playWrongAnswer= () => {
+  const playWrongAnswer = () => {
     const sound = new Audio()
     sound.src = wrongAnswer
     sound.play()
   }
+
+  // 다음, 이전 문제로 가기
+  const prevProblem = () => {
+    if (showingQuiz)
+    setShowingQuiz(quizList[showingQuizIdx - 1])
+    setShowingQuizIdx(showingQuizIdx - 1)
+
+    const checkboxes = document.getElementsByName('quizRadio');
+    // 체크박스 목록을 순회하며 checked 값을 초기화
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    })
+    setCheckedAnswer(null)
+  }
   
+  const nextProblem = () => {
+    setShowingQuiz(quizList[showingQuizIdx + 1])
+    setShowingQuizIdx(showingQuizIdx + 1)
+
+    const checkboxes = document.getElementsByName('quizRadio');
+    // 체크박스 목록을 순회하며 checked 값을 초기화
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    })
+    setCheckedAnswer(null)
+  }
+
   return (
     <>
       <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="CsStudyBackground">
@@ -641,11 +716,11 @@ const Quiz = () => {
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
-        <div id="spring" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected",}); moveSDchractor('springCS') }}} onMouseOver={showCategory.bind(null, 'springCS')} onMouseOut={hideCategory.bind(null, 'springCS')} className="spring"></div>
-        <div id="fall" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected",}); moveSDchractor('fallAlgo') }}} onMouseOver={showCategory.bind(null, 'fallAlgo')} onMouseOut={hideCategory.bind(null, 'fallAlgo')} className="fall"></div>
-        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, 'summerBack')} onMouseOut={hideCategory.bind(null, 'summerBack')} className="summer"></div>
-        <div id="winter" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected",}) ; moveSDchractor('winterFront') }}} onMouseOver={showCategory.bind(null, 'winterFront')} onMouseOut={hideCategory.bind(null, 'winterFront')} className="winter"></div>
-        <div id="hero" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected",}) ; moveSDchractor('heroLang') }}} onMouseOver={showCategory.bind(null, 'heroLang')} onMouseOut={hideCategory.bind(null, 'heroLang')} className="hero"></div>
+        <div id="spring" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('springCS') }}} onMouseOver={showCategory.bind(null, { category: 'springCS', text: "역시 CS가 중요하지!"})} onMouseOut={hideCategory.bind(null, { category: 'springCS', text: "CS"})} className="spring"></div>
+        <div id="fall" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('fallAlgo') }}} onMouseOver={showCategory.bind(null, { category: 'fallAlgo', text: "알고리즘 좋아해..?"})} onMouseOut={hideCategory.bind(null, { category: 'fallAlgo', text: "알고리즘"})} className="fall"></div>
+        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, { category: 'summerBack', text: "프론트에 관심이 많구나!"})} onMouseOut={hideCategory.bind(null, { category: 'summerBack', text: "프론트앤드"})} className="summer"></div>
+        <div id="winter" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('winterFront') }}} onMouseOver={showCategory.bind(null, { category: 'winterFront', text: "백앤드 공부할래?"})} onMouseOut={hideCategory.bind(null, { category: 'winterFront', text: "백앤드"})} className="winter"></div>
+        <div id="hero" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('heroLang') }}} onMouseOver={showCategory.bind(null, { category: 'heroLang', text: "기본부터 다지자!"})} onMouseOut={hideCategory.bind(null, { category: 'heroLang', text: "프로그래밍언어"})} className="hero"></div>
         <br />
         <br />
         <br />
@@ -747,7 +822,7 @@ const Quiz = () => {
             <div className="studyItems container">
               <div className="popup">
                 {quizList.map((quiz, index) => (
-                  <div key={index} className={"quizHover quizcomp"} onClick={showQuiz.bind(null, quiz)}>
+                  <div key={index} className={"quizHover quizcomp"} onClick={showQuiz.bind(null, {quiz: quiz, idx: index,})}>
                     <p className="quizTitle">
                       {quiz.title}
                     </p> 
@@ -788,6 +863,16 @@ const Quiz = () => {
                       ))}
                 </div>
                 <div className="quizSubmit" onClick={solveQuiz}>제출</div>
+                {
+                  showingQuizIdx !== 0 ?
+                  <div className="prevProblem" onClick={prevProblem}>{'<'}이전문제</div>
+                  : null
+                }
+                {
+                  showingQuizIdx !== quizList.length - 1 ?
+                  <div className="nextProblem" onClick={nextProblem}>다음문제{'>'}</div>
+                  : null
+                }
               </div>
 
               : null

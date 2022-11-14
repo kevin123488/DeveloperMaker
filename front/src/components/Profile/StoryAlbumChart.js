@@ -14,7 +14,7 @@ const StoryAlbumChart = () =>{
       {
         data: [progress, 100-progress],
         // [data[1], data[0]]
-        backgroundColor: ["#003B95", "#F2F7FF"],
+        backgroundColor: ["#d04e4e", "#F2F7FF"],
       },
     ],
   };
