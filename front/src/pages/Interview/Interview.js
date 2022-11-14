@@ -1,12 +1,12 @@
 import React, {useState, useRef, useCallback, useEffect} from "react";
 import "./Interview.css";
+import Check from "../../components/Interview/Check";
 import Webcam from "react-webcam";
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
-import Interviewer1 from "../../asset/images/Interview/Interviewer1.png"
-import Interviewer2 from "../../asset/images/Interview/Interviewer2.png"
-import Interviewer3 from "../../asset/images/Interview/Interviewer3.png"
+import Interviewer1 from "../../asset/images/Interview/Interviewer/Interviewer1.png"
+import Interviewer2 from "../../asset/images/Interview/Interviewer/Interviewer2.png"
+import Interviewer3 from "../../asset/images/Interview/Interviewer/Interviewer3.png"
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-bootstrap/Modal';
 import { useDispatch, useSelector } from "react-redux";
 import { interviewCheck, getInterviewQuestion } from "../../slices/interviewSlice";
 
@@ -20,8 +20,6 @@ const Interview = () => {
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
-  // 모달 여부
-  const [show, setShow] = useState(true)
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -35,6 +33,18 @@ const Interview = () => {
   const check = useSelector((state)=>{
     return state.interview.check
   })
+
+  // 볼륨 끄기
+  useEffect(() => {
+    // BGM
+    const mainBGM = document.getElementById('mainBGM')
+    // BGM on/off 버튼
+    const changeBox = document.getElementById('changeVolumeBox')
+    // BGM 끄기(muted는 음소거)
+    mainBGM.muted = true
+    // BGM 버튼 음소거 처리
+    changeBox.className = "muted"
+  }, [])
 
 
   // 웹캠 캡쳐 후 Jpg 파일로 전환
@@ -125,7 +135,6 @@ const Interview = () => {
 
   return (
     <>
-      {/* <div className={"interviewBack" + (show ? " interviewShowOpacity": "")}></div> */}
       <div className="interviewBack">
         <div className="interviewTopMenu">
           <p className="interviewTitle" >00기업 면접</p>
@@ -144,42 +153,15 @@ const Interview = () => {
             <p>버튼모음</p>
           </div>
         </div>
-        {/* <Webcam
+        {check.ready && <Webcam
           className="interviewWebCam"
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           screenshotQuality={1}
-        /> */}
+        />}
+        <Check />
       </div>
-      <Modal show={!check.voice || !check.face}>
-        <div className="InterviewFaceCheckBack">
-          {('SpeechRecognition' in window) &&
-           <p className="interviewFaceCheckInfo">"음성인식을 지원하는 브라우저입니다."</p>
-         }
-          {!check.face && (!loding ? <><Webcam
-              className="InterviewFaceCheckCam"
-              audio={false}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              screenshotQuality={1}
-              forceScreenshotSourceSize
-            />
-          <button onClick={()=>{setShow(false)}}>닫기</button>
-          <p className="interviewFaceCheckInfo">원활한 면접을 위해 지원자분은 얼굴의 눈코입이 보이도록 웹캠 화면 중앙에 위치하시고 얼굴인식 버튼을 눌러주세요.</p>
-          <p className="interviewFaceCheckBtn" onClick={capture}>얼굴인식</p></>
-          : <h1>결과 확인중</h1>)}
-          {check.face && !check.voice && <>
-            <p className="interviewFaceCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.</p>
-            <p className="interviewFaceCheckInfo">"만나서 반갑습니다!"</p>
-            <p className="interviewFaceCheckBtn" onClick={startRec}>음성인식</p>
-            <p className="" onClick={endRec}>종료</p>
-            <p>{script}</p>
-
-            </>
-            }
-        </div>
-      </Modal>
     </>
   );
 };

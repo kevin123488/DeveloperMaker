@@ -140,7 +140,7 @@ const GameButtonsArea = () => {
           </BtnArea>
           <BtnArea>
             {newAlbum && <NewAlbum src={NewAlbumLogo} alt="New" />}
-            <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum}>사진첩</GameBtn>
+            <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum}>앨범</GameBtn>
           </BtnArea>
           <BtnArea>
             <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}>

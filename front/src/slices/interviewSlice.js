@@ -38,28 +38,37 @@ export const getInterviewQuestion = createAsyncThunk(
 
 
 const interview = createSlice({
-  name: "album",
+  name: "interview",
   // 앨범 리스트를 받을 시작 리스트
   initialState: {
     isLoding: false,
-    check: {face: false, voice: false},
+    check: {face: false, voice: false, ready: false},
     Question: {no: null, subject: null ,content: null, stage:0, answer: null,},
     points: 0,
   },
   reducers: {
+    checkVoice: (state, action) => {
+      state.check[`${action.select}`] = true
+    },
     changeStage: (state, action) => {
       state.stage += 1
     },
   },
   extraReducers: (builder) => {
     builder
+      // 얼굴인식 요청 성공
       .addCase(interviewCheck.fulfilled, (state, action) => {
+        // 얼굴을 인식한 경우
+        if (action.payload) {
+          state.check.face = true;
+        }
         state.isLoding = false;
-        state.check.face = true;
       })
+      // 얼굴인식 요청 중
       .addCase(interviewCheck.pending, (state, action) => {
         state.isLoding = true
       })
+      // 문제를 받아온 경우
       .addCase(getInterviewQuestion.fulfilled, (state, action) => {
         console.log(action.payload)
         state.Question.no = action.payload.aiqId;

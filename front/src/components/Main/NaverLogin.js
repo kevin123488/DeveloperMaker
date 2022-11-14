@@ -19,7 +19,7 @@
         clientId: "FlXgJpptQwh3MWRLNBRZ",
         callbackUrl: "http://localhost:3000",
         // 배포URL
-        // callbackUrl: "https://k7e103.p.ssafy.io",
+        // callbackUrl: "http://k7e103.p.ssafy.io",
         isPopup: false,
         loginButton: { color: 'green', type: 3, height: 58 },
         callbackHandle: true,
