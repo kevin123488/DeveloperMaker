@@ -25,11 +25,11 @@ public class AiInterviewController {
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getQuestion(subject)));
     }
 
-    @PostMapping("/{no}")
-    @ApiOperation(value = "AI면접 결과 요청", notes   = "jpg와 txt를 보내면 결과를 반환.")
-    public ResponseEntity<BaseResponseBody> analyzeInterview(@PathVariable Integer no,@RequestPart(value = "file") @ApiParam(value = "이미지 파일") MultipartFile file, @RequestPart(value = "aiInterviewRequestDto") AiInterviewRequestDto aiInterviewRequestDto) {
+    @PostMapping
+    @ApiOperation(value = "AI면접 이미지 결과 요청", notes   = "jpg와 txt를 보내면 결과를 반환.")
+    public ResponseEntity<BaseResponseBody> analyzeInterview(@RequestPart(value = "file") @ApiParam(value = "이미지 파일") MultipartFile file, @RequestPart(value = "aiInterviewRequestDto") AiInterviewRequestDto aiInterviewRequestDto) {
         String imgUrl = awsS3Service.uploadImage(file);
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getResult(no, imgUrl, aiInterviewRequestDto.getInterviewText())));
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "Success", aiInterviewService.getResult(imgUrl)));
     }
 
     @PostMapping("/isFaceImage")
