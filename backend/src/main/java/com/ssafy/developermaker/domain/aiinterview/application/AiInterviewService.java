@@ -19,7 +19,9 @@ import java.util.*;
 @RequiredArgsConstructor
 public class AiInterviewService {
     private final AiInterviewQuestionRepository aiInterviewQuestionRepository;
-    @Value("${properties.file.luxand-token}") private String TOKEN;
+    @Value("${properties.file.luxand-token}")
+    private String TOKEN;
+
     private HttpResponse<JsonNode> post_request(String url, Map<String, Object> fields) {
         return Unirest.post(url)
                 .header("token", TOKEN)
@@ -27,43 +29,50 @@ public class AiInterviewService {
                 .asJson();
     }
 
-    public AiInterviewQuestionDto getQuestion(String subject){
+    public AiInterviewQuestionDto getQuestion(String subject) {
         AiInterviewQuestionDto questionDto = aiInterviewQuestionRepository.findBySubjectOrderByRand(subject).get().toDto();
         System.out.println(questionDto);
         return questionDto;
     }
-    public boolean getIsFace(String url){
+
+    public boolean getIsFace(String url) {
 
         HttpResponse<JsonNode> response = post_request("https://api.luxand.cloud/photo/emotions",
-                new HashMap<String, Object>() {{ put("photo", url); }});
+                new HashMap<String, Object>() {{
+                    put("photo", url);
+                }});
 
-        if (response.getStatus() != 200){
+        if (response.getStatus() != 200) {
             System.out.printf(response.getBody().getObject().getString("message"));
         }
-        if(response.getBody().getObject().toString().equals("{\"status\":\"success\",\"faces\":[]}")){
+        if (response.getBody().getObject().toString().equals("{\"status\":\"success\",\"faces\":[]}")) {
             return false;
         }
         System.out.println(response.getBody().getObject().toString());
         return true;
     }
-    public String getResult(Integer no, String url, String aiInterviewText){
+
+    public boolean getIsVoice(String txt) {
+        if (txt.contains("안녕하세요") && txt.contains("반갑습니다")) {
+            return true;
+        }
+        return false;
+    }
+
+    public String getResult(Integer no, String url, String aiInterviewText) {
         String result = null;
         HttpResponse<JsonNode> response = post_request("https://api.luxand.cloud/photo/emotions",
-                new HashMap<String, Object>() {{ put("photo", url); }});
+                new HashMap<String, Object>() {{
+                    put("photo", url);
+                }});
 
-        if (response.getStatus() != 200){
+        if (response.getStatus() != 200) {
             System.out.printf(response.getBody().getObject().getString("message"));
         }
 //(response.getBody().toString())
         AiInterviewQuestion aiInterviewQuestion = aiInterviewQuestionRepository.findAiInterviewQuestionByNo(no).get();
-        String keyword = aiInterviewQuestion.toDto().getKeyword();
-        StringTokenizer st = new StringTokenizer(keyword, "/");
-        List<String> wordList = new ArrayList<>();
 
-        int N = st.countTokens();
-        for(int i = 0; i < N; i++){
-            wordList.add(st.nextToken());
-        }
+        List<String> wordList = aiInterviewQuestion.toDto().getKeyword();
 
         int cnt = 0;
 
@@ -76,24 +85,24 @@ public class AiInterviewService {
 //        while (it.hasNext()){
 //            if(map.get(it.next()) > 0) cnt++;
 //        }
-        for(String s : wordList){
+        for (String s : wordList) {
             System.out.println(s);
             System.out.println(map.getOrDefault(s, 0));
-            if(map.getOrDefault(s, 0) > 0){
+            if (map.getOrDefault(s, 0) > 0) {
                 cnt++;
             }
         }
 
-        float f = cnt / N;
-        System.out.println(f);
+//        float f = cnt / N;
+//        System.out.println(f);
 
         return result;
     }
 
-    public Map<String, Integer> getCount(List<String> wordList){
+    public Map<String, Integer> getCount(List<String> wordList) {
         Map<String, Integer> map = new HashMap<>();
 
-        for(String s : wordList){
+        for (String s : wordList) {
             System.out.println(s + "\t함수 안");
             int i = map.getOrDefault(s, 0);
             map.put(s, i + 1);
