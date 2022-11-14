@@ -17,19 +17,32 @@ import { interviewCheck, getInterviewQuestion } from "../../slices/interviewSlic
 // import { Link } from 'react-router-dom';
 
 const Interview = () => {
+  // 면접관 선택
+  const interviewer = [1,2,3]
+
+  // 면접관 기본대사 (1,2,3 번째 면접관 시작 멘트)
+  const interviewerContent = ["첫 번째 질문입니다.",
+    "앞선 답변 잘 들었습니다. 두 번째 질문입니다.",
+    "자 그럼 마지막 질문입니다."]
+
+  // 사용자 이름
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
+  // 면접 질문
   const question = useSelector((state)=> {
     return state.interview.Question
   })
+
+  // 현재 로딩중인지 여부
   const loding = useSelector((state)=> {
     return state.interview.isLoding
   })
 
+  // 인터뷰 완료여부
   const check = useSelector((state)=>{
     return state.interview.check
   })
@@ -121,6 +134,19 @@ const Interview = () => {
     setScript('')
   }
 
+  // 타이머
+  // const [time, setTime] = useState(60)
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setTime(time-1)
+  //     if (time < 0) {
+  //       clearInterval(timer) //setInterval()을 끝냄
+  //       setTime(60)
+  //     }
+  //   }, 1000);
+  //   return () => clearInterval(timer);
+  // }, [time]);
+
   // const checkVoice = () => {
   //   if (script.includes('안녕하세요') && script.includes(name)) {
   //     console.log('인식 완료')
@@ -133,22 +159,28 @@ const Interview = () => {
   // }
   // dispatch(getInterviewQuestion('back'))
 
+  const goMain = async() => {
+    navigate('/')
+    await dispatch({type:'interview/checkInitialize'})
+  }
+
   return (
     <>
       <div className="interviewBack">
         <div className="interviewTopMenu">
           <p className="interviewTitle" >00기업 면접</p>
-          <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={()=>{navigate('/')}} />
+          <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={goMain} />
         </div>
         
         <div className="InterviewerBack">
-          <img className="Interviewer1" src={Interviewer1} alt="Interviewer1" />
-          <img className="Interviewer2" src={Interviewer2} alt="Interviewer2" />
-          <img className="Interviewer3" src={Interviewer3} alt="Interviewer3" />
+          {interviewer.map((num)=> {
+            return (<img className={`Interviewer${num}`} key={`interviewer-${num}`}
+            src={require(`../../asset/images/Interview/Interviewer/Interviewer${num}.png`)} alt={`Interviewer${num}`} />)
+          })}
         </div>
         <div className="interviewScriptBack">
           <p className="InterviewerName">『누군가의 발언』</p>
-          <p className="InterviewContent">질문 내용</p>
+          <p className="InterviewContent">질문 내용??</p>
           <div>
             <p>버튼모음</p>
           </div>

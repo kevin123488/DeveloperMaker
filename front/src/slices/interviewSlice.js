@@ -50,6 +50,13 @@ const interview = createSlice({
     checkVoice: (state, action) => {
       state.check[`${action.select}`] = true
     },
+    // 내용 초기화
+    checkInitialize: (state, action) => {
+      state.isLoding = false;
+      state.check = {face: false, voice: false, ready: false};
+      state.Question = {no: null, subject: null ,content: null, stage:0, answer: null,};
+      state.points = 0;
+    },
     changeStage: (state, action) => {
       state.stage += 1
     },

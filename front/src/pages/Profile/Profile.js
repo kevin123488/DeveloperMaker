@@ -56,7 +56,7 @@ const Profile = () => {
             <img src={MainImg} className="ProfileDeleteImg" alt="" />
             정말로 탈퇴하시나요...</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=>{dispatch(DeleteUser())}}>회원탈퇴</Button>
+            <Button variant="danger" onClick={()=>{dispatch(DeleteUser()); navigate('/')}}>회원탈퇴</Button>
             <Button variant="secondary" onClick={handleClose}>취소</Button>
           </Modal.Footer>
         </Modal>

@@ -19,7 +19,7 @@
         clientId: "FlXgJpptQwh3MWRLNBRZ",
         callbackUrl: "http://localhost:3000",
         // 배포URL
-        // callbackUrl: "http://k7e103.p.ssafy.io",
+        // callbackUrl: "https://k7e103.p.ssafy.io",
         isPopup: false,
         loginButton: { color: 'green', type: 3, height: 58 },
         callbackHandle: true,
@@ -27,7 +27,7 @@
       naverLogin.init();
     };
 
-    // 로그인 후 리다이렉트 된 Naver 로그인 API의 토큰 잡기
+    // 로그인 후 리다이렉트 된 Naver 로그인 API 토큰(URL에서 제공)
     const getNaverToken = async () => {
       if (!location.hash) return;
       const token = location.hash.split('=')[1].split('&')[0];
