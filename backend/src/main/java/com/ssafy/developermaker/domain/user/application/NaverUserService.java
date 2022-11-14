@@ -106,11 +106,11 @@ public class NaverUserService implements SocialUserService {
                 return userDto;
             }
 
-            String temp_nickname = UUID.randomUUID().toString().replaceAll("-", "");
-            temp_nickname = "User"+temp_nickname.substring(0, 10);
-
-            String nickname =(String)account.getOrDefault("nickname",temp_nickname);
-            userDto.setNickname(nickname);
+            if(account == null) {
+                String temp_nickname = UUID.randomUUID().toString().replaceAll("-", "");
+                temp_nickname = "User"+temp_nickname.substring(0, 10);
+                userDto.setNickname(temp_nickname);
+            } else userDto.setNickname((String)account.get("nickname"));
 
         } catch (ParseException e) {
             e.printStackTrace();
