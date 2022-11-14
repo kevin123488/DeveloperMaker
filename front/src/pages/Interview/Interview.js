@@ -1,15 +1,14 @@
 import React, {useState, useRef, useCallback, useEffect} from "react";
 import "./Interview.css";
-import * as htmlToImage from 'html-to-image';
+import Check from "../../components/Interview/Check";
 import Webcam from "react-webcam";
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
-import Interviewer1 from "../../asset/images/Interview/Interviewer1.png"
-import Interviewer2 from "../../asset/images/Interview/Interviewer2.png"
-import Interviewer3 from "../../asset/images/Interview/Interviewer3.png"
+import Interviewer1 from "../../asset/images/Interview/Interviewer/Interviewer1.png"
+import Interviewer2 from "../../asset/images/Interview/Interviewer/Interviewer2.png"
+import Interviewer3 from "../../asset/images/Interview/Interviewer/Interviewer3.png"
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-bootstrap/Modal';
-import { useDispatch } from "react-redux";
-import { interviewCheck } from "../../slices/interviewSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { interviewCheck, getInterviewQuestion } from "../../slices/interviewSlice";
 
 // import { toBlob} from 'html-to-image';
 // import styled from "styled-components";
@@ -17,120 +16,131 @@ import { interviewCheck } from "../../slices/interviewSlice";
 // import background from './SelfStudyBackground.gif';
 // import { Link } from 'react-router-dom';
 
-const videoConstraints = {
-  width: 1280,
-  height: 720,
-  facingMode: "user",
-};
-
 const Interview = () => {
-  // 모달 여부
-  const [show, setShow] = useState(true)
+  const name = useSelector((state)=>{
+    return state.user.userInfo.nickname
+  })
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const interviewScript = ['얼굴인식을 진행하도록 하겠습니다. 사용자의 얼굴을 화면 중앙에 맞춘 후 확인을 눌러주세요',
- 'HTTP Mehthod의 종류와 그 내용에 대해 설명해 보세요.',
- 'HTTP 상태코드의 종류와 그 내용에 대해 설명해 보세요.',
- 'RDB와 NoSQL의 차이에 대해 설명해 보세요.',]
+  const question = useSelector((state)=> {
+    return state.interview.Question
+  })
+  const loding = useSelector((state)=> {
+    return state.interview.isLoding
+  })
+
+  const check = useSelector((state)=>{
+    return state.interview.check
+  })
+
+  // 볼륨 끄기
+  useEffect(() => {
+    // BGM
+    const mainBGM = document.getElementById('mainBGM')
+    // BGM on/off 버튼
+    const changeBox = document.getElementById('changeVolumeBox')
+    // BGM 끄기(muted는 음소거)
+    mainBGM.muted = true
+    // BGM 버튼 음소거 처리
+    changeBox.className = "muted"
+  }, [])
 
 
-  // const saveCam = () => {
-  //   htmlToImage.toBlob(document.getElementById('captureDiv'))
-  //   .then(function (blob) {
-  //     console.log(blob)
-  //     const tempCapture = new File([blob], "test.png", { type: 'image/png' })
-  //     let capture = new FormData
-  //     capture.append('capture', tempCapture)
-  //     console.log(capture)
-  //     setUrl(URL.createObjectURL(blob))
-  //   });
-  // }
-
-  //Blob로 전환 함수
-  // function dataURItoBlob(dataURI) {
-  //   var byteString = atob(dataURI.split(',')[1]);
-  //   var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-  //   var ab = new ArrayBuffer(byteString.length);
-  //   var ia = new Uint8Array(ab);
-  //   for (var i = 0; i < byteString.length; i++) {
-  //     ia[i] = byteString.charCodeAt(i);
-  //   }
-  //   var blob = new Blob([ab], {type: mimeString});
-  //   return blob;
-  // }
-  
-  // 파일 전환 함수
-  // const convertBase64ToFile = (imageURL) => {
-  //   const byteString = atob(imageURL.split(',')[1]);
-  //   const ab = new ArrayBuffer(byteString.length);
-  //   const ia = new Uint8Array(ab);
-  //   for (let i = 0; i < byteString.length; i += 1) {
-  //     ia[i] = byteString.charCodeAt(i);
-  //   }
-  //   const newBlob = new Blob([ab], {
-  //     type: 'image/jpeg',
-  //   });
-  //   setImageFile(newBlob)
-  // };
-
-  /***
-   * Converts a dataUrl base64 image string into a File byte array
-   * dataUrl example:
-   * data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIsAAACLCAYAAABRGWr/AAAAAXNSR0IA...etc
-   */
-
-
-  // 캡쳐하기
+  // 웹캠 캡쳐 후 Jpg 파일로 전환
+  // base64 to File 전환 함수
+  function base64toFile(base64Img) {
+    let arr = base64Img.split(',');
+    let mime = arr[0].match(/:(.*?);/)[1];
+    let bstr = atob(arr[1]);
+    let n = bstr.length;
+    let u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], "capture.jpg", {type:mime});
+  }
   // 웹캠 DOM을 선택할 Ref
   const webcamRef = useRef();
-  // 캡쳐 이미지(base64)
-  const [imageSrc, setImageSrc] = useState()
-  // 이미지()
-  const [imageFile, setImageFile] = useState()
-
   const capture = useCallback(
-     () => {
-      setImageSrc(webcamRef.current.getScreenshot());
-      // Blob 파일로 전환
-      // const blobData = dataURItoBlob(imageSrc)
-      // console.log(blobData)
-      dispatch(interviewCheck(imageSrc))
+     async () => {
+      // screenshot(base64) 
+      const image = await webcamRef.current.getScreenshot()
+      // base64를 jpg File로 변환
+      const File = await base64toFile(image)
+      dispatch(interviewCheck(File))
     },
     [webcamRef]
   );
 
   // STT 로직
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 5
+  const recognition = new SpeechRecognition;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
   recognition.lang = "ko-KR";
+  recognition.continuous = true // 계속 녹음
+  // recognition.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(6.0);
+  // recognition.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(4.0);
+  // recognition.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(1.2);
 
-  recognition.onresult = (event) => {
-    const color = event.results[0][0].transcript;
-    console.log(`말: ${color}`);
+  const [script, setScript] = useState('')
+  recognition.onresult = async (event) => {
+    let voice = ''
+    for (let i = 0, len = event.results.length; i < len; i++) {
+      voice += event.results[i][0].transcript
+      console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
+    }
+    // resultIndex-마지막 값
+    await setScript(voice)
+    if (voice.includes('만나서 반갑습니다')) {
+      console.log('인식 완료')
+      endRec()
+    }
   }
+
+  // recognition.addEventListnere("result", async(e) => {
+  //   for (let i = e.resultIndex, len = e.result.length; i <len; i++) {
+  //     setScript(e.result[i][0].transcript)
+  //     console.log(script)
+  //   }
+  // });
 
   // useEffect(() => {
   //   console.log('다시')
   // }, [recognition])
 
-  const startListen = () => {
+  const startRec = () => {
+    console.log('음성인식 시작')
     recognition.start()
   }
 
-  const endListen = () => {
+  const endRec = () => {
     recognition.stop()
+    console.log('음성인식 종료',script)
+    setScript('')
   }
+
+  // const checkVoice = () => {
+  //   if (script.includes('안녕하세요') && script.includes(name)) {
+  //     console.log('인식 완료')
+  //   }
+  //   else {
+  //     console.log('안녕하세요 인식', script.includes('안녕하세요'))
+  //     console.log('이름 인식', script.includes(name))
+  //   }
+  //   console.log('==================test==========')
+  // }
+  // dispatch(getInterviewQuestion('back'))
 
   return (
     <>
-      <div className={"interviewBack" + (show ? " interviewShowOpacity": "")}>
+      <div className="interviewBack">
         <div className="interviewTopMenu">
           <p className="interviewTitle" >00기업 면접</p>
           <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={()=>{navigate('/')}} />
         </div>
+        
         <div className="InterviewerBack">
           <img className="Interviewer1" src={Interviewer1} alt="Interviewer1" />
           <img className="Interviewer2" src={Interviewer2} alt="Interviewer2" />
@@ -143,32 +153,16 @@ const Interview = () => {
             <p>버튼모음</p>
           </div>
         </div>
-        {/* <Webcam
+        {check.ready && <Webcam
           className="interviewWebCam"
           audio={false}
           ref={webcamRef}
           screenshotFormat="image/jpeg"
           screenshotQuality={1}
-        /> */}
+        />}
+        <Check />
       </div>
-      <Modal show={show}>
-        <div className="InterviewFaceCheckBack">
-          <Webcam
-              className="InterviewFaceCheckCam"
-              audio={false}
-              ref={webcamRef}
-              screenshotFormat="image/jpeg"
-              screenshotQuality={1}
-            />
-          <button onClick={()=>{console.log(imageSrc)}}>닫기</button>
-          <p className="interviewFaceCheckInfo">원활한 면접을 위해 지원자분은 얼굴의 눈코입이 보이도록 웹캠 화면 중앙에 위치하시고 얼굴인식 버튼을 눌러주세요.</p>
-          <p className="interviewFaceCheckBtn" onClick={capture}>얼굴인식</p>
-        </div>
-        <img id="captureDiv" className="interviewCaptureImg" src={imageSrc} alt="캡쳐"></img>
-        <img className="interviewCaptureFile" src={imageFile} alt="파일" />
-      </Modal>
     </>
-
   );
 };
 

@@ -2,11 +2,10 @@ package com.ssafy.developermaker.domain.progress.application;
 
 import com.ssafy.developermaker.domain.progress.dto.ProgressDto;
 import com.ssafy.developermaker.domain.progress.entity.Progress;
-import com.ssafy.developermaker.domain.progress.exception.ProgressNotFoundException;
-import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
+import com.ssafy.developermaker.global.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,15 +20,21 @@ import java.util.Optional;
 public class ProgressService {
 
     private final UserRepository userRepository;
-    private final ProgressRepository progressRepository;
+    private final RedisUtil redisUtil;
 
     public ProgressDto getProgress(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        Optional<Progress> findProgress = progressRepository.findByUser(user);
-        Progress progress = findProgress.orElseThrow(ProgressNotFoundException::new);
-        return progress.toDto();
+        Progress progress = user.getProgress();
+
+        int csCount = Integer.parseInt(redisUtil.getData("csCount"));
+        int algoCount = Integer.parseInt(redisUtil.getData("algoCount"));
+        int backCount = Integer.parseInt(redisUtil.getData("backCount"));
+        int frontCount = Integer.parseInt(redisUtil.getData("frontCount"));
+        int langCount = Integer.parseInt(redisUtil.getData("langCount"));
+
+        return new ProgressDto(progress, csCount, algoCount, backCount, frontCount, langCount);
     }
 
 }

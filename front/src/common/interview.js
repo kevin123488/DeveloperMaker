@@ -4,17 +4,18 @@ export const interviewFaceCheck = async (data) => {
   // 데이터를 넣어보낼 폼데이터 생성
   const formData = new FormData();
   // 폼데이터에 유저 정보를 변경할 내용을 JSON으로 담기
-  formData.append(
-    'JPGimage',
-    new Blob([JSON.stringify(data)], { type: 'application/json' }),
-  );
+  // formData.append(
+  //   'JPGimage',
+  //   new Blob([JSON.stringify(data)], { type: 'application/json' }),
+  // );
+  formData.append("file", data);
   // 헤더 추가
   const config = {
     headers: {
       'Content-Type': 'multipart/form-data',
     },
   };
-  const res = await axiosInstance.put('/user', formData, config);
+  const res = await axiosInstance.post('/ai/isFaceImage', formData, config);
   return res;
 };
 

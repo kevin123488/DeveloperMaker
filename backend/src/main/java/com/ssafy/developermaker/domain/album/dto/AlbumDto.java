@@ -14,4 +14,5 @@ public class AlbumDto {
     private Boolean isOwned = false;
     private Double ownerRate = 0.0;
     private String theme;
+    private Boolean isRead;
 }

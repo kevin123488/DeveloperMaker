@@ -30,4 +30,7 @@ public class UserCote {
     @JoinColumn(name = "coteId")
     private Cote cote;
 
+    public void updateCorrect(Integer correct) {
+        this.correct = correct;
+    }
 }
