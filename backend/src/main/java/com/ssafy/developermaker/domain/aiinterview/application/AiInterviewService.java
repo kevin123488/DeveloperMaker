@@ -59,7 +59,7 @@ public class AiInterviewService {
         return false;
     }
 
-    public String getResult(Integer no, String url, String aiInterviewText) {
+    public String getResult(String url) {
         String result = null;
         HttpResponse<JsonNode> response = post_request("https://api.luxand.cloud/photo/emotions",
                 new HashMap<String, Object>() {{
@@ -70,6 +70,7 @@ public class AiInterviewService {
             System.out.printf(response.getBody().getObject().getString("message"));
         }
 //(response.getBody().toString())
+        /*
         AiInterviewQuestion aiInterviewQuestion = aiInterviewQuestionRepository.findAiInterviewQuestionByNo(no).get();
 
         List<String> wordList = aiInterviewQuestion.toDto().getKeyword();
@@ -81,10 +82,10 @@ public class AiInterviewService {
         KomoranResult analyzeResultList = komoran.analyze(aiInterviewText);
 
         Map<String, Integer> map = getCount(analyzeResultList.getMorphesByTags("NNP"));
-//        Iterator<String> it = map.keySet().iterator();
-//        while (it.hasNext()){
-//            if(map.get(it.next()) > 0) cnt++;
-//        }
+        Iterator<String> it = map.keySet().iterator();
+        while (it.hasNext()){
+            if(map.get(it.next()) > 0) cnt++;
+        }
         for (String s : wordList) {
             System.out.println(s);
             System.out.println(map.getOrDefault(s, 0));
@@ -93,9 +94,9 @@ public class AiInterviewService {
             }
         }
 
-//        float f = cnt / N;
-//        System.out.println(f);
-
+        float f = cnt / N;
+        System.out.println(f);
+*/
         return result;
     }
 
