@@ -5,6 +5,7 @@ import com.ssafy.developermaker.domain.user.dto.UserDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import com.ssafy.developermaker.domain.user.exception.UserNotFoundException;
 import com.ssafy.developermaker.domain.user.repository.UserRepository;
+import com.ssafy.developermaker.global.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ import java.util.Optional;
 public class UserManageService {
 
     private final UserRepository userRepository;
+    private final RedisUtil redisUtil;
 
     public UserDto getInfo(String email) {
         Optional<User> findUser = userRepository.findByEmail(email);
@@ -40,15 +42,18 @@ public class UserManageService {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
         userRepository.delete(user);
+
+        int userCount = Integer.parseInt(redisUtil.getData("userCount")) - 1;
+        redisUtil.setData("userCount", String.valueOf(userCount));
         return true;
     }
 
     @Transactional
-    public UserDto signup(String email, SignupDto signupDto) {
+    public UserDto loginFirst(String email, SignupDto signupDto) {
         Optional<User> findUser = userRepository.findByEmail(email);
         User user = findUser.orElseThrow(UserNotFoundException::new);
 
-        user.signupFirst(signupDto);
+        user.loginFirst(signupDto);
         return user.toDto();
     }
 

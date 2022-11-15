@@ -240,8 +240,10 @@
 .ProfileDelete {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20vh;
   cursor: pointer;
+  color: beige;
+  opacity: 0.8;
 }
 .ProfileDeleteImg {
   width: 5vw;

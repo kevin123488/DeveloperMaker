@@ -239,6 +239,10 @@
   margin: 1vw;
   width: 10vw;
   cursor: pointer;
+  transition: all ease 0.2s;
+}
+.subjectItem:hover {
+  transform: scale(1.05);
 }
 .studyItems {
   margin-top: 15vh;
@@ -313,6 +317,18 @@
   background: url(../../asset/images/SelfstudyImg/correct.png) center no-repeat;
   background-size: contain;
 }
+.bigCorrect {
+  position: absolute;
+  top: 10vh;
+  left: 0vw;
+  height: 60vh;
+  width: 70vw;
+  margin: 0 auto;
+  background: url(../../asset/images/SelfstudyImg/correct.png) center no-repeat;
+  background-size: contain;
+  z-index: 999;
+  animation: popup 0.2s;
+}
 .wrong {
   position: absolute;
   top: 0vh;
@@ -323,7 +339,18 @@
   background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
   background-size: contain;
 }
-
+.bigWrong {
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  height: 60vh;
+  width: 60vw;
+  margin: 0 auto;
+  background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 999;
+  animation: popup 0.2s;
+}
 
 .quizHover:hover{
   transform: scale(1.05);
@@ -783,6 +810,8 @@
 
 .npcSpeechBalloon {
   position: absolute;
+  display: flex;
+  align-items: center;
   height: 22vh;
   width: 21vw;
   top: 15vh;
@@ -791,15 +820,18 @@
   background: url("../../asset/images/SelfstudyImg/speechBalloon.png") center no-repeat;
   background-size: 100% 100%;
   z-index: 1200;
+  /* transition: all ease 0.5s; */
 }
 .npcSpeechBalloonContent {
-  position: absolute;
-  height: 22vh;
+  /* position: absolute; */
+  /* height: 22vh; */
   width: 17vw;
-  top: 7vh;
-  left: 2vw;
+  margin-left: 2vw;
+  margin-bottom: 1.5vh;
+  /* top: 7vh;
+  left: 2vw; */
   /* line-height: 20vh; */
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
   font-size: 1.5vw;
   color: #80b9ff;

@@ -3,7 +3,8 @@ package com.ssafy.developermaker.domain.codingtest.controller;
 import com.ssafy.developermaker.domain.codingtest.application.CoteService;
 import com.ssafy.developermaker.domain.codingtest.dto.CoteListRequestDto;
 import com.ssafy.developermaker.domain.codingtest.dto.CoteListResponseDto;
-import com.ssafy.developermaker.domain.codingtest.dto.CoteRequestDto;
+import com.ssafy.developermaker.domain.codingtest.dto.CoteSubmitRequestDto;
+import com.ssafy.developermaker.domain.codingtest.dto.CoteTestRequestDto;
 import com.ssafy.developermaker.global.model.BaseResponseBody;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -27,13 +28,18 @@ public class CoteController {
     @ApiOperation(value = "코딩테스트 문제 리스트 확인", notes = "response의 correct가 0 : 풀지않음, 1 : 맞음, 2 : 맞음")
     public ResponseEntity<BaseResponseBody> getList(@AuthenticationPrincipal String email,
                                                     @RequestBody CoteListRequestDto coteListRequestDto) {
-        List<CoteListResponseDto> list = coteService.getList(email, coteListRequestDto);
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", list));
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.getList(email, coteListRequestDto)));
     }
 
     @PostMapping("/{coteId}")
-    @ApiOperation(value = "", notes = "")
-    public ResponseEntity<BaseResponseBody> submitCote(@AuthenticationPrincipal String email, @RequestBody CoteRequestDto coteRequestDto, @PathVariable Long coteId){
-        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.submitCote(email, coteId, coteRequestDto)));
+    @ApiOperation(value = "코테 제출", notes = "")
+    public ResponseEntity<BaseResponseBody> submitCote(@AuthenticationPrincipal String email, @RequestBody CoteSubmitRequestDto coteSubmitRequestDto, @PathVariable Long coteId){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.submitCote(email, coteId, coteSubmitRequestDto)));
+    }
+
+    @PostMapping("/test")
+    @ApiOperation(value = "코테 인풋 테스트 실행", notes = "")
+    public ResponseEntity<BaseResponseBody> testCote(@RequestBody CoteTestRequestDto coteTestRequestDto){
+        return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", coteService.testCote(coteTestRequestDto)));
     }
 }

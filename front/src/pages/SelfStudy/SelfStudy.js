@@ -138,6 +138,10 @@ const Quiz = () => {
   // 알고문제 언어선택
   const [lang, changeLang] = useState('python')
 
+  // 정오답 표시
+  const [showBigCorrect, setShowBigCorrect] = useState(false)
+  const [showBigWrong, setShowBigWrong] = useState(false)
+  
 
   useEffect(() => {
     if (maxPage >= 4) {
@@ -366,6 +370,7 @@ const Quiz = () => {
       setOutputValue('')
       setIsShowingAlgo(true)
       setShowingAlgo(quiz.quiz)
+      setNpcBalloonContent("'실행'은 코드 테스트,\n'제출'은 정답 제출이야")
       // console.log('알고문제', quiz)
     }
     else {
@@ -373,6 +378,7 @@ const Quiz = () => {
       setShowingQuiz(quiz.quiz)
       setShowingQuizIdx(quiz.idx)
       setIsShowQuizProblem(true)
+      setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 되!")
       const checkboxes = document.getElementsByName('quizRadio');
       // 체크박스 목록을 순회하며 checked 값을 초기화
       checkboxes.forEach((checkbox) => {
@@ -409,14 +415,19 @@ const Quiz = () => {
       }
       dispatch(getQuizList(newQuizInfo))
       setNpcBalloonContent(solveResult.payload.answer)
-      setIsShowNpcBalloon(true)
+      // setIsShowNpcBalloon(true)
       setTimeout(() => {
-        setIsShowNpcBalloon(false)
+        // setIsShowNpcBalloon(false)
+        setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 되!")
       }, 2000)
       // window.location.reload();
 
       // 정오답 소리
       if (solveResult.payload.result) {
+        setShowBigCorrect(true)
+        setTimeout(() => {
+          setShowBigCorrect(false)
+        }, 1500)
         playRightAnswer()
 
         // 프로그래스가 분기를 넘었는지 판별
@@ -431,6 +442,10 @@ const Quiz = () => {
         //   checkAlbum(checkAlbumNum)
         // }
       } else {
+        setShowBigWrong(true)
+        setTimeout(() => {
+          setShowBigWrong(false)
+        }, 1500)
         playWrongAnswer()
       }
 
@@ -447,6 +462,7 @@ const Quiz = () => {
   const closeQuiz = () => {
     playBtnSimpleSound()
     setIsShowQuizProblem(false)
+    setNpcBalloonContent("원하는 문제를 선택해줘")
   }
 
   const showCategory = (info) => {
@@ -518,6 +534,7 @@ const Quiz = () => {
       // console.log('스터디')
       setWorkType('공부')
       setIsShowStudy(true)
+      setNpcBalloonContent(`공부하고싶은 파트를\n선택해줘`)
     }
     
     // 퀴즈 골랐을 때
@@ -525,6 +542,7 @@ const Quiz = () => {
       // console.log('퀴즈')
       setWorkType('퀴즈')
       setIsShowQuiz(true)
+      setNpcBalloonContent("원하는 문제를 선택해줘")
       // 알고리즘이면
       if (category === 1){
         dispatch(getCodingTestList({limit: limit, offset: 0}))
@@ -551,28 +569,35 @@ const Quiz = () => {
     setIsShowStudy(false)
     setShowWorkChoice(true)
     setIsShowingAlgo(false)
+    setNpcBalloonContent('원하는 활동을 선택해줘')
   }
 
   const closeAlgo = () => {
     playBtnSimpleSound()
     setIsShowingAlgo(false)
+    setNpcBalloonContent('원하는 문제를 선택해줘')
   }
 
   const submitAlgo = async (solveInfo) => {
     playBtnSimpleSound()
     setNpcBalloonContent('채점중이야.')
-    setIsShowNpcBalloon(true)
+    // setIsShowNpcBalloon(true)
     const solveResult = await dispatch(postCodingTestSolve(solveInfo))
     // console.log('풀이결과', solveResult.payload)
     setNpcBalloonContent(solveResult.payload.message)
     setTimeout(() => {
-    setIsShowNpcBalloon(false)
+    // setIsShowNpcBalloon(false)
+    setNpcBalloonContent("'실행'은 코드 테스트,\n'제출'은 정답 제출이야")
+
     }, 2000)
 
     // 정오답 소리
     if (solveResult.payload.pass) {
       playRightAnswer()
-
+      setShowBigCorrect(true)
+      setTimeout(() => {
+        setShowBigCorrect(false)
+      }, 1500)
       // 프로그래스가 분기를 넘었는지 판별
       await dispatch(getSelfStudyProgress())
       const solveCategory = quizInfo[category].category.toLowerCase()
@@ -583,6 +608,10 @@ const Quiz = () => {
       }
     } else {
       playWrongAnswer()
+      setShowBigWrong(true)
+      setTimeout(() => {
+        setShowBigWrong(false)
+      }, 1500)
     }
 
   }
@@ -610,6 +639,7 @@ const Quiz = () => {
     const response = await dispatch(getAlbumCheck(albumId))
     // 중복이면 true이므로 false일 때 실행
     if (!response.payload) {
+      setNpcBalloonContent("")
       dispatch(putAlbumList(albumId))
     }
   }
@@ -693,6 +723,23 @@ const Quiz = () => {
     setCheckedAnswer(null)
   }
 
+  const changeNpcStudyText = () => {
+    setNpcBalloonContent("정리된 이론을 공부할 수 있어")
+  }
+
+  const changeStudyText = () => {
+    setNpcBalloonContent("원하는 활동을 선택해줘")
+  }
+
+  const changeNpcQuizText = () => {
+    setNpcBalloonContent("문제를 풀고 보상을\n얻을 수 있어")
+  }
+
+  const changeQuizText = () => {
+    setNpcBalloonContent("원하는 활동을 선택해줘") 
+  }
+
+
   return (
     <>
       <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="CsStudyBackground">
@@ -716,11 +763,11 @@ const Quiz = () => {
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
         {/* 카테고리 선택 전 화면 */}
-        <div id="spring" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('springCS') }}} onMouseOver={showCategory.bind(null, { category: 'springCS', text: "역시 CS가 중요하지!"})} onMouseOut={hideCategory.bind(null, { category: 'springCS', text: "CS"})} className="spring"></div>
+        <div id="spring" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected", text: "원하는활동을 선택해줘!",}); moveSDchractor('springCS') }}} onMouseOver={showCategory.bind(null, { category: 'springCS', text: "역시 CS가 중요하지!"})} onMouseOut={hideCategory.bind(null, { category: 'springCS', text: "CS"})} className="spring"></div>
         <div id="fall" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('fallAlgo') }}} onMouseOver={showCategory.bind(null, { category: 'fallAlgo', text: "알고리즘 좋아해..?"})} onMouseOut={hideCategory.bind(null, { category: 'fallAlgo', text: "알고리즘"})} className="fall"></div>
-        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, { category: 'summerBack', text: "프론트에 관심이 많구나!"})} onMouseOut={hideCategory.bind(null, { category: 'summerBack', text: "프론트앤드"})} className="summer"></div>
+        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected", text: "원하는활동을 선택해줘!",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, { category: 'summerBack', text: "프론트에 관심이 많구나!"})} onMouseOut={hideCategory.bind(null, { category: 'summerBack', text: "프론트앤드"})} className="summer"></div>
         <div id="winter" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('winterFront') }}} onMouseOver={showCategory.bind(null, { category: 'winterFront', text: "백앤드 공부할래?"})} onMouseOut={hideCategory.bind(null, { category: 'winterFront', text: "백앤드"})} className="winter"></div>
-        <div id="hero" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('heroLang') }}} onMouseOver={showCategory.bind(null, { category: 'heroLang', text: "기본부터 다지자!"})} onMouseOut={hideCategory.bind(null, { category: 'heroLang', text: "프로그래밍언어"})} className="hero"></div>
+        <div id="hero" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected", text: "원하는활동을 선택해줘!",}) ; moveSDchractor('heroLang') }}} onMouseOver={showCategory.bind(null, { category: 'heroLang', text: "기본부터 다지자"})} onMouseOut={hideCategory.bind(null, { category: 'heroLang', text: "프로그래밍언어"})} className="hero"></div>
         <br />
         <br />
         <br />
@@ -731,7 +778,9 @@ const Quiz = () => {
           isShowNpcBalloon?
           <div className="npcSpeechBalloon">
             <div className="npcSpeechBalloonContent">
-              {npcBalloonContent}
+              {npcBalloonContent.split('\n').map((text, index) => (
+                <div key={index}>{text}</div>
+              ))}
             </div>
           </div>
           : null
@@ -788,8 +837,8 @@ const Quiz = () => {
             {
               showWorkChoice?
               <div className="container row m-0 p-0">
-                <div onClick={() => {choiceWork('study')}} className="studySelectButton col-5 pop">공부하기</div>
-                <div onClick={() => {choiceWork('quiz')}} className="quizSelectButton col-5 pop">문제풀기</div>
+                <div onClick={() => {choiceWork('study')}} onMouseOver={changeNpcStudyText} onMouseOut={changeStudyText} className="studySelectButton col-5 pop">공부하기</div>
+                <div onClick={() => {choiceWork('quiz')}} onMouseOver={changeNpcQuizText} onMouseOut={changeQuizText} className="quizSelectButton col-5 pop">문제풀기</div>
               </div>
               : null
             }
@@ -849,6 +898,16 @@ const Quiz = () => {
               ? 
               <div className="showingMarkdown">
                 <div onClick={closeQuiz} className="CloseQuiz">X</div>
+                {
+                  showBigCorrect?
+                  <div className="bigCorrect"></div>
+                  : null
+                }
+                {
+                  showBigWrong?
+                  <div className="bigWrong"></div>
+                  : null
+                }
                 <div className="quizProblem">
                   {showingQuiz.problem}
                   <hr />
@@ -918,6 +977,16 @@ const Quiz = () => {
               </ReactMarkdown>  
             </div>
             <div onClick={closeAlgo} className="CloseAlgo">X</div>
+            {
+              showBigCorrect?
+              <div className="bigCorrect"></div>
+              : null
+            }
+            {
+              showBigWrong?
+              <div className="bigWrong"></div>
+              : null
+            }
             <div className="langChoice">
 
               <div className="dropdown">

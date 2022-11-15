@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,11 +48,25 @@ public class MemoryService {
 
     private List<ResponseMemoryDto> getMemoryDtos(User user) {
         List<ResponseMemoryDto> list = new ArrayList<>();
+
+        List<Memory> memories = user.getMemories();
+        memories.sort(new Comparator<Memory>() {
+            @Override
+            public int compare(Memory o1, Memory o2) {
+                return o1.getSlot() - o2.getSlot();
+            }
+        });
+
         for(int i = 1; i <= 3; i++) {
-            Optional<Memory> findMemory = memoryRepository.findByUserAndSlot(user, i);
             ResponseMemoryDto response;
-            if(findMemory.isPresent()) response = findMemory.get().toResponseDto();
-            else response = new ResponseMemoryDto("script1",1,i,0,0,0,0,0);
+
+            if(memories.size() > 0 && memories.get(0).getSlot() == i) {
+                response = memories.get(0).toResponseDto();
+                memories.remove(0);
+            } else {
+                response = new ResponseMemoryDto("script1",1,i,0,0,0,0,0);
+            }
+
             list.add(response);
         }
 

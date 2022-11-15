@@ -4,6 +4,9 @@ import com.ssafy.developermaker.domain.aiinterview.dto.AiInterviewQuestionDto;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 @Entity
 public class AiInterviewQuestion {
@@ -24,6 +27,14 @@ public class AiInterviewQuestion {
     private String keyword;
 
     public AiInterviewQuestionDto toDto(){
-        return AiInterviewQuestionDto.builder().no(no).question(question).aiqId(aiqId).keyword(keyword).subject(subject).build();
+        AiInterviewQuestionDto aiqDto = AiInterviewQuestionDto.builder().no(no).question(question).aiqId(aiqId).subject(subject).build();
+        StringTokenizer st = new StringTokenizer(this.keyword, "/");
+        List<String> list = new ArrayList<>();
+        int size = st.countTokens();
+        for(int i = 0; i < size; i++){
+            list.add(st.nextToken());
+        }
+        aiqDto.setKeyword(list);
+        return aiqDto;
     }
 }

@@ -316,10 +316,14 @@
 }
 
 .GetAlbumTitle {
-  font-size: 2vw;
+  font-size: 2.2vw;
   color: gold;
   text-align: center;
-  margin: auto;
+  position: absolute;
+  width: auto;
+  margin: 0.5vw;
+  left: 10%;
+  top: 73%;
 }
 
 /* 이미지 목표 */

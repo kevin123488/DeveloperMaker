@@ -40,7 +40,7 @@ function GetAlbum () {
     dispatch({type:'album/closeShow'})
   }
     return (
-      <div>
+      <div className="GetAlbum">
         <img className="GetAlbumBack" src={require(`../../asset/images/Album/AlbumPick/${album.theme}Back.png`)} alt="" />
         {showCover && <img className="GetAlbumCover" src={require("../../asset/images/Album/AlbumPick/AlbumCover.png")} alt=""/>}
         {showAlbum &&
@@ -49,7 +49,7 @@ function GetAlbum () {
           <div className="GetAlbumImgTransfer">
             <img src={album.albumImg} onClick={()=>{ {setShow(true)} }}
             className="albumImg albumImgOwned"  alt="앨범" />
-            <p className="albumTitle">{album.albumTitle}</p>
+            <p className="GetAlbumTitle">{album.albumTitle}</p>
             <img className="albumRating" src={logoImg[rating]} alt="등급" />
             <span className="albumCloseBtn" onClick={()=>{changeShow()}}>획득</span>
           </div>

@@ -22,39 +22,49 @@ public class Progress {
 
     @Column(nullable = false)
     @ApiModelProperty(value="CS 진행도", required = true)
-    private Integer cs = 0;
+    private int cs = 0;
 
     @Column(nullable = false)
     @ApiModelProperty(value="알고리즘 진행도", required = true)
-    private Integer algo = 0;
-
-    @Column(nullable = false)
-    @ApiModelProperty(value="프론트엔드 진행도", required = true)
-    private Integer front = 0;
+    private int algorithm = 0;
 
     @Column(nullable = false)
     @ApiModelProperty(value="백엔드 진행도", required = true)
-    private Integer back = 0;
+    private int backend = 0;
+
+    @Column(nullable = false)
+    @ApiModelProperty(value="프론트엔드 진행도", required = true)
+    private int frontend = 0;
 
     @Column(nullable = false)
     @ApiModelProperty(value="언어 진행도", required = true)
-    private Integer language = 0;
+    private int language = 0;
 
-    @OneToOne(mappedBy = "progress")
+    @OneToOne(mappedBy = "progress", cascade = CascadeType.REMOVE)
     private User user;
 
     public void setUser(User user) {
         this.user = user;
     }
 
-    public ProgressDto toDto() {
-        return ProgressDto.builder()
-                .cs(this.cs)
-                .algo(this.algo)
-                .front(this.front)
-                .back(this.back)
-                .language(this.language)
-                .build();
+    public void updateCS() {
+        this.cs++;
+    }
+
+    public void updateAlgo() {
+        this.algorithm++;
+    }
+
+    public void updateBackend() {
+        this.backend++;
+    }
+
+    public void updateFrontend() {
+        this.frontend++;
+    }
+
+    public void updateLanguage() {
+        this.language++;
     }
 
 }
