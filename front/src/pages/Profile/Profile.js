@@ -12,6 +12,7 @@ import { getAlbumProgress, getProgress, DeleteUser } from '../../slices/userSlic
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
 
 
 const Profile = () => {
@@ -24,8 +25,18 @@ const Profile = () => {
     dispatch(getAlbumProgress())
     dispatch(getProgress())
   }, [dispatch]);
-  function goMain() {
-    navigate('/')
+
+  const goMain = () => {
+    playBtnSound()
+    setTimeout(() => {
+      navigate('/')
+    }, 100)
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
   }
 
   const [show, setShow] = useState(false);

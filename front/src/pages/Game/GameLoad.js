@@ -367,7 +367,7 @@ const GameLoad = () => {
     playBtnSound();
     setTimeout(() => {
       navigate("/");
-    }, 200);
+    }, 100);
   };
 
   // 스토리 슬롯 hover시 진행도 보여주는 부분 관리

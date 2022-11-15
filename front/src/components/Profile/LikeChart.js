@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import "chart.js/auto"; // import 안하면 차트 오류남
 import "../../pages/Profile/Profile.css"
 import { Bar } from "react-chartjs-2";
+import { defaults } from 'chart.js';
 
 const LikeChart = (props) =>{
   let show = props.show
@@ -14,6 +15,10 @@ const LikeChart = (props) =>{
       }]
     })
   useEffect(()=>{
+    // console.log(Bar.defaults)
+    // Bar.defaults.font.family = "'Jua', sans-serif"
+    defaults.font.family = "'Jua', sans-serif"
+    defaults.font.size = 16
     setLikeData({ 
       labels: ['서봄', '한여름', '차가을', '한겨울'],
       datasets: [{
@@ -29,6 +34,12 @@ const LikeChart = (props) =>{
     // 라벨 지우기
     plugins: {
       legend: {
+        labels: {
+          font: {
+            size: 14,
+            family: "'Jua', sans-serif",
+          }
+        },
         display: false
       }
     },
@@ -38,11 +49,12 @@ const LikeChart = (props) =>{
           display: false,
         }
       },
-      y: {
+      yAxes: {
         max: 100,
         min: 0,
         ticks: {
-          stepSize: 2
+          stepSize: 20,
+          fontSize: 500,
         },
         grid: {
           display: false,
@@ -64,7 +76,7 @@ const LikeChart = (props) =>{
         <div className="ProfileLikeChart">
           <p className="ProfileLikeTitle">{data.slot}번 슬롯 호감도</p>
           <div className="ProfileLikeChartsize">
-            <Bar data={likeData} options={config}  />
+            <Bar data={likeData} options={config} className="Bar" />
           </div>  
         </div>
       )

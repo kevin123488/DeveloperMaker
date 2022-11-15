@@ -69,9 +69,9 @@ const UserInfo = () => {
         ))}
       </select> }
       {/* <p className='ProfileUserInfoData'>{UserInfo.email.slice(0, UserInfo.email.length - 6)}</p> */}
-      <button className='btn btn-danger ProfileUserInfoBtn' onClick={()=>{
+      <button className='btn ProfileUserInfoBtn' onClick={()=>{
         if (mode) {changeMode()}  else {reset(); changeMode(); }}}>{mode? "정보수정": "취소"}</button>
-      {!mode && <button className='btn btn-danger ProfileUserInfoBtn' onClick={()=> {putUserInfo(nickname, language)}} >수정</button>}
+      {!mode && <button className='btn ProfileUserInfoBtn' onClick={()=> {putUserInfo(nickname, language)}} >수정</button>}
     </div>
   );
 };

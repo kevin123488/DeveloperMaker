@@ -14,7 +14,7 @@ const StudyAlbumChart = () =>{
         label: "자율학습 앨범 진행도",
         data: [progress, 100-progress],
         // [data[0], data[1]]
-        backgroundColor: ["#d40000", "#F2F7FF"],
+        backgroundColor: ["#4c94ff", "#F2F7FF"],
       },
     ],
   };

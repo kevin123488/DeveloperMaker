@@ -51,10 +51,10 @@
   font-size: 2vw;
   text-align: center;
   top: 2vh;
-  left: 30vw;
+  left: 40vw;
   color: rgb(68, 114, 212);
   height: 10vh;
-  width: 40vw;
+  width: 20vw;
   border-radius: 1vw;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.2);
@@ -178,6 +178,8 @@
   border: 0.4em solid #ddfffc;
   margin: 0 auto;
   margin-top: 10vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
   overflow: scroll;
   background-color: white;
   z-index: 100;
@@ -237,6 +239,10 @@
   margin: 1vw;
   width: 10vw;
   cursor: pointer;
+  transition: all ease 0.2s;
+}
+.subjectItem:hover {
+  transform: scale(1.05);
 }
 .studyItems {
   margin-top: 15vh;
@@ -311,6 +317,18 @@
   background: url(../../asset/images/SelfstudyImg/correct.png) center no-repeat;
   background-size: contain;
 }
+.bigCorrect {
+  position: absolute;
+  top: 10vh;
+  left: 0vw;
+  height: 60vh;
+  width: 70vw;
+  margin: 0 auto;
+  background: url(../../asset/images/SelfstudyImg/correct.png) center no-repeat;
+  background-size: contain;
+  z-index: 999;
+  animation: popup 0.2s;
+}
 .wrong {
   position: absolute;
   top: 0vh;
@@ -321,7 +339,18 @@
   background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
   background-size: contain;
 }
-
+.bigWrong {
+  position: absolute;
+  top: 10vh;
+  left: 5vw;
+  height: 60vh;
+  width: 60vw;
+  margin: 0 auto;
+  background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 999;
+  animation: popup 0.2s;
+}
 
 .quizHover:hover{
   transform: scale(1.05);
@@ -355,6 +384,41 @@
   cursor: pointer;
   animation: hidex 0.2s;
 }
+
+.prevProblem {
+  position: absolute;
+  text-align: center;
+  top: 70vh;
+  font-size: 2vw;
+  left: 11vw;
+  height: 2vw;
+  width: 10vw;
+  background-color: white;
+  cursor: pointer;
+  animation: hidex 0.2s;
+  transition: all ease 0.1s;
+}
+.prevProblem:hover {
+  transform: scale(1.1);
+}
+
+.nextProblem {
+  position: absolute;
+  text-align: center;
+  top: 70vh;
+  font-size: 2vw;
+  right: 11vw;
+  height: 2vw;
+  width: 10vw;
+  background-color: white;
+  cursor: pointer;
+  animation: hidex 0.2s;
+  transition: all ease 0.1s;
+}
+.nextProblem:hover {
+  transform: scale(1.1);
+}
+
 
 .form-chek, .form-radio{display: inline-block; line-height: 20px; vertical-align: middle;}
 .form-chek::before, .form-radio::before{content: ""; display: inline-block; width: 10px; height: 10px; background: #ffffff; border: 1px solid #e0e0e0; margin-right: 8px;}
@@ -501,7 +565,7 @@
   position: absolute;
   width: 25vw;
   height: 80vh;
-  top: 32vh;
+  top: 33vh;
   left: 38vw;
   background: url("../../asset/images/SelfstudyImg/SDsummer2.png") center no-repeat;
   background-size: contain;
@@ -718,12 +782,26 @@
   width: 5vw;
   height: 5vh;
   font-size: 3vh;
-  /* top: 67vh;
-  left: 25vw; */
+  margin-top: 4vh;
   border-radius: 10px;
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.2s;
+}
+.quizSubmit:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
+}
+
+.quizProblem {
+  font-size: 2vw;
+}
+.quizExample {
+  font-size: 1.5vw;
+  margin-top: 4vh;
+  /* margin-bottom: 1vh; */
 }
 
 /* 퀴즈 내부 */
@@ -732,6 +810,8 @@
 
 .npcSpeechBalloon {
   position: absolute;
+  display: flex;
+  align-items: center;
   height: 22vh;
   width: 21vw;
   top: 15vh;
@@ -740,17 +820,20 @@
   background: url("../../asset/images/SelfstudyImg/speechBalloon.png") center no-repeat;
   background-size: 100% 100%;
   z-index: 1200;
+  /* transition: all ease 0.5s; */
 }
 .npcSpeechBalloonContent {
-  position: absolute;
-  height: 22vh;
+  /* position: absolute; */
+  /* height: 22vh; */
   width: 17vw;
-  top: 7vh;
-  left: 2vw;
+  margin-left: 2vw;
+  margin-bottom: 1.5vh;
+  /* top: 7vh;
+  left: 2vw; */
   /* line-height: 20vh; */
-  align-items: center;
+  /* align-items: center; */
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.5vw;
   color: #80b9ff;
   z-index: 1200;
 }
@@ -928,6 +1011,12 @@
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.15s;
+}
+.algoSubmitBtn:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
 }
 .algoRunBtn{
   position: absolute;
@@ -942,6 +1031,12 @@
   border: black solid;
   z-index: 100;
   cursor: pointer;
+  transition: all ease 0.15s;
+}
+.algoRunBtn:hover {
+  background-color: #80b9ff;
+  color: white;
+  border-color: #749fbb;
 }
 
 
