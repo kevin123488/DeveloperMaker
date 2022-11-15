@@ -75,7 +75,8 @@ const NewAlbum = Styled.img`
 `;
 
 const GameButtonsArea = () => {
-  const userInfo = useSelector((state) => state.user.userInfo);
+  const isLogIn = useSelector(state => state.user.isLogIn )
+  const userInfo = useSelector(state => state.user.userInfo);
   // 새앨범 여부 확인
   const [newAlbum, setNewAlbum] = useState(false)
   const dispatch = useDispatch()
@@ -127,7 +128,7 @@ const GameButtonsArea = () => {
 
   return (
     <>
-      {userInfo ? (
+      {isLogIn ? (
         <LoginGameButtons>
           <BtnArea>
             <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}>게임시작</GameBtn>

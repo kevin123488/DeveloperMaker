@@ -3,12 +3,9 @@ import "./Interview.css";
 import Check from "../../components/Interview/Check";
 import Webcam from "react-webcam";
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
-import Interviewer1 from "../../asset/images/Interview/Interviewer/Interviewer1.png"
-import Interviewer2 from "../../asset/images/Interview/Interviewer/Interviewer2.png"
-import Interviewer3 from "../../asset/images/Interview/Interviewer/Interviewer3.png"
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { interviewCheck, getInterviewQuestion } from "../../slices/interviewSlice";
+import { getInterviewQuestion, subInterviewData } from "../../slices/interviewSlice";
 
 // import { toBlob} from 'html-to-image';
 // import styled from "styled-components";
@@ -29,6 +26,14 @@ const Interview = () => {
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
+
+   // 입장 시 기본 설정 초기화
+   useEffect(()=> {
+    dispatch({type:'interview/checkInitialize'})
+  })
+
+  const [start, setStart] = useState(false)
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -73,6 +78,8 @@ const Interview = () => {
     }
     return new File([u8arr], "capture.jpg", {type:mime});
   }
+  // 캡쳐 파일 변수
+  const [capImg, setCapImg] = useState()
   // 웹캠 DOM을 선택할 Ref
   const webcamRef = useRef();
   const capture = useCallback(
@@ -81,43 +88,49 @@ const Interview = () => {
       const image = await webcamRef.current.getScreenshot()
       // base64를 jpg File로 변환
       const File = await base64toFile(image)
-      dispatch(interviewCheck(File))
+      setCapImg(File)
     },
     [webcamRef]
   );
 
   // STT 로직
+
+  // 사용가능 브라우저 확인
+  // (typeof SpeechSynthesisUtterance === 'undefined' || typeof speechSynthesis === 'undefined')
+
+
+
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition;
-  recognition.interimResults = true;
+  let recognition = new SpeechRecognition;
+  recognition.interimResults = true // 중간 값을 받아봄
   recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
   recognition.lang = "ko-KR";
   recognition.continuous = true // 계속 녹음
-  // recognition.Timeouts.InitialSilenceTimeout = TimeSpan.FromSeconds(6.0);
-  // recognition.Timeouts.BabbleTimeout = TimeSpan.FromSeconds(4.0);
-  // recognition.Timeouts.EndSilenceTimeout = TimeSpan.FromSeconds(1.2);
-
+  
+  // 스크립트
   const [script, setScript] = useState('')
-  recognition.onresult = async (event) => {
+  
+  // 실시간 결과값
+  // recognition.onresult = (event) => {
+  //   let voice = ''
+  //   for (let i = 0, len = event.results.length; i < len; i++) {
+  //     voice += event.results[i][0].transcript
+  //     console.log(`voice ${i}번`, event.results[i][0].transcript)
+  //   }
+
+  //   // resultIndex-마지막 값  event.results[i].isFinal - 마지막인지 여부
+  //   setScript(voice)
+  // }
+
+  // 종료시 결과값
+  recognition.onresult  = (event) => { 
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript
-      console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
+      // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
-    // resultIndex-마지막 값
-    await setScript(voice)
-    if (voice.includes('만나서 반갑습니다')) {
-      console.log('인식 완료')
-      endRec()
-    }
+    setScript(voice)
   }
-
-  // recognition.addEventListnere("result", async(e) => {
-  //   for (let i = e.resultIndex, len = e.result.length; i <len; i++) {
-  //     setScript(e.result[i][0].transcript)
-  //     console.log(script)
-  //   }
-  // });
 
   // useEffect(() => {
   //   console.log('다시')
@@ -129,9 +142,9 @@ const Interview = () => {
   }
 
   const endRec = () => {
-    recognition.stop()
+    // 종료를 위해서 한번 바꿨다가 해야함
+    recognition.abort()
     console.log('음성인식 종료',script)
-    setScript('')
   }
 
   // 타이머
@@ -159,16 +172,37 @@ const Interview = () => {
   // }
   // dispatch(getInterviewQuestion('back'))
 
-  const goMain = async() => {
+  const goMain = () => {
     navigate('/')
-    await dispatch({type:'interview/checkInitialize'})
+    dispatch({type:'interview/checkInitialize'})
+  }
+
+  // 스타트 버튼
+  function recStart () {
+    // 시작 변수 변경
+    setStart(true)
+    // 캡쳐
+    capture()
+    // 녹음 시작
+    startRec()
+  }
+
+  // 끝내기 버튼
+  const recEnd = async() => {
+    // 시작 변수 변경
+    setStart(false)
+    // 녹음 종료
+    // await endRec()
+    const data = {subjectNo: 1, image: capImg, script: script}
+    dispatch(subInterviewData(data))
+    setScript('')
   }
 
   return (
     <>
       <div className="interviewBack">
         <div className="interviewTopMenu">
-          <p className="interviewTitle" >00기업 면접</p>
+          <p className="interviewTitle" onClick={()=> { console.log('script를 인쇄 중',script)}} >00기업 면접</p>
           <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={goMain} />
         </div>
         
@@ -178,11 +212,11 @@ const Interview = () => {
             src={require(`../../asset/images/Interview/Interviewer/Interviewer${num}.png`)} alt={`Interviewer${num}`} />)
           })}
         </div>
+        <h1 onClick={()=> {if (start) {recEnd()} else {recStart()}}}>{start ? '끝내기' : '시작'}</h1>
         <div className="interviewScriptBack">
           <p className="InterviewerName">『누군가의 발언』</p>
           <p className="InterviewContent">질문 내용??</p>
           <div>
-            <p>버튼모음</p>
           </div>
         </div>
         {check.ready && <Webcam

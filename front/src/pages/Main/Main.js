@@ -93,23 +93,18 @@ const Main = () => {
       </div>
         <div className="backFlow">
           <TitleDivision></TitleDivision>
-
           {/* <div class="ocean">
             <div class="wave"></div>
             <div class="wave"></div>
           </div> */}
-
-
-
           <div className="MainFormWrapper">
             <div className="MainLayoutWrapper">
               <div className="MainLogo">
-                {/* <Title> Developer Maker </Title> */}
               </div>
               {userInfo !== null && userInfo.language === "NONE" ? (
                 <SignupForm />
               ) : (
-                <MainForm userInfo={userInfo} />
+                <MainForm/>
               )}
             </div>
           </div>

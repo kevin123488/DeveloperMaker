@@ -15,11 +15,11 @@
     const initializeNaverLogin = () => {
       // 네이버 로그인 띄우기
       const naverLogin = new naver.LoginWithNaverId({
-        // 로컬용
         clientId: "FlXgJpptQwh3MWRLNBRZ",
-        callbackUrl: "http://localhost:3000",
+        // 로컬용
+        // callbackUrl: "http://localhost:3000",
         // 배포URL
-        // callbackUrl: "https://k7e103.p.ssafy.io",
+        callbackUrl: "https://k7e103.p.ssafy.io",
         isPopup: false,
         loginButton: { color: 'green', type: 3, height: 58 },
         callbackHandle: true,

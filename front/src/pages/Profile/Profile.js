@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAlbumProgress, getProgress, DeleteUser } from '../../slices/userSlice';
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
+import DeleteImg from "../../asset/images/Profile/DeleteImg.png"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
@@ -32,6 +33,11 @@ const Profile = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const Delete = async() => {
+    await dispatch(DeleteUser());
+    navigate('/');
+  }
+
   return (
     <div className='ProfileBack'>
       <UserInfo />
@@ -53,10 +59,10 @@ const Profile = () => {
             <Modal.Title>DeveloperMaker 탈퇴</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={MainImg} className="ProfileDeleteImg" alt="" />
-            정말로 탈퇴하시나요...</Modal.Body>
+            <img src={DeleteImg} className="ProfileDeleteImg" alt="" />
+            모든 정보를 지우고 정말로 탈퇴하시나요......</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=>{dispatch(DeleteUser()); navigate('/')}}>회원탈퇴</Button>
+            <Button variant="danger" onClick={()=>{Delete()}}>회원탈퇴</Button>
             <Button variant="secondary" onClick={handleClose}>취소</Button>
           </Modal.Footer>
         </Modal>
