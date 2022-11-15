@@ -61,9 +61,14 @@ const interview = createSlice({
   // 앨범 리스트를 받을 시작 리스트
   initialState: {
     isLoding: false,
+    // 환경 설정을 위한 단계들 얼굴인식, 목소리 인식, 최종 시작
     check: {face: false, voice: false, ready: false},
-    Question: {no: null, subject: null ,content: null, stage:0, answer: null,},
-    points: 0,
+    // 현재 받아온 문제
+    Question: {no: null, subject: null ,content: null, stage:0, answer: null},
+    // 각 단계별 점수
+    points: {one: 100, two: 100, three: 100},
+    // 스토리에서 왔는 지 여부
+    isStory: false,
   },
   reducers: {
     checkVoice: (state, action) => {

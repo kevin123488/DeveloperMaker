@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import "./Profile.css"
-import RadicalChart from '../../components/Profile/RadicalChart';
+import PolarAreaChart from '../../components/Profile/RadicalChart';
 import UserInfo from '../../components/Profile/UserInfo';
 import StoryAlbumChart from '../../components/Profile/StoryAlbumChart';
 import StudyAlbumChart from '../../components/Profile/StudyAlbumChart';
@@ -55,7 +55,7 @@ const Profile = () => {
       <div className='ProfileProgressChart'>
         <StoryAlbumChart />
         <StudyAlbumChart />
-        <RadicalChart />
+        <PolarAreaChart />
       </div>
       {/* 데이터별 진행도 */}
       <div className="ProfileLikeChartBack">

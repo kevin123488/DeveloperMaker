@@ -14,18 +14,26 @@ import { getInterviewQuestion, subInterviewData } from "../../slices/interviewSl
 // import { Link } from 'react-router-dom';
 
 const Interview = () => {
-  // 면접관 선택
+  // 면접관 선택 ['algorithm', 'frontend', 'backend', 'cs', 'language']
   const interviewer = [1,2,3]
-
-  // 면접관 기본대사 (1,2,3 번째 면접관 시작 멘트)
-  const interviewerContent = ["첫 번째 질문입니다.",
-    "앞선 답변 잘 들었습니다. 두 번째 질문입니다.",
-    "자 그럼 마지막 질문입니다."]
+  console.log(interviewer.sample)
 
   // 사용자 이름
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
+
+  // 설명
+  const helpContent = "면접 질문은 총 3가지이며 질문을 받는 순간부터 1분 간 생각을 정리할 시간을 받고 최대 30초 간 답변할 시간을 받습니다. 남은 시간은 화면 상단 타이머에 표시됩니다."
+
+  // 면접관 기본대사 (1,2,3 번째 면접관 시작 멘트) + 뒤에 질문으로 받아온 내용으로 질문 입력
+  const interviewerContent = [`${name}님 첫 번째 질문입니다.`,
+    `${name}님 앞선 답변 잘 들었습니다. 두 번째 질문입니다.`,
+    `자 ${name}님 그럼 마지막 질문입니다.`]
+
+  const interviewerName = {algorithm: '장지선', frontend: '정찬우', backend: '김대영', cs: '김구현', language: '김지현'}
+  
+
 
   const [start, setStart] = useState(false)
 
@@ -96,34 +104,29 @@ const Interview = () => {
   // (typeof SpeechSynthesisUtterance === 'undefined' || typeof speechSynthesis === 'undefined')
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition;
-  recognition.interimResults = true // 중간 값을 받아봄
-  recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
-  recognition.lang = "ko-KR";
-  recognition.continuous = true // 계속 녹음
+  const recognition1 = new SpeechRecognition;
+  recognition1.interimResults = true // 중간 값을 받아봄
+  recognition1.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
+  recognition1.lang = "ko-KR";
+  recognition1.continuous = true // 계속 녹음
+
+  const recognition2 = new SpeechRecognition;
+  recognition2.interimResults = true // 중간 값을 받아봄
+  recognition2.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
+  recognition2.lang = "ko-KR";
+  recognition2.continuous = true // 계속 녹음
 
   // 스크립트
   const [script, setScript] = useState('')
   
   // 실시간 결과값
-  // recognition.onresult = (event) => {
-  //   let voice = ''
-  //   for (let i = 0, len = event.results.length; i < len; i++) {
-  //     voice += event.results[i][0].transcript
-  //     console.log(`voice ${i}번`, event.results[i][0].transcript)
-  //   }
-
-  //   // resultIndex-마지막 값  event.results[i].isFinal - 마지막인지 여부
-  //   setScript(voice)
-  // }
-
-  // 종료시 결과값
-  recognition.onresult  = (event) => { 
+  recognition1.onresult  = (event) => { 
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript
       console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
+    // resultIndex-마지막 값  event.results[i].isFinal - 마지막인지 여부
     setScript(voice)
   }
 
@@ -131,15 +134,14 @@ const Interview = () => {
   //   console.log('다시')
   // }, [recognition])
 
-  const startRec = () => {
+  const startRec = (num) => {
     console.log('음성인식 시작')
-    recognition.start()
+    `recognition${num}`.start()
   }
 
-  const endRec = () => {
+  const endRec = (num) => {
     // 종료를 위해서 한번 바꿨다가 해야함
-    recognition.stop()
-    recognition.continuous = false
+    `recognition${num}`.stop()
     console.log('음성인식 종료',script)
   }
 
