@@ -179,6 +179,7 @@ const userSlice = createSlice(
       .addCase(PURGE, () => initialState)
       .addCase(getProgress.fulfilled, (state, {payload})=>{
         state.progress.study = payload
+        // console.log("페이로드", payload)
       })
       .addCase(getAlbumProgress.fulfilled, (state, {payload}) => {
         state.progress.album = payload
