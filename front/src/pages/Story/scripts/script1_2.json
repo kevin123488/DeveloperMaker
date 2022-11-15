@@ -1527,8 +1527,8 @@
     "backgroundImageUrl": "fin",
     "nextScript": "script2",
     "whichSelfStudy": "algorithm",
-    "selfStudyRequired": {"algorithm": 0},
-    "getAlbumNum": 5,
+    "selfStudyRequired": {"algorithm": 15},
+    "getAlbumNum": 2,
     "plusIndex": 1
   }
 ]

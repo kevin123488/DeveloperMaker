@@ -65,8 +65,8 @@ function App() {
 
   useEffect(() => {
     const mainBGM = document.getElementById('mainBGM')
-    mainBGM.volume = 0.4
-    mainBGM.muted = true
+    mainBGM.volume = 0.4;
+    mainBGM.muted = true;
   }, [])
 
   // 음소거 함수 

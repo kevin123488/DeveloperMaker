@@ -214,7 +214,7 @@ const DeleteFinModal = styled.div`
   background: white;
   border-radius: 5px;
   border: 2px solid #79491e;
-  font-size: 3vw;
+  font-size: 2vw;
   text-align: center;
   line-height: 10vh;
   vertical-align: middle;
@@ -345,7 +345,7 @@ const GameslotSpeechBubble = styled.div`
   width: 20vw;
   background-image: url(${speechBubble});
   background-size: 20vw 10vw;
-  font-size: 1.5vw;
+  font-size: 1.3vw;
 `;
 
 const GameLoad = () => {
@@ -392,18 +392,33 @@ const GameLoad = () => {
 
   // 스토리 시작하는 함수
   const startStory1 = () => {
+    const BGM = document.getElementById('mainBGM');
+    if (BGM.innerText !== 'storyBGM') {
+      BGM.innerText = 'storyBGM';
+      BGM.src = null; // 스토리 들어갈 땐 BGM 끄자
+    };
     playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 1});
     // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory2 = () => {
+    const BGM = document.getElementById('mainBGM');
+    if (BGM.innerText !== 'storyBGM') {
+      BGM.innerText = 'storyBGM';
+      BGM.src = null; // 스토리 들어갈 땐 BGM 끄자
+    };
     playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 2});
     // console.log("왜 스토리로 넘어가짐?")
   };
   const startStory3 = () => {
+    const BGM = document.getElementById('mainBGM');
+    if (BGM.innerText !== 'storyBGM') {
+      BGM.innerText = 'storyBGM';
+      BGM.src = null; // 스토리 들어갈 땐 BGM 끄자
+    };
     playBtnSound();
     navigate("/Story");
     dispatch({type: "story/choiceSlot", slotNum: 3});
@@ -493,10 +508,7 @@ const GameLoad = () => {
     const BGM = document.getElementById('mainBGM');
     if (BGM.innerText !== 'gameloadBGM') {
       BGM.innerText = 'gameloadBGM';
-      BGM.src = null;
-      setTimeout(() => {
-        BGM.src = gameloadTheme; // 이 노래는 틀자마자 나와서 타이머 살짝 걸어주는게 좋을 것 같음
-      }, 1500);
+      BGM.src = gameloadTheme; // 이 노래는 틀자마자 나와서 타이머 살짝 걸어주는게 좋을 것 같음
     }
     // dispatch(userGetMemory());
     // console.log(storySlots);

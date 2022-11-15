@@ -10,6 +10,7 @@ import script1 from "./scripts/script1.json";
 import script1_1 from "./scripts/script1_1.json";
 import script1_2 from "./scripts/script1_2.json";
 import script2 from "./scripts/script2.json";
+import script3 from "./scripts/script3.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
@@ -33,6 +34,8 @@ import GetAlbum from "../../components/Album/GetAlbum";
 import nowSlot from "./nowSlot.png";
 import btnSound from "../../asset/soundEffects/buttonClick.wav";
 import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+import goSelfStudyBtn from "../../asset/images/SelfstudyImg/selfstudyBtn.png";
+import goSelfstudyBubble from "./goSelfstudyBubble.png";
 
 const StoryKeyFrame = keyframes`
   0% {
@@ -184,6 +187,7 @@ const StoryPassAlert = styled.div`
 `;
 
 const StoryHamburger = styled.div`
+  z-index: 1;
   position: absolute;
   cursor: pointer;
   top: 10%;
@@ -454,28 +458,25 @@ const StoryNonPassedModal = styled.div`
   background: white;
   width: 100vw;
   height: 100vh;
-`;
-
-const StoryNonpassedDiv = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100vh;
-  width: 100vw;
   background-image: url(${seobomNonPass});
   background-size: 100vw 100vh;
 `;
 
 const StoryNonPassedText = styled.div`
   position: absolute;
-  top: 24%;
+  padding: auto;
+  top: 25%;
   left: 25%;
   transform: translate(-50%, -50%);
-  height: 15vh;
-  width: 20vw;
+  height: 20vw;
+  width: 25vw;
   text-align: center;
-  font-size: 2vw;
+  font-size: 1.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(${goSelfstudyBubble});
+  background-size: 25vw 20vw;
 `;
 
 const StoryGoSelfstudy = styled.div`
@@ -484,10 +485,24 @@ const StoryGoSelfstudy = styled.div`
   top: 80%;
   left: 80%;
   transform: translate(-50%, -50%);
-  height: 10vh;
+  height: 7.5vw;
+  font-size: 1.5vw;
+  line-height: 7.5vw;
+  color: white;
+  overflow: hidden;
   width: 15vw;
   text-align: center;
-  background: red;
+  background-image: url(${goSelfStudyBtn});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.2s;
+  &:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  &:active {
+    top: 83%;
+  }
 `;
 
 const StoryGetAlbumModal = styled.div`
@@ -570,7 +585,7 @@ const SaveFinModal = styled.div`
   background: white;
   border-radius: 5px;
   border: 2px solid #79491e;
-  font-size: 3vw;
+  font-size: 2vw;
   text-align: center;
   line-height: 10vh;
   vertical-align: middle;
@@ -797,6 +812,7 @@ const Story = () => {
       "script1_1": script1_1,
       "script1_2": script1_2,
       "script2": script2,
+      "script3": script3,
     });
 
   const returnNextScript = (n) => {
@@ -814,6 +830,7 @@ const Story = () => {
 
   // 인게임 저장 및 기타 버튼 수납고 열기
   const ocHamburger = () => {
+    playBtnCuteSound();
     sethamburgerOpened(!hamburgerOpened);
   };
 
@@ -879,6 +896,7 @@ const Story = () => {
   }
 
   const goSelfStudy = () => {
+    playBtnSound();
     navigate("/SelfStudy");
   }
 
@@ -944,7 +962,7 @@ const Story = () => {
 
   // 엔터키로 넘기기
   const enterGoNext = (e) => {
-    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion && !selfStudyNonpassed) {
+    if (e.key === "Enter" && canGoNext && !isOption && !isQuestion && !selfStudyNonpassed && !show) {
       console.log(e.key);
       nextScript();
     }
@@ -968,7 +986,7 @@ const Story = () => {
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);
-    }, 80);
+    }, 370);
     scriptIndex.current += increaseIndex.current;
     if (scriptFile.current[scriptIndex.current].storyTeller === "주인공") {
       storyTeller.current = nickname;
@@ -1249,13 +1267,11 @@ const Story = () => {
           selfStudyNonpassed
           ?
           <StoryNonPassedModal>
-            <StoryNonpassedDiv>
               <StoryNonPassedText>
-                자율학습의 {scriptFile.current[scriptIndex.current].whichSelfStudy} 항목으로 가서 진행도를 
-                {scriptFile.current[scriptIndex.current].selfStudyRequired[scriptFile.current[scriptIndex.current].whichSelfStudy]}
-                %까지 채우도록 하세요
+                  자율학습의 {scriptFile.current[scriptIndex.current].whichSelfStudy} 항목으로 가서 진행도를 
+                  {scriptFile.current[scriptIndex.current].selfStudyRequired[scriptFile.current[scriptIndex.current].whichSelfStudy]}
+                  %까지 채워오도록 해.
               </StoryNonPassedText>
-            </StoryNonpassedDiv>
             <StoryGoSelfstudy onClick={goSelfStudy}>
               자율학습 가기
             </StoryGoSelfstudy>
