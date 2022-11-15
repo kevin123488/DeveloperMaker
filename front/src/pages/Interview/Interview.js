@@ -27,11 +27,6 @@ const Interview = () => {
     return state.user.userInfo.nickname
   })
 
-   // 입장 시 기본 설정 초기화
-   useEffect(()=> {
-    dispatch({type:'interview/checkInitialize'})
-  })
-
   const [start, setStart] = useState(false)
 
   const navigate = useNavigate()
@@ -52,8 +47,9 @@ const Interview = () => {
     return state.interview.check
   })
 
-  // 볼륨 끄기
+  // 처음 페이지 이동시 볼륨 끄기 + 환경 설정 초기화
   useEffect(() => {
+    dispatch({type:'interview/checkInitialize'})
     // BGM
     const mainBGM = document.getElementById('mainBGM')
     // BGM on/off 버튼
@@ -94,19 +90,18 @@ const Interview = () => {
   );
 
   // STT 로직
+  // 녹음을 멈출 변수
 
   // 사용가능 브라우저 확인
   // (typeof SpeechSynthesisUtterance === 'undefined' || typeof speechSynthesis === 'undefined')
 
-
-
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  let recognition = new SpeechRecognition;
+  const recognition = new SpeechRecognition;
   recognition.interimResults = true // 중간 값을 받아봄
   recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
   recognition.lang = "ko-KR";
   recognition.continuous = true // 계속 녹음
-  
+
   // 스크립트
   const [script, setScript] = useState('')
   
@@ -127,7 +122,7 @@ const Interview = () => {
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript
-      // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
+      console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     setScript(voice)
   }
@@ -143,7 +138,8 @@ const Interview = () => {
 
   const endRec = () => {
     // 종료를 위해서 한번 바꿨다가 해야함
-    recognition.abort()
+    recognition.stop()
+    recognition.continuous = false
     console.log('음성인식 종료',script)
   }
 
@@ -174,7 +170,6 @@ const Interview = () => {
 
   const goMain = () => {
     navigate('/')
-    dispatch({type:'interview/checkInitialize'})
   }
 
   // 스타트 버튼
@@ -192,10 +187,9 @@ const Interview = () => {
     // 시작 변수 변경
     setStart(false)
     // 녹음 종료
-    // await endRec()
-    const data = {subjectNo: 1, image: capImg, script: script}
-    dispatch(subInterviewData(data))
-    setScript('')
+    endRec()
+    // const data = {subjectNo: 1, image: capImg, script: script}
+    // dispatch(subInterviewData(data))
   }
 
   return (

@@ -2,8 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress, userDelete, logout } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 export const userLoginKakao = createAsyncThunk(
   "user/loginKakao",
@@ -93,7 +91,7 @@ export const userLogout = createAsyncThunk(
   'user/logout',
   async (temp, {rejectWithValue}) => {
     try {
-      const {data} = await logout()
+      logout()
     } catch(error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -181,6 +179,7 @@ const userSlice = createSlice(
       .addCase(PURGE, () => initialState)
       .addCase(getProgress.fulfilled, (state, {payload})=>{
         state.progress.study = payload
+        // console.log("페이로드", payload)
       })
       .addCase(getAlbumProgress.fulfilled, (state, {payload}) => {
         state.progress.album = payload

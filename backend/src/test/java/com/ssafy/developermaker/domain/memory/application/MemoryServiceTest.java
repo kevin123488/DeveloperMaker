@@ -4,9 +4,6 @@ import com.ssafy.developermaker.domain.memory.entity.Memory;
 import com.ssafy.developermaker.domain.memory.repository.MemoryRepository;
 import com.ssafy.developermaker.domain.progress.entity.Progress;
 import com.ssafy.developermaker.domain.progress.repository.ProgressRepository;
-import com.ssafy.developermaker.domain.user.application.UserManageService;
-import com.ssafy.developermaker.domain.user.dto.UserDto;
-import com.ssafy.developermaker.domain.user.entity.Gender;
 import com.ssafy.developermaker.domain.user.entity.Language;
 import com.ssafy.developermaker.domain.user.entity.LoginType;
 import com.ssafy.developermaker.domain.user.entity.User;
@@ -52,7 +49,7 @@ class MemoryServiceTest {
         Progress progress = new Progress();
         progressRepository.save(progress);
 
-        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null,progress);
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Language.JAVA, LoginType.KAKAO,null,progress,null, null,null);
         userRepository.save(userA);
 
         entityManager.flush();
@@ -78,7 +75,7 @@ class MemoryServiceTest {
         Progress progress = new Progress();
         progressRepository.save(progress);
 
-        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Gender.MAN, Language.JAVA, LoginType.KAKAO,null,progress);
+        User userA = new User(1L,"test@naver.com-NAVER","socialId", "유저A", Language.JAVA, LoginType.KAKAO,null,progress,null, null,null);
         userRepository.save(userA);
 
         entityManager.flush();

@@ -21,7 +21,7 @@
 .albumModeSel {
   position: absolute;
   top: 3vh;
-  left: 40vw;
+  left: 42vw;
   display: flex;
 }
 .albumBtn {
@@ -29,8 +29,13 @@
   border-radius: 5px;
   width: max-content;
   padding: 1vh;
-  font-size: 2vw;
-  background-color: navy;
+  font-size: 1.5vw;
+  background-image: url('../../asset/images/Album/TypeChoiceBtn.png') ;
+  background-position: 'center';
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  /* background-color: navy; */
 }
 .albumBtnSel {
   opacity: 30%;
@@ -42,7 +47,7 @@
   width: 2.5vw;
 }
 
-
+/* 
 .albumMainBtn {
   position: absolute;
   right: 1vw;
@@ -54,8 +59,25 @@
 .albumMainBtn:hover {
   transform: scale3d(1.1, 1.1, 1.1);
   transition: 0.2s;
+} */
+.albumMainBtn {
+  position: absolute;
+  top: 5vh;
+  right: 2vw;
+  height: 10vh;
+  width: 10vh;
+  overflow: hidden;
+  background: url(../../asset/images/SelfstudyImg/homeBtn.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: all ease 0.1s;
 }
-
+.albumMainBtn:hover {
+  transform: scale(1.05);
+}
+.albumMainBtn:active {
+  top: 6%;
+}
 
 /* ----------------------Story Album----------------------- */
 /* 앨범 리스트 */
@@ -98,13 +120,19 @@
 /* 스토리 앨범 타입 변경 */
 .albumStoryTypeBtnBack {
   display: flex;
-  margin-left: 3.25vw;
+  margin-left: 6vw;
 }
 .albumStoryTypeBtn {
   width: 4vw;
   height: 8vh;
   opacity: 50%;
   cursor: pointer;
+}
+.albumSelectionDumyArea {
+  width: 4vw;
+  height: 8vh;
+  opacity: 50%;
+  /* cursor: pointer; */
 }
 .albumStoryTypeBtn:hover {
   transform: scale3d(1.1, 1.1, 1.1);
@@ -132,14 +160,14 @@
 
 .albumCard {
   background-image: url('../../asset/images/Album/AlbumStructure.png') ;
-  background-size: 20vw 35vh;
+  background-size: 18vw 35vh;
   background-repeat: no-repeat;
   position: relative;
   filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
-  width: 20vw;
+  width: 18vw;
   height: 35vh;
   margin-top: 4vh;
-  margin-left: 2vw ;
+  margin-left: 2.5vw ;
   border-radius: 1vw;
 }
 .albumCard:hover {
@@ -312,10 +340,18 @@
   left: 18vw;
   color: white;
   font-size: 2vw;
-  background-color: pink;
   width: max-content;
-  padding: 0.1vw;
+  padding: 0.3vw;
   border-radius: 5px;
   border: 0px;
   cursor: pointer;
+  background-image: url('../../asset/images/Album/TypeChoiceBtn.png') ;
+  background-position: 'center';
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.albumCloseBtn:hover {
+  transform: scale(1.1);
 }
