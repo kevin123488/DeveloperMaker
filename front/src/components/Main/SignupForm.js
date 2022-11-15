@@ -20,7 +20,7 @@ const Form = styled.div`
 const ContentArea = styled.div`
   width: 80%;
   height: 20%;
-  margin-top: 20%;
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
 `;

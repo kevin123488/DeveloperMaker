@@ -93,7 +93,7 @@ class UserManageServiceTest {
 
         // when
         SignupDto signupDto = new SignupDto("닉네임수정",Language.JAVA);
-        savedUser.signupFirst(signupDto);
+        savedUser.loginFirst(signupDto);
 
         // then
         assertThat(savedUser.getNickname()).isEqualTo("닉네임수정");

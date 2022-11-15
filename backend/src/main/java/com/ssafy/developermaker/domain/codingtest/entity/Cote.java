@@ -1,12 +1,13 @@
 package com.ssafy.developermaker.domain.codingtest.entity;
 
-import com.ssafy.developermaker.domain.codingtest.dto.CoteDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,7 +28,12 @@ public class Cote {
     @Column(length = 10000)
     private String answerInput;
 
+    private Long timeLimit;
+
     @Column(nullable = false, length = 1000)
     private String answerOutput;
+
+    @OneToMany(mappedBy = "cote", cascade = CascadeType.REMOVE)
+    private List<UserCote> userCotes = new ArrayList<>();
 
 }

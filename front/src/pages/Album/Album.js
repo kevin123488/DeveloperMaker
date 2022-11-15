@@ -69,12 +69,14 @@ const Album = () => {
   function changeType(state) {
     setSelType(state)
   }
+  
   // 메인화면
-  function goMain() {
+  const goMain = () => {
     playBtnSound()
-    navigate('/')
+    setTimeout(() => {
+      navigate('/')
+    }, 100)
   }
-
   
   // 앨범 뽑기 보여주기용 변수
   const show = useSelector((state)=>{
@@ -127,7 +129,7 @@ const Album = () => {
   return (
     <div className="albumBack">
       <img src="" alt="" />
-      <p onClick={()=>{ putAlbum(33)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p>
+      {/* <p onClick={()=>{ putAlbum(4)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p> */}
       <div className="albumModeSel">
         <div>
           {newStory && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (!selType ? " albumBtnSel" : "")}/>}

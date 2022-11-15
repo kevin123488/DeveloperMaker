@@ -26,16 +26,18 @@
   width: 20vw;
   height: 20* 1.5vw;
   border-radius: 5px;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
+  background-color: rgba(250, 235, 215, 0.4);
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
 .ProfileLogoImg {
   /* 중앙정렬 */
   margin: auto;
   margin-top: 2vh;
+  margin-bottom: 2vh;
   display: block;
-  width: 20vw;
-  height: 20vw * 0.2;
+  width: 17vw;
+  height: 17vw * 0.2;
 }
 .ProfileUserInfoImg {
   /* 중앙정렬 */
@@ -47,13 +49,17 @@
 }
 .ProfileUserInfoData {
   margin: auto;
-  padding: 0.1vw;
   margin-top: 1.5vh;
-  padding: 0.2vh;
+  padding: 1vh 1vw;
   width: max-content;
-  height: 3vh;
+  height: 4vh;
   font-size: 1vw;
-  background-color: pink;
+  /* background-color: pink; */
+  /* background-color: rgb(133, 113, 82); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameBackground.png");
   color: white;
   border-radius: 5px;
   text-align: center;
@@ -62,9 +68,14 @@
 .ProfileUserInput {
   display: block;
   margin: auto;
-  height: 3vh;
+  height: 4vh;
   margin-top: 1.5vh;
-  background-color: pink;
+  /* background-color: pink; */
+  /* background-color: rgb(133, 113, 82); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameChangeBackground.png");
   color: white;
   border-radius: 5px;
 }
@@ -72,6 +83,10 @@
   margin-top: 1.5vh;
   margin-left: auto;
   float: right;
+  transition: all ease 0.2s;
+}
+.ProfileUserInfoBtn:hover {
+  transform: scale(1.1);
 }
 
 /* Chart */
@@ -83,7 +98,8 @@
   left: 30vw;
   width: 60vw;
   height: 40vh;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
+  background-color: rgba(250, 235, 215, 0.4);
   border-radius: 5px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
@@ -95,13 +111,13 @@
 .ProfileStoryTitle {
   font-size: 1.5vw;
   text-align: center;
-  color: #003B95;
+  color: #d04e4e;
   max-width: 100%;
 }
 .ProfileStudyTitle {
   font-size: 1.5vw;
   text-align: center;
-  color: #D40000;
+  color: #4c94ff;
 }
 
 .ProfileRadicalChart {
@@ -113,11 +129,22 @@
   margin: 0.2vw;
   width: max-content;
   padding: 1vh;
-  background-color: pink;
+  /* background-color: pink; */
+  /* background-color: rgb(133, 113, 82); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameBackground.png");
   border-radius: 5px;
   cursor: pointer;
   opacity: 0.5;
   color: white;
+  transition: all ease 0.1s;
+}
+.ProfileLikeBtn:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  transition: 0.2s;
+  opacity: 1;
 }
 .ProfileLikeBtnSel {
   transform: scale3d(1.1, 1.1, 1.1);
@@ -136,19 +163,25 @@
   width: 60vw;
   height: 35vh;
   margin: auto;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
+  background-color: rgba(250, 235, 215, 0.4);
   border-radius: 5px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
 .ProfileLikeNoData {
   position: absolute;
-  top: 50%;
-  left: 40%;
-  padding: 1vh;
+  top: 40%;
+  left: 30%;
+  padding: 2vh;
   width: max-content;
   height: max-content;
-  font-size: 1vw;
-  background-color: pink;
+  font-size: 1.5vw;
+  /* background-color: pink; */
+  /* background-color: rgb(135, 108, 68); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameBackground.png");
   color: white;
   border-radius: 5px;
   text-align: center;
@@ -159,7 +192,7 @@
   margin-bottom: 0;
   font-size: 1.5vw;
   text-align: center;
-  color: purple
+  color: #A97155;
 }
 .ProfileLikeChartsize {
   margin: auto;
@@ -170,7 +203,7 @@
   font-size: 1.5vw;
 }
 
-.ProfileMainBtn {
+/* .ProfileMainBtn {
   position: absolute;
   left: 8vw;
   bottom: 5vh;
@@ -183,18 +216,40 @@
 }
 .InterviewMainBtn:active {
   top: 6%;
+} */
+.ProfileMainBtn {
+  position: absolute;
+  top: 5vh;
+  right: 2vw;
+  height: 12vh;
+  width: 12vh;
+  overflow: hidden;
+  background: url(../../asset/images/SelfstudyImg/homeBtn.png) center no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  transition: all ease 0.1s;
 }
-
+.ProfileMainBtn:hover {
+  transform: scale(1.05);
+}
+.ProfileMainBtn:active {
+  top: 6%;
+}
 
 
 .ProfileDelete {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20vh;
   cursor: pointer;
+  color: beige;
+  opacity: 0.8;
 }
 .ProfileDeleteImg {
   width: 5vw;
   height: 7vh;
 }
 
+.Bar {
+  font-family: 'Jua', sans-serif;
+}

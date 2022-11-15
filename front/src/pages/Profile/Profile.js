@@ -12,6 +12,7 @@ import { getAlbumProgress, getProgress, DeleteUser } from '../../slices/userSlic
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import btnSound from "../../asset/soundEffects/buttonClick.wav";
 
 
 const Profile = () => {
@@ -24,8 +25,18 @@ const Profile = () => {
     dispatch(getAlbumProgress())
     dispatch(getProgress())
   }, [dispatch]);
-  function goMain() {
-    navigate('/')
+
+  const goMain = () => {
+    playBtnSound()
+    setTimeout(() => {
+      navigate('/')
+    }, 100)
+  }
+
+  const playBtnSound = () => {
+    const sound = new Audio()
+    sound.src = btnSound
+    sound.play()
   }
 
   const [show, setShow] = useState(false);
@@ -56,12 +67,8 @@ const Profile = () => {
             <img src={MainImg} className="ProfileDeleteImg" alt="" />
             정말로 탈퇴하시나요...</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=>{dispatch(DeleteUser())}}>
-              회원탈퇴
-            </Button>
-            <Button variant="secondary" onClick={handleClose}>
-              취소
-            </Button>
+            <Button variant="danger" onClick={()=>{dispatch(DeleteUser())}}>회원탈퇴</Button>
+            <Button variant="secondary" onClick={handleClose}>취소</Button>
           </Modal.Footer>
         </Modal>
       </>

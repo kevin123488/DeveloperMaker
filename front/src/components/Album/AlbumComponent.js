@@ -34,6 +34,17 @@ const AlbumComponent = (props) => {
     // }
   }, [album.ownerRate])
 
+    // image 다운로드
+    // const [img, setImg] = useState(null);
+    // const downloadImage = () => {
+    // if (!img) return;
+    //   var a = document.createElement('a');
+    //   a.href = img;
+    //   a.download = "image.png";
+    //   document.body.appendChild(a);
+    //   a.click();
+    //   document.body.removeChild(a);
+    // }
 
 
   // 효과음 tkdnsem
