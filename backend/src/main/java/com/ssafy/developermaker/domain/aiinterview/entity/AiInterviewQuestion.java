@@ -24,10 +24,14 @@ public class AiInterviewQuestion {
     private String question;
 
     @Column(nullable = false)
+    private Integer demendCnt;
+    @Column(nullable = false)
     private String keyword;
 
+    private String keywordDetect;
+
     public AiInterviewQuestionDto toDto(){
-        AiInterviewQuestionDto aiqDto = AiInterviewQuestionDto.builder().no(no).question(question).aiqId(aiqId).subject(subject).build();
+        AiInterviewQuestionDto aiqDto = AiInterviewQuestionDto.builder().no(no).question(question).demendCnt(demendCnt).aiqId(aiqId).subject(subject).build();
         StringTokenizer st = new StringTokenizer(this.keyword, "/");
         List<String> list = new ArrayList<>();
         int size = st.countTokens();
@@ -35,6 +39,15 @@ public class AiInterviewQuestion {
             list.add(st.nextToken());
         }
         aiqDto.setKeyword(list);
+
+        st = new StringTokenizer(this.keywordDetect, "/");
+        List<String> list2 = new ArrayList<>();
+        size = st.countTokens();
+        for(int i = 0; i < size; i++){
+            list2.add(st.nextToken());
+        }
+        aiqDto.setKeywordDetect(list2);
         return aiqDto;
+
     }
 }
