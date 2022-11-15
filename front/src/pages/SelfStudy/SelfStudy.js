@@ -83,18 +83,18 @@ const Quiz = () => {
     }
     startGetQuizInfo()
     
-    // console.log('유저정보', user.language)
+    console.log('유저정보', user.language)
     // 초기 유저 선택 언어 설정
     if (user.language === 'PYTHON') {
       changeLang('python')
     } else if (user.language === 'JAVA') {
       changeLang('java')
-    } else if (user.language === 'C') {
-      changeLang('C')
+    } else if (user.language === 'C++') {
+      changeLang('C / C++')
     } else if (user.language === 'JS') {
       changeLang('javascript')
     }
-
+    setIsLoaded(true)
   }, [dispatch])
 
 
@@ -107,6 +107,8 @@ const Quiz = () => {
   // console.log(quizInfo)
   const maxPage = useSelector((state) => state.study.quizList.totalPage)
 
+  // 로딩관리
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // 스터디할지, 문제풀지 고르는 창 나오는거
   const [isShowNpcBalloon, setIsShowNpcBalloon] = useState(false)
@@ -743,6 +745,12 @@ const Quiz = () => {
   return (
     <>
       <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="CsStudyBackground">
+        {
+          !isLoaded?
+          <div className="loadingPage"></div>
+          : null
+        }
+        
         <div className="homeBtn" onClick={goHome}></div>
         {
           !showWork?
@@ -858,7 +866,6 @@ const Quiz = () => {
         {
           isShowQuiz?
           <div className="QuizContainer">
-
             {/* 과목 목록 */}
             <div className="subjectbar">
               {quizInfo[category].subjectList.map((subject, index) => (
@@ -909,7 +916,8 @@ const Quiz = () => {
                   : null
                 }
                 <div className="quizProblem">
-                  {showingQuiz.problem}
+                  <ReactMarkdown  children = {showingQuiz.problem} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+                  </ReactMarkdown>
                   <hr />
                 </div>
                 <br/>
