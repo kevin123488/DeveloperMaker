@@ -48,7 +48,6 @@ export const subInterviewData = createAsyncThunk(
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       } else {
-        console.log('에러 떳다고',error)
         return rejectWithValue(error.message);
       }
     }
@@ -64,11 +63,13 @@ const interview = createSlice({
     // 환경 설정을 위한 단계들 얼굴인식, 목소리 인식, 최종 시작
     check: {face: false, voice: false, ready: false},
     // 현재 받아온 문제
-    Question: {no: null, subject: null ,content: null, stage:0, answer: null},
-    // 각 단계별 점수
-    points: {one: 100, two: 100, three: 100},
+    question: {no: null, subject: null ,content: null},
     // 스토리에서 왔는 지 여부
     isStory: false,
+    // 각 단계 인식 결과
+    result: {1: null, 2: null, 3: null},
+    // 현재 단계
+    stage: 1,
   },
   reducers: {
     checkVoice: (state, action) => {
@@ -78,8 +79,10 @@ const interview = createSlice({
     checkInitialize: (state, action) => {
       state.isLoding = false;
       state.check = {face: false, voice: false, ready: false};
-      state.Question = {no: null, subject: null ,content: null, stage:0, answer: null,};
-      state.points = {one: 100, two: 100, three: 100};
+      state.question = {no: null, subject: null , question: null, };
+      state.isStory = false;
+      state.result =  {1: null, 2: null, 3: null};
+      state.stage = 1;
     },
     changeStage: (state, action) => {
       state.stage += 1
@@ -102,25 +105,28 @@ const interview = createSlice({
       // 문제를 받아온 경우
       .addCase(getInterviewQuestion.fulfilled, (state, action) => {
         console.log(action.payload)
-        state.Question.no = action.payload.aiqId;
-        state.Question.content = action.payload.question
-        state.Question.subject = action.payload.subject
-        state.Question.stage += 1
-        state.Question.answer = action.payload.keyword
+        state.question.no = action.payload.aiqId;
+        state.question.question = action.payload.question
+        state.question.subject = action.payload.subject
       })
-
+      // 답안 제출 결과 경신
       .addCase(subInterviewData.fulfilled, (state, action) => {
-        console.log(action.payload)
+        console.log('답안 제출 결과', action.payload)
+        state.result[state.stage] = action.payload
         // 로딩 끝
         state.isLoding = false
-        console.log('됐다')
+        // 단계 넘기기
+        state.stage += 1
       })
       .addCase(subInterviewData.pending, (state, action) => {
         state.isLoding = true
-        console.log('대기중')
       })
+      // 답안 제출 결과 인식 실패 ===> 스테이지만 올리기
       .addCase(subInterviewData.rejected, (state, action) => {
-        console.log('에러', action.payload)
+        // 로딩 끝
+        state.isLoding = false
+        // 단계 넘기기
+        state.stage += 1
       })
       // .addCase(getAlbumCheck.fulfilled, (state, action) => {
       //   state.haveCheck = [action.payload];

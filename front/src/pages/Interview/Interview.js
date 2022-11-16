@@ -7,17 +7,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getInterviewQuestion, subInterviewData } from "../../slices/interviewSlice";
 
-// import { toBlob} from 'html-to-image';
-// import styled from "styled-components";
-// 각 주인공 나오는 배경 만들면 될듯
-// import background from './SelfStudyBackground.gif';
-// import { Link } from 'react-router-dom';
-
 const Interview = () => {
-  // 면접관 선택 ['algorithm', 'frontend', 'backend', 'cs', 'language']
-  const interviewer = [1,2,3]
-  console.log(interviewer.sample)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
+  // 면접관 선택 ['algorithm', 'frontend', 'backend', 'cs', 'language']
+  const interviewer = ['algorithm', 'cs', 'language']
+  
   // 사용자 이름
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
@@ -34,15 +30,12 @@ const Interview = () => {
   const interviewerName = {algorithm: '장지선', frontend: '정찬우', backend: '김대영', cs: '김구현', language: '김지현'}
   
 
-
+  // 녹음 및 캡쳐
   const [start, setStart] = useState(false)
-
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   // 면접 질문
   const question = useSelector((state)=> {
-    return state.interview.Question
+    return state.interview.question
   })
 
   // 현재 로딩중인지 여부
@@ -53,6 +46,11 @@ const Interview = () => {
   // 인터뷰 완료여부
   const check = useSelector((state)=>{
     return state.interview.check
+  })
+
+  // 문제 단계
+  const stage = useSelector((state)=> {
+    return state.interview.stage
   })
 
   // 처음 페이지 이동시 볼륨 끄기 + 환경 설정 초기화
@@ -67,6 +65,13 @@ const Interview = () => {
     // BGM 버튼 음소거 처리
     changeBox.className = "muted"
   }, [])
+
+  // 스테이지 변경 시 문제 받아오기
+  useEffect(()=>{
+    console.log(`===============${stage}로 스테이지 변경=============`)
+    dispatch(getInterviewQuestion(interviewer[stage]))
+    console.log(question.question)
+  },[stage])
 
 
   // 웹캠 캡쳐 후 Jpg 파일로 전환
@@ -104,96 +109,83 @@ const Interview = () => {
   // (typeof SpeechSynthesisUtterance === 'undefined' || typeof speechSynthesis === 'undefined')
 
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition1 = new SpeechRecognition;
-  recognition1.interimResults = true // 중간 값을 받아봄
-  recognition1.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
-  recognition1.lang = "ko-KR";
-  recognition1.continuous = true // 계속 녹음
 
-  const recognition2 = new SpeechRecognition;
-  recognition2.interimResults = true // 중간 값을 받아봄
-  recognition2.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
-  recognition2.lang = "ko-KR";
-  recognition2.continuous = true // 계속 녹음
+  // stop이 안 먹으므로 그냥 질문 3개를 위한 녹음을 따로 진행
+  const recognition = {
+    recognition1 : new SpeechRecognition(),
+    recognition2 : new SpeechRecognition(),
+    recognition3 : new SpeechRecognition(),
+    recognition4 : new SpeechRecognition(),
+  }
+  // 녹음 기본설정 
+  recognition.recognition1.interimResults = true // 중간 값을 받아봄
+  recognition.recognition1.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
+  recognition.recognition1.lang = "ko-KR";
+  recognition.recognition1.continuous = true // 계속 녹음
+
+  recognition.recognition2.interimResults = true // 중간 값을 받아봄
+  recognition.recognition2.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
+  recognition.recognition2.lang = "ko-KR";
+  recognition.recognition2.continuous = true // 계속 녹음
+
+  recognition.recognition3.interimResults = true // 중간 값을 받아봄
+  recognition.recognition3.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
+  recognition.recognition3.lang = "ko-KR";
+  recognition.recognition3.continuous = true // 계속 녹음
 
   // 스크립트
-  const [script, setScript] = useState('')
-  
+  const [script, setScript] = useState(' ')
+
   // 실시간 결과값
-  recognition1.onresult  = (event) => { 
+  recognition[`recognition${stage}`].onresult  = (event) => { 
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript
+      console.log(`==============================${stage}======================`)
       console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값  event.results[i].isFinal - 마지막인지 여부
     setScript(voice)
   }
 
-  // useEffect(() => {
-  //   console.log('다시')
-  // }, [recognition])
-
   const startRec = (num) => {
-    console.log('음성인식 시작')
-    `recognition${num}`.start()
+    console.log('음성인식 시작');
+    recognition[`recognition${num}`].start()
   }
 
   const endRec = (num) => {
     // 종료를 위해서 한번 바꿨다가 해야함
-    `recognition${num}`.stop()
-    console.log('음성인식 종료',script)
+    recognition[`recognition${num}`].stop()
+    console.log('음성인식 종료',script);
   }
 
-  // 타이머
-  // const [time, setTime] = useState(60)
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setTime(time-1)
-  //     if (time < 0) {
-  //       clearInterval(timer) //setInterval()을 끝냄
-  //       setTime(60)
-  //     }
-  //   }, 1000);
-  //   return () => clearInterval(timer);
-  // }, [time]);
-
-  // const checkVoice = () => {
-  //   if (script.includes('안녕하세요') && script.includes(name)) {
-  //     console.log('인식 완료')
-  //   }
-  //   else {
-  //     console.log('안녕하세요 인식', script.includes('안녕하세요'))
-  //     console.log('이름 인식', script.includes(name))
-  //   }
-  //   console.log('==================test==========')
-  // }
-  // dispatch(getInterviewQuestion('back'))
 
   const goMain = () => {
     navigate('/')
   }
 
   // 스타트 버튼
-  function recStart () {
-    // 시작 변수 변경
+  function recStart (num) {
     setStart(true)
-    // 캡쳐
-    capture()
+    // 캡쳐 5초 후 실행
+    setTimeout(function() {
+      capture()
+      console.log('이미지 캡쳐~~~~')
+    }, 5000);
     // 녹음 시작
-    startRec()
+    startRec(num)
   }
 
   // 끝내기 버튼
-  const recEnd = async() => {
+  const recEnd = async(num) => {
     // 시작 변수 변경
     setStart(false)
     // 녹음 종료
-    endRec()
-    // const data = {subjectNo: 1, image: capImg, script: script}
-    // dispatch(subInterviewData(data))
+    endRec(num)
+    // "/ /g"는 문자열의 모든 공백을 찾음
+    const data = {subjectNo: 1, image: capImg, script: script.replace(/ /g, '')}
+    dispatch(subInterviewData(data))
   }
-
   return (
     <>
       <div className="interviewBack">
@@ -203,19 +195,26 @@ const Interview = () => {
         </div>
         
         <div className="InterviewerBack">
-          {interviewer.map((num)=> {
-            return (<img className={`Interviewer${num}`} key={`interviewer-${num}`}
-            src={require(`../../asset/images/Interview/Interviewer/Interviewer${num}.png`)} alt={`Interviewer${num}`} />)
+          {interviewer.map((subject, idx)=> {
+            return (<img className={`Interviewer${idx+1}`} key={`interviewer-${idx}`}
+            src={require(`../../asset/images/Interview/Interviewer/${subject}.png`)} alt={`Interviewer${idx}`} />)
           })}
         </div>
-        <h1 onClick={()=> {if (start) {recEnd()} else {recStart()}}}>{start ? '끝내기' : '시작'}</h1>
-        <div className="interviewScriptBack">
-          <p className="InterviewerName">『누군가의 발언』</p>
-          <p className="InterviewContent">질문 내용??</p>
-          <div>
+        <h1 onClick={()=> {if (start) {recEnd(stage) } else {recStart(stage)}}}>{start ? '끝내기' : '시작'}</h1>
+        {check.ready && (stage < 4) &&
+        <>
+          <div className="interviewScriptBack">
+            <p className="InterviewerName">『{interviewerName[interviewer[stage-1]]}』</p>
+            <p className="InterviewContent">{interviewerContent[stage-1]}
+              <span className="interviewQuestion">"{question.question}"</span>
+            </p>
+            {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
+            <div>
+            </div>
           </div>
-        </div>
-        {check.ready && <Webcam
+        </>
+        }
+        {check.ready && (stage < 4) && <Webcam
           className="interviewWebCam"
           audio={false}
           ref={webcamRef}

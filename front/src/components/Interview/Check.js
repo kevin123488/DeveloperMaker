@@ -8,6 +8,12 @@ import RecordingBtn from "../../asset/images/Interview/Check/RecordingBtn.png";
 
 function Check() {
   const dispatch = useDispatch()
+
+  // 교육생 이름
+  const name = useSelector((state)=>{
+    return state.user.userInfo.nickname
+  })
+
   // 녹음 여부
   const [record, setRecored] = useState(false)
   // 얼굴 인식 중인지 여부
@@ -50,7 +56,7 @@ function Check() {
 
   // STT 로직
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition;
+  const recognition = new SpeechRecognition();
   recognition.interimResults = true;
   recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
   recognition.lang = "ko-KR";
@@ -59,10 +65,10 @@ function Check() {
   recognition.onresult = async (event) => {
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
-      voice += event.results[i][0].transcript
+      voice += event.results[i][0].transcript.replace(/ /g, '')
     }
     // resultIndex-마지막 값
-    if (voice.includes('만나서 반갑습니다')) {
+    if (voice.includes(`안녕하세요${name}입니다`)) {
       endRec()
     }
   }
@@ -108,7 +114,7 @@ function Check() {
         {/* 음성 인식 */}
         {check.face && !check.voice && <>
           <p className="interviewCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.
-            <span className="interviewCheckVoiceContent">"만나서 반갑습니다!"</span>
+            <span className="interviewCheckVoiceContent">"안녕하세요. {name}입니다."</span>
           </p>
           <p className="interviewCheckStage">음성인식 중</p>
           <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className="interviewCheckRec" onClick={() => {if (!record) {startRec()}}} /></>

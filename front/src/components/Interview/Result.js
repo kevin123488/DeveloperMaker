@@ -1,10 +1,10 @@
 import React from "react";
 
-const Timer = () => {
+const Result = () => {
 
   return(
     <></>
   )
 }
 
-export default Timer;
+export default Result;
