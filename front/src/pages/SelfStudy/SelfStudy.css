@@ -1,3 +1,41 @@
+body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    /* content: */
+
+    /* 자율학습 */
+    /* url(../../asset/images/SelfstudyImg/CsStudyBackground.png)
+    url(../../asset/images/SelfstudyImg/correct.png)
+    url(../../asset/images/SelfstudyImg/wrong.png)
+    url(../../asset/images/SelfstudyImg/homeBtn.png)
+    url(../../asset/images/SelfstudyImg/interviewTestBtn.png)
+    url(../../asset/images/SelfstudyImg/quizPaper.png)
+    url(../../asset/images/SelfstudyImg/quizPaperO.png)
+    url(../../asset/images/SelfstudyImg/quizPaperX.png)
+    url(../../asset/images/SelfstudyImg/SDfall1.png)
+    url(../../asset/images/SelfstudyImg/SDfall2.png)
+    url(../../asset/images/SelfstudyImg/SDhero1.png)
+    url(../../asset/images/SelfstudyImg/SDhero2.png)
+    url(../../asset/images/SelfstudyImg/SDspring1.png)
+    url(../../asset/images/SelfstudyImg/SDspring2.png)
+    url(../../asset/images/SelfstudyImg/SDsummer1.png)
+    url(../../asset/images/SelfstudyImg/SDsummer2.png)
+    url(../../asset/images/SelfstudyImg/SDwinter1.png)
+    url(../../asset/images/SelfstudyImg/SDwinter2.png)
+    url(../../asset/images/SelfstudyImg/selfstudyBtn.png)
+    url(../../asset/images/SelfstudyImg/speechBalloon.png)
+    url(../../asset/images/SelfstudyImg/studyNote.png)
+     */
+
+    /* 필요한 이미지 소스들 다운 */
+}
+
 .categoryChoice {
   position: absolute;
   top: 5vh;
@@ -28,7 +66,7 @@
   width: 100vw;
   height: 100vh;
   background-color: black;
-  z-index: 1200;
+  z-index: 5000;
 }
 
 .subjectChoice {
