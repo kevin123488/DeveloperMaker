@@ -16,8 +16,11 @@ import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 import albumTheme from "../../asset/soundEffects/Under_the_Sky.mp3";
+  
+// 로딩관리
 
 const Album = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
   const dispatch = useDispatch()
   const user = useSelector((state)=>{
     return state.user;
@@ -42,6 +45,7 @@ const Album = () => {
         dispatch({type: "album/changeCheckNew", data: album.theme})
       }
     })
+    setIsLoaded(true)
   },[storyAlbumList, dispatch])
   useEffect(()=>{
     studyAlbumList.forEach((album)=>{
@@ -128,6 +132,11 @@ const Album = () => {
 
   return (
     <div className="albumBack">
+      {
+        !isLoaded?
+        <div className="loadingPage"></div>
+        : null
+      }
       <img src="" alt="" />
       {/* <p onClick={()=>{ putAlbum(4)}} className="albumMainTitle"> {user.userInfo.nickname}'s Collection</p> */}
       <div className="albumModeSel">

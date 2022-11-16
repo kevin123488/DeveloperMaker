@@ -63,7 +63,7 @@ const UserInfo = () => {
       {mode? <p className='ProfileUserInfoData'>{UserInfo.language}</p> :
         <select defaultValue={language} key={language} onChange={onLanguageChange} className='ProfileUserInput'>
         {LanguageOptions.map((language, index) => (
-          <option key={`language-${index}`} value={language.value}>
+          <option key={`language-${index}`} value={language.value} style={{backgroundColor: "", color: "black"}}>
             {language.print}
           </option>
         ))}

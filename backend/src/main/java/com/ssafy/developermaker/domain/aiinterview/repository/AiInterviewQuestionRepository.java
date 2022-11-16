@@ -12,5 +12,5 @@ import java.util.Optional;
 public interface AiInterviewQuestionRepository extends JpaRepository <AiInterviewQuestion, Long>{
     @Query(value = "SELECT * FROM ai_interview_question ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<AiInterviewQuestion> findBySubjectOrderByRand(@Param(value = "subject") String subject);
-    Optional<AiInterviewQuestion> findAiInterviewQuestionByNo(Integer no);
+    Optional<AiInterviewQuestion> findAiInterviewQuestionByAiqId(Long aiqId);
 }
