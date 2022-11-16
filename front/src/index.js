@@ -19,7 +19,7 @@ import PrivateRoute from "./components/Routes/PrivateRoute.js";
 import "./index.css"
 
 // BGM
-import mainBGM from "./asset/soundEffects/mainBGM.mp3";
+// import mainBGM from "./asset/soundEffects/mainBGM.mp3";
 import mainBGM_v1 from "./asset/soundEffects/mainBGM_v1.mp3";
 import mainTheme from "./asset/soundEffects/Running_in_the_Sky.mp3";
 import gameLoadTheme from "./asset/soundEffects/Lovely_Wind.mp3";
@@ -67,6 +67,25 @@ function App() {
     const mainBGM = document.getElementById('mainBGM')
     mainBGM.volume = 0.4;
     mainBGM.muted = true;
+
+    // let images = [];
+
+    // function preload() {
+    //   for(let i = 0; i < preload.arguments.lenght; i++) {
+    //     images[i] = new Image();
+    //     images[i].src = preload.arguments.src;
+    //   }
+    // }
+
+    // preload(
+    //   "./asset/images/Main/mainSpringBackground.png",
+    //   "./asset/images/Main/mainSummerBackground.png",
+    //   "./asset/images/Main/mainFallBackground.png",
+    //   "./asset/images/Main/muted.png",
+    //   "./asset/images/Main/playing.png",
+    //   "./asset/images/Main/developermakerLogo.png",
+    // )
+
   }, [])
 
   // 음소거 함수 
