@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback, useEffect} from "react";
+import React, {useState, useRef, useCallback} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { interviewCheck } from "../../slices/interviewSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,7 +51,7 @@ function Check() {
       dispatch(interviewCheck(File))
       setCapImg(image)
     },
-    [webcamRef]
+    [webcamRef, dispatch]
   );
 
   // STT 로직
@@ -86,7 +86,7 @@ function Check() {
 
   return (
     <Modal show={!check.ready}>
-      <div className="InterviewCheckBack">
+      <div className="InterviewModalBack">
         <h1 className="InterviewCheckTitle">면접 환경 설정</h1>
         {/* Chrome 인지 여부 확인 */}
         {('SpeechRecognition' in window) &&

@@ -168,7 +168,7 @@
 
 
 /*------------------------ Check ------------------------------------- */
-.InterviewCheckBack {
+.InterviewModalBack {
   width: 100%;
   height: 93vh;
   text-align: center;
@@ -263,11 +263,10 @@
   font-size: 30px;
   width: max-content;
   height: max-content;
-  background-color: pink;
   border-radius: 5px;
   border: 0;
   vertical-align: 0%;
-  color: white;
+  color: navy;
 }
 
 
