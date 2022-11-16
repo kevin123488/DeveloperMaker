@@ -17,9 +17,9 @@
       const naverLogin = new naver.LoginWithNaverId({
         // 로컬용
         clientId: "FlXgJpptQwh3MWRLNBRZ",
-        callbackUrl: "http://localhost:3000",
+        // callbackUrl: "http://localhost:3000",
         // 배포URL
-        // callbackUrl: "http://k7e103.p.ssafy.io",
+        callbackUrl: "https://k7e103.p.ssafy.io",
         isPopup: false,
         loginButton: { color: 'green', type: 3, height: 58 },
         callbackHandle: true,

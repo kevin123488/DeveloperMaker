@@ -110,11 +110,11 @@ public class KakaoUserService implements SocialUserService {
                 return userDto;
             }
 
-            String temp_nickname = UUID.randomUUID().toString().replaceAll("-", "");
-            temp_nickname = "User"+temp_nickname.substring(0, 10);
-
-            String nickname = (String)profile.getOrDefault("nickname", temp_nickname);
-            userDto.setNickname(nickname);
+            if(profile == null) {
+                String temp_nickname = UUID.randomUUID().toString().replaceAll("-", "");
+                temp_nickname = "User"+temp_nickname.substring(0, 10);
+                userDto.setNickname(temp_nickname);
+            } else userDto.setNickname((String)profile.get("nickname"));
 
         } catch (ParseException e) {
             e.printStackTrace();

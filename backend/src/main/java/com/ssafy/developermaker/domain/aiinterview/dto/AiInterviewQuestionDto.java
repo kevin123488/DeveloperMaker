@@ -14,5 +14,7 @@ public class AiInterviewQuestionDto {
     private Integer no;
     private String subject;
     private String question;
+    private Integer demendCnt;
     private List<String> keyword;
+    private List<String> keywordDetect;
 }
