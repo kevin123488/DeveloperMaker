@@ -101,13 +101,10 @@ const Main = () => {
       </div>
         <div className="backFlow">
           <TitleDivision></TitleDivision>
-
           {/* <div class="ocean">
             <div class="wave"></div>
             <div class="wave"></div>
           </div> */}
-
-
           <div className="MainFormWrapper">
             <div className="MainLayoutWrapper">
               <img src={require("../../asset/images/Main/mainWinterBackground.png")} style={{display: 'none', width: '10vw', height: '10vh',}} alt=""
@@ -122,14 +119,12 @@ const Main = () => {
                 }, 500) 
                 }} />
               <div className="MainLogo">
-                {/* <Title> Developer Maker </Title> */}
               </div>
               {userInfo !== null && userInfo.language === "NONE" ? (
                 <SignupForm />
-                ) : (
-                  <MainForm userInfo={userInfo} />
-                  )}
-              
+              ) : (
+                <MainForm/>
+              )}    
               {
                 !isLoaded?
                 <div className="loadingPage">

@@ -16,21 +16,18 @@
   background-repeat: no-repeat;
   background-image: url('../../asset/images/Interview/InterviewBack.png');
 }
-.interviewShowOpacity {
-  opacity: 0.1;
-}
-
 
 .interviewTitle{
   position: absolute;
   top: 2vh;
   left: 15vw;
   font-size: 3vw;
-  color: white;
-  background-color: blue;
+  color: pink;
   width: max-content;
   vertical-align: middle;
   border-radius: 5px;
+  /* 텍스트 보더 느낌 */
+  text-shadow: 2px 2px black;
 }
 .InterviewMainBtn {
   position: absolute;
@@ -67,8 +64,7 @@
   background-repeat: no-repeat;
   background-color: ivory;
   border-radius: 20px;
-  border: 5px solid black;
-
+  border: 3px solid black;
 }
 .Interviewer1 {
   position: absolute;
@@ -95,35 +91,88 @@
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
 .InterviewerNoSpeach {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .interviewScriptBack {
   position: absolute;
   left: 10vw;
   bottom: 4vh;
-  width: calc(80vw - 363px - 2vw);
+  width: calc(80vw - 363px - 7vh);
   height: 30vh;
-  background-color: white;
-  border-radius: 65px;
+  border-radius: 10px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
-  /* border: 20px solid transparent;
-  border-image: url('../../asset/images/Interview/ChatStructure.png') 30; */
+  border: 5px double brown;
+  background-color: white;
+  /* border-image: url('../../asset/images/Interview/ChatStructure.png') 30; */
+}
+.InterviewTimer{
+  position: absolute;
+  top: 2vh;
+  left: calc(50vw - 4.5vh);
+  margin: auto;
+  color: red;
+  font-size: 4.5vh;
+  background-color: white;
+  padding: 0.3vh 2vh 0.3vh 2vh;
+  border: black double 5px;
+  border-radius: 10px;
+}
+.InterviewTimerWarning {
+  animation: warning infinite 0.5s;
+  border: red double 5px;
+}
+@keyframes warning {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .InterviewerName {
-  margin-left: 2vw;
-  margin-top: 2vh;
-  font-size: 3vw;
+  /* 상 우 하 좌(시계방향) */
+  position: absolute;
+  left: 8vw;
+  bottom: 29.1vh;
+  margin: 0.8vh 0 0.5vh 1vw;
+  padding: 0.2vh;
+  font-size: 2vw;
+  z-index: 1;
+  width: max-content;
+  color: navy;
+  background-color: white;
+  border-radius: 5px;
+  border: 5px double brown;
 }
 .InterviewContent {
-  margin-left: 1vw;
-  font-size: 1.5vw;
-  margin-top: 1vh;
-  width: 58vw;
-  height: 25vh;
+  margin: 4vh 0 0 2vw;
+  width: calc(80vw - 363px - 7vh -2vw);
+  font-size: 2vw;
+  height: 20vh;
 }
-.interviewScriptNextBtn{
+.interviewQuestion {
+  margin: 4vh 0 0 2vw;
+  width: calc(80vw - 363px - 7vh -2vw);
+  font-size: 3.5vw;
+  color: navy;
+  height: 20vh;
+}
+
+.interviewNextBtn {
+  position: absolute;
+  bottom: 1vh;
+  right: 2vw;
+  cursor: pointer;
+  width: 8vw;
+  height: 5vh;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.interviewNextBtn:hover {
+  transform: scale(1.1);
+}
+
+.interviewScriptBtn{
   position: absolute;
   bottom: 1vh;
   right: 2vw;
@@ -163,21 +212,19 @@
 
 
 /*------------------------ Check ------------------------------------- */
-.InterviewCheckBack {
+.InterviewModalBack {
   width: 100%;
-  height: 90vh;
+  height: 93vh;
   text-align: center;
-  background-color: beige;
-  border-radius: 10px;
-  box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.9);
 }
+
 .InterviewCheckTitle{
   margin-top: 2vh;
   font-size: 40px;
 }
 
 .InterviewCheckCam {
-  margin-top: 3vh;
+  margin-top: 5vh;
   width: 400px;
   border: 2px double black;
 }
@@ -192,15 +239,14 @@
 }
 .interviewCheckStage {
   margin-left: 55%;
-  padding-top: 15%;
+  padding-top: 8.5vh;
   width: 40%;
-  font-size: 40px;
+  font-size: 35px;
   color: navy;
 }
 
 .interviewCheckInfo {
   color: navy;
-  /* 상 좌 하 우 */
   padding-top: 5%;
   padding-left: 10%;
   width: 91%;
@@ -208,11 +254,23 @@
   font-size: 25px;
 }
 
+
+.interviewCheckLoding {
+  color: navy;
+  /* 상 좌 하 우 */
+  padding-top: 10%;
+  padding-left: 10%;
+  width: 91%;
+  height: 50%;
+  font-size: 50px;
+}
+
 .interviewCheckVoiceContent {
   display: block;
   padding: auto;
-  padding-top: 1.5vh;
-  color: pink;
+  padding-top: 1vh;
+  font-size: 3vh;
+  color: gold;
 }
 
 .interviewCheckFighting {
@@ -223,7 +281,7 @@
 
 .interviewCheckBtn {
   /* 상 좌 하 우 */
-  margin: 1vh auto 2vh auto;
+  margin: 2.5vh auto auto auto;
   padding: 0.2vw;
   bottom: 0;
   font-size: 30px;
@@ -234,22 +292,25 @@
   border: 0;
   vertical-align: 0%;
   cursor: pointer;
+  color: white;
 }
 .interviewCheckBtn:hover {
   transform: scale(1.05);
+  background-color: darkred;
+
 }
 
 .interviewCheckBtnLoding {
-  margin: 1vh auto 2vh auto;
+  margin: 2.5vh auto auto auto;
   padding: 0.2vw;
   bottom: 0;
   font-size: 30px;
   width: max-content;
   height: max-content;
-  background-color: pink;
   border-radius: 5px;
   border: 0;
   vertical-align: 0%;
+  color: navy;
 }
 
 
@@ -268,7 +329,7 @@
 }
 
 .interviewStartBtn {
-  margin: 10vh auto 2vh auto;
+  margin: 10vh auto auto auto;
   padding: 1vw;
   bottom: 0;
   font-size: 30px;
@@ -280,7 +341,30 @@
   cursor: pointer;
   border-radius: 10px;
   box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.9);
+  color: white;
 }
 .interviewStartBtn:hover {
+  transform: scale(1.05);
+  background-color: darkred
+}
+
+
+/*------------------------ Result ------------------------------------- */
+
+.interviewResultImg {
+  width: 90%;
+  height: 70%;
+}
+
+.interviewResult {
+  display: block;
+  margin: 10% auto auto auto;
+  width: 15%;
+  height: 10%;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+  background-color: #EEEEEE;
+  padding: 2%;
+}
+.interviewResult:hover {
   transform: scale(1.05);
 }

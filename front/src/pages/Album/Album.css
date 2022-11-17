@@ -350,10 +350,18 @@
   left: 18vw;
   color: white;
   font-size: 2vw;
-  background-color: pink;
   width: max-content;
-  padding: 0.1vw;
+  padding: 0.3vw;
   border-radius: 5px;
   border: 0px;
   cursor: pointer;
+  background-image: url('../../asset/images/Album/TypeChoiceBtn.png') ;
+  background-position: 'center';
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.albumCloseBtn:hover {
+  transform: scale(1.1);
 }

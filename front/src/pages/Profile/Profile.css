@@ -126,6 +126,7 @@
 }
 
 .ProfileLikeBtn {
+  /* 상-우-하-좌 or 상-좌우-하 or 상하-좌우 or 상하좌우 */
   margin: 0.2vw;
   width: max-content;
   padding: 1vh;
@@ -162,7 +163,7 @@
 .ProfileLikeChart {
   width: 60vw;
   height: 35vh;
-  margin: auto;
+  margin-top: 0.5vh;
   /* background-color: antiquewhite; */
   background-color: rgba(250, 235, 215, 0.4);
   border-radius: 5px;
@@ -246,7 +247,7 @@
   opacity: 0.8;
 }
 .ProfileDeleteImg {
-  width: 5vw;
+  width: 4vw;
   height: 7vh;
 }
 
