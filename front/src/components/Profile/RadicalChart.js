@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import "chart.js/auto"; // import 안하면 차트 오류남
-import { Radar, PolarArea } from "react-chartjs-2"; // 차트종류
+import { PolarArea } from "react-chartjs-2"; // 차트종류
 import "../../pages/Profile/Profile.css"
 import { getProgress } from '../../slices/userSlice';
 import { defaults } from 'chart.js';
 
-const RadicalChart = () => {
+const PolarAreaChart = () => {
   const dispatch = useDispatch()
   const progress = useSelector((state)=>{
     return state.user.progress.study
@@ -91,7 +91,7 @@ const RadicalChart = () => {
     defaults.font.size = 12
     dispatch(getProgress())
   },[dispatch])
-  console.log('자율학습 진행도', progress)
+  
   return (
     <div className='ProfileRadicalChart'>
       <PolarArea data={data} options={config} />    
@@ -99,4 +99,4 @@ const RadicalChart = () => {
   );
 };
 
-export default RadicalChart;
+export default PolarAreaChart;

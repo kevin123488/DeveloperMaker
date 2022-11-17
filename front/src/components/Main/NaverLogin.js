@@ -15,8 +15,8 @@
     const initializeNaverLogin = () => {
       // 네이버 로그인 띄우기
       const naverLogin = new naver.LoginWithNaverId({
-        // 로컬용
         clientId: "FlXgJpptQwh3MWRLNBRZ",
+        // 로컬용
         // callbackUrl: "http://localhost:3000",
         // 배포URL
         callbackUrl: "https://k7e103.p.ssafy.io",
@@ -27,7 +27,7 @@
       naverLogin.init();
     };
 
-    // 로그인 후 리다이렉트 된 Naver 로그인 API의 토큰 잡기
+    // 로그인 후 리다이렉트 된 Naver 로그인 API 토큰(URL에서 제공)
     const getNaverToken = async () => {
       if (!location.hash) return;
       const token = location.hash.split('=')[1].split('&')[0];
