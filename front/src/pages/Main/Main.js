@@ -101,7 +101,7 @@ const Main = () => {
       </div>
         <div className="backFlow">
           <TitleDivision></TitleDivision>
-
+          
               {/* 로딩화면 관리 부분 */}
               <img src={require("../../asset/images/Main/mainWinterBackground.png")} style={{display: 'none', width: '10vw', height: '10vh',}} alt=""
               onLoad={() => {
@@ -127,7 +127,6 @@ const Main = () => {
                 ) : (
                   <MainForm userInfo={userInfo} />
               )}
-              
               {
                 !isLoaded?
                 <div className="loadingPage">

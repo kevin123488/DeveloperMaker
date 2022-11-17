@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Styled from "styled-components";
 
 import GameButtonsArea from "./GameButtonsArea";
@@ -15,7 +16,8 @@ const Form = Styled.div`
   margin-bottom: 5%;
 `;
 
-const MainForm = ({ userInfo }) => {
+const MainForm = () => {
+  const isLogIn = useSelector(state=>state.user.isLogIn)
   return (
     <Form>
       <GameButtonsArea />

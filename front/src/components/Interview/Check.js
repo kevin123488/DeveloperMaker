@@ -1,4 +1,4 @@
-import React, {useState, useRef, useCallback, useEffect} from "react";
+import React, {useState, useRef, useCallback} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { interviewCheck } from "../../slices/interviewSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,12 @@ import RecordingBtn from "../../asset/images/Interview/Check/RecordingBtn.png";
 
 function Check() {
   const dispatch = useDispatch()
+
+  // 교육생 이름
+  const name = useSelector((state)=>{
+    return state.user.userInfo.nickname
+  })
+
   // 녹음 여부
   const [record, setRecored] = useState(false)
   // 얼굴 인식 중인지 여부
@@ -18,9 +24,6 @@ function Check() {
   const check = useSelector((state)=>{
     return state.interview.check
   })
-
-  // 마지막 전환 화면 변수
-  const[show, setShow] = useState(true)
 
   // 웹캠 캡쳐 후 Jpg 파일로 전환
   // 화면 변수
@@ -48,47 +51,42 @@ function Check() {
       dispatch(interviewCheck(File))
       setCapImg(image)
     },
-    [webcamRef]
+    [webcamRef, dispatch]
   );
 
   // STT 로직
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition;
+  const recognition = new SpeechRecognition();
   recognition.interimResults = true;
   recognition.maxAlternatives = 1 // 클수록 단어 보정효과 커짐
   recognition.lang = "ko-KR";
   recognition.continuous = true // 계속 녹음
 
-  const [script, setScript] = useState('')
   recognition.onresult = async (event) => {
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
-      voice += event.results[i][0].transcript
+      voice += event.results[i][0].transcript.replace(/ /g, '')
     }
     // resultIndex-마지막 값
-    await setScript(voice)
-    console.log(voice)
-    if (voice.includes('만나서 반갑습니다')) {
+    if (voice.includes(`안녕하세요${name}입니다`)) {
       endRec()
     }
   }
 
   const startRec = () => {
-    console.log('음성인식 시작')
     setRecored(true);
     recognition.start()
   }
 
   const endRec = () => {
     recognition.stop()
-    setScript('')
-    console.log('음성인식 종료')
+    // 내용 초기화
     dispatch({type:"interview/checkVoice", select: 'voice'})
   }
 
   return (
     <Modal show={!check.ready}>
-      <div className="InterviewCheckBack">
+      <div className="InterviewModalBack">
         <h1 className="InterviewCheckTitle">면접 환경 설정</h1>
         {/* Chrome 인지 여부 확인 */}
         {('SpeechRecognition' in window) &&
@@ -99,8 +97,8 @@ function Check() {
         {/* loding에 따라 분기 */}
         {!check.face && <>{!loding ?
             <p className="interviewCheckInfo">원활한 면접을 위해 지원자분은 얼굴의 눈코입이 보이도록 웹캠 화면 중앙에 위치하시고 얼굴인식 버튼을 눌러주세요.</p>
-            : <p className="interviewCheckInfo">결과 확인중</p>}
-            <p className="interviewCheckStage">1. 얼굴인식</p>
+            : <p className="interviewCheckLoding">결과 확인중</p>}
+            <p className="interviewCheckStage">얼굴인식 중</p>
           {/* loding에 따라 얼굴인식 캠 or 캡쳐화면  */}
           {!loding ? <Webcam
             className="InterviewCheckCam"
@@ -116,22 +114,23 @@ function Check() {
         {/* 음성 인식 */}
         {check.face && !check.voice && <>
           <p className="interviewCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.
-            <span className="interviewCheckVoiceContent">"만나서 반갑습니다!"</span>
+            <span className="interviewCheckVoiceContent">"안녕하세요. {name}입니다."</span>
           </p>
-          <p className="interviewCheckStage">2. 음성인식</p>
+          <p className="interviewCheckStage">음성인식 중</p>
           <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className="interviewCheckRec" onClick={() => {if (!record) {startRec()}}} /></>
           }
         {/* 마지막 확인 단계 */}
         {check.voice && check.face &&
           <>
             <p className="interviewCheckInfo">환경설정이 마무리 되었습니다.
-              <span className="interviewCheckVoiceContent">준비가 되시면 면접을 시작해주세요.</span>
+              <span className="interviewCheckVoiceContent">모든 준비를 마쳤으니 버튼을 눌러 면접을 시작해주세요.</span>
             </p>
-            <p className="interviewCheckStage">3. 면접대기</p>
+            <p className="interviewCheckStage">면접대기 중</p>
             <p className="interviewCheckFighting">Fighting!!!</p>
             {/* 면접 시작 버튼 */}
             <p className="interviewStartBtn" onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}}>면접시작</p>
           </>}
+        <p onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}}>??</p>
         </div>
       </div>
     </Modal>

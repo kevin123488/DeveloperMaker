@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import "./Profile.css"
-import RadicalChart from '../../components/Profile/RadicalChart';
+import PolarAreaChart from '../../components/Profile/RadicalChart';
 import UserInfo from '../../components/Profile/UserInfo';
 import StoryAlbumChart from '../../components/Profile/StoryAlbumChart';
 import StudyAlbumChart from '../../components/Profile/StudyAlbumChart';
@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getAlbumProgress, getProgress, DeleteUser } from '../../slices/userSlice';
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
+import DeleteImg from "../../asset/images/Profile/DeleteImg.png"
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import btnSound from "../../asset/soundEffects/buttonClick.wav";
@@ -43,13 +44,18 @@ const Profile = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const Delete = async() => {
+    await dispatch(DeleteUser());
+    navigate('/');
+  }
+
   return (
     <div className='ProfileBack'>
       <UserInfo />
       <div className='ProfileProgressChart'>
         <StoryAlbumChart />
         <StudyAlbumChart />
-        <RadicalChart />
+        <PolarAreaChart />
       </div>
       {/* 데이터별 진행도 */}
       <div className="ProfileLikeChartBack">
@@ -64,10 +70,10 @@ const Profile = () => {
             <Modal.Title>DeveloperMaker 탈퇴</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <img src={MainImg} className="ProfileDeleteImg" alt="" />
-            정말로 탈퇴하시나요...</Modal.Body>
+            <img src={DeleteImg} className="ProfileDeleteImg" alt="" />
+            모든 정보를 지우고 정말로 탈퇴하시나요......</Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={()=>{dispatch(DeleteUser())}}>회원탈퇴</Button>
+            <Button variant="danger" onClick={()=>{Delete()}}>회원탈퇴</Button>
             <Button variant="secondary" onClick={handleClose}>취소</Button>
           </Modal.Footer>
         </Modal>

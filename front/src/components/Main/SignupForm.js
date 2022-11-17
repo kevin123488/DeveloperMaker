@@ -4,9 +4,9 @@ import { signUpUser } from "../../slices/userSlice";
 import { useDispatch } from "react-redux/es/exports";
 
 const Form = styled.div`
-  height: 50%;
+  height: min(60vh, 50%);
   width: 100%;
-  border: solid 1px;
+  border: solid 3px;
   border-color: pink;
   border-radius: 10%;
   align-items: center;
@@ -61,15 +61,18 @@ const Select = styled.select`
   border-radius: 5px;
 `;
 const Button = styled.button`
-  margin-top: 15%;
+  margin-top: 8vh;
   width: 50%;
   padding: 0.2vh;
   width: max-content;
   font-size: 2vw;
   background-color: pink;
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   border: 0px;
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 
 export const SignupForm = () => {
@@ -87,7 +90,8 @@ export const SignupForm = () => {
 
   // 닉네임 변경
   const onNicknameChange = (e) => {
-    const input = e.target.value.trim();
+    const input = e.target.value.replace(/ /g, '');
+    console.log('input값', input)
     setNickName(input);
   };
 
@@ -121,7 +125,7 @@ export const SignupForm = () => {
     <Form>
       <ContentArea>
         <TitleObject>닉네임</TitleObject>
-        <Input onChange={onNicknameChange} maxLength="10"></Input>
+        <Input onChange={onNicknameChange} value={nickname} maxLength="10"></Input>
       </ContentArea>
       <ContentArea>
         <TitleObject>언어 선택</TitleObject>
