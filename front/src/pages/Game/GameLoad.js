@@ -17,7 +17,11 @@ import goHomeIcon from "../../asset/images/SelfstudyImg/selfstudyBtn.png";
 import "./GameLoad.css";
 import gameloadBook from "./gameloadBook.png";
 import deleteSlot from "./deleteSlot.png";
-import GetAlbum from "../../components/Album/GetAlbum";
+import charInfo1 from "./charInfo1.png";
+import charInfo2 from "./charInfo2.png";
+import charInfo3 from "./charInfo3.png";
+import charInfo4 from "./charInfo4.png";
+import gameloadCharInfoBtn from "./gameloadCharInfoBtn.png";
 
 
 // 효과음 
@@ -26,6 +30,7 @@ import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
 import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import gameloadTheme from "../../asset/soundEffects/Lovely_Wind.mp3";
+import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 
 // const GameLoadHeader = styled.div`
 //   width: 100%;
@@ -350,10 +355,102 @@ const GameslotSpeechBubble = styled.div`
   font-size: 1.3vw;
 `;
 
+const CharInfoBtn = styled.div`
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  line-height: 11vh;
+  font-size: 2vw;
+  text-align: center;
+  top: 2vh;
+  left: 40vw;
+  color: #E7578E;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  height: 10vh;
+  width: 20vw;
+  border-radius: 1vw;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all ease 0.1s;
+  animation: infoBlur 3s  infinite;
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  backdrop-filter: blur( 6.5px );
+  -webkit-backdrop-filter: blur( 6.5px );
+`;
+
+const CharInfoModalEffect = keyframes`
+  from {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  to {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+`;
+
+const CharInfoModal = styled.div`
+  z-index: 6;
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 70vh;
+  width: 70vw;
+  background: white;
+  overflow: auto;
+  border-radius: 10px;
+  border: 5px solid #e9559054;
+  transition: 0.2s;
+  animation: ${CharInfoModalEffect} 0.25s;
+  &::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 0;
+    background-color: white;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #e95590;
+    border-radius: 20px;
+  }
+`;
+
+const CharInfo1 = styled.div`
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${charInfo1});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+const CharInfo2 = styled.div`
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${charInfo2});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+const CharInfo3 = styled.div`
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${charInfo3});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+const CharInfo4 = styled.div`
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${charInfo4});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+
 const GameLoad = () => {
-  const show = useSelector((state)=>{
-    return state.album.albumPickShow
-  })
   const navigate = useNavigate();
   const story = useSelector((state) => state.story);
   const storySlots = story.userStoryData;
@@ -363,6 +460,7 @@ const GameLoad = () => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [deleteFinModalOpen, setDeleteFinModal] = useState(false);
   const [whichSlotDeleted, setWhichSlotDeleted] = useState(-1);
+  const [charInfoOpen, setCharInfoOpen] = useState(false);
   // console.log(storySlots)
   // story라는 이름의 reducer에 있는 state의 userStoryData를 story라는 변수에 넣어두자는 뜻
 
@@ -496,6 +594,12 @@ const GameLoad = () => {
     }, 500);
   }
 
+  // 캐릭터 소개 관리 함수
+  const openCharInfo = () => {
+    playShowMarkdownSound();
+    setCharInfoOpen(!charInfoOpen);
+  }
+
   // 효과음 실행 함수
   const playBtnSound = () => {
     const sound = new Audio()
@@ -506,6 +610,12 @@ const GameLoad = () => {
   const playBtnCuteSound = () => {
     const sound = new Audio()
     sound.src = btnCuteSound
+    sound.play()
+  }
+
+  const playShowMarkdownSound = () => {
+    const sound = new Audio()
+    sound.src = showMarkdownSound
     sound.play()
   }
 
@@ -526,6 +636,18 @@ const GameLoad = () => {
   return (
     <>
     <div className="gameloadMain">
+      <CharInfoBtn onClick={openCharInfo}>캐릭터 소개</CharInfoBtn>
+      {
+        charInfoOpen
+        ?
+        <CharInfoModal onClick={openCharInfo}>
+          <CharInfo1></CharInfo1>
+          <CharInfo2></CharInfo2>
+          <CharInfo3></CharInfo3>
+          <CharInfo4></CharInfo4>
+        </CharInfoModal>
+        : null
+      }
       {
         deleteFinModalOpen
         ?
@@ -639,8 +761,6 @@ const GameLoad = () => {
           </GameLoadContainer>
         </GameLoadBody> */}
         </div>
-        {/* 조건부 렌더링 */}
-        {show && <GetAlbum />}
     </>
   );
 };

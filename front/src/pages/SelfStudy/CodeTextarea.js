@@ -1,11 +1,11 @@
 import React, {useState} from "react";
 import CodeEditor from '@uiw/react-textarea-code-editor';
-import { getCodingTestList, postCodingTestSolve } from "../../slices/selfstudySlice";
-import { useSelector, useDispatch } from 'react-redux';
+// import { getCodingTestList, postCodingTestSolve } from "../../slices/selfstudySlice";
+// import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from "react";
 
 const CodeTextarea = (prop) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [code, setCode] = useState(
     `### 여기에 코드를 작성하세요 ###`
   );
@@ -70,7 +70,7 @@ using namespace std;
 int main(int argc, char** argv)
 {
   int test_case;
-  int T;
+  int T = 1;
   cin>>T;
   for(test_case = 1; test_case <= T; ++test_case)
     {

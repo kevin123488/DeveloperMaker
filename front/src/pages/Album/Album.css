@@ -1,4 +1,14 @@
 /* ---------------------- Album----------------------- */
+.loadingPage {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 1200;
+}
+
 .albumBack {
   width: 100vw;
   height: 100vh;

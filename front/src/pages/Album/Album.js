@@ -21,6 +21,11 @@ import albumTheme from "../../asset/soundEffects/Under_the_Sky.mp3";
 
 const Album = () => {
   const [isLoaded, setIsLoaded] = useState(false)
+
+  window.onload = function(){
+    setIsLoaded(true)
+  }
+
   const dispatch = useDispatch()
   const user = useSelector((state)=>{
     return state.user;
@@ -45,7 +50,7 @@ const Album = () => {
         dispatch({type: "album/changeCheckNew", data: album.theme})
       }
     })
-    setIsLoaded(true)
+    // setIsLoaded(true)
   },[storyAlbumList, dispatch])
   useEffect(()=>{
     studyAlbumList.forEach((album)=>{
@@ -99,11 +104,11 @@ const Album = () => {
 
   // 효과음 gyrhkdma
 
-  const playChangePageSound = () => {
-    const sound = new Audio()
-    sound.src = changePageSound
-    sound.play()
-  }
+  // const playChangePageSound = () => {
+  //   const sound = new Audio()
+  //   sound.src = changePageSound
+  //   sound.play()
+  // }
 
   const playBtnSound = () => {
     const sound = new Audio()
@@ -111,17 +116,17 @@ const Album = () => {
     sound.play()
   }
 
-  const playBtnCuteSound = () => {
-    const sound = new Audio()
-    sound.src = btnCuteSound
-    sound.play()
-  }
+  // const playBtnCuteSound = () => {
+  //   const sound = new Audio()
+  //   sound.src = btnCuteSound
+  //   sound.play()
+  // }
   
-  const playBtnSimpleSound = () => {
-    const sound = new Audio()
-    sound.src = btnSimpleSound
-    sound.play()
-  }
+  // const playBtnSimpleSound = () => {
+  //   const sound = new Audio()
+  //   sound.src = btnSimpleSound
+  //   sound.play()
+  // }
 
   const playShowMarkdownSound = () => {
     const sound = new Audio()
@@ -132,11 +137,11 @@ const Album = () => {
 
   return (
     <div className="albumBack">
-      {
+      {/* {
         !isLoaded?
         <div className="loadingPage"></div>
         : null
-      }
+      } */}
       <img src="" alt="" />
       <p onClick={()=>{ putAlbum(29)}}> 1</p>
       <div className="albumModeSel">
