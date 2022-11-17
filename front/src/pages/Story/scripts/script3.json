@@ -3,7 +3,7 @@
     "idx": 0,
     "scriptType": "text",
     "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "text": "식사를 마친 교육생들.",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -11,10 +11,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 1,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "주인공",
+    "text": "\"꽤 맛있었는걸. 이제 숙소로 가면 되는건가요?\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -22,10 +22,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 2,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "서상균",
+    "text": "\"네. 식사를 마치신 분들은 숙소로 이동하시면 됩니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -33,10 +33,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 3,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "서상균",
+    "text": "\"참고로 3종류의 숙소가 준비되어 있으며, 배정은 랜덤뽑기로 진행될 예정입니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -44,10 +44,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 4,
     "scriptType": "text",
     "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "text": "숙소의 배정이 랜덤이라니, 굳이?",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -55,10 +55,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 5,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "서상균",
+    "text": "\"방금 '굳이 방을 랜덤으로 나눠야 하나?' 라고 생각한 교육생, 나오세요.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -66,10 +66,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 6,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "주인공",
+    "text": "\"죄송합니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -77,10 +77,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 7,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "서상균",
+    "text": "\"한번만 봐드리는 겁니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -88,10 +88,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 8,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "주인공",
+    "text": "\"감사합니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -99,10 +99,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 9,
     "scriptType": "text",
-    "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "storyTeller": "서상균",
+    "text": "\"이제 교육생분들은 앞에서 제비를 하나씩 뽑아주시기 바랍니다.\"",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -110,10 +110,10 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 10,
     "scriptType": "text",
     "storyTeller": null,
-    "text": "차가을의 옆자리에 앉았다.",
+    "text": "",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
@@ -121,7 +121,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 11,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -132,7 +132,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 12,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -143,7 +143,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 13,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -154,7 +154,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 14,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -165,7 +165,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 15,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -176,7 +176,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 16,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -187,7 +187,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 17,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -198,7 +198,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 18,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -209,7 +209,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 19,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -220,7 +220,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 20,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -231,7 +231,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 21,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -242,7 +242,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 22,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -253,7 +253,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 23,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -264,7 +264,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 24,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -275,7 +275,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 25,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -286,7 +286,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 26,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -297,7 +297,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 27,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -308,7 +308,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 28,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -319,7 +319,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 29,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -330,7 +330,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 30,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -341,7 +341,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 31,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -352,7 +352,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 32,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -363,7 +363,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 33,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -374,7 +374,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 34,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -385,7 +385,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 35,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -396,7 +396,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 36,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -407,7 +407,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 37,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -418,7 +418,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 38,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -429,7 +429,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 39,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -440,7 +440,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 40,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -451,7 +451,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 41,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -462,7 +462,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 42,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -473,7 +473,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 43,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -484,7 +484,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 44,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -495,7 +495,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 45,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -506,7 +506,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 46,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -517,7 +517,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 47,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -528,7 +528,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 48,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -539,7 +539,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 49,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -550,7 +550,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 50,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -561,7 +561,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 51,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -572,7 +572,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 52,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -583,7 +583,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 53,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -594,7 +594,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 54,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -605,7 +605,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 55,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -616,7 +616,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 56,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -627,7 +627,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 57,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -638,7 +638,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 58,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -649,7 +649,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 59,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -660,7 +660,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 60,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -671,7 +671,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 61,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -682,7 +682,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 62,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -693,7 +693,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 63,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -704,7 +704,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 64,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -715,7 +715,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 65,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -726,7 +726,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 66,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -737,7 +737,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 67,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -748,7 +748,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 68,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -759,7 +759,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 69,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",
@@ -770,7 +770,7 @@
     "plusIndex": 1
   },
 	{
-    "idx": 0,
+    "idx": 70,
     "scriptType": "text",
     "storyTeller": null,
     "text": "차가을의 옆자리에 앉았다.",

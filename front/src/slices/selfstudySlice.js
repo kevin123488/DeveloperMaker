@@ -18,7 +18,7 @@ export const getStudyInfo = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getStudyInfoApi();
-      console.log("스터디 정보",data)
+      // console.log("스터디 정보",data)
 
       return data.data
     } catch (error) {
@@ -37,7 +37,7 @@ export const getQuizInfo = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const { data } = await getQuizInfoApi();
-      console.log("퀴즈정보",data)
+      // console.log("퀴즈정보",data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -54,7 +54,7 @@ export const getStudyList = createAsyncThunk(
   "study/info",
   async (studyRequestDto, { rejectWithValue }) => {
     try {
-      console.log("스터디정보요청", studyRequestDto)
+      // console.log("스터디정보요청", studyRequestDto)
       const { data } = await getStudyListApi(studyRequestDto);
       return data.data
     } catch (error) {
@@ -90,7 +90,7 @@ export const postQuizSolve = createAsyncThunk(
   async (solveInfo, { rejectWithValue }) => {
     try {
       const { data } = await postQuizSolveApi(solveInfo);
-      console.log(data.data)
+      // console.log(data.data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -106,10 +106,10 @@ export const getCodingTestList = createAsyncThunk(
   "cote/list",
   async (coteListRequestDto, { rejectWithValue }) => {
     try {
-      console.log("코테리스트 요청", coteListRequestDto)
+      // console.log("코테리스트 요청", coteListRequestDto)
 
       const { data } = await getCodingTestListApi(coteListRequestDto);
-      console.log("코테리스트", data)
+      // console.log("코테리스트", data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -127,7 +127,7 @@ export const postCodingTestSolve = createAsyncThunk(
   async (solveInfo, { rejectWithValue }) => {
     try {
       const { data } = await postCodingTestSolveApi(solveInfo);
-      console.log(data)
+      // console.log(data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -145,7 +145,7 @@ export const postCodingTestTest = createAsyncThunk(
   async (coteListRequestDto, { rejectWithValue }) => {
     try {
       const { data } = await postCodingTestTestApi(coteListRequestDto);
-      console.log(data)
+      // console.log(data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -162,7 +162,7 @@ export const getSelfStudyProgress = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const  { data } = await getSelfStudyProgressApi();
-      console.log('자율학습 진행도 받기', data.data)
+      // console.log('자율학습 진행도 받기', data.data)
       return data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
