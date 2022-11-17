@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Styled from "styled-components";
+import LoginButtonsArea from "./LoginButtonsArea";
+import GameRole from "./GameRole/GameRole.js"
 import GameRuleImg from "../../asset/images/Main/GameRuleBtn.png";
 import GameStartImg from "../../asset/images/Main/GameStartBtn.png";
 import LogoutBtnImg from "../../asset/images/Main/LogoutBtn.png";
@@ -42,7 +44,7 @@ const GameBtn = Styled.div`
   height: 100%;
   width: 100%;
   text-align: center;
-  font-size: 2vw;
+  font-size: 2.4vw;
   cursor: pointer;
 
   // 텍스트 효과부분
@@ -78,6 +80,8 @@ const GameButtonsArea = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
   // 새앨범 여부 확인
   const [newAlbum, setNewAlbum] = useState(false)
+  const [isShowLogin, setIsShowLogin] = useState(false)
+  const [isShowGameRole, setIsShowGameRole] = useState(false)
   const dispatch = useDispatch()
   useEffect(()=> {
     // userInfo가 없이 실행될 경우 토큰을 보내지 않아서 album/new 요청이 안됨 new가 무조건 생기게 됨
@@ -114,10 +118,6 @@ const GameButtonsArea = () => {
     playBtnSound()
     navigate("/Album")
   }
-  const goGameRule = () => {
-    playBtnSound()
-    navigate("/GameRule")
-  }
 
   const playBtnSound = () => {
     const sound = new Audio()
@@ -130,10 +130,10 @@ const GameButtonsArea = () => {
       {userInfo ? (
         <LoginGameButtons>
           <BtnArea>
-            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}>게임시작</GameBtn>
+            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame}>스토리모드</GameBtn>
           </BtnArea>
           <BtnArea>
-            <GameBtn src={ProfileBtnImg} alt="Profile" onClick={goProfile}>내정보</GameBtn>
+            <GameBtn src={ProfileBtnImg} alt="Profile" onClick={goProfile}>내정보/랭킹</GameBtn>
           </BtnArea>
           <BtnArea>
             <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy}>자율학습</GameBtn>
@@ -141,6 +141,12 @@ const GameButtonsArea = () => {
           <BtnArea>
             {newAlbum && <NewAlbum src={NewAlbumLogo} alt="New" />}
             <GameBtn src={AlbumBtnImg} alt="Album" onClick={goAlbum}>앨범</GameBtn>
+          </BtnArea>
+          {/* <BtnArea>
+            <GameBtn src={StudyBtnImg} alt="Study" onClick={goSelfStudy}>랭킹</GameBtn>
+          </BtnArea> */}
+          <BtnArea>
+            <GameBtn src={GameRuleImg} alt="GameRule" onClick={() => {playBtnSound(); setIsShowGameRole(true)}}>게임소개</GameBtn>
           </BtnArea>
           <BtnArea>
             <GameBtn src={LogoutBtnImg} alt="Logout" onClick={() => {dispatch(userLogout())}}>
@@ -150,14 +156,29 @@ const GameButtonsArea = () => {
         </LoginGameButtons>
       ) : (
         <GameButtons>
+          <br />
           <BtnArea>
-            <GameBtn src={GameRuleImg} alt="GameRule" onClick={goGameRule} />
+            <GameBtn src={GameRuleImg} alt="GameRule" onClick={() => {playBtnSound(); setIsShowGameRole(true)}}>게임소개</GameBtn>
           </BtnArea>
-          <BtnArea>
-            <GameBtn src={GameStartImg} alt="GameStart" onClick={goGame} />
-          </BtnArea>
+          <br />
+          {
+            isShowLogin ? (
+              <LoginButtonsArea />
+              ): (
+              <BtnArea>
+                <GameBtn src={GameStartImg} alt="GameStart" onClick={() => {setIsShowLogin(true)}}>게임시작</GameBtn>
+              </BtnArea>
+            )
+          }
         </GameButtons>
       )}
+      {
+        isShowGameRole?
+        <div onClick={() => {setIsShowGameRole(false)}}>
+          <GameRole></GameRole>
+        </div>
+        : null
+      }
     </>
   );
 };

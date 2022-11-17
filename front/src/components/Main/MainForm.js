@@ -19,7 +19,7 @@ const MainForm = ({ userInfo }) => {
   return (
     <Form>
       <GameButtonsArea />
-      {!userInfo ? <LoginButtonsArea /> : <div></div>}
+      {/* {!userInfo ? <LoginButtonsArea /> : <div></div>} */}
     </Form>
   );
 };
