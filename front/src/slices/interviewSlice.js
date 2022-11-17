@@ -67,7 +67,7 @@ const interview = createSlice({
     // 스토리에서 왔는 지 여부
     isStory: false,
     // 각 단계 인식 결과
-    result: {1: null, 2: null, 3: null},
+    result: [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}],
     // 현재 단계
     stage: 1,
   },
@@ -81,12 +81,16 @@ const interview = createSlice({
       state.check = {face: false, voice: false, ready: false};
       state.question = {no: null, subject: null , question: null, };
       state.isStory = false;
-      state.result =  {1: null, 2: null, 3: null};
+      // 1번 결과[0] 2번 결과[1] 3번 결과[2]
+      state.result =  [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}]
       state.stage = 1;
     },
     changeStage: (state, action) => {
       state.stage += 1
     },
+    changeStory: (stage, action) => {
+      stage.isStory = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -112,7 +116,7 @@ const interview = createSlice({
       // 답안 제출 결과 경신
       .addCase(subInterviewData.fulfilled, (state, action) => {
         console.log('답안 제출 결과', action.payload)
-        state.result[state.stage] = action.payload
+        state.result[state.stage-1] = action.payload
         // 로딩 끝
         state.isLoding = false
         // 단계 넘기기
@@ -125,6 +129,7 @@ const interview = createSlice({
       .addCase(subInterviewData.rejected, (state, action) => {
         // 로딩 끝
         state.isLoding = false
+        // 임의의 값 넣기
         // 단계 넘기기
         state.stage += 1
       })

@@ -22,11 +22,12 @@
   top: 2vh;
   left: 15vw;
   font-size: 3vw;
-  color: white;
-  background-color: blue;
+  color: pink;
   width: max-content;
   vertical-align: middle;
   border-radius: 5px;
+  /* 텍스트 보더 느낌 */
+  text-shadow: 2px 2px black;
 }
 .InterviewMainBtn {
   position: absolute;
@@ -90,7 +91,7 @@
   filter: drop-shadow(6px 4px 4px #c3c3c3);
 }
 .InterviewerNoSpeach {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .interviewScriptBack {
@@ -102,33 +103,76 @@
   border-radius: 10px;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
   border: 5px double brown;
-  background-color: ivory;
+  background-color: white;
   /* border-image: url('../../asset/images/Interview/ChatStructure.png') 30; */
+}
+.InterviewTimer{
+  position: absolute;
+  top: 2vh;
+  left: calc(50vw - 4.5vh);
+  margin: auto;
+  color: red;
+  font-size: 4.5vh;
+  background-color: white;
+  padding: 0.3vh 2vh 0.3vh 2vh;
+  border: black double 5px;
+  border-radius: 10px;
+}
+.InterviewTimerWarning {
+  animation: warning infinite 0.5s;
+  border: red double 5px;
+}
+@keyframes warning {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(0eg); }
+  75% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
 }
 
 .InterviewerName {
   /* 상 우 하 좌(시계방향) */
+  position: absolute;
+  left: 8vw;
+  bottom: 29.1vh;
   margin: 0.8vh 0 0.5vh 1vw;
+  padding: 0.2vh;
   font-size: 2vw;
+  z-index: 1;
   width: max-content;
-  color: violet;
+  color: navy;
+  background-color: white;
+  border-radius: 5px;
+  border: 5px double brown;
 }
 .InterviewContent {
-  margin: 0 0 0 2vw;
+  margin: 4vh 0 0 2vw;
   width: calc(80vw - 363px - 7vh -2vw);
-  font-size: 1.5vw;
-  width: 45vw;
-  height: 25vh;
+  font-size: 2vw;
+  height: 20vh;
 }
 .interviewQuestion {
-  display: block;
-  font-size: 2vw;
+  margin: 4vh 0 0 2vw;
   width: calc(80vw - 363px - 7vh -2vw);
+  font-size: 3.5vw;
   color: navy;
+  height: 20vh;
 }
 
+.interviewNextBtn {
+  position: absolute;
+  bottom: 1vh;
+  right: 2vw;
+  cursor: pointer;
+  width: 8vw;
+  height: 5vh;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+}
+.interviewNextBtn:hover {
+  transform: scale(1.1);
+}
 
-.interviewScriptNextBtn{
+.interviewScriptBtn{
   position: absolute;
   bottom: 1vh;
   right: 2vw;
@@ -302,4 +346,25 @@
 .interviewStartBtn:hover {
   transform: scale(1.05);
   background-color: darkred
+}
+
+
+/*------------------------ Result ------------------------------------- */
+
+.interviewResultImg {
+  width: 90%;
+  height: 70%;
+}
+
+.interviewResult {
+  display: block;
+  margin: 10% auto auto auto;
+  width: 15%;
+  height: 10%;
+  filter: drop-shadow(6px 4px 4px #c3c3c3);
+  background-color: #EEEEEE;
+  padding: 2%;
+}
+.interviewResult:hover {
+  transform: scale(1.05);
 }

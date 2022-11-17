@@ -17,6 +17,8 @@ import goHomeIcon from "../../asset/images/SelfstudyImg/selfstudyBtn.png";
 import "./GameLoad.css";
 import gameloadBook from "./gameloadBook.png";
 import deleteSlot from "./deleteSlot.png";
+import GetAlbum from "../../components/Album/GetAlbum";
+
 
 // 효과음 
 import btnSound from "../../asset/soundEffects/buttonClick.wav";
@@ -349,6 +351,9 @@ const GameslotSpeechBubble = styled.div`
 `;
 
 const GameLoad = () => {
+  const show = useSelector((state)=>{
+    return state.album.albumPickShow
+  })
   const navigate = useNavigate();
   const story = useSelector((state) => state.story);
   const storySlots = story.userStoryData;
@@ -634,6 +639,8 @@ const GameLoad = () => {
           </GameLoadContainer>
         </GameLoadBody> */}
         </div>
+        {/* 조건부 렌더링 */}
+        {show && <GetAlbum />}
     </>
   );
 };

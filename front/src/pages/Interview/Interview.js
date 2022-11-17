@@ -3,7 +3,10 @@ import "./Interview.css";
 import Check from "../../components/Interview/Check";
 import Result from "../../components/Interview/Result";
 import Webcam from "react-webcam";
-import MainImg from "../../asset/images/Main/gohomeIcon.png"
+import MainImg from "../../asset/images/Main/gohomeIcon.png";
+import NextBtn from "../../asset/images/Interview/NextBtn.png";
+import StartBtn from "../../asset/images/Interview/StartBtn.png";
+import SubmitBtn from "../../asset/images/Interview/SubmitBtn.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getInterviewQuestion, subInterviewData } from "../../slices/interviewSlice";
@@ -16,13 +19,16 @@ const Interview = () => {
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
+  const [pickNum, setPickNum] = useState(0)
+  // 면접관 조합
+  const interviewer = {0: ['algorithm', 'cs', 'backend'], 1: ['backend', 'language', 'frontend'],
+  2: ['language', 'algorithm', 'cs'], 3: ['language', 'frontend', 'algorithm'], 4: ['frontend', 'cs', 'backend']}
+  // 회사명 조합
+  const CorpName = ['마카오전자', '네카라', '저기요', '쿠베', '일신생명' ]
 
-  // 면접관 선택 ['algorithm', 'frontend', 'backend', 'cs', 'language']
-  const interviewer = ['algorithm', 'cs', 'language']
   // 설명
-  const helpContent = "면접 질문은 총 3가지이며 질문을 받는 순간부터 1분 간 생각을 정리할 시간을 받고 최대 30초 간 답변할 시간을 받습니다. 남은 시간은 화면 상단 타이머에 표시됩니다."
   // 면접관 기본대사 (1,2,3 번째 면접관 시작 멘트) + 뒤에 질문으로 받아온 내용으로 질문 입력
-  const interviewerContent = [`${name}님 첫 번째 질문입니다.`,
+  const interviewerContent = [ "면접 질문은 총 3가지이며 질문을 받는 순간부터 최대 60초 간 생각을 정리할 시간을 가지고 답변은 최대 30초 간 답변할 시간을 가집니다. 남은 시간은 화면 상단 타이머에 표시됩니다.",
     `${name}님 앞선 답변 잘 들었습니다. 두 번째 질문입니다.`,
     `자 ${name}님 그럼 마지막 질문입니다.`]
   const interviewerName = {algorithm: '장지선', frontend: '정찬우', backend: '김대영', cs: '김구현', language: '김지현'}
@@ -49,7 +55,10 @@ const Interview = () => {
 
   // 처음 페이지 이동시 볼륨 끄기 + 환경 설정 초기화
   useEffect(() => {
+    // 초기화
     dispatch({type:'interview/checkInitialize'});
+    // 랜덤
+    setPickNum(Math.floor(Math.random() * 4))
     // BGM
     const mainBGM = document.getElementById('mainBGM');
     // BGM on/off 버튼
@@ -68,25 +77,30 @@ const Interview = () => {
     dispatch(getInterviewQuestion(interviewer[stage]))
   },[stage])
 
+  const [help, setHelp] = useState(true)
+
   // 타이머 기능
   const [timer, setTimer] = useState(60)
   useEffect(()=> {
-    // 0초가 아니면 1초씩 깍기(체크가 끝난 후)
-    if (check.ready && timer > 0) {
-      setTimeout(()=> {
-        setTimer(timer-1)
-      }, 1000)
-    } else if (check.ready && timer === 0) {
-      // 녹음 중이 아니라면
-      if (!start) {
-        recStart(stage)
-        setTimer(30)
-      // 녹음 중이라면
-      } else {
-        recStart(stage)
+    // 환결설정이 마무리되었고 도움말을 모두 확인했다면
+    if (check.ready && !help) {
+      // 0초가 아니면 1초씩 깍기(체크가 끝난 후)
+      if (timer > 0) {
+        const startTimer =  setTimeout(()=> {
+          setTimer(timer-1)
+        }, 1000)
+        return () => clearTimeout(startTimer)
+      } else if (timer === 0) {
+        // 녹음 중이 아니라면
+        if (!start) {
+          recStart(stage)
+        // 녹음 중이라면
+        } else {
+          recEnd(stage)
+        }
       }
     }
-  }, [timer, check.ready])
+  }, [timer, check.ready, help])
 
   
 
@@ -122,7 +136,7 @@ const Interview = () => {
   // STT 로직
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  // stop이 안 먹으므로 그냥 질문 3개를 위한 녹음을 따로 진행
+  // stop이 안 먹으므로 그냥 질문 3개를 위한 녹음을 따로 진행(4번째는 stage로 끝낼 때 오류를 없애기 위해)
   const recognition = {
     recognition1 : new SpeechRecognition(),
     recognition2 : new SpeechRecognition(),
@@ -175,9 +189,17 @@ const Interview = () => {
     navigate('/')
   }
 
+  // 도움말 끝
+  function endHelp() {
+    setHelp(false)
+    setTimer(60)
+  }
   // 스타트 버튼
   function recStart (num) {
+    // 시작 변수 만들기
     setStart(true)
+    // 제한시간 30초 시작
+    setTimer(30)
     // 캡쳐 5초 후 실행
     setTimeout(() => {
       capture()
@@ -186,11 +208,14 @@ const Interview = () => {
     // 녹음 시작
     startRec(num)
   }
-
   // 끝내기 버튼
   const recEnd = async(num) => {
+    // 다시 쉬는 타임
+    setHelp(true)
     // 시작 변수 변경
     setStart(false)
+    // 60초로 초기화
+    setTimer(60)
     // 녹음 종료
     endRec(num)
     // "/ /g"는 문자열의 모든 공백을 찾음
@@ -201,29 +226,30 @@ const Interview = () => {
     <>
       <div className="interviewBack">
         <div className="interviewTopMenu">
-          <p className="interviewTitle" onClick={()=> { console.log('script를 인쇄 중',script)}} >00기업 면접</p>
-          <div className="InterviewTimerBack">
-            <p className="InterviewTimer">{timer}</p>
-          </div>
+          <p className="interviewTitle" >{CorpName[pickNum]} 공채 면접</p>
+          {(check.ready || (help && stage === 1)) && <p className={"InterviewTimer" + ((timer < 10) ? " InterviewTimerWarning": "")}>{(timer < 10) ? `0${timer}` : timer}</p>}
           <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={goMain} />
         </div>
         
         <div className="InterviewerBack">
-          {interviewer.map((subject, idx)=> {
-            return (<img className={`Interviewer${idx+1}`} key={`interviewer-${idx}`}
+          {interviewer[pickNum].map((subject, idx)=> {
+            return (<img className={(`Interviewer${idx+1}`) + ((idx+1 !== stage) ? " InterviewerNoSpeach": "" ) } key={`interviewer-${idx}`}
             src={require(`../../asset/images/Interview/Interviewer/${subject}.png`)} alt={`Interviewer${idx}`} />)
           })}
         </div>
         {check.ready && (stage < 4) &&
         <>
+          <p className="InterviewerName">{interviewerName[interviewer[pickNum][stage-1]]}</p>
           <div className="interviewScriptBack">
-            <p className="InterviewerName">『{interviewerName[interviewer[stage-1]]}』</p>
-            <h1 onClick={()=> {if (start) {recEnd(stage) } else {recStart(stage)}}}>{start ? '끝내기' : '시작'}</h1>
-            <p className="InterviewContent">{interviewerContent[stage-1]}
-              <span className="interviewQuestion">"{question.question}"</span>
-            </p>
+            {loding ? <p className="InterviewContent">"앞선 답변을 제출 중 입니다."</p>
+             :(help ? <p className="InterviewContent">{interviewerContent[stage-1]}</p> :
+              <p className="interviewQuestion">"{question.question}"</p>)}
+             
             {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
             <div>
+              {!loding && (help ? <img className="interviewNextBtn" src={NextBtn} onClick={()=> {endHelp()}} alt="NextBtn" /> :
+              (start? ((timer < 25) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
+                <img src={StartBtn} className="interviewNextBtn" onClick={()=> {recStart(stage)}} alt="InterviewBtn" />) )}
             </div>
           </div>
         </>
@@ -236,7 +262,7 @@ const Interview = () => {
           screenshotQuality={1}
         />}
         <Check />
-        <Result show={stage === 4} />
+        <Result show={(stage === 4 && !loding)} />
       </div>
     </>
   );
