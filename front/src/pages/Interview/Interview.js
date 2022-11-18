@@ -22,7 +22,7 @@ const Interview = () => {
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
-  const pickNum = Math.floor(Math.random() * 4)
+  const [pickNum] = useState(Math.floor(Math.random() * 4))
   // const [pickNum, setPickNum] = useState(0)
   // 면접관 조합
   const interviewer = {0: ['algorithm', 'cs', 'backend'], 1: ['backend', 'language', 'frontend'],
