@@ -115,10 +115,15 @@ const GameRole = () => {
     <>
       <GameRoleModal>
           <GameRoleDiv1></GameRoleDiv1>
+          <br />
           <GameRoleDiv2></GameRoleDiv2>
+          <br />
           <GameRoleDiv3></GameRoleDiv3>
+          <br />
           <GameRoleDiv4></GameRoleDiv4>
+          <br />
           <GameRoleDiv5></GameRoleDiv5>
+          <br />
           <GameRoleDiv6></GameRoleDiv6>
       </GameRoleModal>
     </>

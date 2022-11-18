@@ -5,10 +5,11 @@ import UserInfo from '../../components/Profile/UserInfo';
 import StoryAlbumChart from '../../components/Profile/StoryAlbumChart';
 import StudyAlbumChart from '../../components/Profile/StudyAlbumChart';
 import LikeChart from '../../components/Profile/LikeChart';
+import Ranking from '../../components/Profile/Ranking';
 import { userGetMemory } from "../../slices/storySlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getAlbumProgress, getProgress, DeleteUser } from '../../slices/userSlice';
+import { getAlbumProgress, getProgress, DeleteUser, rankingInfo } from '../../slices/userSlice';
 import MainImg from "../../asset/images/Main/gohomeIcon.png"
 import DeleteImg from "../../asset/images/Profile/DeleteImg.png"
 import Button from 'react-bootstrap/Button';
@@ -19,12 +20,14 @@ import btnSound from "../../asset/soundEffects/buttonClick.wav";
 const Profile = () => {
   const navigate = useNavigate()
   const [likeSel, setLikeSel] = useState(1)
+  const [isShowRanking, setIsShowRanking] = useState(false)
   const loadData = useSelector((state) => state.story.userStoryData)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(userGetMemory())
     dispatch(getAlbumProgress())
     dispatch(getProgress())
+    dispatch(rankingInfo())
   }, [dispatch]);
 
   const goMain = () => {
@@ -78,6 +81,15 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
+      <div onClick={() => {setIsShowRanking(true)}} className='RankingBtn'></div>
+      {
+        isShowRanking?
+        <>
+          <Ranking></Ranking>
+          <div onClick={() => {setIsShowRanking(false)}} className='closeRanking'>X</div>
+        </>
+        : null
+      }
     </div>
   );
 };
