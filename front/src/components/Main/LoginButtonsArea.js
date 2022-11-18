@@ -9,7 +9,7 @@ import { userLoginKakao, getUser } from "../../slices/userSlice";
 import NaverLogin from "./NaverLogin";
 
 const SocialLoginButtons = Styled.div`
-  margin-top: 10%;
+  margin-top: 5%;
   width: 50%;
   display: flex;
   flex-direction: row;

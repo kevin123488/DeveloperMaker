@@ -242,6 +242,7 @@ const Quiz = () => {
       offset: 0,
       limit: limit,
     }
+
     setIsShowQuizProblem(false)
     setIsShowingAlgo(false)
     await setOffset(0)
@@ -257,6 +258,16 @@ const Quiz = () => {
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
+      }
+    })
+
+    const subjects = document.querySelectorAll(`.subjectItem`)
+    console.log(subjects)
+    subjects.forEach((subject) => {
+      if (subject.innerText === info.subject) {
+        subject.style.color = 'white'
+      } else {
+        subject.style.color = 'black'
       }
     })
   }
@@ -463,9 +474,8 @@ const Quiz = () => {
 
     } else {
       setNpcBalloonContent("정답을 체크해줘")
-      setIsShowNpcBalloon(true)
       setTimeout(() => {
-      setIsShowNpcBalloon(false)
+      setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 돼!")
       }, 2000)
     }
   }
@@ -530,10 +540,10 @@ const Quiz = () => {
     }, 100)
   }
 
-  const goInterviewTest = () => {
+  const goInterview = () => {
     playBtnSound()
     setTimeout(() => {
-      navigate('/Interview')
+      navigate('/Interview', {state: {story: false}})
     }, 100)
   }
 
@@ -567,6 +577,11 @@ const Quiz = () => {
       // console.log('스타일', pageNum.style)
       pageNum.style.color = '#80b9ff'
     }, 100)
+
+    changeSubject({subject: subject})
+    // const subject = document.querySelector('.subjectItem')
+    // console.log('서브젝트 태그', subject)
+    // subject.style.color = 'white'
   }
 
   // 스터디 or 퀴즈 선택하는 창
@@ -603,7 +618,7 @@ const Quiz = () => {
 
     }, 2000)
 
-    // 정오답 소리
+    // 정답이면
     if (solveResult.payload.pass) {
       playRightAnswer()
       setShowBigCorrect(true)
@@ -651,7 +666,7 @@ const Quiz = () => {
     const response = await dispatch(getAlbumCheck(albumId))
     // 중복이면 true이므로 false일 때 실행
     if (!response.payload) {
-      setNpcBalloonContent("")
+      setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
       dispatch(putAlbumList(albumId))
     }
   }
@@ -766,7 +781,7 @@ const Quiz = () => {
           !showWork?
           <div>
             <div className="infoAlarm">분야를 선택해주세요!</div>
-            <div className="interviewTestBtn" onClick={goInterviewTest}></div>
+            <div className="interviewTestBtn" onClick={goInterview}></div>
           </div>
           : null
         }
@@ -880,7 +895,7 @@ const Quiz = () => {
             {/* 과목 목록 */}
             <div className="subjectbar">
               {quizInfo[category].subjectList.map((subject, index) => (
-                <p key={index} className="subjectItem" onClick={changeSubject.bind(null, {subject: subject.subject})}>
+                <p key={index} className="subjectItem" id={subject.subject} onClick={changeSubject.bind(null, {subject: subject.subject})}>
                   {subject.subject}
                 </p>
               ))}

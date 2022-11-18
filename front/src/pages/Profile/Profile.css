@@ -1,3 +1,27 @@
+/* 이미지 프리랜더링 */
+/* body태그의 가상선택자를 이용한다 */
+body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    content:
+
+    /* 마이페이지 나중 */
+    url(../../asset/images/Profile/Ranking/gaeulLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/geowolLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/likeValueIcon.png)
+    url(../../asset/images/Profile/Ranking/seobomLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/yeoreumLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/RankingFrame.png)
+
+    /* 필요한 이미지 소스들 다운 */
+}
+
 /* ---------------------- Profile----------------------- */
 .ProfileBack {
   position: relative;
@@ -46,7 +70,10 @@
   display: block;
   width: 10vw;
   height: 20vh;
+  transition: all ease 0.3s;
+  border-radius: 5%;
 }
+
 .ProfileUserInfoData {
   margin: auto;
   margin-top: 1.5vh;
@@ -67,18 +94,41 @@
 }
 .ProfileUserInput {
   display: block;
+  padding: auto;
   margin: auto;
   height: 4vh;
+  text-align: center;
   margin-top: 1.5vh;
-  /* background-color: pink; */
-  /* background-color: rgb(133, 113, 82); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameChangeBackground.png");
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.ProfileUserInputTag {
+  margin: auto;
+  margin-top: 1.5vh;
+  padding: 1vh 1vw;
+  width: max-content;
+  height: 4vh;
+  font-size: 1vw;
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-image: url("../../asset/images/Profile/NameChangeBackground.png");
   color: white;
   border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+  display: flex;
 }
+.ProfileUserInputTag:hover {
+  transform: scale(1.1);
+}
+
 .ProfileUserInfoBtn {
   margin-top: 1.5vh;
   margin-left: auto;
@@ -253,4 +303,36 @@
 
 .Bar {
   font-family: 'Jua', sans-serif;
+}
+
+.RankingBtn {
+  position: absolute;
+  width: 16vw;
+  height: 27vh;
+  bottom: 8vh;
+  left: 10vw;
+  background: url(../../asset/images/Profile/Ranking/RankingBtn.png) center no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.RankingBtn:hover {
+  transform: scale(1.05);
+  transition: all ease 0.3s;
+}
+.closeRanking {
+  position: absolute;
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 7vh;
+  top: 6vh;
+  left: 45vw;
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.closeRanking:hover {
+  transform: scale(1.1);
+  transition: all ease 0.3s;
 }

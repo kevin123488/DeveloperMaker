@@ -24,6 +24,8 @@ export const getInterviewQuestion = createAsyncThunk(
   "interview/question",
   async (subject, { rejectWithValue }) => {
     try {
+      console.log('=========subject============')
+      console.log(subject)
       const response = await interviewSubject(subject);
       return response.data.data
     } catch (error) {
@@ -64,8 +66,6 @@ const interview = createSlice({
     check: {face: false, voice: false, ready: false},
     // 현재 받아온 문제
     question: {no: null, subject: null ,content: null},
-    // 스토리에서 왔는 지 여부
-    isStory: false,
     // 각 단계 인식 결과
     result: [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}],
     // 현재 단계
@@ -80,7 +80,6 @@ const interview = createSlice({
       state.isLoding = false;
       state.check = {face: false, voice: false, ready: false};
       state.question = {no: null, subject: null , question: null, };
-      state.isStory = false;
       // 1번 결과[0] 2번 결과[1] 3번 결과[2]
       state.result =  [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}]
       state.stage = 1;
@@ -88,9 +87,6 @@ const interview = createSlice({
     changeStage: (state, action) => {
       state.stage += 1
     },
-    changeStory: (stage, action) => {
-      stage.isStory = action.payload
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -108,7 +104,7 @@ const interview = createSlice({
       })
       // 문제를 받아온 경우
       .addCase(getInterviewQuestion.fulfilled, (state, action) => {
-        console.log(action.payload)
+        console.log('현재 문제', action.payload)
         state.question.no = action.payload.aiqId;
         state.question.question = action.payload.question
         state.question.subject = action.payload.subject

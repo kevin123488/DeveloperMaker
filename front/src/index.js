@@ -39,19 +39,6 @@ root.render(
 
         <App></App>
 
-        {/* <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/Game" element={<PrivateRoute><GameLoad /></PrivateRoute>} />
-          <Route path="/SelfStudy" element={<PrivateRoute><SelfStudy /></PrivateRoute>}/>
-          <Route path="/SelfStudy/study" element={<Study />} />
-          <Route path="/Album" element={<Album />} />
-          <Route path="/Story" element={<Story />} />
-          <Route path="/Interview" element={<Interview />}/>
-          <Route path="/Album"element={<PrivateRoute><Album /></PrivateRoute>} />
-          <Route path="/Profile" element={<Profile />} />
-        </Routes>  */}
-
-
       </BrowserRouter>
     </PersistGate>
   </Provider>
