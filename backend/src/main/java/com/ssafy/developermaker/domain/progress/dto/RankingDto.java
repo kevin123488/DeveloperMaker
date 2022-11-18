@@ -10,7 +10,7 @@ import lombok.*;
 public class RankingDto {
 
     private String nickname;
-    private Integer profile;
+    private String profileImg;
     private Integer progress;
 
 }

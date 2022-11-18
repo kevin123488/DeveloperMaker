@@ -55,35 +55,35 @@ public class ProgressService {
         List<Progress> csRanking = progressRepository.findTop10ByOrderByCsDesc();
         List<RankingDto> csRank = new ArrayList<>();
         for(Progress progress : csRanking) {
-            csRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfile(),
+            csRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getCs() / csCount * 100)));
         }
 
         List<Progress> algoRanking = progressRepository.findTop10ByOrderByAlgorithmDesc();
         List<RankingDto> algoRank = new ArrayList<>();
         for(Progress progress : algoRanking) {
-            algoRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfile(),
+            algoRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getAlgorithm() / algoCount * 100)));
         }
 
         List<Progress> backRanking = progressRepository.findTop10ByOrderByBackendDesc();
         List<RankingDto> backRank = new ArrayList<>();
         for(Progress progress : backRanking) {
-            backRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfile(),
+            backRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getBackend() / backCount * 100)));
         }
 
         List<Progress> frontRanking = progressRepository.findTop10ByOrderByFrontendDesc();
         List<RankingDto> frontRank = new ArrayList<>();
         for(Progress progress : frontRanking) {
-            frontRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfile(),
+            frontRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getFrontend() / frontCount * 100)));
         }
 
         List<Progress> langRanking = progressRepository.findTop10ByOrderByLanguageDesc();
         List<RankingDto> langRank = new ArrayList<>();
         for(Progress progress : langRanking) {
-            langRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfile(),
+            langRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getLanguage() / langCount * 100)));
         }
 
