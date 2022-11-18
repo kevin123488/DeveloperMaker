@@ -11,6 +11,14 @@ import script1_1 from "./scripts/script1_1.json";
 import script1_2 from "./scripts/script1_2.json";
 import script2 from "./scripts/script2.json";
 import script3 from "./scripts/script3.json";
+import script3_1 from "./scripts/script3_1.json";
+import script3_2 from "./scripts/script3_2.json";
+import script3_3 from "./scripts/script3_3.json";
+import script4 from "./scripts/script4.json";
+import script4_1 from "./scripts/script4_1.json";
+import script4_2 from "./scripts/script4_2.json";
+import script4_3 from "./scripts/script4_3.json";
+import script4_4 from "./scripts/script4_4.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
@@ -813,6 +821,14 @@ const Story = () => {
       "script1_2": script1_2,
       "script2": script2,
       "script3": script3,
+      "script3_1": script3_1,
+      "script3_2": script3_2,
+      "script3_3": script3_3,
+      "script4": script4,
+      "script4_1": script4_1,
+      "script4_2": script4_2,
+      "script4_3": script4_3,
+      "script4_4": script4_4,
     });
 
   const returnNextScript = (n) => {
@@ -1097,6 +1113,15 @@ const Story = () => {
         changeScriptInfo(scriptFile.current[scriptIndex.current])
         changeIsOption(true)
         // 여기선 저장할 때 chapter 정보와 인덱스 0 정보만 갱신해서 넣으면 될 것 같음
+        break;
+
+      case 'goAiTest':
+        console.log("ai면접");
+        navigate('/Interview');
+        break;
+
+      case 'end':
+        console.log('end');
         break;
 
       default:

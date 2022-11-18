@@ -354,12 +354,21 @@ const GameslotSpeechBubble = styled.div`
   font-size: 1.3vw;
 `;
 
+const CharInfoBtnEffect = keyframes`
+  0%, 100% {
+    top: 5vh;
+  }
+  50% {
+    top: 6vh;
+  }
+`;
+
 const CharInfoBtn = styled.div`
   z-index: 1;
   cursor: pointer;
   position: absolute;
   line-height: 11vh;
-  font-size: 2vw;
+  font-size: 2.5vw;
   text-align: center;
   top: 2vh;
   left: 40vw;
@@ -371,10 +380,20 @@ const CharInfoBtn = styled.div`
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.2);
   transition: all ease 0.1s;
-  animation: infoBlur 3s  infinite;
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  animation: ${CharInfoBtnEffect} 3s  infinite;
+  // box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.2 );
+  box-shadow: 0 0 10px #E7578E30,
+                0 0 20px #E7578E25,
+                0 0 30px #E7578E20,
+                0 0 40px #E7578E15,
+                0 0 50px #E7578E10,
+                0 0 60px #E7578E05;
   backdrop-filter: blur( 6.5px );
   -webkit-backdrop-filter: blur( 6.5px );
+  &:hover {
+    transition: 0.4s;
+    background-color: #ffffff80;
+  }
 `;
 
 const CharInfoModalEffect = keyframes`
