@@ -1,3 +1,27 @@
+/* 이미지 프리랜더링 */
+/* body태그의 가상선택자를 이용한다 */
+body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    content:
+
+    /* 마이페이지 나중 */
+    url(../../asset/images/Profile/Ranking/gaeulLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/geowolLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/likeValueIcon.png)
+    url(../../asset/images/Profile/Ranking/seobomLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/yeoreumLikeIcon.png)
+    url(../../asset/images/Profile/Ranking/RankingFrame.png)
+
+    /* 필요한 이미지 소스들 다운 */
+}
+
 /* ---------------------- Profile----------------------- */
 .ProfileBack {
   position: relative;
@@ -265,10 +289,11 @@
 .RankingBtn {
   position: absolute;
   width: 16vw;
-  height: 22vh;
+  height: 27vh;
   bottom: 8vh;
   left: 10vw;
-  background-color: #4c94ff;
+  background: url(../../asset/images/Profile/Ranking/RankingBtn.png) center no-repeat;
+  background-size: 100% 100%;
   cursor: pointer;
   transition: all ease 0.3s;
 }
