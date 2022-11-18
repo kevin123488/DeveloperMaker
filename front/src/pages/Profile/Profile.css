@@ -46,7 +46,14 @@
   display: block;
   width: 10vw;
   height: 20vh;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  border-radius: 5%;
 }
+.ProfileUserInfoImg:hover {
+  transform: scale(1.05);
+}
+
 .ProfileUserInfoData {
   margin: auto;
   margin-top: 1.5vh;
@@ -253,4 +260,35 @@
 
 .Bar {
   font-family: 'Jua', sans-serif;
+}
+
+.RankingBtn {
+  position: absolute;
+  width: 16vw;
+  height: 22vh;
+  bottom: 8vh;
+  left: 10vw;
+  background-color: #4c94ff;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.RankingBtn:hover {
+  transform: scale(1.05);
+  transition: all ease 0.3s;
+}
+.closeRanking {
+  position: absolute;
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 7vh;
+  top: 6vh;
+  left: 45vw;
+  color: white;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.closeRanking:hover {
+  transform: scale(1.1);
+  transition: all ease 0.3s;
 }

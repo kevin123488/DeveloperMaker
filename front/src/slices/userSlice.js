@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress, userDelete, logout } from "../common/user";
+import { loginKakao, loginNaver, getUserInfo, signUp, putUserInfo, studyProgress, albumProgress, userDelete, logout, getRankingInfo } from "../common/user";
 import { PURGE } from "redux-persist";
 import sessionStorage from "redux-persist/es/storage/session";
 
@@ -118,12 +118,30 @@ export const DeleteUser = createAsyncThunk(
   }
 )
 
+export const rankingInfo = createAsyncThunk(
+  'user/rank',
+  async (temp, {rejectWithValue}) => {
+    try {
+      const {data} = await getRankingInfo()
+      return data.data
+    } catch(error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
 
 const initialState = () => {
   return ({userInfo: {email: null, language: null, loginType: null, nickname: null, socialId: null},
     isLogIn: false,
     error: null,
-    progress: {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} }})
+    progress: {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} },
+    rankInfo: {},
+  })
 
 };
 
@@ -203,6 +221,10 @@ const userSlice = createSlice(
         state.isLogIn = false;
         state.error = null;
         state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+      })
+      .addCase(rankingInfo.fulfilled, (state, { payload }) => {
+        console.log("랭킹정보",payload)
+        state.rankInfo = payload;
       })
   },
 });
