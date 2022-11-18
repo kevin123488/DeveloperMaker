@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AiInterviewQuestionRepository extends JpaRepository <AiInterviewQuestion, Long>{
-    @Query(value = "SELECT * FROM ai_interview_question ORDER BY RAND() LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT * FROM ai_interview_question WHERE SUBJECT = :subject ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Optional<AiInterviewQuestion> findBySubjectOrderByRand(@Param(value = "subject") String subject);
     Optional<AiInterviewQuestion> findAiInterviewQuestionByAiqId(Long aiqId);
 }
