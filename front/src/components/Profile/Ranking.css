@@ -1,0 +1,228 @@
+.rankingBackground {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.rankingFrame {
+  position: absolute;
+  top: 15vh;
+  left: 12vw;
+  height: 70vh;
+  width: 76vw;
+  background: url(../../asset/images/Profile/RankingFrame.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+}
+.springIcon {
+  position: absolute;
+  top: 2vh;
+  left: 12vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(-10deg);
+  background: url(../../asset/images/Profile/seobomLikeIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+}
+.fallIcon {
+  position: absolute;
+  top: 2vh;
+  left: 20.3vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(-5deg);
+  background: url(../../asset/images/Profile/gaeulLikeIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+  z-index: 1;
+}
+.fallIcon {
+  position: absolute;
+  top: 2vh;
+  left: 20.3vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(-5deg);
+  background: url(../../asset/images/Profile/gaeulLikeIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+  z-index: 1;
+}
+.summerIcon {
+  position: absolute;
+  top: 2vh;
+  left: 29.8vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(0deg);
+  background: url(../../asset/images/Profile/yeoreumLikeIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+  z-index: 1;
+}
+.winterIcon {
+  position: absolute;
+  top: 2vh;
+  left: 41vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(10deg);
+  background: url(../../asset/images/Profile/geowolLikeIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+  z-index: 1;
+}
+.heroIcon {
+  position: absolute;
+  top: 2vh;
+  left: 51.7vw;
+  height: 2vw;
+  width: 2vw;
+  transform: rotate(10deg);
+  background: url(../../asset/images/Profile/likeValueIcon.png) center no-repeat;
+  background-size: 100% 100%;
+  animation: popup 0.2s;
+  z-index: 1;
+}
+
+.rankingContainer {
+  position: relative;
+  margin: 5.3vh 7.5vw;
+  padding: 2vh 0;
+  height: 61.2vh;
+  width: 60.5vw;
+  border-radius: 0.4vw;
+  background-color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+
+
+.categoryBtn {
+  display: inline-block;
+  width: 8vw;
+  height: 5vh;
+  margin: 0 1vw;
+  text-align: center;
+  padding-top: 0.7vh;
+  font-size: 1.5vw;
+  border: solid;
+  border-color: white;
+  border-width: 0.15vw 0.15vw 0 0.15vw;
+  border-radius: 1vw 1vw 0vw 0vw;
+  cursor: pointer;
+  transition: all ease 0.2s;
+}
+.categoryBtn:hover {
+  transform: scale(1.1);
+}
+.categoryHorizon {
+  margin: 0 0 1vh 0;
+}
+.horizon {
+  margin: 1vh 0 1vh 0;
+}
+.categoryCharacter {
+  position: relative;
+  display: inline-block;
+  margin-left: 1vw;
+  height: 51vh;
+  width: 17vw;
+  border: solid ;
+  border-width: 0.2vw;
+  overflow: auto;
+}
+.rankingArea {
+  position: relative;
+  display: inline-block;
+  margin-left: 1vw;
+  height: 51vh;
+  width: 40vw;
+  border: solid gray;
+  border-width: 0.1vw;
+  border-radius: 0.4vw;
+  overflow: scroll;
+}
+.rankingArea::-webkit-scrollbar {
+  width: 0.3vw;
+  height: 0;
+  border-radius: 0.4vw;
+  background-color: white;
+}
+.rankingArea::-webkit-scrollbar-thumb {
+  background-color: #989898;
+  border-radius: 20px;
+}
+.rankingArea::-webkit-scrollbar-track {
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+  background-color: #ebffff;
+}
+.myRanking {
+  position: sticky;
+  top: 0vh;
+  margin: 1vh 0.3vw 0 0.3vw;
+  width: 39.6vw;
+  height: 10vh;
+  background-color: rgb(227, 227, 227);
+  z-index: 1;
+}
+.topTenRankingComp {
+  position: relative;
+  width: 39.6vw;
+  height: 10vh;
+  margin: 0 0.3vw;
+  /* background-color: rgb(255, 198, 122); */
+}
+.rankerProfile {
+  display: inline-block;
+  margin: 1vh 1vw;
+  height: 8vh;
+  width: 8vh;
+  background-color: #989898;
+}
+.rankerRank {
+  position: absolute;
+  left: 3vw;
+  font-size: 1.5vw;
+  text-align: center;
+  margin: 1vh;
+  line-height: 8vh;
+  height: 8vh;
+  width: 10vw;
+  white-space: nowrap;
+}
+.rankerNickname {
+  position: absolute;
+  left: 9vw;
+  font-size: 1.2vw;
+  color: #606060;
+  text-align: center;
+  margin: 1vh;
+  line-height: 8vh;
+  height: 8vh;
+  width: 10vw;
+}
+.rankerRate {
+  position: absolute;
+  left: 21vw;
+  font-size: 1.2vw;
+  color: #606060;
+  text-align: center;
+  margin: 1vh 1vw;
+  line-height: 8vh;
+  height: 8vh;
+  width: 15vw;
+}
+@keyframes popup {
+  from {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -58,3 +58,10 @@ export const userDelete = async () => {
   const response = await axiosInstance.delete("user/")
   return response
 }
+
+
+// 랭킹정보 요청
+export const getRankingInfo = async () => {
+  const response = await axiosInstance.get("progress/rank")
+  return response
+}
