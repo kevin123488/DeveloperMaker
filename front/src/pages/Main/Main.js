@@ -21,13 +21,13 @@ import mainTheme from "../../asset/soundEffects/Running_in_the_Sky.mp3";
 
 const TitleDivision = styled.div`
   position: absolute;
-  top: 25%;
-  left: 17%;
+  top: 23vh;
+  left: 18vw;
   transform: translate(-50%, -50%);
-  height: 25vh;
-  width: 50vh;
+  height: 30vh;
+  width: 60vh;
   background-image: url(${MainLogo});
-  background-size: 50vh 25vh;
+  background-size: 60vh 30vh;
 `;
 
 // const TitleDivision2 = styled.div`
@@ -101,12 +101,8 @@ const Main = () => {
       </div>
         <div className="backFlow">
           <TitleDivision></TitleDivision>
-          {/* <div class="ocean">
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div> */}
-          <div className="MainFormWrapper">
-            <div className="MainLayoutWrapper">
+          
+              {/* 로딩화면 관리 부분 */}
               <img src={require("../../asset/images/Main/mainWinterBackground.png")} style={{display: 'none', width: '10vw', height: '10vh',}} alt=""
               onLoad={() => {
                 console.log('로드끝');
@@ -117,14 +113,20 @@ const Main = () => {
                 setTimeout(() => {
                   setIsLoaded(true);
                 }, 500) 
-                }} />
+              }} />
+
+          <div className="MainFormWrapper">
+            <div className="MainLayoutWrapper">
+
               <div className="MainLogo">
+                {/* 지금 더미로 칸먹는용으로만 쓰고있슴 */}
+                {/* <Title> Developer Maker </Title> */}
               </div>
               {userInfo !== null && userInfo.language === "NONE" ? (
                 <SignupForm />
-              ) : (
-                <MainForm/>
-              )}    
+                ) : (
+                  <MainForm userInfo={userInfo} />
+              )}
               {
                 !isLoaded?
                 <div className="loadingPage">
