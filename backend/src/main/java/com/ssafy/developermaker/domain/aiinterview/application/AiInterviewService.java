@@ -135,7 +135,7 @@ public class AiInterviewService {
             }
         }
 
-        aiInterviewResultDto.setAnswerScore((float) cnt / demendCnt * 100 < 100? 100 : (float) cnt / demendCnt * 100);
+        aiInterviewResultDto.setAnswerScore((float) cnt / demendCnt * 100 > 100 ? 100 : (float) cnt / demendCnt * 100);
         aiInterviewResultDto.setTotalScore(aiInterviewResultDto.getAnswerScore() * aiInterviewResultDto.getImageScore() / 100f);
         aiInterviewResultDto.setPass(aiInterviewResultDto.getTotalScore() > 60f ? true : false);
         aiInterviewResultDto.setDemandKeywordCnt(demendCnt);
