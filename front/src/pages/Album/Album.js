@@ -143,7 +143,7 @@ const Album = () => {
         : null
       } */}
       <img src="" alt="" />
-      <p onClick={()=>{ putAlbum(29)}}> 1</p>
+      <p onClick={()=>{ putAlbum(3)}}> 1</p>
       <div className="albumModeSel">
         <div>
           {newStory && <img src={NewAlbumLogo} alt="New" className={"albumBtnNew" + (!selType ? " albumBtnSel" : "")}/>}

@@ -47,11 +47,7 @@
   width: 10vw;
   height: 20vh;
   transition: all ease 0.3s;
-  cursor: pointer;
   border-radius: 5%;
-}
-.ProfileUserInfoImg:hover {
-  transform: scale(1.05);
 }
 
 .ProfileUserInfoData {
@@ -74,18 +70,41 @@
 }
 .ProfileUserInput {
   display: block;
+  padding: auto;
   margin: auto;
   height: 4vh;
+  text-align: center;
   margin-top: 1.5vh;
-  /* background-color: pink; */
-  /* background-color: rgb(133, 113, 82); */
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-image: url("../../asset/images/Profile/NameChangeBackground.png");
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.ProfileUserInputTag {
+  margin: auto;
+  margin-top: 1.5vh;
+  padding: 1vh 1vw;
+  width: max-content;
+  height: 4vh;
+  font-size: 1vw;
   background-position: center;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-image: url("../../asset/images/Profile/NameChangeBackground.png");
   color: white;
   border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+  cursor: pointer;
+  display: flex;
 }
+.ProfileUserInputTag:hover {
+  transform: scale(1.1);
+}
+
 .ProfileUserInfoBtn {
   margin-top: 1.5vh;
   margin-left: auto;

@@ -102,6 +102,26 @@ export const userLogout = createAsyncThunk(
   }
 )
 
+export const changUserInfo = createAsyncThunk(
+  'user/put',
+  async(data, {rejectWithValue}) => {
+    try {
+      // 전달할 인자
+      const info = {nickname: data.nickname, language: data.language};
+      // 파일
+      const response = await putUserInfo(data.image, info)
+      console.log('회원정보 수정', response)
+      return response.data.data
+    } catch(error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+)
+
 export const DeleteUser = createAsyncThunk(
   'user/delete',
   async (temp, {rejectWithValue}) => {
@@ -157,18 +177,6 @@ const userSlice = createSlice(
       state.userInfo.nickname = action.payload.nickname;
       state.isLogIn = true;
     },
-    // 설정 변경
-    changeInfo: (state, action) => {
-      // DB 변경 요청
-      putUserInfo(action.payload)
-      // Redux 변경
-      if (action.payload.language === "C") {
-        state.userInfo.language = "C++"
-      } else { 
-        state.userInfo.language = action.payload.language
-      }
-      state.userInfo.nickname = action.payload.nickname
-    }
   },
   extraReducers: (builder) => {
     builder
@@ -211,6 +219,15 @@ const userSlice = createSlice(
         state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
         // 페이지 새로고침 필요x
         // window.location.reload()
+      })
+      .addCase(changUserInfo.fulfilled, (state, {payload}) => {
+        if (payload.language === "C") {
+          state.userInfo.language = "C++"
+        } else { 
+          state.userInfo.language = payload.language
+        }
+        state.userInfo.nickname = payload.nickname
+        state.userInfo.profileImg = payload.profileImg
       })
       .addCase(DeleteUser.fulfilled, (state, {payload})=> {
         // 세션의 토큰 초기화
