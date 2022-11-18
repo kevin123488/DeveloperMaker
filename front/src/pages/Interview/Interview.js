@@ -7,11 +7,14 @@ import MainImg from "../../asset/images/Main/gohomeIcon.png";
 import NextBtn from "../../asset/images/Interview/NextBtn.png";
 import StartBtn from "../../asset/images/Interview/StartBtn.png";
 import SubmitBtn from "../../asset/images/Interview/SubmitBtn.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getInterviewQuestion, subInterviewData } from "../../slices/interviewSlice";
 
 const Interview = () => {
+  // 스토리로 들어온 인자 잡기
+  const location = useLocation()
+  const story = location.state.story
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -19,12 +22,13 @@ const Interview = () => {
   const name = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
-  const [pickNum, setPickNum] = useState(0)
+  const [pickNum] = useState(Math.floor(Math.random() * 4))
+  // const [pickNum, setPickNum] = useState(0)
   // 면접관 조합
   const interviewer = {0: ['algorithm', 'cs', 'backend'], 1: ['backend', 'language', 'frontend'],
   2: ['language', 'algorithm', 'cs'], 3: ['language', 'frontend', 'algorithm'], 4: ['frontend', 'cs', 'backend']}
   // 회사명 조합
-  const CorpName = ['마카오전자', '네카라', '저기요', '쿠베', '일신생명' ]
+  // const CorpName = ['마카오전자', '네카라', '저기요', '쿠베', '일신생명' ]
 
   // 설명
   // 면접관 기본대사 (1,2,3 번째 면접관 시작 멘트) + 뒤에 질문으로 받아온 내용으로 질문 입력
@@ -58,7 +62,7 @@ const Interview = () => {
     // 초기화
     dispatch({type:'interview/checkInitialize'});
     // 랜덤
-    setPickNum(Math.floor(Math.random() * 4))
+    // setPickNum(Math.floor(Math.random() * 4))
     // BGM
     const mainBGM = document.getElementById('mainBGM');
     // BGM on/off 버튼
@@ -68,13 +72,12 @@ const Interview = () => {
     // BGM 버튼 음소거 처리
     changeBox.className = "muted";
     // BGM 버튼 안보이게 처리
-    changeBox.style.visibility ='hidden';
+    // changeBox.style.visibility ='hidden';
   }, [])
 
   // 스테이지 변경 시 문제 받아오기
   useEffect(()=>{
-    console.log(`===============${stage}로 스테이지 변경=============`)
-    dispatch(getInterviewQuestion(interviewer[stage]))
+    dispatch(getInterviewQuestion(interviewer[pickNum][stage-1]))
   },[stage])
 
   const [help, setHelp] = useState(true)
@@ -175,7 +178,6 @@ const Interview = () => {
   }
 
   const startRec = (num) => {
-    console.log('음성인식 시작');
     recognition[`recognition${num}`].start()
   }
 
@@ -219,14 +221,14 @@ const Interview = () => {
     // 녹음 종료
     endRec(num)
     // "/ /g"는 문자열의 모든 공백을 찾음
-    const data = {subjectNo: 1, image: capImg, script: script.replace(/ /g, '')}
+    const data = {subjectNo: question.no, image: capImg, script: script.replace(/ /g, '')}
     dispatch(subInterviewData(data))
   }
   return (
     <>
       <div className="interviewBack">
         <div className="interviewTopMenu">
-          <p className="interviewTitle" >{CorpName[pickNum]} 공채 면접</p>
+          <p className="interviewTitle" >공채 면접</p>
           {(check.ready || (help && stage === 1)) && <p className={"InterviewTimer" + ((timer < 10) ? " InterviewTimerWarning": "")}>{(timer < 10) ? `0${timer}` : timer}</p>}
           <img src={MainImg} alt="MainBtn" className='InterviewMainBtn' onClick={goMain} />
         </div>
@@ -262,7 +264,7 @@ const Interview = () => {
           screenshotQuality={1}
         />}
         <Check />
-        <Result show={(stage === 4 && !loding)} />
+        <Result show={(stage === 4 && !loding)} story={story} />
       </div>
     </>
   );
