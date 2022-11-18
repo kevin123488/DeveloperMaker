@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class User {
     @Column(nullable = false, length = 30)
     @ApiModelProperty(value="유저 닉네임", example = "닉네임", required = true)
     private String nickname;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     @ApiModelProperty(value="선택언어", example = "JAVA", required = true)
@@ -51,6 +53,9 @@ public class User {
     @ApiModelProperty(value="로그인 타입", example = "KAKAO", required = true)
     @Column(nullable = false, length = 20)
     private LoginType loginType;
+
+    @Column(nullable = false)
+    private String profileImg;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
@@ -69,9 +74,10 @@ public class User {
     private List<UserCote> userCotes = new ArrayList<>();
 
 
-    public User updateProfile (UserDto userDto) {
+    public User updateProfile (UserDto userDto, String profileImg) {
         this.nickname = userDto.getNickname();
         this.language = userDto.getLanguage();
+        this.profileImg = profileImg;
         return this;
     }
 
@@ -88,6 +94,7 @@ public class User {
                 .socialId(this.socialId)
                 .loginType(this.loginType)
                 .language(this.language)
+                .profileImg(this.profileImg)
                 .build();
     }
 
