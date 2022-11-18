@@ -13,6 +13,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class User {
     private LoginType loginType;
 
     @Column(nullable = false)
-    private Integer profile = 0;
+    private String profileImg;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
@@ -73,10 +74,10 @@ public class User {
     private List<UserCote> userCotes = new ArrayList<>();
 
 
-    public User updateProfile (UserDto userDto) {
+    public User updateProfile (UserDto userDto, String profileImg) {
         this.nickname = userDto.getNickname();
         this.language = userDto.getLanguage();
-        this.profile = userDto.getProfile();
+        this.profileImg = profileImg;
         return this;
     }
 
@@ -93,7 +94,7 @@ public class User {
                 .socialId(this.socialId)
                 .loginType(this.loginType)
                 .language(this.language)
-                .profile(this.profile)
+                .profileImg(this.profileImg)
                 .build();
     }
 
