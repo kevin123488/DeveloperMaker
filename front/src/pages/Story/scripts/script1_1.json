@@ -1173,7 +1173,7 @@
     "nextScript": "script2",
     "whichSelfStudy": "cs",
     "selfStudyRequired": {"cs": 15},
-    "getAlbumNum": 1,
+    "getAlbumNum": 21,
     "plusIndex": 1
   }
 ]
