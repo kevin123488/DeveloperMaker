@@ -12,10 +12,13 @@
   left: 12vw;
   height: 70vh;
   width: 76vw;
-  background: url(../../asset/images/Profile/RankingFrame.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/RankingFrame.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
 }
+
+
+/* 카테고리 선택파트 */
 .springIcon {
   position: absolute;
   top: 2vh;
@@ -23,7 +26,7 @@
   height: 2vw;
   width: 2vw;
   transform: rotate(-10deg);
-  background: url(../../asset/images/Profile/seobomLikeIcon.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/seobomLikeIcon.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
 }
@@ -34,19 +37,7 @@
   height: 2vw;
   width: 2vw;
   transform: rotate(-5deg);
-  background: url(../../asset/images/Profile/gaeulLikeIcon.png) center no-repeat;
-  background-size: 100% 100%;
-  animation: popup 0.2s;
-  z-index: 1;
-}
-.fallIcon {
-  position: absolute;
-  top: 2vh;
-  left: 20.3vw;
-  height: 2vw;
-  width: 2vw;
-  transform: rotate(-5deg);
-  background: url(../../asset/images/Profile/gaeulLikeIcon.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/gaeulLikeIcon.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
   z-index: 1;
@@ -58,7 +49,7 @@
   height: 2vw;
   width: 2vw;
   transform: rotate(0deg);
-  background: url(../../asset/images/Profile/yeoreumLikeIcon.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/yeoreumLikeIcon.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
   z-index: 1;
@@ -70,7 +61,7 @@
   height: 2vw;
   width: 2vw;
   transform: rotate(10deg);
-  background: url(../../asset/images/Profile/geowolLikeIcon.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/geowolLikeIcon.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
   z-index: 1;
@@ -82,7 +73,7 @@
   height: 2vw;
   width: 2vw;
   transform: rotate(10deg);
-  background: url(../../asset/images/Profile/likeValueIcon.png) center no-repeat;
+  background: url(../../asset/images/Profile/Ranking/likeValueIcon.png) center no-repeat;
   background-size: 100% 100%;
   animation: popup 0.2s;
   z-index: 1;
@@ -98,8 +89,6 @@
   background-color: rgb(255, 255, 255);
   overflow: hidden;
 }
-
-
 .categoryBtn {
   display: inline-block;
   width: 8vw;
@@ -124,6 +113,9 @@
 .horizon {
   margin: 1vh 0 1vh 0;
 }
+
+
+/* 캐릭터 프사랑 그런부분 */
 .categoryCharacter {
   position: relative;
   display: inline-block;
@@ -131,9 +123,59 @@
   height: 51vh;
   width: 17vw;
   border: solid ;
-  border-width: 0.2vw;
-  overflow: auto;
+  border-width: 0.1vw;
+  border-radius: 0.4vw;
+  overflow: hidden;
 }
+.vvipProfile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17vw;
+  height: 40vh;
+  background: center no-repeat;
+  background-size: cover;
+}
+.blackShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 17vw;
+  height: 51vh;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.chracterProfile {
+  position: absolute;
+  top: 27vh;
+  left: 5.5vw;
+  width: 6vw;
+  height: 6vw;
+  background: center no-repeat;
+  background-size: cover;
+  border-radius: 30%;
+  background-color: #ebffff;
+}
+.chracterName {
+  position: absolute;
+  top: 41vh;
+  width: 17vw;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 1.5vw;
+}
+.chracterMessage {
+  position: absolute;
+  top: 46vh;
+  width: 17vw;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 1vw;
+}
+
+
+/* 랭킹보여주는부분 */
 .rankingArea {
   position: relative;
   display: inline-block;
@@ -174,7 +216,6 @@
   width: 39.6vw;
   height: 10vh;
   margin: 0 0.3vw;
-  /* background-color: rgb(255, 198, 122); */
 }
 .rankerProfile {
   display: inline-block;
@@ -196,7 +237,7 @@
 }
 .rankerNickname {
   position: absolute;
-  left: 9vw;
+  left: 11vw;
   font-size: 1.2vw;
   color: #606060;
   text-align: center;

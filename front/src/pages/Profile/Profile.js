@@ -81,7 +81,7 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
-      <div onClick={() => {setIsShowRanking(true)}} className='RankingBtn'>랭킹</div>
+      <div onClick={() => {setIsShowRanking(true)}} className='RankingBtn'></div>
       {
         isShowRanking?
         <>
