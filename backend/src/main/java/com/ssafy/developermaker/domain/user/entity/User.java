@@ -42,6 +42,7 @@ public class User {
     @Column(nullable = false, length = 30)
     @ApiModelProperty(value="유저 닉네임", example = "닉네임", required = true)
     private String nickname;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     @ApiModelProperty(value="선택언어", example = "JAVA", required = true)
@@ -51,6 +52,9 @@ public class User {
     @ApiModelProperty(value="로그인 타입", example = "KAKAO", required = true)
     @Column(nullable = false, length = 20)
     private LoginType loginType;
+
+    @Column(nullable = false)
+    private Integer profile = 0;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Memory> memories = new ArrayList<>();
@@ -72,6 +76,7 @@ public class User {
     public User updateProfile (UserDto userDto) {
         this.nickname = userDto.getNickname();
         this.language = userDto.getLanguage();
+        this.profile = userDto.getProfile();
         return this;
     }
 
@@ -88,6 +93,7 @@ public class User {
                 .socialId(this.socialId)
                 .loginType(this.loginType)
                 .language(this.language)
+                .profile(this.profile)
                 .build();
     }
 
