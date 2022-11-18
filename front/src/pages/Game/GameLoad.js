@@ -23,6 +23,7 @@ import charInfo3 from "./charInfo3.png";
 import charInfo4 from "./charInfo4.png";
 import gameloadCharInfoBtn from "./gameloadCharInfoBtn.png";
 
+
 // 효과음 
 import btnSound from "../../asset/soundEffects/buttonClick.wav";
 import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";

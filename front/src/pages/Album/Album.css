@@ -1,4 +1,38 @@
+/* body태그의 가상선택자를 이용한다 */
+body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    content:
+
+    /* 앨범 나중 */
+    url(../../asset/images/Album/AlbumPick/fallBack.png)
+    url(../../asset/images/Album/AlbumPick/OpenBookImage.png)
+    url(../../asset/images/Album/AlbumPick/PickBack.png)
+    url(../../asset/images/Album/AlbumPick/springBack.png)
+    url(../../asset/images/Album/AlbumPick/totalBack.png)
+    url(../../asset/images/Album/AlbumPick/winterBack.png)
+
+    /* 필요한 이미지 소스들 다운 */
+}
+
+
 /* ---------------------- Album----------------------- */
+.loadingPage {
+  position: absolute;
+  top: 0vh;
+  left: 0vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  z-index: 1200;
+}
+
 .albumBack {
   width: 100vw;
   height: 100vh;
@@ -164,15 +198,18 @@
   background-repeat: no-repeat;
   position: relative;
   filter: drop-shadow(0.7vw 0.5vw 0.5vw #c3c3c3);
+  color: bisque;
   width: 18vw;
   height: 35vh;
   margin-top: 4vh;
   margin-left: 2.5vw ;
   border-radius: 1vw;
+  transition: all 0.2s;
 }
 .albumCard:hover {
   transform: scale3d(1.05, 1.05, 1.05);
-  transition: 0.2s;
+  transition: all 0.2s;
+  color: ivory;
 }
 /* 앨범의 개별 이미지 */
 .albumImg {
@@ -340,10 +377,18 @@
   left: 18vw;
   color: white;
   font-size: 2vw;
-  background-color: pink;
   width: max-content;
-  padding: 0.1vw;
+  padding: 0.3vw;
   border-radius: 5px;
   border: 0px;
   cursor: pointer;
+  background-image: url('../../asset/images/Album/TypeChoiceBtn.png') ;
+  background-position: 'center';
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.albumCloseBtn:hover {
+  transform: scale(1.1);
 }

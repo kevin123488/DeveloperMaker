@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Main.css";
 import MainForm from "../../components/Main/MainForm";
 import { useSelector } from "react-redux";
@@ -21,13 +21,13 @@ import mainTheme from "../../asset/soundEffects/Running_in_the_Sky.mp3";
 
 const TitleDivision = styled.div`
   position: absolute;
-  top: 25%;
-  left: 17%;
+  top: 23vh;
+  left: 18vw;
   transform: translate(-50%, -50%);
-  height: 25vh;
-  width: 50vh;
+  height: 30vh;
+  width: 60vh;
   background-image: url(${MainLogo});
-  background-size: 50vh 25vh;
+  background-size: 60vh 30vh;
 `;
 
 // const TitleDivision2 = styled.div`
@@ -51,6 +51,7 @@ const TitleDivision = styled.div`
 
 const Main = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
+  const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     const BGM = document.getElementById('mainBGM')
@@ -65,52 +66,74 @@ const Main = () => {
       BGM.load()
       // BGM.muted = false;
     }
+
+    // 이미지 미리 로드
+    // let images = [];
+
+    // const preload = (imageList) => {
+    //   // console.log(imageList.length)
+    //   for(let i = 0; i < imageList.length; i++) {
+    //     images[i] = new Image();
+    //     images[i].src = imageList[i];
+    //     console.log('프리로드', i)
+        
+    //   }
+    //   setIsLoaded(true)
+    // }
+
+    // preload([
+    //   "../../asset/images/Main/mainSpringBackground.png",
+    //   "../../asset/images/Main/mainSummerBackground.png",
+    //   "../../asset/images/Main/mainFallBackground.png",
+    //   "../../asset/images/Main/mainWinterBackground.png",
+    //   "../../asset/images/Main/muted.png",
+    //   "../../asset/images/Main/playing.png",
+    //   "../../asset/images/Main/developermakerLogo.png",
+    // ])
+    // console.log('프리로드 끝남')
+    
   }, [])
 
   return (
     <>
-          {/* 흰색 물결 */}
-          {/* <svg className="wave" xmlns="http://www.w3.org/2000/svg" width="1600" height="198">
-            <defs>
-              <linearGradient id="a" x1="50%" x2="50%" y1="-10.959%" y2="100%">
-                <stop stop-color="#eeeeee" stop-opacity=".25" offset="0%"/>
-                <stop stop-color="#eeeeee" offset="100%"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#a)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
-          </svg>
-          <svg className="wave" xmlns="http://www.w3.org/2000/svg" width="1600" height="198">
-            <defs>
-              <linearGradient id="a" x1="50%" x2="50%" y1="-10.959%" y2="100%">
-                <stop stop-color="#eeeeee" stop-opacity=".25" offset="0%"/>
-                <stop stop-color="#eeeeee" offset="100%"/>
-              </linearGradient>
-            </defs>
-            <path fill="url(#a)" fill-rule="evenodd" d="M.005 121C311 121 409.898-.25 811 0c400 0 500 121 789 121v77H0s.005-48 .005-77z" transform="matrix(-1 0 0 1 1600 0)"/>
-          </svg> */}
     <div style={{ position: "absolute", top: "0vh", left: "0vw", }} className="MainContainerWrapper">
       <div className="MainContainer">
       </div>
         <div className="backFlow">
           <TitleDivision></TitleDivision>
-
-          {/* <div class="ocean">
-            <div class="wave"></div>
-            <div class="wave"></div>
-          </div> */}
-
-
+          
+              {/* 로딩화면 관리 부분 */}
+              <img src={require("../../asset/images/Main/mainWinterBackground.png")} style={{display: 'none', width: '10vw', height: '10vh',}} alt=""
+              onLoad={() => {
+                console.log('로드끝');
+                const loadingP = document.querySelector('.loadingPage')
+                // console.log("로딩페이지",loadingP)
+                // loadingP.st = 'loadingPageEnd'
+                loadingP.className = 'loadingPageEnd'
+                setTimeout(() => {
+                  setIsLoaded(true);
+                }, 500) 
+              }} />
 
           <div className="MainFormWrapper">
             <div className="MainLayoutWrapper">
+
               <div className="MainLogo">
+                {/* 지금 더미로 칸먹는용으로만 쓰고있슴 */}
                 {/* <Title> Developer Maker </Title> */}
               </div>
               {userInfo !== null && userInfo.language === "NONE" ? (
                 <SignupForm />
-              ) : (
-                <MainForm userInfo={userInfo} />
+                ) : (
+                  <MainForm userInfo={userInfo} />
               )}
+              {
+                !isLoaded?
+                <div className="loadingPage">
+                  {/* <p>로딩중...</p> */}
+                </div>
+                : null
+              }
             </div>
           </div>
         </div>

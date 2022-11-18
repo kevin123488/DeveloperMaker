@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import "./SelfStudy.css";
-import { getSelfStudyProgress, getStudyList, getStudyInfo, } from "../../slices/selfstudySlice";
+import { getStudyList, getStudyInfo, } from "../../slices/selfstudySlice";
 // import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import background from "../../asset/images/SelfstudyImg/CsStudyBackground.png";
-import btn from "../../asset/images/SelfstudyImg/버튼.png";
+// import styled from "styled-components";
+// import background from "../../asset/images/SelfstudyImg/CsStudyBackground.png";
+// import btn from "../../asset/images/SelfstudyImg/버튼.png";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -13,50 +13,13 @@ import remarkGfm from "remark-gfm";
 // 각 주인공 나오는 배경 만들면 될듯
 // import background from './SelfStudyBackground.gif';
 // import { Link } from 'react-router-dom';
-import btnSound from "../../asset/soundEffects/buttonClick.wav";
-import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
+// import btnSound from "../../asset/soundEffects/buttonClick.wav";
+// import btnCuteSound from "../../asset/soundEffects/buttonCute.wav";
 import btnSimpleSound from "../../asset/soundEffects/buttonSimple.wav";
 import changePageSound from "../../asset/soundEffects/Selfstudy/changePage.wav";
 import showMarkdownSound from "../../asset/soundEffects/Selfstudy/showMarkdown.wav";
 
 
-const CsStudyBackground = styled.div`
-  position: related;
-  height: 100vh;
-  width: 100vw;
-  /* background-color: #352208; */
-  background: url(${background}) center no-repeat;
-  background-size: 100% 100%;
-`;
-
-const Type = styled.div`
-  & {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 3vw;
-    color: white;
-    vertical-align: center;
-    margin-bottom: 1.5vw;
-    height: 7vw;
-    width: 20vw;
-    z-index: 1;
-  }  
-    
-  &:after {  
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.6;
-    background: url(${btn}) center no-repeat;
-    background-size: 100% 100%;
-    z-index: -1;
-  } 
-`;
 const CSselfStudy = (prop) => {
 
   const dispatch = useDispatch();
@@ -77,8 +40,8 @@ const CSselfStudy = (prop) => {
       }
       // console.log('스터디 요청정보', initialStudyInfo)
       // console.log(studyInfo)
-      const res = await dispatch(getStudyList(initialStudyInfo))
-      const newStudyList = res.payload
+      await dispatch(getStudyList(initialStudyInfo))
+      // const newStudyList = res.payload
     };
     getInitialStudy()
 
@@ -90,7 +53,7 @@ const CSselfStudy = (prop) => {
   
   }, [dispatch])
 
-  const study = useSelector((state) => state.study)
+  // const study = useSelector((state) => state.study)
   const studyList = useSelector((state) => state.study.studyList.studyInfo)
   const studyInfo = useSelector((state) => state.study.studyInfo)
   const maxPage = useSelector((state) => state.study.studyList.totalPage)
@@ -98,10 +61,10 @@ const CSselfStudy = (prop) => {
   // const [studyList, setStudyList] = useState(study.studyList.studyInfo)
   const [showingMarkdown, setShowingMarkdown] = useState('')
   const [isShowMarkdown, setIsShowMarkdown] = useState(false)
-  const [category, setCategory] = useState(studyInfo[prop.category].category)
+  const [category,] = useState(studyInfo[prop.category].category)
   const [subject, setSubject] = useState(prop.subject)
   const [offset, setOffset] = useState(0)
-  const [limit, setlimit] = useState(6)
+  const [limit,] = useState(6)
   const [nowpage, setNowpage] = useState(0)
   const [pages, setPages] = useState([1, 2, 3, 4])
 
@@ -133,21 +96,21 @@ const CSselfStudy = (prop) => {
   }
   
   // 카테고리 변경하는 함수 pageInfo = {category: category, subject: subject,} 
-  const changeCategory = async (pageInfo) => {
-    const newStudyInfo = {
-      category: studyInfo[pageInfo.category].category,
-      subject: pageInfo.subject,
-      offset: 0,
-      limit: limit,
-    }
-    setIsShowMarkdown(false)
-    changeStudyList(newStudyInfo)
-    await setOffset(0)
-    await setNowpage(0)
-    await setCategory(pageInfo.category)
-    await setSubject(pageInfo.subject)
+  // const changeCategory = async (pageInfo) => {
+  //   const newStudyInfo = {
+  //     category: studyInfo[pageInfo.category].category,
+  //     subject: pageInfo.subject,
+  //     offset: 0,
+  //     limit: limit,
+  //   }
+  //   setIsShowMarkdown(false)
+  //   changeStudyList(newStudyInfo)
+  //   await setOffset(0)
+  //   await setNowpage(0)
+  //   await setCategory(pageInfo.category)
+  //   await setSubject(pageInfo.subject)
 
-  }
+  // }
 
   // 서브젝트 변경하는 함수 pageInfo = {category: category, subject: subject,} 
   const changeSubject = async (info) => {
@@ -173,6 +136,16 @@ const CSselfStudy = (prop) => {
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
+      }
+    })
+
+    const subjects = document.querySelectorAll(`.subjectItem`)
+    console.log(subjects)
+    subjects.forEach((subject) => {
+      if (subject.innerText === info.subject) {
+        subject.style.color = 'white'
+      } else {
+        subject.style.color = 'black'
       }
     })
   }
@@ -284,17 +257,17 @@ const CSselfStudy = (prop) => {
     sound.play()
   }
 
-  const playBtnSound = () => {
-    const sound = new Audio()
-    sound.src = btnSound
-    sound.play()
-  }
+  // const playBtnSound = () => {
+  //   const sound = new Audio()
+  //   sound.src = btnSound
+  //   sound.play()
+  // }
 
-  const playBtnCuteSound = () => {
-    const sound = new Audio()
-    sound.src = btnCuteSound
-    sound.play()
-  }
+  // const playBtnCuteSound = () => {
+  //   const sound = new Audio()
+  //   sound.src = btnCuteSound
+  //   sound.play()
+  // }
   
   const playBtnSimpleSound = () => {
     const sound = new Audio()

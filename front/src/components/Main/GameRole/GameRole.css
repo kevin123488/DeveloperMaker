@@ -1,0 +1,11 @@
+.GameRoleContainer {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  top: 10vh;
+  left: 10vw;
+  width: 80vw;
+  height: 80vh;
+  border: solid 0.2vw;
+  border-radius: 1vw;
+  cursor: pointer;
+}

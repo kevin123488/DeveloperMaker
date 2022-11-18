@@ -94,12 +94,12 @@ const Quiz = () => {
     } else if (user.language === 'JS') {
       changeLang('javascript')
     }
-    setIsLoaded(true)
+    // setIsLoaded(true)
   }, [dispatch])
 
 
   const user = useSelector((state)=> state.user.userInfo)
-  const study = useSelector((state) => state.study)
+  // const study = useSelector((state) => state.study)
   const progress = useSelector((state) => state.study.progress)
   const quizList = useSelector((state) => state.study.quizList.quizInfo)
   // console.log(quizList)
@@ -119,7 +119,7 @@ const Quiz = () => {
   const [category, setCategory] = useState(0)
   const [subject, setSubject] = useState('')
   const [offset, setOffset] = useState(0)
-  const [limit, setlimit] = useState(6)
+  const [limit,] = useState(6)
   const [nowpage, setNowpage] = useState(0)
   const [pages, setPages] = useState([1, 2, 3, 4])
 
@@ -146,6 +146,15 @@ const Quiz = () => {
   
 
   useEffect(() => {
+    
+    // window.onload = function(){
+    //   // setIsLoaded(true)
+    //   console.log('로딩완료')
+    // }
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('로딩완료')
+   }, false);
+
     if (maxPage >= 4) {
       setPages([1, 2, 3, 4])
     } else {
@@ -233,6 +242,7 @@ const Quiz = () => {
       offset: 0,
       limit: limit,
     }
+
     setIsShowQuizProblem(false)
     setIsShowingAlgo(false)
     await setOffset(0)
@@ -248,6 +258,16 @@ const Quiz = () => {
         pageNum.style.color = '#80b9ff'
       } else {
         pageNum.style.color = 'white'
+      }
+    })
+
+    const subjects = document.querySelectorAll(`.subjectItem`)
+    console.log(subjects)
+    subjects.forEach((subject) => {
+      if (subject.innerText === info.subject) {
+        subject.style.color = 'white'
+      } else {
+        subject.style.color = 'black'
       }
     })
   }
@@ -380,7 +400,7 @@ const Quiz = () => {
       setShowingQuiz(quiz.quiz)
       setShowingQuizIdx(quiz.idx)
       setIsShowQuizProblem(true)
-      setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 되!")
+      setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 돼!")
       const checkboxes = document.getElementsByName('quizRadio');
       // 체크박스 목록을 순회하며 checked 값을 초기화
       checkboxes.forEach((checkbox) => {
@@ -420,7 +440,7 @@ const Quiz = () => {
       // setIsShowNpcBalloon(true)
       setTimeout(() => {
         // setIsShowNpcBalloon(false)
-        setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 되!")
+        setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 돼!")
       }, 2000)
       // window.location.reload();
 
@@ -454,9 +474,8 @@ const Quiz = () => {
 
     } else {
       setNpcBalloonContent("정답을 체크해줘")
-      setIsShowNpcBalloon(true)
       setTimeout(() => {
-      setIsShowNpcBalloon(false)
+      setNpcBalloonContent("정답을 체크하고\n'제출'을 누르면 돼!")
       }, 2000)
     }
   }
@@ -484,12 +503,13 @@ const Quiz = () => {
     // categoryDiv.style.display = 'none'
   }
 
-  const moveSDchractor = (selectId) => {
-
+  const moveSDchractor = () => {
+    
   }
 
   // 과목선택부분으로 돌리는 함수
   const resetCategory = () => {
+
     setIsShowNpcBalloon(false)
     playBtnSound()
     // 선택한 카테고리 캐릭터 이동하는 함수
@@ -557,6 +577,11 @@ const Quiz = () => {
       // console.log('스타일', pageNum.style)
       pageNum.style.color = '#80b9ff'
     }, 100)
+
+    changeSubject({subject: subject})
+    // const subject = document.querySelector('.subjectItem')
+    // console.log('서브젝트 태그', subject)
+    // subject.style.color = 'white'
   }
 
   // 스터디 or 퀴즈 선택하는 창
@@ -593,7 +618,7 @@ const Quiz = () => {
 
     }, 2000)
 
-    // 정오답 소리
+    // 정답이면
     if (solveResult.payload.pass) {
       playRightAnswer()
       setShowBigCorrect(true)
@@ -641,7 +666,7 @@ const Quiz = () => {
     const response = await dispatch(getAlbumCheck(albumId))
     // 중복이면 true이므로 false일 때 실행
     if (!response.payload) {
-      setNpcBalloonContent("")
+      setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
       dispatch(putAlbumList(albumId))
     }
   }
@@ -745,11 +770,11 @@ const Quiz = () => {
   return (
     <>
       <div style={{ backgroundColor: "black", position: "absolute", top: "0vh", left: "0vw", }} className="CsStudyBackground">
-        {
+        {/* {
           !isLoaded?
           <div className="loadingPage"></div>
           : null
-        }
+        } */}
         
         <div className="homeBtn" onClick={goHome}></div>
         {
@@ -836,6 +861,7 @@ const Quiz = () => {
           showWork?
           <div className="choiceInfo">
             {quizInfo[category].category} 진행도: {progress[quizInfo[category].category.toLowerCase()]}%
+            <p style={{display: "none"}}>{workType}</p>
           </div>
           : null
         }
@@ -869,7 +895,7 @@ const Quiz = () => {
             {/* 과목 목록 */}
             <div className="subjectbar">
               {quizInfo[category].subjectList.map((subject, index) => (
-                <p key={index} className="subjectItem" onClick={changeSubject.bind(null, {subject: subject.subject})}>
+                <p key={index} className="subjectItem" id={subject.subject} onClick={changeSubject.bind(null, {subject: subject.subject})}>
                   {subject.subject}
                 </p>
               ))}

@@ -1,3 +1,42 @@
+/* body태그의 가상선택자를 이용한다 */
+body::after{
+	/* 소스만 다운받고 화면은 나태내지 않는다. (숨김 처리) */
+    position:absolute; 
+    width:0; 
+    height:0; 
+    overflow:hidden; 
+    z-index:-1;
+    
+    /* load images */
+    content:
+
+    /* 인게임 나중 */
+    url(./charInfo1.png)
+    url(./charInfo2.png)
+    url(./charInfo3.png)
+    url(./charInfo4.png)
+    url(../Story/checkLikeTitle.png)
+    url(../Story/gaeulLikeIcon.png)
+    url(../Story/geowolLikeIcon.png)
+    url(../Story/goSelfstudyBubble.png)
+    url(../Story/Hamburger.png)
+    url(../Story/homeIcon.png)
+    url(../Story/likeValueIcon.png)
+    url(../Story/nowSlot.png)
+    url(../Story/optionBackground.png)
+    url(../Story/optionBackground2.png)
+    url(../Story/saveIcon.png)
+    url(../Story/seobom_nonpass.png)
+    url(../Story/seobomLikeIcon.png)
+    url(../Story/slot.png)
+    url(../Story/storyGoAlert.png)
+    url(../Story/talkingTab.png)
+    url(../Story/yeoreumLikeIcon.png)
+
+    /* 필요한 이미지 소스들 다운 */
+}
+
+
 .speechBubbleText {
 	position: absolute;
 	top: 50%;

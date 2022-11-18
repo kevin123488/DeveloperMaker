@@ -6,7 +6,7 @@ import "../../pages/Profile/Profile.css"
 import { getProgress } from '../../slices/userSlice';
 import { defaults } from 'chart.js';
 
-const RadicalChart = () => {
+const PolarAreaChart = () => {
   const dispatch = useDispatch()
   const progress = useSelector((state)=>{
     return state.user.progress.study
@@ -29,13 +29,13 @@ const RadicalChart = () => {
       label: `${nickname}의 자율학습 진행도`,
       data: [progress.cs, progress.algorithm, progress.frontend, progress.backend, progress.language],
       fill: true,
-      backgroundColor: [
-        'rgb(255, 205, 86)',
-        'rgb(200, 100, 0)',
-        'rgb(220, 220, 220)',
-        'rgb(100, 120, 255)',
-        'rgb(255, 100, 100)',
-      ],
+      // backgroundColor: [
+      //   'rgb(255, 205, 86)',
+      //   'rgb(200, 100, 0)',
+      //   'rgb(220, 220, 220)',
+      //   'rgb(100, 120, 255)',
+      //   'rgb(255, 100, 100)',
+      // ],
       borderWidth: 1.5,
       // borderColor: 'rgb(255, 99, 132)',
       // pointBackgroundColor: 'rgb(255, 99, 132)',
@@ -91,12 +91,12 @@ const RadicalChart = () => {
     defaults.font.size = 12
     dispatch(getProgress())
   },[dispatch])
-  console.log('자율학습 진행도', progress)
+  
   return (
     <div className='ProfileRadicalChart'>
-      <PolarArea data={data} options={config} />    
+      <Radar data={data} options={config} />    
     </div> 
   );
 };
 
-export default RadicalChart;
+export default PolarAreaChart;
