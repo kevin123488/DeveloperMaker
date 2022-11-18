@@ -37,17 +37,22 @@ body::after{
     url(./asset/images/Main/muted.png)
     url(./asset/images/Main/playing.png)
 
+
     /* 인게임 */
+    url(./pages/Game/deleteSlot.png)
+    url(./pages/Game/gaeul_gameslot2.png)
+    url(./pages/Game/gaeul_gameslot2smile.png)
+    url(./pages/Game/library.png)
+    url(./pages/Game/seobom_gameslot1.png)
+    url(./pages/Game/seobom_gameslot1smile.png)
+    url(./pages/Game/speechBubble.png)
+    url(./pages/Game/gameloadCharInfoBtn.png)
+
 
     /* 자율학습 */
     url(./asset/images/SelfstudyImg/CsStudyBackground.png)
-    url(./asset/images/SelfstudyImg/correct.png)
-    url(./asset/images/SelfstudyImg/wrong.png)
     url(./asset/images/SelfstudyImg/homeBtn.png)
     url(./asset/images/SelfstudyImg/interviewTestBtn.png)
-    url(./asset/images/SelfstudyImg/quizPaper.png)
-    url(./asset/images/SelfstudyImg/quizPaperO.png)
-    url(./asset/images/SelfstudyImg/quizPaperX.png)
     url(./asset/images/SelfstudyImg/SDfall1.png)
     url(./asset/images/SelfstudyImg/SDfall2.png)
     url(./asset/images/SelfstudyImg/SDhero1.png)
@@ -60,8 +65,8 @@ body::after{
     url(./asset/images/SelfstudyImg/SDwinter2.png)
     url(./asset/images/SelfstudyImg/selfstudyBtn.png)
     url(./asset/images/SelfstudyImg/speechBalloon.png)
-    url(./asset/images/SelfstudyImg/studyNote.png)
-    
+
+
     /* 앨범 */
     url(./asset/images/Album/AlbumBack.png)
     url(./asset/images/Album/AlbumDetailStructure.png)
@@ -73,16 +78,11 @@ body::after{
     url(./asset/images/Album/Head/Head1.png)
     url(./asset/images/Album/Head/Head2.png)
     url(./asset/images/Album/Head/Head3.png)
-    url(./asset/images/Album/RatingLogo/BronzeLogo.png)
-    url(./asset/images/Album/RatingLogo/SilverLogo.png)
-    url(./asset/images/Album/RatingLogo/GoldLogo.png)
     url(./asset/images/Album/AlbumPick/AlbumCover.png)
-    url(./asset/images/Album/AlbumPick/fallBack.png)
-    url(./asset/images/Album/AlbumPick/OpenBookImage.png)
-    url(./asset/images/Album/AlbumPick/PickBack.png)
-    url(./asset/images/Album/AlbumPick/springBack.png)
-    url(./asset/images/Album/AlbumPick/totalBack.png)
-    url(./asset/images/Album/AlbumPick/winterBack.png)
+    /* url(./asset/images/Album/RatingLogo/BronzeLogo.png)
+    url(./asset/images/Album/RatingLogo/SilverLogo.png)
+    url(./asset/images/Album/RatingLogo/GoldLogo.png) */
+
 
     /* 마이페이지 */
     url(./asset/images/Profile/ProfileBack.png)

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import "chart.js/auto"; // import 안하면 차트 오류남
-import { PolarArea } from "react-chartjs-2"; // 차트종류
+import { Radar, PolarArea } from "react-chartjs-2"; // 차트종류
 import "../../pages/Profile/Profile.css"
 import { getProgress } from '../../slices/userSlice';
 import { defaults } from 'chart.js';
