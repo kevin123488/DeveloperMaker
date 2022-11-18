@@ -530,10 +530,10 @@ const Quiz = () => {
     }, 100)
   }
 
-  const goInterviewTest = () => {
+  const goInterview = () => {
     playBtnSound()
     setTimeout(() => {
-      navigate('/Interview')
+      navigate('/Interview', {state: {story: false}})
     }, 100)
   }
 
@@ -766,7 +766,7 @@ const Quiz = () => {
           !showWork?
           <div>
             <div className="infoAlarm">분야를 선택해주세요!</div>
-            <div className="interviewTestBtn" onClick={goInterviewTest}></div>
+            <div className="interviewTestBtn" onClick={goInterview}></div>
           </div>
           : null
         }
