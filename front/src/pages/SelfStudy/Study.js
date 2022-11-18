@@ -138,6 +138,16 @@ const CSselfStudy = (prop) => {
         pageNum.style.color = 'white'
       }
     })
+
+    const subjects = document.querySelectorAll(`.subjectItem`)
+    console.log(subjects)
+    subjects.forEach((subject) => {
+      if (subject.innerText === info.subject) {
+        subject.style.color = 'white'
+      } else {
+        subject.style.color = 'black'
+      }
+    })
   }
 
   // 페이지 변경하는 함수

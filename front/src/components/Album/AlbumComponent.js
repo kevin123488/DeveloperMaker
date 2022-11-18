@@ -55,15 +55,27 @@ const AlbumComponent = (props) => {
     sound.play()
   }
 
+  const showTitle = (id) => {
+    const title = document.getElementById(`${id}`)
+    title.innerText = album.albumTitle
+  }
+
+  const showOwnerRate = (id) => {
+    const title = document.getElementById(`${id}`)
+    title.innerText = `${parseInt((album.ownerRate)*100)}%의 유저가 획득했습니다`
+  }
+
     return (
       <div className="albumLine">
         <div className="albumCard">
           {(album.isOwned && !album.isRead) && <img className="albumNewLogo" src={NewAlbumLogo} alt="" />}
           <img src={album.isOwned ? album.albumImg : NoAlbumImg} onClick={()=>{ if (album.isOwned) {setShow(true);
           if (!album.isRead) { dispatch(deleteNew(album.albumId))}}; playBtnSimpleSound()}}
+          onMouseOver={showOwnerRate.bind(null, album.albumId)}
+          onMouseOut={showTitle.bind(null, album.albumId)}
           className={"albumImg" + (album.isOwned? " albumImgOwned" : "")} alt="앨범" />
-          <p className="albumTitle">{album.albumTitle}</p>
-          <img className="albumRating" src={logoImg[rating]} alt="등급" />
+          <p id={album.albumId} className="albumTitle">{album.albumTitle}</p>
+          {/* <img className="albumRating" src={logoImg[rating]} alt="등급" /> */}
         </div>
         {show && <img className="albumDetail" onClick={()=>{setShow(false)}} src={album.albumImg} alt="" />}
       </div>
