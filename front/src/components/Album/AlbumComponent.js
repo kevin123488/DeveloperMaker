@@ -69,7 +69,7 @@ const AlbumComponent = (props) => {
       <div className="albumLine">
         <div className="albumCard">
           {(album.isOwned && !album.isRead) && <img className="albumNewLogo" src={NewAlbumLogo} alt="" />}
-          <img src={album.isOwned ? album.albumImg : NoAlbumImg} onClick={()=>{ if (album.isOwned) {setShow(true);
+          <img src={album.isOwned ? require(`../../asset/images/Album/Collection/${album.albumId}.png`): NoAlbumImg} onClick={()=>{ if (album.isOwned) {setShow(true);
           if (!album.isRead) { dispatch(deleteNew(album.albumId))}}; playBtnSimpleSound()}}
           onMouseOver={showOwnerRate.bind(null, album.albumId)}
           onMouseOut={showTitle.bind(null, album.albumId)}
@@ -77,7 +77,7 @@ const AlbumComponent = (props) => {
           <p id={album.albumId} className="albumTitle">{album.albumTitle}</p>
           {/* <img className="albumRating" src={logoImg[rating]} alt="등급" /> */}
         </div>
-        {show && <img className="albumDetail" onClick={()=>{setShow(false)}} src={album.albumImg} alt="" />}
+        {show && <img className="albumDetail" onClick={()=>{setShow(false)}} src={require(`../../asset/images/Album/Collection/${album.albumId}.png`)} alt="" />}
       </div>
     )
 

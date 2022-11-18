@@ -105,9 +105,6 @@ const Interview = () => {
     }
   }, [timer, check.ready, help])
 
-  
-
-
   // 웹캠 캡쳐 후 Jpg 파일로 전환
   // base64 to File 전환 함수
   function base64toFile(base64Img) {

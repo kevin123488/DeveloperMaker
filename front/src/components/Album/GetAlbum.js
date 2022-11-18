@@ -47,14 +47,14 @@ function GetAlbum () {
         <div>
           <img className="GetAlbumOpenBook" src={openbook} alt="" />
           <div className="GetAlbumImgTransfer">
-            <img src={album.albumImg} onClick={()=>{ {setShow(true)} }}
+            <img src={require(`../../asset/images/Album/Collection/${album.albumId}.png`)} onClick={()=>{ {setShow(true)} }}
             className="albumImg albumImgOwned"  alt="앨범" />
             <p className="GetAlbumTitle">{album.albumTitle}</p>
             <img className="albumRating" src={logoImg[rating]} alt="등급" />
             <span className="albumCloseBtn" onClick={()=>{changeShow()}}>획득</span>
           </div>
         </div>}
-        {show && <img className="albumDetail" onClick={()=>{setShow(false)}} src={album.albumImg} alt="" />}
+        {show && <img className="albumDetail" onClick={()=>{setShow(false)}} src={require(`../../asset/images/Album/Collection/${album.albumId}.png`)} alt="" />}
       </div>
     )
 }
