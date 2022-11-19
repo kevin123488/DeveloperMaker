@@ -315,7 +315,7 @@ const selfstudySlice = createSlice({
       state.studyInfo = action.payload;
     })
     builder.addCase(getQuizList.fulfilled, (state, action) => {
-      console.log("퀴즈리스트 페이로드", action.payload)
+      // console.log("퀴즈리스트 페이로드", action.payload)
       state.quizList = action.payload;
     })
     builder.addCase(getQuizInfo.fulfilled, (state, action) => {
@@ -325,7 +325,7 @@ const selfstudySlice = createSlice({
       const res = action.payload
       res['quizInfo'] = action.payload.coteInfoList;
       state.quizList = res
-      console.log('quizInfo', state.quizList)
+      // console.log('quizInfo', state.quizList)
     })
     builder.addCase(getSelfStudyProgress.fulfilled, (state, action) => {
       state.progress = action.payload

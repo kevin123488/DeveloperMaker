@@ -172,9 +172,10 @@ const Quiz = () => {
     console.log('풀고나서 받은 프로그래스', progress[solveCategory])
     const progressPer = parseInt(progress[solveCategory] / 25)
     if (progressPer) {
-      const checkAlbumNum = category * 4 + progressPer
-      console.log('확인할 엘범 번호', checkAlbumNum)
-      checkAlbum(checkAlbumNum)
+      for (var i = 1; i <= progressPer; i++) {
+        const checkAlbumNum = category * 4 + i
+        checkAlbum(checkAlbumNum)
+      }
     }
   }, [progress])
 
@@ -262,7 +263,7 @@ const Quiz = () => {
     })
 
     const subjects = document.querySelectorAll(`.subjectItem`)
-    console.log(subjects)
+    // console.log(subjects)
     subjects.forEach((subject) => {
       if (subject.innerText === info.subject) {
         subject.style.color = 'white'
@@ -419,8 +420,8 @@ const Quiz = () => {
   const solveQuiz = async() => {
     if (checkedAnswer !== null) {
       playBtnSimpleSound()
-      // console.log(showingQuiz)
       const solveInfo = { quizId: showingQuiz.quizId, answer: checkedAnswer }
+      // console.log(solveInfo)
       const solveResult = await dispatch(postQuizSolve(solveInfo))
       const newQuizInfo = {
         category: category,
@@ -454,15 +455,6 @@ const Quiz = () => {
 
         // 프로그래스가 분기를 넘었는지 판별
         await dispatch(getSelfStudyProgress())
-        // const solveCategory = quizInfo[category].category.toLowerCase()
-        // console.log('풀고나서 받은 프로그래스', progress[solveCategory])
-        // const progressPer = parseInt(progress[solveCategory] / 25)
-        // // console.log(progressPer)
-        // if (progressPer !== 0) {
-        //   const checkAlbumNum = category * 4
-        //   console.log('확인할 엘범 번호', checkAlbumNum)
-        //   checkAlbum(checkAlbumNum)
-        // }
       } else {
         setShowBigWrong(true)
         setTimeout(() => {
@@ -613,8 +605,8 @@ const Quiz = () => {
     // console.log('풀이결과', solveResult.payload)
     setNpcBalloonContent(solveResult.payload.message)
     setTimeout(() => {
-    // setIsShowNpcBalloon(false)
-    setNpcBalloonContent("'실행'은 코드 테스트,\n'제출'은 정답 제출이야")
+      // setIsShowNpcBalloon(false)
+      setNpcBalloonContent("'실행'은 코드 테스트,\n'제출'은 정답 제출이야")
 
     }, 2000)
 
@@ -629,9 +621,11 @@ const Quiz = () => {
       await dispatch(getSelfStudyProgress())
       const solveCategory = quizInfo[category].category.toLowerCase()
       const progressPer = parseInt(progress[solveCategory] / 25)
-      if (progressPer !== 0) {
-        const checkAlbumNum = category * 4
-        checkAlbum(checkAlbumNum)
+      if (progressPer) {
+        for (var i = 1; i <= progressPer; i++) {
+          const checkAlbumNum = category * 4 + i
+          checkAlbum(checkAlbumNum)
+        }
       }
     } else {
       playWrongAnswer()
@@ -668,6 +662,12 @@ const Quiz = () => {
     if (!response.payload) {
       setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
       dispatch(putAlbumList(albumId))
+      setTimeout(() => {
+        setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
+      }, 2000)
+      setTimeout(() => {
+        setNpcBalloonContent('대단한데?')
+      }, 5000)
     }
   }
 
