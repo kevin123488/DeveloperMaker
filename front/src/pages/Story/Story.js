@@ -21,6 +21,7 @@ import script4_3 from "./scripts/script4_3.json";
 import script4_4 from "./scripts/script4_4.json";
 import script4_1_1 from "./scripts/script4_1_1.json";
 import script4_1_2 from "./scripts/script4_1_2.json";
+import script5 from "./scripts/script5.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
@@ -853,6 +854,7 @@ const Story = () => {
       "script4_2": script4_2,
       "script4_3": script4_3,
       "script4_4": script4_4,
+      "script5": script5,
     });
 
   const returnNextScript = (n) => {

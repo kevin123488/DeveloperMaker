@@ -381,6 +381,36 @@
       {
         "name": "보미자동차",
         "nextScript": "script4_1"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  },
+	{
+    "idx": 34,
+    "scriptType": "choice",
+    "text": "합격 메일을 보내준 회사는 어디일까?",
+    "option": [
+      {
+        "name": "보미자동차",
+        "nextScript": "script4_1"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  },
+	{
+    "idx": 35,
+    "scriptType": "choice",
+    "text": "합격 메일을 보내준 회사는 어디일까?",
+    "option": [
+      {
+        "name": "보미자동차",
+        "nextScript": "script4_1"
       },
       {
         "name": "구가을",
