@@ -7,7 +7,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -15,10 +15,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"탈락이라. 기분이 좋진 않네.\"",
-    "centerImageUrl": "jeonghyun",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -29,7 +29,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -37,10 +37,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그냥 잠이나 자야지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -51,7 +51,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -62,7 +62,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -70,10 +70,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"여보세요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -81,10 +81,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"오늘 보미자동차 발표났던데, 어떻게 됐어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -92,10 +92,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"떨어졌지 뭐. 너는?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -103,10 +103,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"나는 붙었지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -114,10 +114,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"역시 서봄이네. 나같은거랑은 비교도 안된달까..\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -125,10 +125,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그런... 운이 좋았을 뿐이고. 너도 다음번엔 잘 할거야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -136,10 +136,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"이번에 잘했으면 더 좋았을텐데 말이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -150,7 +150,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -158,10 +158,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"더 할 말 없으면 전화 끊을게. 오늘 좀 피곤하네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -169,10 +169,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응... 푹 쉬어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -183,7 +183,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -194,7 +194,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -202,10 +202,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"탈락했다고 너무 상심해있지 말구. 내일 시간 괜찮으면 같이 맛있는거라도 먹으러 갈까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -216,7 +216,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -224,10 +224,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭐, 털고 일어나야지. 탈락이 뭔 대수라고.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -238,7 +238,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -246,10 +246,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"내일 뭐먹을지 고민해봐야 겠네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -260,7 +260,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -268,10 +268,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"너무 일찍 온건가. 어디, 미리 들어가서 주문을 해두는게 낫겠지?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -282,7 +282,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -290,10 +290,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"여기 곱창 2판이요\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -304,7 +304,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -312,10 +312,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"여, 보미자동차 합격자.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -323,10 +323,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"괜히 민망한걸. 음식은? 시켰어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -334,10 +334,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어어 시켜뒀어. 마실것도 시킬까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -345,10 +345,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그럼 난 콜라코카 제로로\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -356,10 +356,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"나도 같은거로 시켜야겠다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -370,7 +370,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -378,10 +378,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"오늘 날씨가 되게 춥네. 이제 확실히 겨울인 느낌이려나?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -389,10 +389,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그렇네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -400,10 +400,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그나저나 곱창 좋아해? 난 사실 몇번 안먹어봤거든.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -411,10 +411,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭐, 그럭저럭.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -425,7 +425,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -436,7 +436,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -447,7 +447,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -458,7 +458,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -466,10 +466,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭐... 보미자동차 합격한거 다시 한번 축하해.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -480,7 +480,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -488,10 +488,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"운이 좋았지 뭐...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -499,10 +499,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "겸손한 서봄. 그 겸손한 마음이 나를 더 힘들게 한다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -510,10 +510,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"나는... 운이 안좋았고?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -521,10 +521,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응? 아니 그런말이 아니라,\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -532,10 +532,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아, 부족한건 운이 아니라 실력이었나?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -543,10 +543,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아니, 그렇지 않아. 분명 다음번엔 잘 될거야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -554,10 +554,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "인자한 미소를 지으며 나를 달래주는 서봄. 뭔가 평소와는 다른 느낌이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -565,10 +565,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"너도 하고싶은 말 있으면 솔직히 하라고. 괜히 기분 맞춰준다고 부드럽게 얘기해줄 필요 없으니까.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -576,10 +576,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"난... 진심으로 우리가 같이 합격하길 바랬어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -587,10 +587,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어째서?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -598,10 +598,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그야... 지난 1년동안 열심히 하는걸 누구보다 가까이서 지켜봐왔으니까.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -609,10 +609,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"내가 봐온 너는, 겨우 이런 고난에서 무너질 사람이 아니야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -620,10 +620,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "신념에 찬 표정으로 나를 바라보는 서봄.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -631,10 +631,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "나조차 나를 믿지 못하고 있던 순간이었다. 그런 순간마저도 서봄은, 내 가능성을 보며 응원하고 있었던 것이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -642,10 +642,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "순간 울컥한 나는, 급히 고개를 들어 눈물을 삼킨다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -653,10 +653,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"서봄.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -664,10 +664,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -675,10 +675,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"고맙다. 힘이 되네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -686,10 +686,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"난 진심을 말했을 뿐이야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -697,10 +697,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"진심인걸 아니까 힘이 나는거야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -708,10 +708,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "살짝 미소짓는 서봄. 가슴이 뛴다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -719,10 +719,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"저,, 있잖아\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -730,10 +730,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그 전에 부탁 하나만 해도 될까? 응원해준 대가로.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -741,10 +741,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"응? 뭔데?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -752,10 +752,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"사실 오늘 다른 한분도 같이 모이기로 했거든! 이번에 보미자동차 합격하신 분인데, 지금 여기로 오신다네. 괜찮을까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -763,10 +763,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어,, 뭐 상관없어. 그래서 내가 도와줄 일이라는게 뭐야?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -774,10 +774,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"별건 아니고, 자리 좀 빨리 비켜주면 안될까 싶어서... 안될까? 저녁값은 내가 계산할게.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -785,10 +785,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"자리? 기왕 먹는거 같이 먹는게 낫지 않아?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -796,10 +796,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아니 뭐.. 둘이서만 할 얘기도 있고...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -807,10 +807,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "얼굴이 붉어지는 서봄. 그 때 등 뒤에서 들리는 나이스한 중저음의 목소리.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -818,10 +818,10 @@
     "scriptType": "text",
     "storyTeller": "박정현",
     "text": "\"서봄님 안녕하세요. 옆에 계신 분이 그 분인가요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "jeonghyun",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -829,10 +829,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"네네, 얘가 오늘 보미자동차 떨어진 앤데, 정현님한테 면접 팁같은거 물어보고 싶다고 해서 불러왔어요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -840,10 +840,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "순간 머리가 띵해진다. 상황이 정리가 안된다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -851,10 +851,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어,, 이게 지금 무슨 상황인거야?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -862,10 +862,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"무슨 상황이냐니? 네가 정현님 만나서 같이 얘기해보고 싶다고 하지 않았어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -873,10 +873,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "한쪽눈을 미친듯이 감으며 '이번 한번만 도와줘' 같은 신호를 보내는 서봄. 아, 그런건가.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -884,10 +884,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서봄은 저 나이스한 박정현이라는 사람과의 자리를 만들기 위해 '불쌍하고 안타까운 탈락자인 나'를 이용한 것이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -895,10 +895,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "머리를 망치로 얻어맞은 기분이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -906,10 +906,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아,, 정현님 안녕하세요. 그...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -917,10 +917,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"(알아서 빠지라는 표정)\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -928,10 +928,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"죄송해요. 오늘따라 소화가 안돼서, 다음번에 뵈어도 괜찮을까요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -939,10 +939,10 @@
     "scriptType": "text",
     "storyTeller": "박정현",
     "text": "\"물론이죠. 무리하지 말아주세요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "jeonghyun",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -950,10 +950,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"네.. 그럼 이만 가보겠습니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -961,10 +961,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"벌써 가게? 아쉽네~\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -972,10 +972,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "신나하는 서봄.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "koreanbarbaque",
     "plusIndex": 1
   },
 	{
@@ -986,7 +986,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -997,7 +997,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1008,7 +1008,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1019,7 +1019,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1027,10 +1027,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"가슴이... 너무 답답해.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1041,7 +1041,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1049,10 +1049,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"으, 으아, 으아아, 으으으으아아아아!\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1063,7 +1063,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1071,10 +1071,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"으, 으아, 으아아!\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1085,7 +1085,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1096,7 +1096,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1107,7 +1107,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1115,14 +1115,25 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"죄송합니다.\"",
+    "centerImageUrl": "maincharacter",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "road",
+    "plusIndex": 1
+  },
+	{
+    "idx": 102,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "서봄 story -end-.",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "fin",
     "plusIndex": 1
   },
   {
-    "idx": 102,
+    "idx": 103,
     "scriptType": "changeScript",
     "storyTeller": null,
     "text": "서봄 story -end-.",
