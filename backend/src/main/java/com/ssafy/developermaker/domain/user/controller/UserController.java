@@ -17,6 +17,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -62,9 +63,10 @@ public class UserController {
     @PutMapping
     @ApiOperation(value = "유저정보 수정", notes = "유저의 정보를 수정합니다")
     public ResponseEntity<BaseResponseBody> modify(
+            @RequestPart(value = "file", required = false) MultipartFile file,
             @RequestPart(value = "userDto", required = false) UserDto userDto,
             @AuthenticationPrincipal String email) {
-        UserDto modifyUser = userManageService.modify(userDto, email);
+        UserDto modifyUser = userManageService.modify(userDto, email, file);
         if(modifyUser == null) return ResponseEntity.status(400).body(BaseResponseBody.of(400, "fail", null));
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", modifyUser));
     }

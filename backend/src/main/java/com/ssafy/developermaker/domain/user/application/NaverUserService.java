@@ -32,6 +32,7 @@ public class NaverUserService implements SocialUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserLoginService userLoginService;
+    private final String defaultImg = "https://busanfullcourse.s3.ap-northeast-2.amazonaws.com/user/%ED%94%84%EB%A1%9C%ED%95%84.png";
 
     @Override
     @Transactional
@@ -100,6 +101,8 @@ public class NaverUserService implements SocialUserService {
             String email = account.get("id").toString();
             userDto.setEmail(email+"NAVER");
             userDto.setSocialId(account.get("id").toString());
+
+            userDto.setProfileImg(defaultImg);
 
             Optional<User> findUser = userRepository.findByEmail(email);
             if(findUser.isPresent()){

@@ -19,6 +19,7 @@ public class UserDto {
     private String nickname;
     private LoginType loginType;
     private Language language;
+    private String profileImg;
 
     public User toEntity(LoginType loginType, Progress progress){
         return User.builder()
@@ -28,6 +29,7 @@ public class UserDto {
                 .loginType(loginType)
                 .language(this.getLanguage())
                 .progress(progress)
+                .profileImg(this.getProfileImg())
                 .build();
     }
 }
