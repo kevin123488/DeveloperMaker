@@ -308,7 +308,7 @@ body::after{
 .RankingBtn {
   position: absolute;
   width: 16vw;
-  height: 27vh;
+  height: 25vh;
   bottom: 8vh;
   left: 10vw;
   background: url(../../asset/images/Profile/Ranking/RankingBtn.png) center no-repeat;
