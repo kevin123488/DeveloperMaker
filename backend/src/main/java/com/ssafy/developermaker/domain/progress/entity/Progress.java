@@ -1,20 +1,23 @@
 package com.ssafy.developermaker.domain.progress.entity;
 
-import com.ssafy.developermaker.domain.progress.dto.ProgressDto;
 import com.ssafy.developermaker.domain.user.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class Progress {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +45,9 @@ public class Progress {
 
     @OneToOne(mappedBy = "progress", cascade = CascadeType.REMOVE)
     private User user;
+
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
 
     public void setUser(User user) {
         this.user = user;
