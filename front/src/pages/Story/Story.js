@@ -11,6 +11,17 @@ import script1_1 from "./scripts/script1_1.json";
 import script1_2 from "./scripts/script1_2.json";
 import script2 from "./scripts/script2.json";
 import script3 from "./scripts/script3.json";
+import script3_1 from "./scripts/script3_1.json";
+import script3_2 from "./scripts/script3_2.json";
+import script3_3 from "./scripts/script3_3.json";
+import script4 from "./scripts/script4.json";
+import script4_1 from "./scripts/script4_1.json";
+import script4_2 from "./scripts/script4_2.json";
+import script4_3 from "./scripts/script4_3.json";
+import script4_4 from "./scripts/script4_4.json";
+import script4_1_1 from "./scripts/script4_1_1.json";
+import script4_1_2 from "./scripts/script4_1_2.json";
+import script5 from "./scripts/script5.json";
 import { useDispatch, useSelector } from "react-redux";
 import { userPutMemory } from "../../slices/storySlice";
 import { getSelfStudyProgress } from "../../slices/selfstudySlice";
@@ -596,6 +607,7 @@ const Story = () => {
   const story =  useSelector((state) => {return state.story.userStoryData}); // 유저가 갖고있는 슬롯 3개의 데이터
   const slotIndex = useSelector((state) => {return state.story.selectedSlot}); // 몇번 슬롯 선택했는지 확인
   const userAlbumCheck = useSelector((state) => {return state.album.haveCheck}); // 추가하고자 하는 앨범 아이디가 사용자 보유 목록에 있는지 없는지 결과값
+  const aitestResult = useSelector((state) => state.interview.result); 
   // console.log(userAlbumCheck);
   const dispatch = useDispatch();
   const scriptIndex = useRef(0); // 보여주고 있는 스크립트의 인덱스(num)
@@ -659,8 +671,27 @@ const Story = () => {
   // 이름
   const [nickname, setNickname] = useState(UserInfo.nickname)
 
+  // ai면접 통과여부
+  const isPass = useSelector((state)=>{
+    // 누적값의 합이 180 이상 이거나
+    return ((state.interview.result.reduce((acc, element) =>{
+      return acc + element.totalScore
+    },0) >= 180) &&
+    // 2회 이상 통과한 경우(두 질문에서 60점 이상)
+    (state.interview.result.reduce((acc, element) => {
+      if (element.pass) {
+        return acc + 1
+      } else {
+        return acc
+      }
+    },0 ) > 1))
+  })
+
 
   useEffect(() => {
+    console.log(aitestResult);
+    console.log(isPass);
+    console.log("ai면접 결과");
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
     // console.log(storyInfo)
     setDataSaveSlot(slotIndex-1); // 몇 번 슬롯에 저장할지 확인
@@ -813,6 +844,17 @@ const Story = () => {
       "script1_2": script1_2,
       "script2": script2,
       "script3": script3,
+      "script3_1": script3_1,
+      "script3_2": script3_2,
+      "script3_3": script3_3,
+      "script4": script4,
+      "script4_1": script4_1,
+      "script4_1_1": script4_1_1,
+      "script4_1_2": script4_1_2,
+      "script4_2": script4_2,
+      "script4_3": script4_3,
+      "script4_4": script4_4,
+      "script5": script5,
     });
 
   const returnNextScript = (n) => {
@@ -949,6 +991,15 @@ const Story = () => {
     // 실험끝
     setStoryObj(storyObjCopy);
   }
+
+  // ai면접시 진행도 자동저장
+  const saveAiTest = () => {
+    let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
+    storyObjCopy.slot = slotIndex;
+    storyObjCopy.num = scriptIndex.current + increaseIndex.current;
+    storyObjCopy.script = scriptFileName.current;
+    setStoryObj(storyObjCopy);
+  };
 
   // 앨범 획득 모달 관련 함수
 
@@ -1097,6 +1148,66 @@ const Story = () => {
         changeScriptInfo(scriptFile.current[scriptIndex.current])
         changeIsOption(true)
         // 여기선 저장할 때 chapter 정보와 인덱스 0 정보만 갱신해서 넣으면 될 것 같음
+        break;
+
+      case 'goAiTest':
+        console.log("ai면접");
+        saveAiTest();
+        if (scriptFile.current[scriptIndex.current].whostory === '서봄') {
+          navigate('/Interview', {state: {story: 'spring'}})
+        } else if (scriptFile.current[scriptIndex.current].whostory === '차가을') {
+          navigate('/Interview', {state: {story: 'fall'}})
+        } else if (scriptFile.current[scriptIndex.current].whostory === '한여름') {
+          navigate('/Interview', {state: {story: 'summer'}})
+        } else if (scriptFile.current[scriptIndex.current].whostory === '한겨울') {
+          navigate('/Interview', {state: {story: 'winter'}})
+        }
+        // 해당 스토리에 맞춰 story 값 변경 ex) 서봄: 'spring', 차가을: 'fall',
+        // 한겨울: 'winter', 전부: 'total'
+        break;
+
+      case 'afterAiTest':
+        changeScript(scriptFile.current[scriptIndex.current].text)
+        if (isPass) {
+          increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex;
+          saveAiTest();
+        } else {
+          increaseIndex.current = scriptFile.current[scriptIndex.current].failPlusIndex;
+          saveAiTest();
+        }
+        break;
+
+      case 'likeBranch':
+        changeScript(scriptFile.current[scriptIndex.current].text)
+        if (scriptFile.current[scriptIndex.current].whoLikeBranch === '서봄') {
+          if (story[slotIndex-1].likeSpring >= 50) {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex;
+          } else {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].failPlusIndex;
+          }
+        } else if (scriptFile.current[scriptIndex.current].whoLikeBranch === '차가을') {
+          if (story[slotIndex-1].likeAutumn >= 50) {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex;
+          } else {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].failPlusIndex;
+          }
+        } else if (scriptFile.current[scriptIndex.current].whoLikeBranch === '한여름') {
+          if (story[slotIndex-1].likeSummer >= 50) {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex;
+          } else {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].failPlusIndex;
+          }
+        } else if (scriptFile.current[scriptIndex.current].whoLikeBranch === '한겨울') {
+          if (story[slotIndex-1].likeWinter >= 50) {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex;
+          } else {
+            increaseIndex.current = scriptFile.current[scriptIndex.current].failPlusIndex;
+          }
+        }
+        break;
+
+      case 'end':
+        console.log('end');
         break;
 
       default:
