@@ -1,0 +1,433 @@
+[
+	{
+    "idx": 0,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "취업이 급해진 12월의 어느날.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 1,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"이제 진짜 진심으로 달리지 않으면, 큰일나겠는걸.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 2,
+    "scriptType": "text",
+    "storyTeller": "서봄",
+    "text": "\"치타 달린다 우우\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 3,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"어디 공고 올라온 곳 중에 좀 괜찮은 곳 없으려나?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 4,
+    "scriptType": "text",
+    "storyTeller": "서봄",
+    "text": "\"난 일단 보미자동차 넣었는데, 너도 여기 지원해봐\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 5,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"보미자동차, 접수 완료.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 6,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "휘리릭 자소서를 작성해내는 나. 모두 싸피 덕분이다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 7,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"또 어디 있을까?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 8,
+    "scriptType": "text",
+    "storyTeller": "차가을",
+    "text": "\"음... 이번에 구가을(GooGale)에서 신입을 모집하던데 한번 지원해보는것도 좋지 않을까요?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 9,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"구가을... 꿈의 기업이지만, 지원해보는건 죄가 아니겠죠. 넣겠습니다.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 10,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "순식간에 자소서 2개를 써버린 나. 이게 다 평소에 싸피에서 준비를 잘 해뒀기 때문이다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 11,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"흐음. 최소 2군데 이상은 더 지원하고 싶은데, 또 괜찮은 곳 없을까?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 12,
+    "scriptType": "text",
+    "storyTeller": "한여름",
+    "text": "\"취업은 역시 로망대로 가야지. 유니콘 스타트업 '여름여행지는여기어때요?기요'도 한번 지원해봐\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 13,
+    "scriptType": "text",
+    "storyTeller": "한겨울",
+    "text": "\"백엔드 솔루션 제공 기업 'winterBackend'도 있어.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 14,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"다 어마어마한 곳들 뿐이네. 나, 잘 할수 있으려나... 일단 지원한다.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 15,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "그렇게 친구들이 추천해준 기업 4개에 지원을 끝마친 나.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 16,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"이제 서류 발표만 기다리면 되는건가.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 17,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "서류 발표는 일주일 후라고 한다. 우선 그때까지 다른 준비를 하며 기다리기로 한다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 18,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"코딩테스트 준비를 미리 해둬야 겠는걸.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 19,
+    "scriptType": "text",
+    "storyTeller": "차가을",
+    "text": "\"코테도 코테지만, 방금 지원한 기업들은 면접을 우선적으로 본다고 해요.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 20,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "면접인가... 해본 적 없는데. 뭐 어떻게든 되겠지.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 21,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"면접은 그냥 성실한 표정으로 성실한 대답 내놓으면 되는거 아니야?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 22,
+    "scriptType": "text",
+    "storyTeller": "서봄",
+    "text": "\"그게 그렇게 쉬웠다면 다들 원하는 기업 들어갔겠지.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 23,
+    "scriptType": "text",
+    "storyTeller": "한겨울",
+    "text": "\"만만하게 볼 일은 아닌 것 같은데 말이야.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 24,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"너무 세상 물정 모르는 말을 한건가.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 25,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"뭐, 면접은 커녕 회사 지원해본게 처음이라 그러니 이해해 달라고.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 26,
+    "scriptType": "text",
+    "storyTeller": "서봄",
+    "text": "\"우리야 이해해 줄 수 있지만, 면접관들은 어떨지 모르겠네.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 27,
+    "scriptType": "text",
+    "storyTeller": "한여름",
+    "text": "\"면접... 나도 많이 본건 아니지만, 볼때마다 느낌이 다르달까, 내 느낌이랑 결과랑 다르달까, 까놓고 말해서 뭐가 뭔지 잘 모르겠는 느낌이긴 하지.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 28,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "친구들의 말을 들어보니, 쉬운 일이 아닌 것 같다. 사실 면접은 구색맞추기 정도라고 생각하고 있었는데, 솔직히 충격이다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 29,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"뭐, 그 면접이라는 것도 결국 서류를 붙어야 볼 수 있으니까... 일단 1차 발표를 기다려보자고.\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 30,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "1주일 후 발표날.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 31,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "오늘인가... 과연 몇군데나 합격했을지... 어디",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 32,
+    "scriptType": "text",
+    "storyTeller": null,
+    "text": "메일함을 열어본다. 새로 온 메일이 한 건 있다.",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 33,
+    "scriptType": "text",
+    "storyTeller": "주인공",
+    "text": "\"솔직히 다 떨어지는것도 염두에 두고 있었는데, 한군데 붙었네! 어디, 어딘지 확인해볼까?\"",
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom",
+    "plusIndex": 1
+  },
+	{
+    "idx": 34,
+    "scriptType": "choice",
+    "text": "합격 메일을 보내준 회사는 어디일까?",
+    "option": [
+      {
+        "name": "보미자동차",
+        "nextScript": "script4_1"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  },
+	{
+    "idx": 34,
+    "scriptType": "choice",
+    "text": "합격 메일을 보내준 회사는 어디일까?",
+    "option": [
+      {
+        "name": "보미자동차",
+        "nextScript": "script4_1"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  },
+	{
+    "idx": 35,
+    "scriptType": "choice",
+    "text": "합격 메일을 보내준 회사는 어디일까?",
+    "option": [
+      {
+        "name": "보미자동차",
+        "nextScript": "script4_1"
+      },
+      {
+        "name": "구가을",
+        "nextScript": "script4_2"
+      },
+      {
+        "name": "여름여행지는여기어때요?기요",
+        "nextScript": "script4_3"
+      },
+      {
+        "name": "winterBackend",
+        "nextScript": "script4_4"
+      }
+    ],
+    "centerImageUrl": "a",
+    "LeftImageUrl2": "a",
+    "RightImageUrl3": "a",
+    "backgroundImageUrl": "classroom"
+  }
+]
