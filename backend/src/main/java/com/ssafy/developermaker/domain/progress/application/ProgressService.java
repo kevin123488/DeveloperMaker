@@ -52,35 +52,35 @@ public class ProgressService {
         int frontCount = Integer.parseInt(redisUtil.getData("frontCount"));
         int langCount = Integer.parseInt(redisUtil.getData("langCount"));
 
-        List<Progress> csRanking = progressRepository.findTop10ByOrderByCsDesc();
+        List<Progress> csRanking = progressRepository.findTop10ByOrderByCsDescModifiedDateAsc();
         List<RankingDto> csRank = new ArrayList<>();
         for(Progress progress : csRanking) {
             csRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getCs() / csCount * 100)));
         }
 
-        List<Progress> algoRanking = progressRepository.findTop10ByOrderByAlgorithmDesc();
+        List<Progress> algoRanking = progressRepository.findTop10ByOrderByAlgorithmDescModifiedDateAsc();
         List<RankingDto> algoRank = new ArrayList<>();
         for(Progress progress : algoRanking) {
             algoRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getAlgorithm() / algoCount * 100)));
         }
 
-        List<Progress> backRanking = progressRepository.findTop10ByOrderByBackendDesc();
+        List<Progress> backRanking = progressRepository.findTop10ByOrderByBackendDescModifiedDateAsc();
         List<RankingDto> backRank = new ArrayList<>();
         for(Progress progress : backRanking) {
             backRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getBackend() / backCount * 100)));
         }
 
-        List<Progress> frontRanking = progressRepository.findTop10ByOrderByFrontendDesc();
+        List<Progress> frontRanking = progressRepository.findTop10ByOrderByFrontendDescModifiedDateAsc();
         List<RankingDto> frontRank = new ArrayList<>();
         for(Progress progress : frontRanking) {
             frontRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
                     (int) ((double) progress.getFrontend() / frontCount * 100)));
         }
 
-        List<Progress> langRanking = progressRepository.findTop10ByOrderByLanguageDesc();
+        List<Progress> langRanking = progressRepository.findTop10ByOrderByLanguageDescModifiedDateAsc();
         List<RankingDto> langRank = new ArrayList<>();
         for(Progress progress : langRanking) {
             langRank.add(new RankingDto(progress.getUser().getNickname(), progress.getUser().getProfileImg(),
