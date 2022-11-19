@@ -4,7 +4,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"보미자동차에서 연락을 줬네. 감사합니다, 감사합니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -15,7 +15,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"잘됐다! 나랑 같이 면접 준비하면 되겠는데?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -26,7 +26,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"면접이 당장 내일 모렌데, 준비할 시간이 있을까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -37,7 +37,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"속성으로 가면 문제 없다구. 보미자동차 면접 기출은 내가 꿰고 있으니까 따라오기만 해.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -48,7 +48,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"감사합니다, 감사합니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -70,7 +70,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"예상은 했지만, 정말 기본적인 부분도 모르는구나.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -81,7 +81,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그려갈것이 많은 도화지 라고 불러줄래?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -92,7 +92,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"줄여서 '그많도' 엌 ㅋㅋㅋㅋ\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -103,7 +103,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"ㅋㅋ\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -125,7 +125,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"저... 있지... 이번 전형이 끝나면 나와\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -136,7 +136,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"이상한 플래그 세우지 말고 일단 면접준비나 해.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -147,7 +147,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"알았어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -169,7 +169,7 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"이정도면 문제 없겠는데? 좋은 결과 기대해봐도 될 것 같은걸.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -180,7 +180,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"고마워. 우리 둘 다 합격했으면 좋겠네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -205,7 +205,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -216,7 +216,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -227,7 +227,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -239,18 +239,18 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
     "idx": 22,
     "scriptType": "text",
-    "storyTeller": "주인공",
-    "text": "\"면접을 마치고 돌아왔다.\"",
+    "storyTeller": null,
+    "text": "면접을 마치고 돌아왔다.",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -258,10 +258,10 @@
     "scriptType": "afterAiTest",
     "storyTeller": "주인공",
     "text": "\"인생 첫 면접. 그 결과는...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1,
     "failPlusIndex": 3
   },
@@ -270,10 +270,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"합격!\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
   {
@@ -286,20 +286,20 @@
         "nextScript": "script4_1_1"
       }
     ],
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom"
+    "backgroundImageUrl": "home"
   },
 	{
     "idx": 26,
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"불합격.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
   {
@@ -312,9 +312,9 @@
         "nextScript": "script4_1_2"
       }
     ],
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom"
+    "backgroundImageUrl": "home"
   }
 ]
