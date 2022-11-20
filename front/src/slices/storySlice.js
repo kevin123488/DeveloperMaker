@@ -7,7 +7,7 @@ export const userGetMemory = createAsyncThunk(
   async (temp, { rejectWithValue }) => {
     try {
       const response = await getUserMemory();
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -22,10 +22,10 @@ export const userGetMemory = createAsyncThunk(
 export const userPutMemory = createAsyncThunk(
   "story/putmemory",
   async (storyObj, { rejectWithValue }) => {
-    console.log(storyObj)
+    // console.log(storyObj)
     try {
       const response = await putUserMemory(storyObj);
-      console.log(response.data);
+      // console.log(response.data);
       return response.data;
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -85,7 +85,7 @@ const storySlice = createSlice({
     builder
       .addCase(userGetMemory.fulfilled, (state, action) => {
         state.userStoryData = action.payload.data; // userGetMemory 수행되면 결과를 state에 반영
-        console.log(state.userStoryData);
+        // console.log(state.userStoryData);
         // state.userStoryData = ["chapter1"];
       })
   }

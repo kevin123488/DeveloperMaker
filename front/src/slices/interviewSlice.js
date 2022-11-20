@@ -8,7 +8,7 @@ export const interviewCheck = createAsyncThunk(
   async (imageFile, { rejectWithValue }) => {
     try {
       const response = await interviewFaceCheck(imageFile);
-      console.log(response)
+      // console.log(response)
       return response.data.data
     } catch (error) {
       if (error.response && error.response.data.message) {
@@ -24,8 +24,8 @@ export const getInterviewQuestion = createAsyncThunk(
   "interview/question",
   async (subject, { rejectWithValue }) => {
     try {
-      console.log('=========subject============')
-      console.log(subject)
+      // console.log('=========subject============')
+      // console.log(subject)
       const response = await interviewSubject(subject);
       return response.data.data
     } catch (error) {
@@ -42,7 +42,7 @@ export const subInterviewData = createAsyncThunk(
   "interview/submit",
   async (data, { rejectWithValue }) => {
     try {
-      console.log(data)
+      // console.log(data)
       const {subjectNo, image, script} = data
       const response = await interviewSubmit(subjectNo, image, script);
       return response.data.data
@@ -104,14 +104,14 @@ const interview = createSlice({
       })
       // 문제를 받아온 경우
       .addCase(getInterviewQuestion.fulfilled, (state, action) => {
-        console.log('현재 문제', action.payload)
+        // console.log('현재 문제', action.payload)
         state.question.no = action.payload.aiqId;
         state.question.question = action.payload.question
         state.question.subject = action.payload.subject
       })
       // 답안 제출 결과 경신
       .addCase(subInterviewData.fulfilled, (state, action) => {
-        console.log('답안 제출 결과', action.payload)
+        // console.log('답안 제출 결과', action.payload)
         state.result[state.stage-1] = action.payload
         // 로딩 끝
         state.isLoding = false
