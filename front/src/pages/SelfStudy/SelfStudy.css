@@ -532,6 +532,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charSpring 0.2s;
 }
 .spring:hover{
   position: absolute;
@@ -582,6 +583,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charFall 0.4s;
 }
 .fall:hover{
   position: absolute;
@@ -631,6 +633,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charSummer 0.6s;
 }
 .summer:hover{
   position: absolute;
@@ -681,6 +684,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charWinter 0.8s;
 }
 .winter:hover{
   position: absolute;
@@ -730,6 +734,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charHero 1s;
 }
 .hero:hover{
   position: absolute;
@@ -1142,5 +1147,61 @@ body::after{
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+@keyframes charSpring {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 45vh;
+  }
+}
+
+@keyframes charFall {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 45vh;
+  }
+}
+
+@keyframes charSummer {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 37vh;
+  }
+}
+
+@keyframes charWinter {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 47vh;
+  }
+}
+
+@keyframes charHero {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 38vh;
   }
 }
