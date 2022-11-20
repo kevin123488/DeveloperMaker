@@ -7,7 +7,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -18,7 +18,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -26,10 +26,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"여보세요? 서봄? 오늘 보미자동차 결과 나온거 봤어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -37,10 +37,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"안그래도 결과 물어볼까 말까 고민중이었는데, 어떻게 됐어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -48,10 +48,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"여유롭게 합격.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -59,10 +59,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"와 잘됐다! 뭐, 내가 가르쳐줬으니 합격하는건 당연한 결과였겠지만 말야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -70,10 +70,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"ㅋㅋ\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -81,10 +81,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"보미자동차, 갈꺼야?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -92,10 +92,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"당연히 가야지. 랄까, 여기 한곳만 붙어서 다른 선택지가 없다고.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -103,10 +103,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "살짝 웃는 서봄. 그 웃음의 의미가 궁금해진다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -114,10 +114,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"흐음~ 난 사실 네가 지원한 4군데 다 붙었거든\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -125,10 +125,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"역시 싸피의 희망 서봄답네. 그래서 넌 어디 갈려고?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -136,10 +136,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"글쎄~ 지금 고민중이긴 한데. 기업별로 장단점이 다 달라서 말이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -147,10 +147,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"구가을 같은 경우엔 급여가 높은 회사지. 인기도 제일 많달까, 정배인 느낌이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -158,10 +158,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"여름여행은여기어때요?기요 같은 경우엔 발전 가능성이 높은 회사라서, 회사랑 같이 성장할 수 있을 것 같네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -169,10 +169,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"winterBackend의 경우엔 개발자 커리어를 잘 쌓을 수 있는 회사일 것 같아. 실력을 키우기엔 최고가 아닐까 싶어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -180,10 +180,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"마지막으로,,, 보미자동차 같은 경우엔 안정적인 느낌의 제조업이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -191,10 +191,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭔가 그렇게 설명을 들으니까, 보미자동차가 제일 별로같아 보이네...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -202,10 +202,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"근데 나도 보미자동차로 갈 생각이야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -213,10 +213,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어째서?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -224,10 +224,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"오늘, 보미자동차로 가야될 이유가 생겼달까. 그런거야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -235,10 +235,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"오늘?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -249,7 +249,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -257,10 +257,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"이유가 뭔지 물어봐도 될까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -268,10 +268,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"듣고싶어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -279,10 +279,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아니, 잠깐만. 일단 마음의 준비를...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -290,10 +290,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"좋아. 말해줄래?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -301,10 +301,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"으음~ 내가 보미자동차에 가야겠다고 다짐하게된 이유는\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -312,10 +312,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"이유는?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -323,10 +323,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"이유느으은\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -334,10 +334,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아, 안되겠다. 내가 먼저 말해야겠어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -345,10 +345,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"뭘?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -356,10 +356,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서봄에게 지금껏 간직해온 마음을 전하려 한다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -367,10 +367,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "아, 잠깐 생각해봤는데, 지금은 타이밍이 좋지 않은 것 같다. 때를 기다리자.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -378,10 +378,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아무것도 아냐. 그래서 보미자동차에 가려는 이유가 뭐야?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -390,10 +390,10 @@
 		"whoLikeBranch": "서봄",
     "storyTeller": "서봄",
     "text": "\"그 이유는...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1,
 		"failPlusIndex": 56
   },
@@ -402,10 +402,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"너와 함께 회사를 다니고 싶기 때문이야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -413,10 +413,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "가감없는 서봄의 솔직한 말에, 무장이 해제된 느낌을 받았다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -424,10 +424,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"너는... 어떻게 생각해?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -435,10 +435,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "심장이 미친듯이 뛰기 시작한다. 지금 내가 어떤 표정을 짓고 있는지, 서봄은 절대 모르겠지.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -446,10 +446,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"나는 말이지...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -460,7 +460,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -468,10 +468,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"나도 너랑 같은 회사에서 일하고 싶어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -479,10 +479,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"정말?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -490,10 +490,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아는 사람이 있는 편이 적응하기도 쉬울거고, 여러모로 편하지 않을까 해서 말이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -504,7 +504,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -512,10 +512,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"너도 그래서 그런거지? 아는 사람이랑 같이 다니는게 안심되니까\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -526,7 +526,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -534,10 +534,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"난...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -545,10 +545,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그런 이유가 아닌데.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -556,10 +556,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "순간 정적이 흐른다. 어색하다고 할지, 부끄럽다고 할지, 표현하기 애매한 분위기의 시간이 몇 초간 지속된다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -567,10 +567,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "바보가 아닌 이상, 이 시점에서 서봄이 어떤 마음을 갖고 이야기 하고 있는지 정도는 알 수 있다. 둔해빠진 나라도 알아차릴 수 있도록 용기를 내주고 있는 것이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -578,10 +578,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서봄이 이정도까지 얘기해줬다면, 내 쪽에서도 뭔가 마침표를 찍는 말을 해줘야 할 것 같다. 아니, 해줘야 한다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -589,10 +589,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "거절당할게 두려워, 혹은 지금까지의 관계가 무너질까 두려워 아무 말 하지 않는 것은, 비겁한 도망자의 행동일 뿐이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -600,10 +600,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "그런 비겁한 도망자인 나를 좋게 생각해줄 사람은, 아마 없을 것이다. 지금 수화기 너머에서 목소리를 떨며 용기를 내주고 있는 서봄마저도 말이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -611,10 +611,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "이제 진짜 내 진심을 고백할 시간이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -622,10 +622,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"저 있지 서봄,\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -633,10 +633,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -644,10 +644,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"난 네가 좋아.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -658,7 +658,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -666,10 +666,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"합격하면 나름 고민한 멋있는 멘트로 고백해볼까 고민도 했었지만,\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -677,10 +677,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"답지 않게 잔뜩 꾸며서 하는 말은 너나, 나나 별로 와닿지 않을 것 같다는 생각이 들었어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -688,10 +688,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그래서 내린 결론은, '그냥 진심을 전해보자' 야. 난 네가 좋아.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -699,10 +699,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"흐음~\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -710,10 +710,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭐\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -721,10 +721,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"흐음~\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -732,10 +732,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "반응이 생각보다 뜨뜬미지근 하다. 어? 조졌나?",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -743,10 +743,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "사실 나 혼자 북치고 장구치고 있었던 거라면?",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -754,10 +754,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"저기, 뭐라도 말 좀 해주면 안될까.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -765,10 +765,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"지금 얼굴이 너무 화끈거리는데.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -776,10 +776,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"떨림이 있는 고백이었지만, 개인적으론 좀 아쉬웠어.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -787,10 +787,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아쉬웠다는건...?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -798,10 +798,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"사실 내 쪽에서 먼저 고백할 생각이긴 했는데 말이지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -809,10 +809,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"근데 왜 안함?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -820,10 +820,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"난 만나서 할 생각이었어. 너처럼 전화기 너머로 대충 떼우는게 아니라.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -831,10 +831,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "장난스런 말투로 얘기하는 서봄. 전화기 너머의 표정이 보이는 느낌이다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -842,10 +842,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그래도 뭐, 용기가 가상하니까 좋게 봐주도록 할까.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -853,10 +853,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"좋게 봐주셔서 감사합니다~\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -864,10 +864,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아니다. 아무리 생각해도 고백은 직접 들어야겠어. 방금 들은거 못들은걸로 할래.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -875,10 +875,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"하면 또 하지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -886,10 +886,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"하면 또 하지 특) 실제론 못함.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -897,10 +897,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"ㅋㅋ. 거절당할 일 없는 고백쯤이야 하루에 30번씩도 할 수 있다고.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -908,10 +908,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"실제로 들어보고 너무 별로면 거절할게.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -919,10 +919,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"오모시로이(재미있는)한 발상이네, 그거.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -933,7 +933,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -944,7 +944,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -955,7 +955,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -966,7 +966,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -977,7 +977,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -988,7 +988,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "fin",
     "plusIndex": 1
   },
   {
@@ -1011,10 +1011,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"내가 좋아하는 사람이 보미자동차에 합격했기 때문이야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1022,10 +1022,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"좋아하는 사람?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1036,7 +1036,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1044,10 +1044,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응... 방금 '뭐 저런 이유로 회사를 선택하는 거야?' 라고 생각했지?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1055,10 +1055,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아니아니. 충분히 그럴 수 있다고 생각해.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1066,21 +1066,21 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"오히려 멋있는데? 스스로의 마음에 그정도로 진심일 수 있다는게 말이야.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
     "idx": 97,
     "scriptType": "text",
     "storyTeller": null,
-    "text": "미소짓는 서봄.",
-    "centerImageUrl": "a",
+    "text": "살짝 웃는 서봄.",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1088,10 +1088,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"좋은 말 고마워. 역시 넌 좋은 사람이구나.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1099,10 +1099,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"'좋은 사람'이 아니라, '니가 좋아하는 사람'이겠지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1110,10 +1110,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1121,10 +1121,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그냥 혼잣말이야. 그래서, 그사람은 니 마음 알고 있어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1132,10 +1132,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아직 몰라. 내일 고백할 생각이었는데...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1143,10 +1143,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "살짝 뜸을 들이는 서봄.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1154,10 +1154,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"내일,,, 시간 괜찮아?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1165,10 +1165,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "왔다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1176,10 +1176,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"내일? 내일은 마침 약속이 없는 날이긴 하네. 어디로 가면 될까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1187,10 +1187,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"정현카페로 와줘. 꼭 혼자서!\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1198,10 +1198,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"료카이(알았어).\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1212,7 +1212,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1223,7 +1223,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1231,10 +1231,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"내일을 위해 일찍 자볼까.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1245,7 +1245,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1253,10 +1253,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"준비물... 깜짝 놀란듯한 표정... 멋있는 답변, 그리고 또 뭐가 있지?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1267,7 +1267,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1275,10 +1275,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"결국 한숨도 못 잤네. 그래도 컨디션은 최고조다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1289,7 +1289,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "home",
     "plusIndex": 1
   },
 	{
@@ -1300,7 +1300,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1308,10 +1308,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"어.. 왔구나.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1319,10 +1319,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"뭐? 네가 나를?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1330,10 +1330,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아직 아무 말 안했는데\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1341,10 +1341,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아, 연습 좀 하느라. 일단 앉을까?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1352,10 +1352,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응.. 혼자 온거 맞지?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1363,10 +1363,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"당연하지.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1374,10 +1374,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"좋아. 자리는 안쪽이야. 후... 긴장된다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1385,10 +1385,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"릴렉스 해. 마음만 잘 전달돼도 받아줄거야(내가)\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1396,10 +1396,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그러려나? 별로 친한 사람은 아니라서 좀 어색하기도 하고...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1407,10 +1407,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"우리정도면 그래도 꽤 친하지 않나?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1418,10 +1418,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"그분이랑은 별로 안친하단 말야...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1429,10 +1429,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1443,7 +1443,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1451,10 +1451,10 @@
     "scriptType": "text",
     "storyTeller": "박정현",
     "text": "\"서봄님 안녕하세요. 옆에 계신분은?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "jeonghyun",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1462,10 +1462,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"아아! 얘는 제 친구에요! 보미자동차 붙은 사람끼리 얼굴 봐두면 좋을 것 같아서 불렀어요 ㅎㅎ\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1473,10 +1473,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그런거였나.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1487,7 +1487,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1498,7 +1498,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1506,10 +1506,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"나, 이만 가볼게.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1517,10 +1517,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"응? 벌써 가게?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1528,10 +1528,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "살짝 미소짓는 서봄. 기분이 최악이다. 절대로.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1539,21 +1539,21 @@
     "scriptType": "text",
     "storyTeller": "박정현",
     "text": "\"그래도 서봄님이 이렇게 자리까지 만들어 주셨는데, 조금이라도 더\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "jeonghyun",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
     "idx": 140,
     "scriptType": "text",
     "storyTeller": "주인공",
-    "text": "\"신경쓰지 마시죠. 어차피 회사 들어가도 그쪽이랑은 아는 척 안하려 했으니까요.\"",
-    "centerImageUrl": "a",
+    "text": "\"신경쓰지 마시죠. 어차피 회사 들어가도 그쪽이랑은 아는 척 할 생각 없으니까요.\"",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1561,10 +1561,10 @@
     "scriptType": "text",
     "storyTeller": "서봄",
     "text": "\"너 지금 그게 무슨 말이야? 원래 그렇게 예의 없는 사람이었니?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1575,7 +1575,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "cafe",
     "plusIndex": 1
   },
 	{
@@ -1586,7 +1586,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1594,10 +1594,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"입이 귀에 걸리겠네.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1608,7 +1608,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1616,10 +1616,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"저런 사람이 상대면, 어쩔 수 없잖아...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1630,7 +1630,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1641,7 +1641,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1652,7 +1652,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1663,7 +1663,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1674,7 +1674,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1682,10 +1682,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"하늘에 구름 한 점 없구나.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1693,10 +1693,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"비라도 내여줬으면 좋았을 텐데.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "road",
     "plusIndex": 1
   },
 	{
@@ -1707,7 +1707,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "fin",
     "plusIndex": 1
   },
   {

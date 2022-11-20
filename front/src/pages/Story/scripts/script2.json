@@ -37,7 +37,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"오늘 정확히 어딜 가는 건가요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -48,7 +48,7 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"뭐, 가시면 알게 될겁니다. 우선 여행을 즐겨주시길.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -59,7 +59,7 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "알려주지 않으니, 더 기대되는 느낌이다. 간만에 힐링 제대로 하고 와야지.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -70,7 +70,7 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"자자, 교육생 여러분. 다들 출발하실게요\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "classroom",
@@ -92,7 +92,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"가슴이 뛰는데\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "bus",
@@ -114,7 +114,7 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그치... 근데 니 옆자리라.. 더 뛰는 것 같아...랄까\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "bus",
@@ -136,10 +136,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서봄과 이런저런 얘기를 하다보니, 슬슬 짭쪼름한 냄새가 코를 감싸기 시작한다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "bus",
     "plusIndex": 1
   },
 	{
@@ -147,10 +147,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"도착인가.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "bus",
     "plusIndex": 1
   },
 	{
@@ -158,10 +158,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"교육생여러분, 다들 내려서 배로 이동하실게요\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "bus",
     "plusIndex": 1
   },
 	{
@@ -169,10 +169,10 @@
     "scriptType": "text",
     "storyTeller": "일동",
     "text": "\"넵!\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "bus",
     "plusIndex": 1
   },
 	{
@@ -180,10 +180,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"이 앞에 어떤 시련이 기다리고 있을지 모르는... 순수한 사람들...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -191,10 +191,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"아아 신이시여, 어째서 저 『서상균』에게 이런 역할을 맡기신 겁니까...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -205,7 +205,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -213,10 +213,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"아, 참고로 이번 여행은 ssafy와는 무관합니다. 제 독단으로 기획한거에요 이거.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -224,10 +224,10 @@
     "scriptType": "text",
     "storyTeller": "오하민",
     "text": "\"그럼 돌아가도 되나요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "ohamin",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -235,10 +235,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "그 때 울리는 배의 출발소리. 뿌우우우우우우우우우우우우우",
-    "centerImageUrl": "a",
+    "centerImageUrl": "ohamin",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -246,10 +246,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"이제 돌아갈 수 없게 되었네요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -257,10 +257,10 @@
     "scriptType": "text",
     "storyTeller": "오하민",
     "text": "\"까비\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "ohamin",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -271,7 +271,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -279,10 +279,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"웁..우웹... 저 배멀미 하는.. 웁...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -290,10 +290,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"배멀미 심하신 분들은 저기 있는 휴게룸으로 가서 누워계세요\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -301,21 +301,21 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어우... 빨리 가서 누워야겠다. 출발 20분만에 리타이어라니, 좀 창피한데.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
     "idx": 28,
     "scriptType": "text",
     "storyTeller": null,
-    "text": "\"휴게룸으로 들어가니, 이미 누워있는 사람이 한 명 보인다.\"",
+    "text": "휴게룸으로 들어가니, 이미 누워있는 사람이 한 명 보인다.",
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -323,10 +323,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"안녕하세요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -334,10 +334,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"가을님도 되게 배멀미에 약하신가봐요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -345,10 +345,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "힘없이 고개를 끄덕이는 가을. 뭔가 도움이 되고싶다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
   {
@@ -366,7 +366,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "lobby",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
   {
@@ -378,10 +378,10 @@
         "text": "\"나도 뭐 적당히 누워볼까.\"",
         "storyTeller": "주인공",
         "score": {"char": "차가을", "point": 8},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "shiproom",
         "plusIndex": 1
       },
       {
@@ -389,10 +389,10 @@
         "text": "\"멀미 이겨낼 수 있는 꿀팁 하나 드릴까요?\"",
         "storyTeller": "주인공",
         "score": {"char": "차가을", "point": 0},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "shiproom",
         "plusIndex": 8
       }
     ]
@@ -405,7 +405,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -413,10 +413,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"그 게임 재밌어 보이네요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -424,10 +424,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"한번 해보실래요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -435,10 +435,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"기꺼이.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -449,7 +449,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -457,10 +457,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"이건..훌쩍.. 너무..훌쩍... 감동적이잖아...\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -468,10 +468,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"상당한 수작이네요. 눈물이 날 뻔 했어요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 12
   },
 	{
@@ -479,10 +479,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"네... 부탁드립니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -490,10 +490,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"배가 흔들릴 때, 가스레인지 위에 올라가면 괜찮아진다는 말이 있더라구요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -501,10 +501,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"어디서 잘못된거 보고 오신 것 같은데... 일단 해볼게요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -512,10 +512,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "휴게룸의 가스레인지 위로 올라가는 가을. 앉는다.",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -523,10 +523,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"어때요? 멀미기가 싹 가라앉죠?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -534,10 +534,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"오, 오, 진짜 괜찮아지는 것 같\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -545,10 +545,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "갑자기 표정이 안좋아지는 가을. 이윽고",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -556,10 +556,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"아 잠만, 아, 웁, 우웩\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -567,10 +567,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "바닥에 거하게 토를 하는 가을. 눈앞이 아찔해진다",
-    "centerImageUrl": "a",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -578,10 +578,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"음\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -592,7 +592,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -603,7 +603,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "shiproom",
     "plusIndex": 1
   },
 	{
@@ -611,10 +611,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"아, 아, 교육생 여러분. 방송 잘 들리나요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -625,7 +625,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -633,10 +633,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"15분 후에 목적지에 도착할 예정이니, 다들 내릴 준비 해주세요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -644,10 +644,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"생각보다 빨리 도착했네. 엄청 먼 곳은 아니었나 본데?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "ship",
     "plusIndex": 1
   },
 	{
@@ -658,7 +658,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -666,10 +666,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"교육생 여러분들, 지금부터 5명씩 줄을 서도록 할게요.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -677,10 +677,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "우연히 서봄, 차가을, 한여름, 한겨울과 같은 줄에 서게 되었다.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -688,10 +688,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아 배고프다.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -699,10 +699,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"다들 배고프시죠? 우선 식사부터 하고 숙소로 이동하도록 하겠습니다.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -713,7 +713,7 @@
     "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -721,10 +721,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"흠.. 전 오분자기 해물탕을 먹고 와야겠어요.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -732,10 +732,10 @@
     "scriptType": "text",
     "storyTeller": "한여름",
     "text": "\"난 대충 편의점에서 떼우고 싶어. 빨리 숙소로 들어가고 싶네.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "summer",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -743,10 +743,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"난 거를래. 멀미했더니 입맛이 없네.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -754,10 +754,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"음,,, 난 어떻게 하지?\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
   {
@@ -774,10 +774,10 @@
       "4. 굶는다."
     ],
     "questionUrl": "",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "lobby",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
   {
@@ -789,10 +789,10 @@
         "text": "\"맥도리아에서 스몰맥이나 먹어야겠네.\"",
         "storyTeller": "주인공",
         "score": {"char": "서봄", "point": 8},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "sunchakjang",
         "plusIndex": 1
       },
       {
@@ -800,10 +800,10 @@
         "text": "\"제주도에 왔는데, 오분자기 뚝배기정돈 먹어줘야지.\"",
         "storyTeller": "주인공",
         "score": {"char": "차가을", "point": 8},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "sunchakjang",
         "plusIndex": 1
       },
       {
@@ -811,10 +811,10 @@
         "text": "\"나도 빨리 숙소로 가고싶네. 편의점이나 들를까.\"",
         "storyTeller": "주인공",
         "score": {"char": "한여름", "point": 8},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "sunchakjang",
         "plusIndex": 1
       },
       {
@@ -822,10 +822,10 @@
         "text": "\"나도 멀미를 해서 그런가... 입맛이 없네. 점심은 걸러야겠다\"",
         "storyTeller": "주인공",
         "score": {"char": "한겨울", "point": 8},
-        "centerImageUrl": "a",
+        "centerImageUrl": "maincharacter",
         "LeftImageUrl2": "a",
         "RightImageUrl3": "a",
-        "backgroundImageUrl": "lobby",
+        "backgroundImageUrl": "sunchakjang",
         "plusIndex": 1
       }
     ]
@@ -835,10 +835,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"참고로 점심은 단체행동입니다.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -846,10 +846,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"아 그건 좀\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -857,10 +857,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"제주 7성급 호텔에 있는 뷔페를 이용할 예정이니, 기대해주시길.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -868,10 +868,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"히트네요\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "sunchakjang",
     "plusIndex": 1
   },
 	{
@@ -879,10 +879,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "오와 열을 맞춰 '제주 7성급 호텔'에 들어가는 교육생들.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -890,10 +890,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"가련한... 앞에 어떤 시련이 기다리고 있을지도 모르는... 안타까운... 사람들...\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -901,10 +901,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"어째서 저에게 이런 시ㄹ\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -912,10 +912,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "서상균 교육생의 참회를 뒤로 하고, 맛있게 식사하기 시작하는 교육생들.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -923,10 +923,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"음식이 너무 많아서 뭐부터 먹어야 할지 모르겠네.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -937,7 +937,7 @@
     "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -945,10 +945,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"넌 여기서까지 그런걸 먹고싶니?\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -959,7 +959,7 @@
     "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -967,10 +967,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"듣고보니 그렇네\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -981,7 +981,7 @@
     "centerImageUrl": "seobom",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -989,10 +989,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"고마워. 역시 봄이밖에 없네\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1000,10 +1000,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "신나서 붸페의 요리사에게 달려가는 서봄. 그리고 그걸 흐뭇하게 바라보는 겨울.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1011,10 +1011,10 @@
     "scriptType": "text",
     "storyTeller": "한여름",
     "text": "\"서봄 쟤 지금 어디 가냐?\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "summer",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1022,10 +1022,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"햄버거 있는지 물어보고 온대.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1033,10 +1033,10 @@
     "scriptType": "text",
     "storyTeller": "한여름",
     "text": "\"에휴.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "summer",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1044,10 +1044,10 @@
     "scriptType": "text",
     "storyTeller": "한겨울",
     "text": "\"조금만 맞춰줘도 신나서 꼬리흔드는게 꼭 강아지 같단 말이지. 귀엽네\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "winter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1055,10 +1055,10 @@
     "scriptType": "text",
     "storyTeller": "한여름",
     "text": "\"참... 남매지만 악마같다니까.\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "summer",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1066,10 +1066,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "그시각 가을.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1077,10 +1077,10 @@
     "scriptType": "text",
     "storyTeller": "차가을",
     "text": "\"제법 먹을게 많네요, 후훗\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1088,10 +1088,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "의외로 대식가인 가을이었다.",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "gaeul",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1099,10 +1099,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"여러분,, 많이들 드셔 두시지요. 앞으로 3시간,, 아니 2시간 뒤면,,,\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -1110,7 +1110,7 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"아아... 일단 다음 챕터에서 계속\"",
-    "centerImageUrl": "seobom",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
     "backgroundImageUrl": "fin",

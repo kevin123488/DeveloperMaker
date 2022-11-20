@@ -316,11 +316,14 @@ const CSselfStudy = (prop) => {
           {
             isShowMarkdown
             ?
-            <div className="showingMarkdown">
-                <div onClick={closeStudy} className="CloseQuiz">X</div>
-              <ReactMarkdown children = {showingMarkdown} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
-              </ReactMarkdown>  
-            </div>
+            <>
+              <div className="tabletFrame"></div>
+              <div className="showingMarkdown">
+                  <div onClick={closeStudy} className="CloseQuiz">X</div>
+                <ReactMarkdown children = {showingMarkdown} rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
+                </ReactMarkdown>  
+              </div>
+            </>
             : null
           }
 
