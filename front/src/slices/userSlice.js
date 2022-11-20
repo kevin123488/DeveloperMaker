@@ -156,11 +156,13 @@ export const rankingInfo = createAsyncThunk(
 
 
 const initialState = () => {
-  return ({userInfo: {email: null, language: null, loginType: null, nickname: null, socialId: null},
+  return ({
+    userInfo: {email: null, language: null, loginType: null, nickname: null, socialId: null},
     isLogIn: false,
     error: null,
     progress: {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} },
     rankInfo: {},
+    isShowLogin: false,
   })
 
 };
@@ -177,6 +179,9 @@ const userSlice = createSlice(
       state.userInfo.nickname = action.payload.nickname;
       state.isLogIn = true;
     },
+    showLoginBtn: (state, action) => {
+      state.isShowLogin = true
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -185,15 +190,18 @@ const userSlice = createSlice(
       })
       .addCase(userLoginKakao.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isLogIn = true
       })
       .addCase(userLoginKakao.rejected, (state, action) => {
         state.isLoading = false;
+      })
+      .addCase(userLoginNaver.fulfilled, (state, action) => {
+        state.isLogIn = true
       })
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
-        // console.log(payload)
         state.userInfo = payload.data;
         state.isLogIn = true;
       })
@@ -217,6 +225,8 @@ const userSlice = createSlice(
         state.isLogIn = false;
         state.error = null;
         state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        state.rankInfo = {};
+        state.isShowLogin = false;
         // 페이지 새로고침 필요x
         // window.location.reload()
       })
@@ -238,6 +248,8 @@ const userSlice = createSlice(
         state.isLogIn = false;
         state.error = null;
         state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
+        state.rankInfo = {};
+        state.isShowLogin = false;
       })
       .addCase(rankingInfo.fulfilled, (state, { payload }) => {
         // console.log("랭킹정보",payload)

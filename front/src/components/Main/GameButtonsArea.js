@@ -81,7 +81,7 @@ const GameButtonsArea = () => {
   const userInfo = useSelector(state => state.user.userInfo);
   // 새앨범 여부 확인
   const [newAlbum, setNewAlbum] = useState(false)
-  const [isShowLogin, setIsShowLogin] = useState(false)
+  const isShowLogin = useSelector(state => state.user.isShowLogin);
   const [isShowGameRole, setIsShowGameRole] = useState(false)
   const dispatch = useDispatch()
   useEffect(()=> {
@@ -167,7 +167,7 @@ const GameButtonsArea = () => {
               <LoginButtonsArea />
               ): (
               <BtnArea>
-                <GameBtn src={GameStartImg} alt="GameStart" onClick={() => {setIsShowLogin(true)}}>게임시작</GameBtn>
+                <GameBtn src={GameStartImg} alt="GameStart" onClick={() => {dispatch({type: "user/showLoginBtn"})}}>게임시작</GameBtn>
               </BtnArea>
             )
           }

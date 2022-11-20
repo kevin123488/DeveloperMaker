@@ -32,7 +32,7 @@ public class NaverUserService implements SocialUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final UserLoginService userLoginService;
-    private final String defaultImg = "https://busanfullcourse.s3.ap-northeast-2.amazonaws.com/user/%ED%94%84%EB%A1%9C%ED%95%84.png";
+    private final String defaultImg = "https://devmaker.s3.ap-northeast-2.amazonaws.com/30bef077-38aa-48cb-81a5-073ff645779d.png";
 
     @Override
     @Transactional
