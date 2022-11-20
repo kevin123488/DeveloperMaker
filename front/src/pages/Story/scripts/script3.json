@@ -7,7 +7,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -15,10 +15,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"꽤 맛있었는걸. 이제 숙소로 가면 되는건가요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -26,10 +26,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"네. 식사를 마치신 분들은 숙소로 이동하시면 됩니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -37,10 +37,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"참고로 3종류의 숙소가 준비되어 있으며, 배정은 랜덤뽑기로 진행될 예정입니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -48,10 +48,10 @@
     "scriptType": "text",
     "storyTeller": null,
     "text": "숙소의 배정이 랜덤이라니, 굳이?",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -59,10 +59,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"방금 '굳이 방을 랜덤으로 나눠야 하나?' 라고 생각한 교육생, 나오세요.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -70,10 +70,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"죄송합니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -81,10 +81,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"한번만 봐드리는 겁니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -92,10 +92,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"감사합니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -103,10 +103,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"이제 교육생분들은 앞에서 제비를 하나씩 뽑아주시기 바랍니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -117,7 +117,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -125,10 +125,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"혹시 숙소별로 차이점이 있을까요?\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -136,10 +136,10 @@
     "scriptType": "text",
     "storyTeller": "서상균",
     "text": "\"엄청난 차이가 있죠.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "seosang",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -147,10 +147,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"그럼 잘 뽑아야 겠네요. 심호흡 한번 하고 가겠습니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -158,10 +158,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"흡-하.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -169,10 +169,10 @@
     "scriptType": "text",
     "storyTeller": "주인공",
     "text": "\"이제 뽑겠습니다.\"",
-    "centerImageUrl": "a",
+    "centerImageUrl": "maincharacter",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -183,7 +183,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom",
+    "backgroundImageUrl": "hotelrestaurant",
     "plusIndex": 1
   },
 	{
@@ -199,7 +199,7 @@
     "centerImageUrl": "a",
     "LeftImageUrl2": "a",
     "RightImageUrl3": "a",
-    "backgroundImageUrl": "classroom"
+    "backgroundImageUrl": "hotelrestaurant"
   },
 	{
     "idx": 17,

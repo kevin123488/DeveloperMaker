@@ -1037,7 +1037,7 @@ const Story = () => {
     setCanGoNext(false);
     setTimeout(() => {
       setCanGoNext(true);
-    }, 370);
+    }, 700);
     scriptIndex.current += increaseIndex.current;
     if (scriptFile.current[scriptIndex.current].storyTeller === "주인공") {
       storyTeller.current = nickname;
