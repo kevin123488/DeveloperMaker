@@ -81,12 +81,12 @@ const Profile = () => {
           </Modal.Footer>
         </Modal>
       </>
-      <div onClick={() => {setIsShowRanking(true)}} className='RankingBtn'></div>
+      <div onClick={() => {playBtnSound() ;setIsShowRanking(true)}} className='RankingBtn'></div>
       {
         isShowRanking?
         <>
           <Ranking></Ranking>
-          <div onClick={() => {setIsShowRanking(false)}} className='closeRanking'>X</div>
+          <div onClick={() => {playBtnSound(); setIsShowRanking(false)}} className='closeRanking'>X</div>
         </>
         : null
       }
