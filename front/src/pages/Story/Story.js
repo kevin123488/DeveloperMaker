@@ -689,13 +689,13 @@ const Story = () => {
 
 
   useEffect(() => {
-    console.log(aitestResult);
-    console.log(isPass);
-    console.log("ai면접 결과");
+    // console.log(aitestResult);
+    // console.log(isPass);
+    // console.log("ai면접 결과");
     changeStoryInfo(story[slotIndex-1]); // 선택한 스토리 슬롯의 정보가 storyInfo에 담김
     // console.log(storyInfo)
     setDataSaveSlot(slotIndex-1); // 몇 번 슬롯에 저장할지 확인
-    console.log(dataSaveSlot);
+    // console.log(dataSaveSlot);
     scriptFile.current = scripts[storyInfo.script]; // 스크립트 파일 교체(script라는 문자열로 옴)
     scriptIndex.current = storyInfo.num; // 스크립트 인덱스 교체
     changeScript(scriptFile.current[scriptIndex.current].text);
@@ -707,10 +707,10 @@ const Story = () => {
     // console.log(backgroundImg.current);
     middleCharImg.current = scriptFile.current[scriptIndex.current].centerImageUrl;
     rightCharImg.current = scriptFile.current[scriptIndex.current].RightImageUrl3;
-    console.log(scriptFile.current)
-    console.log(scriptIndex.current)
-    console.log(scriptFile.current[scriptIndex.current])
-    console.log("이미지 파일 확인하자", backgroundImg.current, middleCharImg.current);
+    // console.log(scriptFile.current)
+    // console.log(scriptIndex.current)
+    // console.log(scriptFile.current[scriptIndex.current])
+    // console.log("이미지 파일 확인하자", backgroundImg.current, middleCharImg.current);
   }, []);
 
   useEffect(() => {
@@ -727,7 +727,7 @@ const Story = () => {
 
   useEffect(() => {
     if (storyObjCheck.current) {
-      console.log("storyObj 변경되면 저장 로직 실행시키자")
+      // console.log("storyObj 변경되면 저장 로직 실행시키자")
       dispatch(userPutMemory(storyObj));
     }
     storyObjCheck.current = true;
@@ -750,20 +750,20 @@ const Story = () => {
   useEffect(() => {
     // console.log('프로그래스 진척도 받아오나?')
     if (firstPassCheck.current) {
-      console.log('이거 찍히는 것 같은데?');
+      // console.log('이거 찍히는 것 같은데?');
       let whichProgress = scriptFile.current[scriptIndex.current].whichSelfStudy;
-      console.log(whichProgress);
-      console.log(userProgress[whichProgress]);
-      console.log(scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]);
+      // console.log(whichProgress);
+      // console.log(userProgress[whichProgress]);
+      // console.log(scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]);
       if (userProgress[whichProgress] < scriptFile.current[scriptIndex.current].selfStudyRequired[whichProgress]) {
         setSelfStudyNonpassed(true);
         setSelfStudyChanged(selfStudyChanged+1);
-        console.log('모달 띄워라');
+        // console.log('모달 띄워라');
       } else {
         setSelfStudyNonpassed(false);
         setSelfStudyChanged(selfStudyChanged+1);
-        console.log(userProgress);
-        console.log('스크립트 넘겨라');
+        // console.log(userProgress);
+        // console.log('스크립트 넘겨라');
       }
     } else {
       // console.log('스터디 논패스 여부 확인 안된 상황');
@@ -773,11 +773,11 @@ const Story = () => {
 
   useEffect(() => {
     if (selfStudyNonpassedCheck.current) {
-      console.log('스터디 논패스 여부 변경 확인');
+      // console.log('스터디 논패스 여부 변경 확인');
       if (selfStudyNonpassed) {
-        console.log("통과 못했다는 모달 띄워줘야 함");
+        // console.log("통과 못했다는 모달 띄워줘야 함");
       } else {
-        console.log('통과했나?');
+        // console.log('통과했나?');
         // 통과했다면?
         // 보유 여부 확인하자
         // dispatch(getAlbumCheck(scriptFile.current[scriptIndex.current].getAlbumNum));
@@ -913,7 +913,7 @@ const Story = () => {
     let storyObjCopy = JSON.parse(JSON.stringify(storyObj));
     storyObjCopy.slot = n;
     if (scriptFile.current[scriptIndex.current].scriptType === 'questionResult') {
-      console.log("여기선 increaseIndex 값을 반영하여 저장해야 함");
+      // console.log("여기선 increaseIndex 값을 반영하여 저장해야 함");
       storyObjCopy.num = scriptIndex.current + increaseIndex.current; // questionResult 일 때
     } else {
       storyObjCopy.num = scriptIndex.current
@@ -929,7 +929,7 @@ const Story = () => {
   const goHome = () => {
     playBtnSound();
     navigate("/");
-    console.log("홈으로 가는 중입니다.");
+    // console.log("홈으로 가는 중입니다.");
   }
 
   const goSlot = () => {
@@ -958,7 +958,7 @@ const Story = () => {
     storyObjCopy.num = scriptIndex.current + increaseIndex.current;
     storyObjCopy.script = scriptFileName.current;
     // 실험끝
-    console.log("서봄 호감도 갱신", storyObjCopy);
+    // console.log("서봄 호감도 갱신", storyObjCopy);
     setStoryObj(storyObjCopy);
   }
   const storyObjSummer = (summer) => {
@@ -1006,7 +1006,7 @@ const Story = () => {
   // 호감도 수치 보여주는 부분 관리하는 함수
   const getLikeValue = () => {
     playBtnCuteSound();
-    console.log(story[slotIndex-1].likeAutumn);
+    // console.log(story[slotIndex-1].likeAutumn);
     dispatch(userGetMemory());
     setOpenLikeValue(!openLikeValue);
   };
@@ -1014,7 +1014,7 @@ const Story = () => {
   // 엔터키로 넘기기
   const enterGoNext = (e) => {
     if (e.key === "Enter" && canGoNext && !isOption && !isQuestion && !selfStudyNonpassed && !show) {
-      console.log(e.key);
+      // console.log(e.key);
       nextScript();
     }
   };
@@ -1070,12 +1070,12 @@ const Story = () => {
         changeScript(scriptFile.current[scriptIndex.current].resultList[n].text)
         increaseIndex.current = scriptFile.current[scriptIndex.current].resultList[n].plusIndex
         // setSaveStoryIdx(scriptIndex.current + increaseIndex.current); // 현재 보고있는 인덱스 + 1 시점에서 로드 가능하도록
-        console.log(scriptIndex.current);
-        console.log(increaseIndex.current);
-        console.log(saveStoryIdx);
-        console.log(scriptFile.current);
-        console.log(storyInfo.script);
-        console.log("스토리오브젝트핸들러", saveStoryIdx, scriptFileName.current)
+        // console.log(scriptIndex.current);
+        // console.log(increaseIndex.current);
+        // console.log(saveStoryIdx);
+        // console.log(scriptFile.current);
+        // console.log(storyInfo.script);
+        // console.log("스토리오브젝트핸들러", saveStoryIdx, scriptFileName.current)
         //
         backgroundImg.current = scriptFile.current[scriptIndex.current].resultList[n].backgroundImageUrl;
         leftCharImg.current = scriptFile.current[scriptIndex.current].resultList[n].LeftImageUrl2;
@@ -1091,7 +1091,7 @@ const Story = () => {
         } else if (scriptFile.current[scriptIndex.current].resultList[n].score.char === "한겨울") {
           storyObjWinter(scriptFile.current[scriptIndex.current].resultList[n].score.point)
         }
-        console.log(storyObj);
+        // console.log(storyObj);
         break;
       
       case 'changeScript':
@@ -1105,9 +1105,9 @@ const Story = () => {
         // selfstudy 진행도 값 넣어주는 로직 필요
         // changeScript(scriptFile.current[scriptIndex.current].text)
         dispatch(getSelfStudyProgress());
-        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+        // console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
         // 스크립트 파일 바꿔주고 인덱스 바꿔줘야 함
-        console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
+        // console.log(scriptFile.current[scriptIndex.current].getAlbumNum);
         getAlbum.current = scriptFile.current[scriptIndex.current].getAlbumNum;
         // 자율학습 진행도 받아옴 -> userProgress 값 변경 -> 그거 보고있던 useEffect에서 바뀜 감지
         // -> userProgress값과 현재 보고있는 스크립트의 selfStudyRequired값과 비교
@@ -1142,16 +1142,16 @@ const Story = () => {
         changeScript(scriptFile.current[scriptIndex.current].text)
         increaseIndex.current = scriptFile.current[scriptIndex.current].plusIndex
         scriptFileName.current = scriptFile.current[scriptIndex.current].nextScript
-        console.log(scriptFile.current[scriptIndex.current].option[n]);
-        console.log(scriptFileName.current);
-        console.log("간다간다넘어간다");
+        // console.log(scriptFile.current[scriptIndex.current].option[n]);
+        // console.log(scriptFileName.current);
+        // console.log("간다간다넘어간다");
         changeScriptInfo(scriptFile.current[scriptIndex.current])
         changeIsOption(true)
         // 여기선 저장할 때 chapter 정보와 인덱스 0 정보만 갱신해서 넣으면 될 것 같음
         break;
 
       case 'goAiTest':
-        console.log("ai면접");
+        // console.log("ai면접");
         saveAiTest();
         if (scriptFile.current[scriptIndex.current].whostory === '서봄') {
           navigate('/Interview', {state: {story: 'spring'}})
@@ -1207,7 +1207,7 @@ const Story = () => {
         break;
 
       case 'end':
-        console.log('end');
+        // console.log('end');
         break;
 
       default:
