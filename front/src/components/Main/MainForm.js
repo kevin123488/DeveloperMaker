@@ -1,9 +1,9 @@
 import React from "react";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import Styled from "styled-components";
 
 import GameButtonsArea from "./GameButtonsArea";
-import LoginButtonsArea from "./LoginButtonsArea";
+// import LoginButtonsArea from "./LoginButtonsArea";
 
 const Form = Styled.div`
   height: 50%;
@@ -17,7 +17,7 @@ const Form = Styled.div`
 `;
 
 const MainForm = () => {
-  const isLogIn = useSelector(state=>state.user.isLogIn)
+  // const isLogIn = useSelector(state=>state.user.isLogIn)
   return (
     <Form>
       <GameButtonsArea />

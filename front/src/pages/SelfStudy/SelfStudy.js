@@ -558,6 +558,7 @@ const Quiz = () => {
     if (work === 'study'){
       // console.log('스터디')
       setWorkType('공부')
+      // console.log(subject)
       setIsShowStudy(true)
       setNpcBalloonContent(`공부하고싶은 파트를\n선택해줘`)
     }

@@ -70,7 +70,7 @@ function Check() {
       // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값
-    if (voice.includes(`안녕하세요${name}입니다`)) {
+    if (voice.includes(`안녕하세요`)) {
       endRec()
     }
   }
@@ -117,7 +117,7 @@ function Check() {
         {/* 음성 인식 */}
         {check.face && !check.voice && <>
           <p className="interviewCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.
-            <span className="interviewCheckVoiceContent">"안녕하세요. {name}입니다."</span>
+            <span className="interviewCheckVoiceContent">"안녕하세요."</span>
           </p>
           <p className="interviewCheckStage">음성인식 중</p>
           <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className="interviewCheckRec" onClick={() => {if (!record) {startRec()}}} /></>
