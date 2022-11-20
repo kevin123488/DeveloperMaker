@@ -185,9 +185,13 @@ const userSlice = createSlice(
       })
       .addCase(userLoginKakao.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isLogIn = true
       })
       .addCase(userLoginKakao.rejected, (state, action) => {
         state.isLoading = false;
+      })
+      .addCase(userLoginNaver.fulfilled, (state, action) => {
+        state.isLogIn = true
       })
       .addCase(getUser.pending, (state, action) => {
         state.isLoading = true;
