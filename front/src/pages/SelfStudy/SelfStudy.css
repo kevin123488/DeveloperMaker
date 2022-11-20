@@ -17,6 +17,7 @@ body::after{
     url(../../asset/images/SelfstudyImg/quizPaperO.png)
     url(../..//asset/images/SelfstudyImg/quizPaperX.png)
     url(../../asset/images/SelfstudyImg/studyNote.png)
+    url(../../asset/images/SelfstudyImg/tablet.png)
 
     /* 필요한 이미지 소스들 다운 */
 }
@@ -128,6 +129,7 @@ body::after{
   background-size: contain;
   cursor: pointer;
   transition: all ease 0.1s;
+  z-index: 200;
 }
 .homeBtn:hover {
   transform: scale(1.05);
@@ -207,13 +209,44 @@ body::after{
   width: 10vw;
 }
 
-.showingMarkdown {
+.showingMarkdown_V1 {
   position: absolute;
   padding: 3vw;
   top: -7vh;
   height: 85vh;
   width: 70vw;
   border: 0.4em solid #ddfffc;
+  margin: 0 auto;
+  margin-top: 10vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  overflow: scroll;
+  background-color: white;
+  z-index: 100;
+  animation: popup 0.2s;
+}
+.tabletFrame {
+  position: absolute;
+  padding: 3vw;
+  top: -10vh;
+  height: 90vh;
+  width: 70vw;
+  margin: 0 auto;
+  margin-top: 10vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  background: url(../../asset/images/SelfstudyImg/tablet.png) center no-repeat;
+  background-size: 100% 100%;
+  z-index: 100;
+  animation: popup 0.2s;
+}
+.showingMarkdown {
+  position: absolute;
+  padding: 3vw;
+  top: -6vh;
+  left: 3vw;
+  height: 82.3vh;
+  width: 62vw;
   margin: 0 auto;
   margin-top: 10vh;
   padding-left: 5vw;
@@ -413,11 +446,11 @@ body::after{
 .CloseQuiz {
   position: fixed;
   text-align: center;
-  top: 10vh;
+  top: 13vh;
   font-size: 3vw;
-  right: 11vw;
-  height: 2vw;
-  width: 1vw;
+  right: 15vw;
+  height: 4vw;
+  width: 3vw;
   background-color: white;
   cursor: pointer;
   animation: hidex 0.2s;
@@ -499,6 +532,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charSpring 0.2s;
 }
 .spring:hover{
   position: absolute;
@@ -549,6 +583,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charFall 0.4s;
 }
 .fall:hover{
   position: absolute;
@@ -598,6 +633,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charSummer 0.6s;
 }
 .summer:hover{
   position: absolute;
@@ -648,6 +684,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charWinter 0.8s;
 }
 .winter:hover{
   position: absolute;
@@ -697,6 +734,7 @@ body::after{
   cursor: pointer;
   opacity: 0.8;
   z-index: 100;
+  animation: charHero 1s;
 }
 .hero:hover{
   position: absolute;
@@ -730,8 +768,9 @@ body::after{
 .choiceInfo {
   position: absolute;
   /* background-color: white; */
+  color: rgb(46, 53, 84);
   top: 3vh;
-  left: 22vw;
+  left: 25vw;
   width: 70vw;
   height: 15vh;
 }
@@ -741,7 +780,7 @@ body::after{
   display: flex;
   /* background-color: white; */
   margin-left: 22vw;
-  margin-top: 0vh;
+  margin-top: 5vh;
   left: 0vw;
   width: 70vw;
   height: 80vh;
@@ -752,49 +791,42 @@ body::after{
   /* background-color: #749fbb; */
   
   text-align: center;
-  color: black;
+  color: rgb(0, 69, 133);
   padding: 1vw;
   margin-right: 1vw;
-  line-height: 50vh;
-  font-size: 3vw;
-  height: 60vh; 
+  line-height: 45vh;
+  font-size: 3.5vw;
+  height: 52vh; 
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
   border: solid 1vw;
-  border-color: rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 132, 255, 0.3);
   border-radius: 10px;
   transition: all ease 0.3s;
   animation: slide 0.3s;
 }
 .studySelectButton:hover {
-  /* background-color: #749fbb; */
-  
   text-align: center;
-  color: black;
-  padding: 1vw;
-  line-height: 50vh;
-  font-size: 3.5vw;
-  height: 60vh; 
+  font-size: 4vw;
+  border-color: rgba(69, 141, 207, 0.8);
   cursor: pointer;
-  border: solid 1vw;
-  border-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   transition: all ease 0.3s;
 }
 
 .quizSelectButton {
   /* background-color: #797979; */
   text-align: center;
-  color: black;
+  color: rgb(0, 69, 133);
   padding: 1vw;
   display:table-cell;
-  line-height: 50vh;
-  font-size: 3vw;
-  height: 60vh; 
+  line-height: 45vh;
+  font-size: 3.5vw;
+  margin-top: 4vh;
+  height: 52vh; 
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.7);
   border: solid 1vw;
-  border-color: rgba(0, 0, 0, 0.3);
+  border-color: rgba(0, 132, 255, 0.3);
   border-radius: 10px;
   transition: all ease 0.3s;
   animation: slide 0.3s;
@@ -802,16 +834,9 @@ body::after{
 .quizSelectButton:hover {
   /* background-color: #797979; */
   text-align: center;
-  color: black;
-  padding: 1vw;
-  display:table-cell;
-  line-height: 50vh;
-  font-size: 3.5vw;
-  height: 60vh; 
+  font-size: 4vw;
+  border-color: rgba(69, 141, 207, 0.8);
   cursor: pointer;
-  border: solid 1vw;
-  border-color: rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   transition: all ease 0.3s;
 }
 .quizSubmit {
@@ -886,7 +911,7 @@ body::after{
 .algoProblem {
   margin-left: 1vw;
   padding-right: 1.5vw;
-  width: 33vw;
+  width: 31vw;
   height: 85vh;
   overflow: scroll;
 }
@@ -911,7 +936,9 @@ body::after{
   top: -7vh;
   height: 87vh;
   width: 70vw;
-  border: 0.4em solid #ddfffc;
+  border: 0.4em solid #929292;
+  /* border: 0.4em solid #ddfffc; */
+  padding-left: 2vw;
   margin: 0 auto;
   margin-top: 10vh;
   overflow: scroll;
@@ -1120,5 +1147,61 @@ body::after{
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+@keyframes charSpring {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 45vh;
+  }
+}
+
+@keyframes charFall {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 45vh;
+  }
+}
+
+@keyframes charSummer {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 37vh;
+  }
+}
+
+@keyframes charWinter {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 47vh;
+  }
+}
+
+@keyframes charHero {
+  from {
+    opacity: 0;
+    top: 100vh;
+  }
+  to {
+    opacity: 0.8;
+    top: 38vh;
   }
 }
