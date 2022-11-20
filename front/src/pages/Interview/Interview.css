@@ -221,6 +221,11 @@
   text-align: center;
   border: 20px solid transparent;
   border-image: url('../../asset/images/Interview/ScriptBorder.png') 30;
+  overflow: auto;
+}
+
+.InterviewModalBack::-webkit-scrollbar {
+  display: none;
 }
 
 .InterviewCheckTitle{
