@@ -89,7 +89,7 @@ function App() {
   }
 
   const playSelfstudyBGM = () => {
-    console.log('들어오나')
+    // console.log('들어오나')
     const mainBGM = document.getElementById('mainBGM')
     mainBGM.src = mainBGM_v1
   }

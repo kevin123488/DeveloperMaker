@@ -56,7 +56,7 @@ const Main = () => {
   useEffect(() => {
     const BGM = document.getElementById('mainBGM')
     // console.log(BGM.innerText)
-    console.log(BGM.played.length)
+    // console.log(BGM.played.length)
     if (BGM.innerText !== 'mainBGM'){
       BGM.innerText = 'mainBGM'
       BGM.src = mainTheme
@@ -105,7 +105,7 @@ const Main = () => {
               {/* 로딩화면 관리 부분 */}
               <img src={require("../../asset/images/Main/mainWinterBackground.png")} style={{display: 'none', width: '10vw', height: '10vh',}} alt=""
               onLoad={() => {
-                console.log('로드끝');
+                // console.log('로드끝');
                 const loadingP = document.querySelector('.loadingPage')
                 // console.log("로딩페이지",loadingP)
                 // loadingP.st = 'loadingPageEnd'

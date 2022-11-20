@@ -83,7 +83,7 @@ const Quiz = () => {
     }
     startGetQuizInfo()
     
-    console.log('유저정보', user.language)
+    // console.log('유저정보', user.language)
     // 초기 유저 선택 언어 설정
     if (user.language === 'PYTHON') {
       changeLang('python')
@@ -152,7 +152,7 @@ const Quiz = () => {
     //   console.log('로딩완료')
     // }
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('로딩완료')
+      // console.log('로딩완료')
    }, false);
 
     if (maxPage >= 4) {
@@ -178,8 +178,8 @@ const Quiz = () => {
       }
       
       const solveCategory = quizInfo[category].category.toLowerCase()
-      console.log('푼 과목', solveCategory)
-      console.log('풀고나서 받은 프로그래스', progress[solveCategory])
+      // console.log('푼 과목', solveCategory)
+      // console.log('풀고나서 받은 프로그래스', progress[solveCategory])
       const progressPer = parseInt(progress[solveCategory] / 25)
       if (progressPer) {
         for (var i = 1; i <= progressPer; i++) {
@@ -684,7 +684,7 @@ const Quiz = () => {
 
   // 체크할 엘범 번호 받아서 체크하고 띄워주는 함수
   const checkAlbum = ((checkAlbumNum) => {
-    console.log('체크엘범 번호', checkAlbumNum)
+    // console.log('체크엘범 번호', checkAlbumNum)
     putAlbum(checkAlbumNum)
   })
 
