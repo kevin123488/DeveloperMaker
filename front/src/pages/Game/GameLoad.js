@@ -641,8 +641,8 @@ const GameLoad = () => {
 
   useEffect(() => {
     const BGM = document.getElementById('mainBGM');
-    console.log(aitestResult);
-    console.log("면접 결과 확인");
+    // console.log(aitestResult);
+    // console.log("면접 결과 확인");
     if (BGM.innerText !== 'gameloadBGM') {
       BGM.innerText = 'gameloadBGM';
       BGM.src = gameloadTheme; // 이 노래는 틀자마자 나와서 타이머 살짝 걸어주는게 좋을 것 같음

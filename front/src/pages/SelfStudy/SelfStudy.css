@@ -263,13 +263,13 @@ body::after{
   background-color: white;
 }
 .showingMarkdown::-webkit-scrollbar-thumb {
-  background-color: #a5fffe;
+  background-color: #77b4ff;
   border-radius: 20px;
 }
 .showingMarkdown::-webkit-scrollbar-track {
   border-radius: 10px;
   box-shadow: inset 0px 0px 5px white;
-  background-color: #ebffff;
+  background-color: #cbe6ff;
 }
 
 .paginationBar {
@@ -391,7 +391,7 @@ body::after{
 .bigCorrect {
   position: absolute;
   top: 10vh;
-  left: 0vw;
+  left: -5vw;
   height: 60vh;
   width: 70vw;
   margin: 0 auto;
@@ -413,13 +413,13 @@ body::after{
 .bigWrong {
   position: absolute;
   top: 10vh;
-  left: 5vw;
+  left: 2vw;
   height: 60vh;
-  width: 60vw;
+  width: 55vw;
   margin: 0 auto;
   background: url(../../asset/images/SelfstudyImg/wrong.png) center no-repeat;
   background-size: 100% 100%;
-  z-index: 999;
+  z-index: 2000;
   animation: popup 0.2s;
 }
 

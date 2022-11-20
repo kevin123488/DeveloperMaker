@@ -8,6 +8,9 @@ import GameRole3 from "../../../asset/images/GameRole/3.png"
 import GameRole4 from "../../../asset/images/GameRole/4.png"
 import GameRole5 from "../../../asset/images/GameRole/5.png"
 import GameRole6 from "../../../asset/images/GameRole/6.png"
+import GameRole7 from "../../../asset/images/GameRole/7.png"
+import GameRole8 from "../../../asset/images/GameRole/8.png"
+import GameRole9 from "../../../asset/images/GameRole/9.png"
 import charInfo1 from "../../../pages/Game/charInfo1.png";
 import charInfo2 from "../../../pages/Game/charInfo2.png";
 import charInfo3 from "../../../pages/Game/charInfo3.png";
@@ -107,6 +110,33 @@ const GameRoleDiv6 = styled.div`
   background-position: center;
   background-repeat: no-repeat;
 `;
+const GameRoleDiv7 = styled.div`
+  margin-left: 5vw;
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${GameRole7});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+const GameRoleDiv8 = styled.div`
+  margin-left: 5vw;
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${GameRole8});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
+const GameRoleDiv9 = styled.div`
+  margin-left: 5vw;
+  height: 70vh;
+  width: 70vw;
+  background-image: url(${GameRole9});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+`;
 const CharInfo1 = styled.div`
   margin-left: 5vw;
   height: 70vh;
@@ -164,6 +194,12 @@ const GameRole = () => {
           <GameRoleDiv5></GameRoleDiv5>
           <br />
           <GameRoleDiv6></GameRoleDiv6>
+          <br />
+          <GameRoleDiv7></GameRoleDiv7>
+          <br />
+          <GameRoleDiv8></GameRoleDiv8>
+          <br />
+          <GameRoleDiv9></GameRoleDiv9>
           <br />
           <CharInfo1></CharInfo1>
           <br />

@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from 'react-redux/es/exports';
+import React, {useEffect, useState} from 'react';
+import { useDispatch, useSelector} from 'react-redux/es/exports';
 import "chart.js/auto"; // import 안하면 차트 오류남
 import { Radar } from "react-chartjs-2"; // 차트종류
 import "../../pages/Profile/Profile.css"
@@ -7,6 +7,7 @@ import { getProgress } from '../../slices/userSlice';
 import { defaults } from 'chart.js';
 
 const PolarAreaChart = () => {
+  defaults.font.size = 10
   const dispatch = useDispatch()
   const progress = useSelector((state)=>{
     return state.user.progress.study
@@ -14,11 +15,8 @@ const PolarAreaChart = () => {
   const nickname = useSelector((state)=>{
     return state.user.userInfo.nickname
   })
-
   // 범주를 위한 최대값
   const maxNum = Math.min(((parseInt(Math.max(progress.cs, progress.algorithm, progress.frontend, progress.backend, progress.language) / 20) +1) * 20), 100)
-
-
   // 자율학습 진행도
   const data = {
     labels: [
@@ -63,7 +61,7 @@ const PolarAreaChart = () => {
       legend: {
         labels: {
           font: {
-            size: "15vw",
+            size: "20vw",
             family: "'Jua', sans-serif",
             color: "rgb(255, 99, 132)",
           }
@@ -97,7 +95,6 @@ const PolarAreaChart = () => {
   // 유저 DTO 업데이트
   useEffect(()=> {
     defaults.font.family = "'Jua', sans-serif"
-    defaults.font.size = 12
     dispatch(getProgress())
   },[dispatch])
   

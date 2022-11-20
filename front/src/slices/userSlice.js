@@ -110,7 +110,7 @@ export const changUserInfo = createAsyncThunk(
       const info = {nickname: data.nickname, language: data.language};
       // 파일
       const response = await putUserInfo(data.image, info)
-      console.log('회원정보 수정', response)
+      // console.log('회원정보 수정', response)
       return response.data.data
     } catch(error) {
       if (error.response && error.response.data.message) {
@@ -197,7 +197,7 @@ const userSlice = createSlice(
         state.isLoading = true;
       })
       .addCase(getUser.fulfilled, (state, { payload }) => {
-        console.log(payload)
+        // console.log(payload)
         state.userInfo = payload.data;
         state.isLogIn = true;
       })
@@ -244,7 +244,7 @@ const userSlice = createSlice(
         state.progress = {study: {algorithm:0,backend:0,cs:0, frontend:0, language:0}, album: {} };
       })
       .addCase(rankingInfo.fulfilled, (state, { payload }) => {
-        console.log("랭킹정보",payload)
+        // console.log("랭킹정보",payload)
         state.rankInfo = payload;
       })
   },

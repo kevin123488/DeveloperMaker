@@ -169,8 +169,8 @@ const Interview = () => {
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript
-      console.log(`==============================${stage}======================`)
-      console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
+      // console.log(`==============================${stage}======================`)
+      // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값  event.results[i].isFinal - 마지막인지 여부
     setScript(voice)
@@ -183,7 +183,7 @@ const Interview = () => {
   const endRec = (num) => {
     // 종료를 위해서 한번 바꿨다가 해야함
     recognition[`recognition${num}`].stop()
-    console.log('음성인식 종료',script);
+    // console.log('음성인식 종료',script);
   }
 
   const goMain = () => {
@@ -204,7 +204,7 @@ const Interview = () => {
     // 캡쳐 5초 후 실행
     setTimeout(() => {
       capture()
-      console.log('이미지 캡쳐~~~~')
+      // console.log('이미지 캡쳐~~~~')
     }, 5000);
     // 녹음 시작
     startRec(num)
