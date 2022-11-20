@@ -15,14 +15,18 @@ const PolarAreaChart = () => {
     return state.user.userInfo.nickname
   })
 
+  // 범주를 위한 최대값
+  const maxNum = Math.min(((parseInt(Math.max(progress.cs, progress.algorithm, progress.frontend, progress.backend, progress.language) / 20) +1) * 20), 100)
+
+
   // 자율학습 진행도
   const data = {
     labels: [
-      'CS(%)',
-      'Algorithm(%)',
-      'Front(%)',
-      'Back(%)',
-      'Language(%)',
+      `CS(${progress.cs}%)`,
+      `Algorithm(${progress.algorithm}%)`,
+      `Front(${progress.frontend}%)`,
+      `Back(${progress.backend}%)`,
+      `Language(${progress.language}%)`,
     ],
     // DB
     datasets: [{
@@ -37,11 +41,12 @@ const PolarAreaChart = () => {
       //   'rgb(255, 100, 100)',
       // ],
       borderWidth: 1.5,
+      backgroundColor: 'rgba(255, 99, 132, 0.2)',
       // borderColor: 'rgb(255, 99, 132)',
-      // pointBackgroundColor: 'rgb(255, 99, 132)',
-      // pointBorderColor: '#fff',
-      // pointHoverBackgroundColor: '#fff',
-      // pointHoverBorderColor: 'rgb(255, 99, 132)'
+      pointBackgroundColor: 'rgb(255, 99, 132)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgb(255, 99, 132)'
     }]
   };
   // 옵션들
@@ -58,8 +63,9 @@ const PolarAreaChart = () => {
       legend: {
         labels: {
           font: {
-            size: "12vw",
+            size: "15vw",
             family: "'Jua', sans-serif",
+            color: "rgb(255, 99, 132)",
           }
         }
       },
@@ -69,18 +75,21 @@ const PolarAreaChart = () => {
     },
     // 척도
     scales: {
-      legend: {
-        display: false
-      },
+      // legend: {
+      //   display: false
+      // },
       r: {
-        max: 100,
+        max: maxNum,
         min: 0,
         // 범례 설정
         ticks: {
-          stepSize: 20,
+          stepSize: parseInt(maxNum/5),
           backdropColor: "rgba(0, 0, 0, 0)",
           // color: "#92817A"
-        },   
+        },
+        pointLabels: {
+          color: 'rgb(255, 99, 132)'
+        }  
       }
     },
 

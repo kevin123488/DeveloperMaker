@@ -77,7 +77,9 @@ const Interview = () => {
 
   // 스테이지 변경 시 문제 받아오기
   useEffect(()=>{
+    if (stage < 4){ 
     dispatch(getInterviewQuestion(interviewer[pickNum][stage-1]))
+    }
   },[stage])
 
   const [help, setHelp] = useState(true)
