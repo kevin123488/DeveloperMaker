@@ -108,7 +108,7 @@ const Quiz = () => {
   const maxPage = useSelector((state) => state.study.quizList.totalPage)
 
   // 로딩관리
-  const [isLoaded, setIsLoaded] = useState(false)
+  // const [isLoaded, setIsLoaded] = useState(false)
 
   // 스터디할지, 문제풀지 고르는 창 나오는거
   const [isShowNpcBalloon, setIsShowNpcBalloon] = useState(false)
@@ -168,13 +168,24 @@ const Quiz = () => {
 
   // 프로그래스 바뀌면 엘범 체크하는 부분
   useEffect(() => {
-    const solveCategory = quizInfo[category].category.toLowerCase()
-    console.log('풀고나서 받은 프로그래스', progress[solveCategory])
-    const progressPer = parseInt(progress[solveCategory] / 25)
-    if (progressPer) {
-      for (var i = 1; i <= progressPer; i++) {
-        const checkAlbumNum = category * 4 + i
-        checkAlbum(checkAlbumNum)
+    if (isSelectedCategory) {
+
+      var categoryNum = category
+      if (category === 2) {
+        categoryNum = 3
+      } else if (category === 3) {
+        categoryNum = 2
+      }
+      
+      const solveCategory = quizInfo[category].category.toLowerCase()
+      console.log('푼 과목', solveCategory)
+      console.log('풀고나서 받은 프로그래스', progress[solveCategory])
+      const progressPer = parseInt(progress[solveCategory] / 25)
+      if (progressPer) {
+        for (var i = 1; i <= progressPer; i++) {
+          const checkAlbumNum = categoryNum * 4 + i
+          checkAlbum(checkAlbumNum)
+        }
       }
     }
   }, [progress])
@@ -798,8 +809,8 @@ const Quiz = () => {
         {/* 카테고리 선택 전 화면 */}
         <div id="spring" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 0, subject: "네트워크", character: "spring", class: "springSelected", text: "원하는활동을 선택해줘!",}); moveSDchractor('springCS') }}} onMouseOver={showCategory.bind(null, { category: 'springCS', text: "역시 CS가 중요하지!"})} onMouseOut={hideCategory.bind(null, { category: 'springCS', text: "CS"})} className="spring"></div>
         <div id="fall" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 1, subject: "알고리즘", character: "fall", class: "fallSelected", text: "원하는활동을 선택해줘",}); moveSDchractor('fallAlgo') }}} onMouseOver={showCategory.bind(null, { category: 'fallAlgo', text: "알고리즘 좋아해..?"})} onMouseOut={hideCategory.bind(null, { category: 'fallAlgo', text: "알고리즘"})} className="fall"></div>
-        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "react", character: "summer", class: "summerSelected", text: "원하는활동을 선택해줘!",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, { category: 'summerBack', text: "프론트에 관심이 많구나!"})} onMouseOut={hideCategory.bind(null, { category: 'summerBack', text: "프론트앤드"})} className="summer"></div>
-        <div id="winter" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 2, subject: "spring", character: "winter", class: "winterSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('winterFront') }}} onMouseOver={showCategory.bind(null, { category: 'winterFront', text: "백앤드 공부할래?"})} onMouseOut={hideCategory.bind(null, { category: 'winterFront', text: "백앤드"})} className="winter"></div>
+        <div id="summer" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 3, subject: "React", character: "summer", class: "summerSelected", text: "원하는활동을 선택해줘!",}); moveSDchractor('summerBack') }}} onMouseOver={showCategory.bind(null, { category: 'summerBack', text: "프론트에 관심이 많구나!"})} onMouseOut={hideCategory.bind(null, { category: 'summerBack', text: "프론트앤드"})} className="summer"></div>
+        <div id="winter" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 2, subject: "Spring", character: "winter", class: "winterSelected", text: "원하는활동을 선택해줘",}) ; moveSDchractor('winterFront') }}} onMouseOver={showCategory.bind(null, { category: 'winterFront', text: "백앤드 공부할래?"})} onMouseOut={hideCategory.bind(null, { category: 'winterFront', text: "백앤드"})} className="winter"></div>
         <div id="hero" onClick={() => { if (!isSelectedCategory){ changeCategory({category: 4, subject: "Java", character: "hero", class: "heroSelected", text: "원하는활동을 선택해줘!",}) ; moveSDchractor('heroLang') }}} onMouseOver={showCategory.bind(null, { category: 'heroLang', text: "기본부터 다지자"})} onMouseOut={hideCategory.bind(null, { category: 'heroLang', text: "프로그래밍언어"})} className="hero"></div>
         <br />
         <br />
@@ -870,7 +881,7 @@ const Quiz = () => {
           <div className="workContainer">
             {
               showWorkChoice?
-              <div className="container row m-0 p-0">
+              <div className="container row m-0 p-5">
                 <div onClick={() => {choiceWork('study')}} onMouseOver={changeNpcStudyText} onMouseOut={changeStudyText} className="studySelectButton col-5 pop">공부하기</div>
                 <div onClick={() => {choiceWork('quiz')}} onMouseOver={changeNpcQuizText} onMouseOut={changeQuizText} className="quizSelectButton col-5 pop">문제풀기</div>
               </div>
@@ -928,7 +939,9 @@ const Quiz = () => {
 
             {
               isShowQuizProblem
-              ? 
+              ?
+              <>
+              <div className="tabletFrame"></div>
               <div className="showingMarkdown">
                 <div onClick={closeQuiz} className="CloseQuiz">X</div>
                 {
@@ -967,6 +980,7 @@ const Quiz = () => {
                   : null
                 }
               </div>
+              </>
 
               : null
             }
