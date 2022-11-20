@@ -317,7 +317,7 @@ body::after{
   transition: all ease 0.3s;
 }
 .RankingBtn:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
   transition: all ease 0.3s;
 }
 .closeRanking {
@@ -333,6 +333,6 @@ body::after{
   transition: all ease 0.3s;
 }
 .closeRanking:hover {
-  transform: scale(1.1);
+  transform: scale(1.3);
   transition: all ease 0.3s;
 }
