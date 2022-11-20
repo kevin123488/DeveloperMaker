@@ -140,7 +140,7 @@ const CSselfStudy = (prop) => {
     })
 
     const subjects = document.querySelectorAll(`.subjectItem`)
-    console.log(subjects)
+    // console.log(subjects)
     subjects.forEach((subject) => {
       if (subject.innerText === info.subject) {
         subject.style.color = 'white'

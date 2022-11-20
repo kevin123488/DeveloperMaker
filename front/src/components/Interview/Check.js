@@ -67,7 +67,7 @@ function Check() {
     let voice = ''
     for (let i = 0, len = event.results.length; i < len; i++) {
       voice += event.results[i][0].transcript.replace(/ /g, '')
-      console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
+      // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값
     if (voice.includes(`안녕하세요${name}입니다`)) {
@@ -89,7 +89,8 @@ function Check() {
   return (
     <Modal show={!check.ready}>
       <div className="InterviewModalBack">
-        <h1 onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}} className="InterviewCheckTitle">면접 환경 설정</h1>
+        <h1 className="InterviewCheckTitle">면접 환경 설정</h1>
+        {/* <h1 onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}} className="InterviewCheckTitle">면접 환경 설정</h1> */}
         {/* Chrome 인지 여부 확인 */}
         {('SpeechRecognition' in window) &&
           <p className="interviewCheckInfo">"음성인식을 지원하는 브라우저입니다."</p>

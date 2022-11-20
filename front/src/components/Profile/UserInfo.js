@@ -71,19 +71,9 @@ const UserInfo = () => {
     } else {
       setProfileFile(null);
     }
-    // const image = URL.createObjectURL(e.target.files[0])
-    // setProfileImg(image);
+
   };
 
-  // dataUrl to Blob
-  // function dataURItoBlob(dataURI) {
-  //   var binary = atob(dataURI.split(',')[1]);
-  //   var array = [];
-  //   for (var i = 0; i < binary.length; i++) {
-  //     array.push(binary.charCodeAt(i));
-  //   }
-  //   return new Blob([new Uint8Array(array)], { type: 'image/png' });
-  // };
 
   // 변경 요청
   const putUserInfo = () => {

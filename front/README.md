@@ -45,47 +45,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+# 
 
-
-
-
-### React
-
-
-
-
-
-### Base64 to Blob
-
-```javascript
-function dataURItoBlob(dataURI) {
-  var byteString = atob(dataURI.split(',')[1]);
-  var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-  var ab = new ArrayBuffer(byteString.length);
-  var ia = new Uint8Array(ab);
-  for (var i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-  }
-  var blob = new Blob([ab], {type: mimeString});
-    return blob;
-  }
-```
-
-
-
-### Base64 to File
-
-```javascript
-var img = document.querySelector("img"); // img 태그 객체
-function base64toFile() {
-  var bstr = atob(img.src.split(",")[1]);
-  var n = bstr.length;
-  var u8arr = new Uint8Array(n);
-  while(n--) {
-	u8arr[n] = bstr.charCodeAt(n);
-  }
-  return new File([u8arr], "파일이름", {type:"mime"});
-}
-
-```
 

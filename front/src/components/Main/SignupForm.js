@@ -91,7 +91,7 @@ export const SignupForm = () => {
   // 닉네임 변경
   const onNicknameChange = (e) => {
     const input = e.target.value.replace(/ /g, '');
-    console.log('input값', input)
+    // console.log('input값', input)
     setNickName(input);
   };
 
