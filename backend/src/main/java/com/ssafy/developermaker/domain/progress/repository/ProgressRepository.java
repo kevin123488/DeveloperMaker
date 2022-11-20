@@ -9,20 +9,19 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProgressRepository extends JpaRepository<Progress,Long> {
-    Optional<Progress> findByUser(User user);
 
     @EntityGraph(attributePaths = {"user"})
-    List<Progress> findTop10ByOrderByCsDesc();
+    List<Progress> findTop10ByOrderByCsDescModifiedDateAsc();
 
     @EntityGraph(attributePaths = {"user"})
-    List<Progress> findTop10ByOrderByAlgorithmDesc();
+    List<Progress> findTop10ByOrderByAlgorithmDescModifiedDateAsc();
 
     @EntityGraph(attributePaths = {"user"})
-    List<Progress> findTop10ByOrderByBackendDesc();
+    List<Progress> findTop10ByOrderByBackendDescModifiedDateAsc();
 
     @EntityGraph(attributePaths = {"user"})
-    List<Progress> findTop10ByOrderByFrontendDesc();
+    List<Progress> findTop10ByOrderByFrontendDescModifiedDateAsc();
 
     @EntityGraph(attributePaths = {"user"})
-    List<Progress> findTop10ByOrderByLanguageDesc();
+    List<Progress> findTop10ByOrderByLanguageDescModifiedDateAsc();
 }
