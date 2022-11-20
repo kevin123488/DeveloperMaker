@@ -55,7 +55,7 @@ const CSselfStudy = (prop) => {
 
   // const study = useSelector((state) => state.study)
   const studyList = useSelector((state) => state.study.studyList.studyInfo)
-  const studyInfo = useSelector((state) => state.study.studyInfo)
+  const studyInfo = useSelector((state) => state.study.quizInfo)
   const maxPage = useSelector((state) => state.study.studyList.totalPage)
   // const [studyInfo, setStudyInfo] = useState(study.studyInfo)
   // const [studyList, setStudyList] = useState(study.studyList.studyInfo)
