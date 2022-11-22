@@ -217,7 +217,7 @@
 /*------------------------ Check ------------------------------------- */
 .InterviewModalBack {
   width: 100%;
-  height: 93vh;
+  height: 91vh;
   text-align: center;
   border: 20px solid transparent;
   border-image: url('../../asset/images/Interview/ScriptBorder.png') 30;
@@ -234,9 +234,9 @@
 }
 
 .InterviewCheckCam {
-  margin-top: 5vh;
+  margin-top: 4vh;
   height: 30vh;
-  border: 2px double black;
+  border: 0.1vh solid black;
 }
 .InterviewCheckInfoBack {
   background-image: url('../../asset/images/Interview/Check/CheckContent.png');
@@ -249,7 +249,7 @@
 }
 .interviewCheckStage {
   margin-left: 55%;
-  padding-top: 10.5vh;
+  padding-top: 11vh;
   width: 40%;
   font-size: 35px;
   color: navy;
@@ -277,7 +277,6 @@
 
 .interviewCheckVoiceContent {
   display: block;
-  padding: auto;
   padding-top: 1vh;
   font-size: 3vh;
   color: gold;
@@ -291,9 +290,8 @@
 
 .interviewCheckBtn {
   /* 상 좌 하 우 */
-  margin: auto auto auto auto;
-  padding: 0.2vh;
-  bottom: 0;
+  margin: 1vh auto auto auto;
+  padding: 0.1vh;
   font-size: 30px;
   width: max-content;
   height: max-content;
@@ -311,7 +309,7 @@
 }
 
 .interviewCheckBtnLoding {
-  margin: 2.5vh auto auto auto;
+  margin: auto;
   padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
