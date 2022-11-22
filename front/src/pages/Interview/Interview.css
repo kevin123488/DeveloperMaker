@@ -234,8 +234,8 @@
 }
 
 .InterviewCheckCam {
-  margin-top: 4vh;
-  height: 30vh;
+  margin-top: 3vh;
+  height: 25vh;
   border: 0.1vh solid black;
 }
 .InterviewCheckInfoBack {
@@ -249,7 +249,7 @@
 }
 .interviewCheckStage {
   margin-left: 55%;
-  padding-top: 11vh;
+  padding-top: 9.8vh;
   width: 40%;
   font-size: 35px;
   color: navy;
@@ -290,9 +290,9 @@
 
 .interviewCheckBtn {
   /* 상 좌 하 우 */
-  margin: 1vh auto auto auto;
+  margin: 1.3vh auto auto auto;
   padding: 0.1vh;
-  font-size: 30px;
+  font-size: 25px;
   width: max-content;
   height: max-content;
   background-color: pink;
@@ -309,10 +309,10 @@
 }
 
 .interviewCheckBtnLoding {
-  margin: auto;
+  margin: 1.3vh auto auto auto;
   padding: 0.2vh;
   bottom: 0;
-  font-size: 30px;
+  font-size: 25px;
   width: max-content;
   height: max-content;
   border-radius: 5px;
