@@ -217,7 +217,7 @@
 /*------------------------ Check ------------------------------------- */
 .InterviewModalBack {
   width: 100%;
-  height: min(93vh, 931px);
+  height: 91vh;
   text-align: center;
   border: 20px solid transparent;
   border-image: url('../../asset/images/Interview/ScriptBorder.png') 30;
@@ -234,9 +234,9 @@
 }
 
 .InterviewCheckCam {
-  margin-top: 5vh;
-  width: 400px;
-  border: 2px double black;
+  margin-top: 4vh;
+  height: 30vh;
+  border: 0.1vh solid black;
 }
 .InterviewCheckInfoBack {
   background-image: url('../../asset/images/Interview/Check/CheckContent.png');
@@ -249,7 +249,7 @@
 }
 .interviewCheckStage {
   margin-left: 55%;
-  padding-top: 9vh;
+  padding-top: 11vh;
   width: 40%;
   font-size: 35px;
   color: navy;
@@ -257,10 +257,10 @@
 
 .interviewCheckInfo {
   color: navy;
-  padding-top: 5%;
+  padding-top: 3vh;
   padding-left: 10%;
   width: 91%;
-  height: 50%;
+  height: 18vh;
   font-size: 25px;
 }
 
@@ -268,16 +268,15 @@
 .interviewCheckLoding {
   color: navy;
   /* 상 좌 하 우 */
-  padding-top: 10%;
+  padding-top: 3vh;
   padding-left: 10%;
   width: 91%;
-  height: 50%;
+  height: 18vh;
   font-size: 50px;
 }
 
 .interviewCheckVoiceContent {
   display: block;
-  padding: auto;
   padding-top: 1vh;
   font-size: 3vh;
   color: gold;
@@ -291,9 +290,8 @@
 
 .interviewCheckBtn {
   /* 상 좌 하 우 */
-  margin: auto auto auto auto;
-  padding: 0.2vw;
-  bottom: 0;
+  margin: 1vh auto auto auto;
+  padding: 0.1vh;
   font-size: 30px;
   width: max-content;
   height: max-content;
@@ -311,8 +309,8 @@
 }
 
 .interviewCheckBtnLoding {
-  margin: 2.5vh auto auto auto;
-  padding: 0.2vw;
+  margin: auto;
+  padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
   width: max-content;
@@ -327,7 +325,7 @@
 .interviewCheckRec {
   /* 상 좌 하 우 */
   margin: 10vh auto 2vh auto;
-  padding: 0.2vw;
+  padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
   width: 200px;
@@ -340,7 +338,7 @@
 
 .interviewStartBtn {
   margin: 1.5vh auto auto auto;
-  padding: 1vw;
+  padding: 1vh;
   bottom: 0;
   font-size: 30px;
   width: max-content;
