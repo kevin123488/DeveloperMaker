@@ -217,7 +217,7 @@
 /*------------------------ Check ------------------------------------- */
 .InterviewModalBack {
   width: 100%;
-  height: min(93vh, 931px);
+  height: 93vh;
   text-align: center;
   border: 20px solid transparent;
   border-image: url('../../asset/images/Interview/ScriptBorder.png') 30;
@@ -235,7 +235,7 @@
 
 .InterviewCheckCam {
   margin-top: 5vh;
-  width: 400px;
+  height: 30vh;
   border: 2px double black;
 }
 .InterviewCheckInfoBack {
@@ -249,7 +249,7 @@
 }
 .interviewCheckStage {
   margin-left: 55%;
-  padding-top: 9vh;
+  padding-top: 10.5vh;
   width: 40%;
   font-size: 35px;
   color: navy;
@@ -257,10 +257,10 @@
 
 .interviewCheckInfo {
   color: navy;
-  padding-top: 5%;
+  padding-top: 3vh;
   padding-left: 10%;
   width: 91%;
-  height: 50%;
+  height: 18vh;
   font-size: 25px;
 }
 
@@ -268,10 +268,10 @@
 .interviewCheckLoding {
   color: navy;
   /* 상 좌 하 우 */
-  padding-top: 10%;
+  padding-top: 3vh;
   padding-left: 10%;
   width: 91%;
-  height: 50%;
+  height: 18vh;
   font-size: 50px;
 }
 
@@ -292,7 +292,7 @@
 .interviewCheckBtn {
   /* 상 좌 하 우 */
   margin: auto auto auto auto;
-  padding: 0.2vw;
+  padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
   width: max-content;
@@ -312,7 +312,7 @@
 
 .interviewCheckBtnLoding {
   margin: 2.5vh auto auto auto;
-  padding: 0.2vw;
+  padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
   width: max-content;
@@ -327,7 +327,7 @@
 .interviewCheckRec {
   /* 상 좌 하 우 */
   margin: 10vh auto 2vh auto;
-  padding: 0.2vw;
+  padding: 0.2vh;
   bottom: 0;
   font-size: 30px;
   width: 200px;
@@ -340,7 +340,7 @@
 
 .interviewStartBtn {
   margin: 1.5vh auto auto auto;
-  padding: 1vw;
+  padding: 1vh;
   bottom: 0;
   font-size: 30px;
   width: max-content;
