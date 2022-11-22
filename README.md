@@ -29,7 +29,7 @@ Gamification(게임화)를 적용하여 스토리를 통해 흥미를 높이고,
 
 ## Project&nbsp;Period
 
-SSAFY 7기 2학기 자율 프로젝트 (우수프로젝트 수상)  
+SSAFY 7기 2학기 자율 프로젝트  
 2022.10.11 ~ 2022.11.21
 
 ## Contributors
@@ -74,6 +74,7 @@ SSAFY 7기 2학기 자율 프로젝트 (우수프로젝트 수상)
 ### 스토리 모드
 
 - 스토리를 진행할 수 있습니다.
+
   <img width="70%" src="https://user-images.githubusercontent.com/87989933/203252223-9bfde024-7a6b-4202-bdc2-bfe3cb65f799.gif"/>
 
 ### 자율학습
