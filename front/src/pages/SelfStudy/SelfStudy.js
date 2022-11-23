@@ -668,10 +668,10 @@ const Quiz = () => {
     const response = await dispatch(getAlbumCheck(albumId))
     // 중복이면 true이므로 false일 때 실행
     if (!response.payload) {
-      setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
+      setNpcBalloonContent(`축하해, 진행도 ${parseInt((((albumId % 4) + 3) % 4 + 1) * 25)}%를 달성했어!`)
       dispatch(putAlbumList(albumId))
       setTimeout(() => {
-        setNpcBalloonContent(`축하해, 진행도 ${parseInt((albumId % 4) * 25)}%를 달성했어!`)
+        setNpcBalloonContent(`축하해, 진행도 ${parseInt((((albumId % 4) + 3) % 4 + 1) * 25)}%를 달성했어!`)
       }, 2000)
       setTimeout(() => {
         setNpcBalloonContent('대단한데?')
