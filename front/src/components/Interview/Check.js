@@ -11,9 +11,9 @@ function Check() {
   const dispatch = useDispatch()
 
   // 교육생 이름
-  const name = useSelector((state)=>{
-    return state.user.userInfo.nickname
-  })
+  // const name = useSelector((state)=>{
+  //   return state.user.userInfo.nickname
+  // })
 
   // 녹음 여부
   const [record, setRecored] = useState(false)
@@ -70,7 +70,7 @@ function Check() {
       // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값
-    if (voice.includes(`안녕하세요${name}입니다`)) {
+    if (voice.includes(`안녕하세요`)) {
       endRec()
     }
   }
@@ -92,9 +92,9 @@ function Check() {
         <h1 className="InterviewCheckTitle">면접 환경 설정</h1>
         {/* <h1 onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}} className="InterviewCheckTitle">면접 환경 설정</h1> */}
         {/* Chrome 인지 여부 확인 */}
-        {('SpeechRecognition' in window) &&
+        {/* {('SpeechRecognition' in window) &&
           <p className="interviewCheckInfo">"음성인식을 지원하는 브라우저입니다."</p>
-        }
+        } */}
         <div className="InterviewCheckInfoBack" >
         {/* 카메라 체크 */}
         {/* loding에 따라 분기 */}
@@ -117,7 +117,7 @@ function Check() {
         {/* 음성 인식 */}
         {check.face && !check.voice && <>
           <p className="interviewCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.
-            <span className="interviewCheckVoiceContent">"안녕하세요. {name}입니다."</span>
+            <span className="interviewCheckVoiceContent">"안녕하세요."</span>
           </p>
           <p className="interviewCheckStage">음성인식 중</p>
           <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className="interviewCheckRec" onClick={() => {if (!record) {startRec()}}} /></>
@@ -129,7 +129,7 @@ function Check() {
               <span className="interviewCheckVoiceContent">모든 준비를 마쳤으니 버튼을 눌러 면접을 시작해주세요.</span>
             </p>
             <p className="interviewCheckStage">면접대기 중</p>
-            <img src={Fighting} className="interviewCheckFighting" />
+            <img src={Fighting} className="interviewCheckFighting" alt="화이팅이미지" />
             {/* 면접 시작 버튼 */}
             <p className="interviewStartBtn" onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}}>면접시작</p>
           </>}

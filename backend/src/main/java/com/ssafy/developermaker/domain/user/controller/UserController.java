@@ -94,8 +94,8 @@ public class UserController {
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<BaseResponseBody>  recreateToken(@RequestBody TokenDto tokenDto) {
-        TokenDto token = userLoginService.recreateToken(tokenDto);
+    public ResponseEntity<BaseResponseBody>  recreateToken(HttpServletRequest request) {
+        TokenDto token = userLoginService.recreateToken(request);
         return ResponseEntity.status(200).body(BaseResponseBody.of(200, "success", token));
     }
 
