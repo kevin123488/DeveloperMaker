@@ -97,11 +97,12 @@ public class UserLoginService {
         redisUtil.setBlackList("blacklist",accessToken);
     }
 
-    public TokenDto recreateToken(TokenDto tokenDto) {
-        String userEmail = String.valueOf(tokenProvider.getPayload(tokenDto.getAccessToken()).get("sub"));
-        String refreshToken = redisUtil.getData(userEmail + "-refresh");
+    public TokenDto recreateToken(HttpServletRequest request) {
+        String refreshToken = request.getHeader("refresh-token");
+        String userEmail = String.valueOf(tokenProvider.getPayload(refreshToken).get("sub"));
+        String serverRefreshToken = redisUtil.getData(userEmail + "-refresh");
 
-        if(tokenDto.getRefreshToken().equals(refreshToken) && tokenProvider.validateToken(refreshToken)) {
+        if(refreshToken.equals(serverRefreshToken) && tokenProvider.validateToken(refreshToken)) {
             User user = userRepository.findByEmail(userEmail).orElseThrow(UserNotFoundException::new);
 
             UsernamePasswordAuthenticationToken authenticationToken =
@@ -110,8 +111,9 @@ public class UserLoginService {
             SecurityContextHolder.getContext().setAuthentication(authentication);
 
             String accessToken = tokenProvider.createAccessToken(authentication);
+            TokenDto tokenDto = new TokenDto();
             tokenDto.setAccessToken(accessToken);
+            return tokenDto;
         } else return null;
-        return tokenDto;
     }
 }
