@@ -492,18 +492,15 @@ const Quiz = () => {
   const showCategory = (info) => {
     const categoryDiv = document.getElementById(info.category)
     categoryDiv.style.opacity = '1'
-    // console.log(categoryDiv.style.children[0].fontSize)
     categoryDiv.children[0].fontSize = "1vw"
     categoryDiv.children[0].innerText = `${info.text}`
     categoryDiv.children[0].fontSize = "1vw"
-    // categoryDiv.style.display = 'block'
   }
 
   const hideCategory = (info) => {
     const categoryDiv = document.getElementById(info.category)
     categoryDiv.style.opacity = '0.6'
     categoryDiv.children[0].innerText = `${info.text}`
-    // categoryDiv.style.display = 'none'
   }
 
   const moveSDchractor = () => {
@@ -515,7 +512,6 @@ const Quiz = () => {
 
     setIsShowNpcBalloon(false)
     playBtnSound()
-    // 선택한 카테고리 캐릭터 이동하는 함수
     const characterList = ['spring', 'fall', 'summer', 'winter', 'hero',]
     characterList.forEach((character) => {
       const characterTag = document.getElementById(character)
