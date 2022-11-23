@@ -67,7 +67,13 @@ const interview = createSlice({
     // 현재 받아온 문제
     question: {no: null, subject: null ,content: null},
     // 각 단계 인식 결과
-    result: [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}],
+    result: [
+      {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+      imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} },
+      {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+      imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} },
+      {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+      imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} } ],
     // 현재 단계
     stage: 1,
   },
@@ -81,11 +87,14 @@ const interview = createSlice({
       state.check = {face: false, voice: false, ready: false};
       state.question = {no: null, subject: null , question: null, };
       // 1번 결과[0] 2번 결과[1] 3번 결과[2]
-      state.result =  [{totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}, {totalScore: 0, pass: false, imageScore: 0,}]
+      state.result = [
+        {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+        imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} },
+        {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+        imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} },
+        {totalScore: 0, answerKeyword: [], answerScore: 0, demandKeywordCnt: 0, imageScore: 0, pass: false,
+        imageAnalyzeResult: {anger: 0, contempt:0, disgust: 0, fear: 0, happiness: 0, neutral: 0, sadness: 0, surprise: 0} } ]
       state.stage = 1;
-    },
-    changeStage: (state, action) => {
-      state.stage += 1
     },
   },
   extraReducers: (builder) => {

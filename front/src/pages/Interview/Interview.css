@@ -231,6 +231,7 @@
 .InterviewCheckTitle{
   margin-top: 2vh;
   font-size: 40px;
+  color: navy;
 }
 
 .InterviewCheckCam {
@@ -335,6 +336,15 @@
 .interviewCheckRec:hover {
   transform: scale(1.05);
 }
+.interviewCheckRecoding {
+  margin: 10vh auto 2vh auto;
+  padding: 0.2vh;
+  bottom: 0;
+  font-size: 30px;
+  width: 200px;
+  height: 200px;
+}
+
 
 .interviewStartBtn {
   margin: 1.5vh auto auto auto;
@@ -358,15 +368,14 @@
 
 
 /*------------------------ Result ------------------------------------- */
-
 .interviewResultImg {
-  width: 80%;
-  height: 75%;
+  width: 70%;
+  height: 60%;
 }
 
 .interviewResult {
   display: block;
-  margin: 3% auto auto auto;
+  margin: 5vh auto auto auto;
   width: 12%;
   height: 10%;
   filter: drop-shadow(6px 4px 4px #c3c3c3);
@@ -375,4 +384,54 @@
 }
 .interviewResult:hover {
   transform: scale(1.05);
+}
+
+.interviewResultDetailBtn {
+  padding: 0.5vh;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.InterviewResultNum {
+  text-align: start;
+  color: pink;
+  font-size: 1.3vw;
+}
+
+.InterviewFeelContainer {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.InterviewFeelLine {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.InterviewFeelName {
+  border: 1px black solid;
+  margin-bottom: 0;
+}
+
+.InterviewFeelPoints {
+  color: pink;
+  border: 1px black solid
+}
+
+.InterviewKeywordLabel {
+  text-align: start;
+}
+
+.InterviewResultKeyword {
+  width: max-content;
+  padding: 0.5vh;
+  margin-left: 0.1vw;
+  color: white;
+  background-color: pink;
+  border-radius: 10px;
+  font-size: 1vw;
+  border: 0;
+}
+
+.InterviewResultSpan {
+  color: navy;
 }

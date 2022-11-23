@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,12 +15,12 @@ const Result = (props) => {
   const show = props.show
   // 스토리에서 온 건지 확인
   const story = props.story
-  // 획득할 앨범 번호 정리
-  // const albumNum = {spring : 5, total: 10, fall: 15, winter: 20 }
+  
+  const [detail, setDetail] = useState(false)
   // 로딩 여부(채점 과정 중인지 여부)
-  const loding = useSelector((state)=> {
-    return state.interview.isLoding
-  })
+  // const loding = useSelector((state)=> {
+  //   return state.interview.isLoding
+  // })
   // 결과창
   const result = useSelector((state)=>{
     return state.interview.result
@@ -40,36 +40,34 @@ const Result = (props) => {
     },0 ) > 1))
   })
 
-  // 로딩x(3번째 면접 결과 받음) + 4단계(4단계가 된 경우- 3단계가 끝이남)
-  // useEffect(()=>{
-  //   if (!loding && show) {
-  //     console.log(1, result[0])
-  //     console.log('============================================')
-  //     console.log(2, result[1])
-  //     console.log('============================================')
-  //     console.log(3, result[2])
-  //     console.log('============================================')
-  //     console.log('story', story)
-  //   }
-  // },[loding])
-  
-  // 앨범 뽑기 함수
-  // const putAlbum =  async(albumId) => {
-  //   const response = await dispatch(getAlbumCheck(albumId))
-  //   // 중복이면 true이므로 false일 때 실행
-  //   if (!response.payload) {
-  //     dispatch(putAlbumList(albumId))
-  //   }
-  // }
+  // 감정명
+  const feelName = ['화남', '경멸', '역겨움', '공포', '행복', '무표정', '슬픔', '놀람']
 
   return(
     <Modal show={show}>
       <div className="InterviewModalBack">
-        <p className="InterviewCheckTitle" >면접 결과창</p>
-        {loding ? <h1>면접 결과 계산 중</h1> :
-          <img className="interviewResultImg" src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
-          // <img className="interviewResultImg" src={FailContent} alt="FailContent" />
-        }
+        <p className="InterviewCheckTitle" >면접 결과</p>
+        <img className="interviewResultImg" src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
+        <p className="interviewResultDetailBtn" onClick={()=> {setDetail(!detail)}}>면접 세부 결과 확인 {!detail? '▼' : '▲'}</p>
+        {detail && [1, 2, 3].map((num)=> { return <div key={`result-${num}`}>
+          <p className="InterviewResultNum">{num}번 답변 결과:  <span className="InterviewResultSpan">{result[num-1].pass ? "성공" : "실패"}({parseInt(result[num-1].totalScore)}점)</span></p>
+          <div className="InterviewResultDetail">
+            <p>표정분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].imageScore)}점</span>)</p>
+            <div className="InterviewFeelContainer">
+              {['anger', 'contempt', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise'].map((feel,idx)=> {
+                return <div className="InterviewFeelLine" key={`feel-${idx}`}>
+                  <p className="InterviewFeelName">{feelName[idx]}</p>
+                  <p className="InterviewFeelPoints">{result[num-1].imageAnalyzeResult[feel]}</p>
+                </div>
+              })}
+            </div>
+            <div>
+              <p>답변분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].answerScore)}점</span>)</p>
+              <p className="InterviewKeywordLabel">인정 키워드(<span className="InterviewResultSpan">{result[num-1].answerKeyword.length} / {result[num-1].demandKeywordCnt}</span>): 
+              {result[num-1].answerKeyword.map((word, idx)=> {return <span className="InterviewResultKeyword" key={`word-${idx}`}>{word}</span>})}</p>
+            </div>
+          </div>
+        </div>})}
         <img src={OkBtn} alt="okImg" className="interviewResult" onClick={()=>{
           if (story) {
             navigate("/Game")
