@@ -25,8 +25,8 @@ const Interview = () => {
   const [pickNum] = useState(Math.floor(Math.random() * 4))
   // const [pickNum, setPickNum] = useState(0)
   // 면접관 조합
-  const interviewer = {0: ['algorithm', 'cs', 'backend'], 1: ['backend', 'language', 'frontend'],
-  2: ['language', 'algorithm', 'cs'], 3: ['language', 'frontend', 'algorithm'], 4: ['frontend', 'cs', 'backend']}
+  const interviewer = {0: ['algorithm', 'frontend', 'backend'], 1: ['algorithm', 'language', 'backend'],
+  2: ['algorithm', 'backend', 'cs'], 3: ['algorithm', 'cs', 'language'], 4: ['algorithm', 'cs', 'frontend']}
   // 회사명 조합
   // const CorpName = ['마카오전자', '네카라', '저기요', '쿠베', '일신생명' ]
 
@@ -77,8 +77,8 @@ const Interview = () => {
 
   // 스테이지 변경 시 문제 받아오기
   useEffect(()=>{
-    if (stage < 4){ 
-    dispatch(getInterviewQuestion(interviewer[pickNum][stage-1]))
+    if (stage < 4) {
+      dispatch(getInterviewQuestion(interviewer[pickNum][stage-1]))
     }
   },[stage])
 
@@ -201,11 +201,11 @@ const Interview = () => {
     setStart(true)
     // 제한시간 30초 시작
     setTimer(30)
-    // 캡쳐 5초 후 실행
+    // 캡쳐 0.1초 후 실행
     setTimeout(() => {
       capture()
       // console.log('이미지 캡쳐~~~~')
-    }, 5000);
+    }, 500);
     // 녹음 시작
     startRec(num)
   }
@@ -249,7 +249,7 @@ const Interview = () => {
             {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
             <div>
               {!loding && (help ? <img className="interviewNextBtn" src={NextBtn} onClick={()=> {endHelp()}} alt="NextBtn" /> :
-              (start? ((timer < 25) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
+              (start? ((timer < 30) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
                 <img src={StartBtn} className="interviewNextBtn" onClick={()=> {recStart(stage)}} alt="InterviewBtn" />) )}
             </div>
           </div>

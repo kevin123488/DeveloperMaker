@@ -70,7 +70,7 @@ function Check() {
       // console.log(`지금 ${i}번째 transcript:`, event.results[i][0].transcript)
     }
     // resultIndex-마지막 값
-    if (voice.includes(`안녕하세요`)) {
+    if (voice.includes(`여러분모두고생많으셨습니다`)) {
       endRec()
     }
   }
@@ -117,10 +117,10 @@ function Check() {
         {/* 음성 인식 */}
         {check.face && !check.voice && <>
           <p className="interviewCheckInfo">음성인식을 진행하겠습니다. 버튼을 누른 후 아래의 문장을 읽어 주세요.
-            <span className="interviewCheckVoiceContent">"안녕하세요."</span>
+            <span className="interviewCheckVoiceContent">"여러분 모두 고생 많으셨습니다."</span>
           </p>
           <p className="interviewCheckStage">음성인식 중</p>
-          <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className="interviewCheckRec" onClick={() => {if (!record) {startRec()}}} /></>
+          <img src={!record ? RecordBtn : RecordingBtn} alt="RecordBtn" className={!record ?"interviewCheckRec" : "interviewCheckRecoding"} onClick={() => {if (!record) {startRec()}}} /></>
           }
         {/* 마지막 확인 단계 */}
         {check.voice && check.face &&
@@ -133,8 +133,6 @@ function Check() {
             {/* 면접 시작 버튼 */}
             <p className="interviewStartBtn" onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}}>면접시작</p>
           </>}
-        {/* Ai면접 테스트 스킵 버튼 */}
-        {/* <p onClick={()=>{dispatch({type:"interview/checkVoice", select: 'ready'})}}>??</p> */}
         </div>
       </div>
     </Modal>
