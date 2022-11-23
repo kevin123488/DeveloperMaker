@@ -84,37 +84,40 @@ public class AiInterviewService {
             System.out.printf(response.getBody().getObject().getString("message"));
         }
         ImageAnalyzeResult imageAnalyzeResult = ImageAnalyzeResult.builder().anger(0f).contempt(0f).disgust(0f).fear(0f).happiness(0f).neutral(0f).sadness(0f).surprise(0f).build();
-//(response.getBody().toString())
-        JSONParser jsonParser = new JSONParser();
-        JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody().getObject().getJSONArray("faces").get(0).toString());
         Float imageScore = 0f;
-        jsonObject = (JSONObject) jsonObject.get("emotions");
-        if (jsonObject.get("happiness") != null) {
-            imageAnalyzeResult.setHappiness(Float.valueOf(jsonObject.get("happiness").toString()));
-            imageScore += Float.valueOf(jsonObject.get("happiness").toString());
-        }
-        if (jsonObject.get("neutral") != null) {
-            imageAnalyzeResult.setNeutral(Float.valueOf(jsonObject.get("neutral").toString()));
-            imageScore += Float.valueOf(jsonObject.get("neutral").toString());
-        }
-        if (jsonObject.get("surprise") != null) {
-            imageAnalyzeResult.setSurprise(Float.valueOf(jsonObject.get("surprise").toString()));
-            imageScore += Float.valueOf(jsonObject.get("surprise").toString());
-        }
-        if (jsonObject.get("sadness") != null) {
-            imageAnalyzeResult.setSadness(Float.valueOf(jsonObject.get("sadness").toString()));
-        }
-        if (jsonObject.get("anger") != null) {
-            imageAnalyzeResult.setAnger(Float.valueOf(jsonObject.get("anger").toString()));
-        }
-        if (jsonObject.get("contempt") != null) {
-            imageAnalyzeResult.setContempt(Float.valueOf(jsonObject.get("contempt").toString()));
-        }
-        if (jsonObject.get("fear") != null) {
-            imageAnalyzeResult.setFear(Float.valueOf(jsonObject.get("fear").toString()));
-        }
-        if (jsonObject.get("disgust") != null) {
-            imageAnalyzeResult.setDisgust(Float.valueOf(jsonObject.get("disgust").toString()));
+        if (!response.getBody().getObject().toString().equals("{\"status\":\"success\",\"faces\":[]}")) {
+//(response.getBody().toString())
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody().getObject().getJSONArray("faces").get(0).toString());
+
+            jsonObject = (JSONObject) jsonObject.get("emotions");
+            if (jsonObject.get("happiness") != null) {
+                imageAnalyzeResult.setHappiness(Float.valueOf(jsonObject.get("happiness").toString()));
+                imageScore += Float.valueOf(jsonObject.get("happiness").toString());
+            }
+            if (jsonObject.get("neutral") != null) {
+                imageAnalyzeResult.setNeutral(Float.valueOf(jsonObject.get("neutral").toString()));
+                imageScore += Float.valueOf(jsonObject.get("neutral").toString());
+            }
+            if (jsonObject.get("surprise") != null) {
+                imageAnalyzeResult.setSurprise(Float.valueOf(jsonObject.get("surprise").toString()));
+                imageScore += Float.valueOf(jsonObject.get("surprise").toString());
+            }
+            if (jsonObject.get("sadness") != null) {
+                imageAnalyzeResult.setSadness(Float.valueOf(jsonObject.get("sadness").toString()));
+            }
+            if (jsonObject.get("anger") != null) {
+                imageAnalyzeResult.setAnger(Float.valueOf(jsonObject.get("anger").toString()));
+            }
+            if (jsonObject.get("contempt") != null) {
+                imageAnalyzeResult.setContempt(Float.valueOf(jsonObject.get("contempt").toString()));
+            }
+            if (jsonObject.get("fear") != null) {
+                imageAnalyzeResult.setFear(Float.valueOf(jsonObject.get("fear").toString()));
+            }
+            if (jsonObject.get("disgust") != null) {
+                imageAnalyzeResult.setDisgust(Float.valueOf(jsonObject.get("disgust").toString()));
+            }
         }
         System.out.println(imageAnalyzeResult.toString());
         aiInterviewResultDto.setImageAnalyzeResult(imageAnalyzeResult);
