@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FailContent from "../../asset/images/Interview/Result/FailContent.png"
 import SuccessImg from "../../asset/images/Interview/Result/SuccessImg.png"
 import OkBtn from "../../asset/images/Interview/Result/OkBtn.png"
-import ResultNoImage from "../../asset/images/Interview/Result/ResultNoImage.png"
+// import ResultNoImage from "../../asset/images/Interview/Result/ResultNoImage.png"
 // import { getAlbumCheck, putAlbumList } from "../../slices/albumSlice";
 
 
@@ -53,6 +53,7 @@ const Result = (props) => {
         <img className={isPass?"interviewResultSuccessImg" :"interviewResultImg"} src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
         <p className="interviewResultDetailBtn" onClick={()=> {setDetail(!detail)}}>면접 세부 결과 확인 {!detail? '▼' : '▲'}</p>
         {detail && [1, 2, 3].map((num)=> { return <div key={`result-${num}`}>
+          <hr />
           <p className="InterviewResultNum">{num}번 답변 결과:  <span className="InterviewResultSpan">{result[num-1].pass ? "성공" : "실패"}({parseInt(result[num-1].totalScore)}점)</span></p>
           <div className="InterviewResultDetail">
             <p className="InterviewResultTheme">표정분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].imageScore)}점</span>)</p>
@@ -66,12 +67,11 @@ const Result = (props) => {
               })}
             </div> : <p className="InterviewResultNoCapImg">표정인식에 실패했습니다.</p>}
             <div>
-              <p>답변분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].answerScore)}점</span>)</p>
+              <p className="InterviewResultTheme">답변분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].answerScore)}점</span>)</p>
               <p className="InterviewKeywordLabel">인정 키워드(<span className="InterviewResultSpan">{result[num-1].answerKeyword.length}/{result[num-1].demandKeywordCnt}</span>): 
               {result[num-1].answerKeyword.map((word, idx)=> {return <span className="InterviewResultKeyword" key={`word-${idx}`}>{word}</span>})}</p>
             </div>
           </div>
-          <hr />
         </div>})}
         <img src={OkBtn} alt="okImg" className="interviewResult" onClick={()=>{
           if (story) {
