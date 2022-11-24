@@ -8,10 +8,10 @@ body::after{
     z-index:-1;
     
     /* load images */
-    content:
+    /* content: */
 
     /* 앨범 나중 */
-    url(../../asset/images/Album/AlbumPick/fallBack.png)
+    /* url(../../asset/images/Album/AlbumPick/fallBack.png)
     url(../../asset/images/Album/AlbumPick/OpenBookImage.png)
     url(../../asset/images/Album/AlbumPick/PickBack.png)
     url(../../asset/images/Album/AlbumPick/springBack.png)
@@ -61,7 +61,7 @@ body::after{
     url(../../asset/images/Album/Collection/49.png)
     url(../../asset/images/Album/Collection/50.png)
     url(../../asset/images/Album/Collection/51.png)
-    url(../../asset/images/Album/Collection/52.png)
+    url(../../asset/images/Album/Collection/52.png) */
 
     /* 필요한 이미지 소스들 다운 */
 }
