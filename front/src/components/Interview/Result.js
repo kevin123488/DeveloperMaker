@@ -17,7 +17,7 @@ const Result = (props) => {
   // 스토리에서 온 건지 확인
   const story = props.story
   // 찍은 이미지 파일
-  const image = props.image
+  // const image = props.image
   
   const [detail, setDetail] = useState(false)
   // 로딩 여부(채점 과정 중인지 여부)
@@ -56,7 +56,7 @@ const Result = (props) => {
           <p className="InterviewResultNum">{num}번 답변 결과:  <span className="InterviewResultSpan">{result[num-1].pass ? "성공" : "실패"}({parseInt(result[num-1].totalScore)}점)</span></p>
           <div className="InterviewResultDetail">
             <p className="InterviewResultTheme">표정분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].imageScore)}점</span>)</p>
-            <img className="InterviewResultCapImages" src={image[num] ? image[num] : ResultNoImage} alt={`CapImg-${num}`} />
+            {/* <img className="InterviewResultCapImages" src={image[num] ? image[num] : ResultNoImage} alt={`CapImg-${num}`} /> */}
             {result[num-1].imageScore ? <div className="InterviewFeelContainer">
               {['anger', 'contempt', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise'].map((feel,idx)=> {
                 return <div className="InterviewFeelLine" key={`feel-${idx}`}>
