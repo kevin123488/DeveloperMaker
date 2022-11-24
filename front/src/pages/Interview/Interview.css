@@ -372,6 +372,10 @@
   width: 70%;
   height: 60%;
 }
+.interviewResultSuccessImg {
+  width: 95%;
+  height: 60%;
+}
 
 .interviewResult {
   display: block;
@@ -397,7 +401,7 @@
 .InterviewResultNum {
   text-align: start;
   color: pink;
-  font-size: 1.3vw;
+  font-size: 2vw;
 }
 
 .InterviewFeelContainer {

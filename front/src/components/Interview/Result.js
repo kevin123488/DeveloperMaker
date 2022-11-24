@@ -49,8 +49,8 @@ const Result = (props) => {
   return(
     <Modal show={show}>
       <div className="InterviewModalBack">
-        <p className="InterviewCheckTitle" onClick={()=>{console.log(image[1])}} >면접 결과</p>
-        <img className="interviewResultImg" src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
+        <p className="InterviewCheckTitle">면접 결과</p>
+        <img className={isPass?"interviewResultSuccessImg" :"interviewResultImg"} src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
         <p className="interviewResultDetailBtn" onClick={()=> {setDetail(!detail)}}>면접 세부 결과 확인 {!detail? '▼' : '▲'}</p>
         {detail && [1, 2, 3].map((num)=> { return <div key={`result-${num}`}>
           <p className="InterviewResultNum">{num}번 답변 결과:  <span className="InterviewResultSpan">{result[num-1].pass ? "성공" : "실패"}({parseInt(result[num-1].totalScore)}점)</span></p>

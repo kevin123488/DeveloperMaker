@@ -138,13 +138,10 @@ const Interview = () => {
       const File = await base64toFile(image)
       setCapImg(File)
       if (capOrder === 1) {
-        console.log('1번에 들어감')
         setTempImg1(image)
       } else if (capOrder === 2) {
-        console.log('2번에 들어감')
         setTempImg2(image)
       } else {
-        console.log('3번에 들어감')
         setTempImg3(image)
       }
       capOrder += 1
@@ -265,7 +262,7 @@ const Interview = () => {
             {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
             <div>
               {!loding && (help ? <img className="interviewNextBtn" src={NextBtn} onClick={()=> {endHelp()}} alt="NextBtn" /> :
-              (start? ((timer < 26) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
+              (start? ((timer < 30) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
                 <img src={StartBtn} className="interviewNextBtn" onClick={()=> {recStart(stage)}} alt="InterviewBtn" />) )}
             </div>
           </div>
