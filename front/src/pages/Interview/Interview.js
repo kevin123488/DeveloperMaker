@@ -25,8 +25,8 @@ const Interview = () => {
   const [pickNum] = useState(Math.floor(Math.random() * 4))
   // const [pickNum, setPickNum] = useState(0)
   // 면접관 조합
-  const interviewer = {0: ['algorithm', 'frontend', 'backend'], 1: ['algorithm', 'language', 'backend'],
-  2: ['algorithm', 'backend', 'cs'], 3: ['algorithm', 'cs', 'language'], 4: ['algorithm', 'cs', 'frontend']}
+  const interviewer = {0: ['algorithm', 'frontend', 'cs'], 1: ['frontend', 'algorithm','language',], 2: ['cs', 'language', 'backend' ],
+   3: [ 'backend', 'cs', 'frontend',], 4: ['algorithm', 'language' , 'backend']}
   // 회사명 조합
   // const CorpName = ['마카오전자', '네카라', '저기요', '쿠베', '일신생명' ]
 
@@ -218,7 +218,7 @@ const Interview = () => {
     setTimeout(() => {
       capture()
       // console.log('이미지 캡쳐~~~~')
-    }, 500);
+    }, 5000);
     // 녹음 시작
     startRec(num)
   }
@@ -262,7 +262,7 @@ const Interview = () => {
             {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
             <div>
               {!loding && (help ? <img className="interviewNextBtn" src={NextBtn} onClick={()=> {endHelp()}} alt="NextBtn" /> :
-              (start? ((timer < 30) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
+              (start? ((timer < 25) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
                 <img src={StartBtn} className="interviewNextBtn" onClick={()=> {recStart(stage)}} alt="InterviewBtn" />) )}
             </div>
           </div>
