@@ -116,12 +116,18 @@ const Interview = () => {
     let n = bstr.length;
     let u8arr = new Uint8Array(n);
     while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
+      u8arr[n] = bstr.charCodeAt(n);
     }
     return new File([u8arr], "capture.jpg", {type:mime});
   }
   // 캡쳐 파일 변수
   const [capImg, setCapImg] = useState()
+  // 임시 캡쳐
+  const [tempImg1, setTempImg1] = useState()
+  const [tempImg2, setTempImg2] = useState()
+  const [tempImg3, setTempImg3] = useState()
+  let capOrder = 1
+
   // 웹캠 DOM을 선택할 Ref
   const webcamRef = useRef();
   const capture = useCallback(
@@ -131,6 +137,17 @@ const Interview = () => {
       // base64를 jpg File로 변환
       const File = await base64toFile(image)
       setCapImg(File)
+      if (capOrder === 1) {
+        console.log('1번에 들어감')
+        setTempImg1(image)
+      } else if (capOrder === 2) {
+        console.log('2번에 들어감')
+        setTempImg2(image)
+      } else {
+        console.log('3번에 들어감')
+        setTempImg3(image)
+      }
+      capOrder += 1
     },
     [webcamRef]
   );
@@ -163,7 +180,6 @@ const Interview = () => {
 
   // 스크립트
   const [script, setScript] = useState(' ')
-
   // 실시간 결과값
   recognition[`recognition${stage}`].onresult  = (event) => { 
     let voice = ''
@@ -249,7 +265,7 @@ const Interview = () => {
             {/* 로딩 중에는 제출 버튼이 활성화 되지 않게 */}
             <div>
               {!loding && (help ? <img className="interviewNextBtn" src={NextBtn} onClick={()=> {endHelp()}} alt="NextBtn" /> :
-              (start? ((timer < 30) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
+              (start? ((timer < 26) && <img src={SubmitBtn} className="interviewNextBtn" onClick={()=> {recEnd(stage) }} alt="InterviewBtn" />)  :
                 <img src={StartBtn} className="interviewNextBtn" onClick={()=> {recStart(stage)}} alt="InterviewBtn" />) )}
             </div>
           </div>
@@ -263,7 +279,7 @@ const Interview = () => {
           screenshotQuality={1}
         />}
         <Check />
-        <Result show={(stage === 4 && !loding)} story={story} />
+        <Result show={(stage === 4 && !loding)} story={story} image={{1: tempImg1, 2:tempImg2, 3:tempImg3}}/>
       </div>
     </>
   );

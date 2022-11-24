@@ -71,7 +71,6 @@ const UserInfo = () => {
     } else {
       setProfileFile(null);
     }
-
   };
 
 
