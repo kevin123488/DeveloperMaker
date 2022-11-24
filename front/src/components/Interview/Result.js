@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FailContent from "../../asset/images/Interview/Result/FailContent.png"
 import SuccessImg from "../../asset/images/Interview/Result/SuccessImg.png"
 import OkBtn from "../../asset/images/Interview/Result/OkBtn.png"
+import ResultNoImage from "../../asset/images/Interview/Result/ResultNoImage.png"
 // import { getAlbumCheck, putAlbumList } from "../../slices/albumSlice";
 
 
@@ -15,6 +16,8 @@ const Result = (props) => {
   const show = props.show
   // 스토리에서 온 건지 확인
   const story = props.story
+  // 찍은 이미지 파일
+  const image = props.image
   
   const [detail, setDetail] = useState(false)
   // 로딩 여부(채점 과정 중인지 여부)
@@ -46,27 +49,29 @@ const Result = (props) => {
   return(
     <Modal show={show}>
       <div className="InterviewModalBack">
-        <p className="InterviewCheckTitle" >면접 결과</p>
-        <img className="interviewResultImg" src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
+        <p className="InterviewCheckTitle">면접 결과</p>
+        <img className={isPass?"interviewResultSuccessImg" :"interviewResultImg"} src={isPass? SuccessImg : FailContent} alt="SuccessImg" />
         <p className="interviewResultDetailBtn" onClick={()=> {setDetail(!detail)}}>면접 세부 결과 확인 {!detail? '▼' : '▲'}</p>
         {detail && [1, 2, 3].map((num)=> { return <div key={`result-${num}`}>
           <p className="InterviewResultNum">{num}번 답변 결과:  <span className="InterviewResultSpan">{result[num-1].pass ? "성공" : "실패"}({parseInt(result[num-1].totalScore)}점)</span></p>
           <div className="InterviewResultDetail">
-            <p>표정분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].imageScore)}점</span>)</p>
-            <div className="InterviewFeelContainer">
+            <p className="InterviewResultTheme">표정분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].imageScore)}점</span>)</p>
+            <img className="InterviewResultCapImages" src={image[num] ? image[num] : ResultNoImage} alt={`CapImg-${num}`} />
+            {result[num-1].imageScore ? <div className="InterviewFeelContainer">
               {['anger', 'contempt', 'disgust', 'fear', 'happiness', 'neutral', 'sadness', 'surprise'].map((feel,idx)=> {
                 return <div className="InterviewFeelLine" key={`feel-${idx}`}>
                   <p className="InterviewFeelName">{feelName[idx]}</p>
                   <p className="InterviewFeelPoints">{result[num-1].imageAnalyzeResult[feel]}</p>
                 </div>
               })}
-            </div>
+            </div> : <p className="InterviewResultNoCapImg">표정인식에 실패했습니다.</p>}
             <div>
               <p>답변분석 결과 (<span className="InterviewResultSpan">{parseInt(result[num-1].answerScore)}점</span>)</p>
-              <p className="InterviewKeywordLabel">인정 키워드(<span className="InterviewResultSpan">{result[num-1].answerKeyword.length} / {result[num-1].demandKeywordCnt}</span>): 
+              <p className="InterviewKeywordLabel">인정 키워드(<span className="InterviewResultSpan">{result[num-1].answerKeyword.length}/{result[num-1].demandKeywordCnt}</span>): 
               {result[num-1].answerKeyword.map((word, idx)=> {return <span className="InterviewResultKeyword" key={`word-${idx}`}>{word}</span>})}</p>
             </div>
           </div>
+          <hr />
         </div>})}
         <img src={OkBtn} alt="okImg" className="interviewResult" onClick={()=>{
           if (story) {

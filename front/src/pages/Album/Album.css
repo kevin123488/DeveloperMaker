@@ -8,60 +8,16 @@ body::after{
     z-index:-1;
     
     /* load images */
-    /* content: */
+    content:
 
     /* 앨범 나중 */
-    /* url(../../asset/images/Album/AlbumPick/fallBack.png)
+    url(../../asset/images/Album/AlbumPick/fallBack.png)
     url(../../asset/images/Album/AlbumPick/OpenBookImage.png)
     url(../../asset/images/Album/AlbumPick/PickBack.png)
     url(../../asset/images/Album/AlbumPick/springBack.png)
     url(../../asset/images/Album/AlbumPick/totalBack.png)
     url(../../asset/images/Album/AlbumPick/winterBack.png)
-    url(../../asset/images/Album/Collection/1.png)
-    url(../../asset/images/Album/Collection/2.png)
-    url(../../asset/images/Album/Collection/3.png)
-    url(../../asset/images/Album/Collection/4.png)
-    url(../../asset/images/Album/Collection/5.png)
-    url(../../asset/images/Album/Collection/6.png)
-    url(../../asset/images/Album/Collection/7.png)
-    url(../../asset/images/Album/Collection/8.png)
-    url(../../asset/images/Album/Collection/9.png)
-    url(../../asset/images/Album/Collection/10.png)
-    url(../../asset/images/Album/Collection/11.png)
-    url(../../asset/images/Album/Collection/12.png)
-    url(../../asset/images/Album/Collection/13.png)
-    url(../../asset/images/Album/Collection/14.png)
-    url(../../asset/images/Album/Collection/15.png)
-    url(../../asset/images/Album/Collection/16.png)
-    url(../../asset/images/Album/Collection/17.png)
-    url(../../asset/images/Album/Collection/18.png)
-    url(../../asset/images/Album/Collection/19.png)
-    url(../../asset/images/Album/Collection/20.png)
 
-    url(../../asset/images/Album/Collection/29.png)
-    url(../../asset/images/Album/Collection/30.png)
-    url(../../asset/images/Album/Collection/31.png)
-    url(../../asset/images/Album/Collection/32.png)
-    url(../../asset/images/Album/Collection/33.png)
-    url(../../asset/images/Album/Collection/34.png)
-    url(../../asset/images/Album/Collection/35.png)
-    url(../../asset/images/Album/Collection/36.png)
-    url(../../asset/images/Album/Collection/37.png)
-    url(../../asset/images/Album/Collection/38.png)
-    url(../../asset/images/Album/Collection/39.png)
-    url(../../asset/images/Album/Collection/40.png)
-    url(../../asset/images/Album/Collection/41.png)
-    url(../../asset/images/Album/Collection/42.png)
-    url(../../asset/images/Album/Collection/43.png)
-    url(../../asset/images/Album/Collection/44.png)
-    url(../../asset/images/Album/Collection/45.png)
-    url(../../asset/images/Album/Collection/46.png)
-    url(../../asset/images/Album/Collection/47.png)
-    url(../../asset/images/Album/Collection/48.png)
-    url(../../asset/images/Album/Collection/49.png)
-    url(../../asset/images/Album/Collection/50.png)
-    url(../../asset/images/Album/Collection/51.png)
-    url(../../asset/images/Album/Collection/52.png) */
 
     /* 필요한 이미지 소스들 다운 */
 }
