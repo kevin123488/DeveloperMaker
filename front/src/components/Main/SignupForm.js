@@ -59,6 +59,7 @@ const Select = styled.select`
   background-color: pink;
   color: white;
   border-radius: 5px;
+  z-index: 1;
 `;
 const Button = styled.button`
   margin-top: 8vh;
