@@ -34,13 +34,13 @@ SSAFY 7기 2학기 자율 프로젝트
 
 ## Contributors
 
-| 팀원   | 역할           | 담당                                               | 깃헙                            |
-| ------ | -------------- | -------------------------------------------------- | ------------------------------- |
-| 전현우 | 팀장, Frontend | 유저관리, AI면접, 앨범 UI/UX 구현, UCC제작         | https://github.com/soshot22     |
-| 박정현 | Frontend       | 인게임 개발, 슬롯 페이지 UI/UX 구현, 시나리오 담당 | https://github.com/kevin123488  |
-| 박제학 | Frontend       | 메인화면, 자율학습, 랭킹 UI/UX 구현                | https://github.com/jehaak       |
-| 남한솔 | Backend        | API 설계 및 개발, 코딩 테스트, AI 면접 구현        | https://github.com/hansol620915 |
-| 손효재 | Backend        | API 설계 및 개발, CI/CD환경 구축                   | https://github.com/hyojhand     |
+| 팀원   | 역할           | 담당                                          | 깃헙                            |
+| ------ | -------------- | --------------------------------------------- | ------------------------------- |
+| 전현우 | 팀장, Frontend | 유저관리, AI면접, 앨범 UI/UX 구현, UCC제작    | https://github.com/soshot22     |
+| 박정현 | Frontend       | 인게임 개발, 슬롯 페이지 UI/UX 구현, 시나리오 | https://github.com/kevin123488  |
+| 박제학 | Frontend       | 메인화면, 자율학습, 랭킹 UI/UX 구현           | https://github.com/jehaak       |
+| 남한솔 | Backend        | API 설계 및 개발, 코딩 테스트, AI 면접 구현   | https://github.com/hansol620915 |
+| 손효재 | Backend        | API 설계 및 개발, CI/CD환경 구축              | https://github.com/hyojhand     |
 
 ## 사용&nbsp;스택
 
